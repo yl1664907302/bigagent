@@ -1,0 +1,19 @@
+# 主机类型设置
+global:
+  # 指定主机类型（virtual、physical、hwy、aly）
+  machineType:  "virtual"
+  # 指定主机所属的环境信息（offline、prod）
+  env:  "offline"
+
+# 日志配置
+log:
+  level: info                   #（选项：debug、info）
+  format: json                  #（选项：json、text）
+  runtimeLogFile:   # 该文件记录"运行时"的日志
+
+# cmdb配置，当前使用的账号为：cmdb_auto_agent
+cmdb:
+  address:  "http://cmdb.ttpai.work"
+  Key:  "97775e92de334147a6debd10347369af"
+  Secret: "YLF!6%vD3n~oE7kJuXZqfpa?sSMP@OQl"
+  ciType: "ttpai_auto_machine_v2"
