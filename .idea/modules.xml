@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/cmdb_mini_agent-dev-20240912.iml" filepath="$PROJECT_DIR$/.idea/cmdb_mini_agent-dev-20240912.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/bigagent.iml" filepath="$PROJECT_DIR$/.idea/bigagent.iml" />
     </modules>
   </component>
 </project>
