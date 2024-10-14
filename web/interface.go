@@ -2,7 +2,7 @@ package web
 
 // ApiStrategy 定义api接口策略
 type ApiStrategy interface {
-	Api() (interface{}, error)
+	Api(key string) (interface{}, error)
 }
 
 // PushStrategy 定义推送接口策略
@@ -15,6 +15,10 @@ type Agent struct {
 	pushStrategy PushStrategy
 }
 
+func NewAgent() *Agent {
+	return &Agent{}
+}
+
 func (a *Agent) SetApiStrategy(strategy ApiStrategy) {
 	a.apiStrategy = strategy
 }
@@ -23,18 +27,10 @@ func (a *Agent) SetPushStrategy(strategy PushStrategy) {
 	a.pushStrategy = strategy
 }
 
-func (a *Agent) ExecuteApi() (interface{}, error) {
-	data, err := a.apiStrategy.Api()
-	if err != nil {
-		return nil, err
-	}
-	return data, err
+func (a *Agent) ExecuteApi(key string) (interface{}, error) {
+	return a.apiStrategy.Api(key)
 }
 
 func (a *Agent) ExecutePush() (interface{}, error) {
-	data, err := a.apiStrategy.Api()
-	if err != nil {
-		return nil, err
-	}
-	return data, err
+	return a.pushStrategy.Push()
 }
