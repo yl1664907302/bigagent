@@ -15,8 +15,8 @@ type Agent struct {
 	pushStrategy PushStrategy
 }
 
-func NewAgent() *Agent {
-	return &Agent{}
+func NewAgent() Agent {
+	return Agent{}
 }
 
 func (a *Agent) SetApiStrategy(strategy ApiStrategy) {

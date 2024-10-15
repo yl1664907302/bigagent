@@ -8,6 +8,7 @@ import (
 )
 
 type StandRouter struct {
+	K bool
 	A *web.Agent
 }
 
@@ -21,4 +22,4 @@ func (r *StandRouter) ShowData(w http.ResponseWriter, req *http.Request) {
 	}
 }
 
-var StandRouterApp = new(StandRouter)
+var StandRouterApp = &StandRouter{false, nil}
