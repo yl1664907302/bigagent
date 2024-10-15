@@ -1,13 +1,10 @@
 package inits
 
 import (
-	"bigagent/web"
-	"bigagent/web/register"
+	"bigagent/register"
 	"log"
 	"net/http"
 )
-
-var Agents []web.Agent
 
 // Handler http
 func Hander(port string) {

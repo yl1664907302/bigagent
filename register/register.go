@@ -1,12 +1,13 @@
 package register
 
 import (
-	"bigagent/inits"
 	"bigagent/web"
 	"bigagent/web/router"
 	"bigagent/web/strategy"
 	"log"
 )
+
+var Agents []web.Agent
 
 // StandRegister 策略注册,openpush值是否开启push, onlypush是否只开启push（关闭api）
 func StandRegister(host string, openpush bool, onlypush bool) {
@@ -62,5 +63,5 @@ func StandRegister(host string, openpush bool, onlypush bool) {
 			}
 		}
 	}
-	inits.Agents = append(inits.Agents, agent)
+	Agents = append(Agents, agent)
 }
