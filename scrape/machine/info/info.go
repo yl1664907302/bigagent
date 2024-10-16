@@ -6,7 +6,7 @@ import (
 )
 
 type Info struct {
-	V1 host.InfoStat `json:"strategy"`
+	V1 host.InfoStat `json:"v1"`
 }
 
 func NewInfo() *Info {

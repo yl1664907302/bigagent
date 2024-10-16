@@ -6,7 +6,7 @@ import (
 )
 
 type Memory struct {
-	V1 mem.VirtualMemoryStat `json:"strategy"`
+	V1 mem.VirtualMemoryStat `json:"v1"`
 }
 
 func NewMemory() *Memory {

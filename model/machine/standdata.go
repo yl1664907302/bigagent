@@ -1,6 +1,7 @@
 package model
 
 import (
+	"bigagent/scrape/machine"
 	"bigagent/scrape/machine/info"
 	"bigagent/scrape/machine/memory"
 	"encoding/json"
@@ -14,6 +15,12 @@ type StandData struct {
 }
 
 func NewStandData() *StandData {
+	m := machine.Ma.M
+	i := machine.Ma.I
+	return &StandData{Memory: *m, Info: *i}
+}
+
+func NewStandDataApi() *StandData {
 	m := memory.NewMemory()
 	i := info.NewInfo()
 	return &StandData{Memory: *m, Info: *i}

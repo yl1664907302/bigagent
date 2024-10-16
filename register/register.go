@@ -7,8 +7,6 @@ import (
 	"log"
 )
 
-var Agents []web.Agent
-
 // StandRegister 策略注册,openpush值是否开启push, onlypush是否只开启push（关闭api）
 func StandRegister(host string, openpush bool, onlypush bool) {
 	agent := web.NewAgent()
@@ -18,24 +16,23 @@ func StandRegister(host string, openpush bool, onlypush bool) {
 			case "":
 				log.Println("请配置push操作的host值")
 			default:
-				router.StandRouterApp.A = &agent
-				router.StandRouterApp.A.SetPushStrategy(&strategy.StandardStrategy{host})
+				agent.SetPushStrategy(&strategy.StandardStrategy{host})
 			}
 		} else {
 			switch openpush {
 			case true:
 				switch host {
 				case "":
+					agent.SetApiStrategy(&strategy.StandardStrategy{})
 					router.StandRouterApp.A = &agent
-					router.StandRouterApp.A.SetApiStrategy(&strategy.StandardStrategy{})
 				default:
+					agent.SetApiStrategy(&strategy.StandardStrategy{})
+					agent.SetPushStrategy(&strategy.StandardStrategy{host})
 					router.StandRouterApp.A = &agent
-					router.StandRouterApp.A.SetApiStrategy(&strategy.StandardStrategy{})
-					router.StandRouterApp.A.SetPushStrategy(&strategy.StandardStrategy{host})
 				}
 			default:
+				agent.SetApiStrategy(&strategy.StandardStrategy{})
 				router.StandRouterApp.A = &agent
-				router.StandRouterApp.A.SetApiStrategy(&strategy.StandardStrategy{})
 			}
 		}
 	} else {
@@ -44,8 +41,8 @@ func StandRegister(host string, openpush bool, onlypush bool) {
 			case "":
 				log.Println("请配置push操作的host值")
 			default:
+				agent.SetPushStrategy(&strategy.StandardStrategy{host})
 				router.StandRouterApp.A = &agent
-				router.StandRouterApp.A.SetPushStrategy(&strategy.StandardStrategy{host})
 			}
 		} else {
 			switch openpush {
@@ -54,14 +51,14 @@ func StandRegister(host string, openpush bool, onlypush bool) {
 				case "":
 					log.Println("请配置push操作的host值")
 				default:
+					agent.SetPushStrategy(&strategy.StandardStrategy{host})
 					router.StandRouterApp.A = &agent
-					router.StandRouterApp.A.SetPushStrategy(&strategy.StandardStrategy{host})
 				}
 			default:
+				agent.SetPushStrategy(&strategy.StandardStrategy{host})
 				router.StandRouterApp.A = &agent
-				router.StandRouterApp.A.SetPushStrategy(&strategy.StandardStrategy{host})
 			}
 		}
 	}
-	Agents = append(Agents, agent)
+	web.Agents = append(web.Agents, agent)
 }

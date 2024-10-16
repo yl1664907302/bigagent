@@ -2,6 +2,7 @@ package inits
 
 import (
 	"bigagent/register"
+	"bigagent/util/crontab"
 	"log"
 	"net/http"
 )
@@ -19,4 +20,9 @@ func Hander(port string) {
 // AgentRegister agent注册
 func AgentRegister() {
 	register.StandRegister("", false, false)
+}
+
+// Crontab 执行定时任务
+func Crontab() {
+	crontab.ScrapeCrontab()
 }

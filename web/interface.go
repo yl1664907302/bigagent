@@ -7,7 +7,7 @@ type ApiStrategy interface {
 
 // PushStrategy 定义推送接口策略
 type PushStrategy interface {
-	Push() (interface{}, error)
+	Push() error
 }
 
 type Agent struct {
@@ -31,6 +31,8 @@ func (a *Agent) ExecuteApi(key string) (interface{}, error) {
 	return a.apiStrategy.Api(key)
 }
 
-func (a *Agent) ExecutePush() (interface{}, error) {
+func (a *Agent) ExecutePush() error {
 	return a.pushStrategy.Push()
 }
+
+var Agents []Agent
