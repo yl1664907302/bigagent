@@ -9,6 +9,7 @@ type StandardStrategy struct {
 	H string
 }
 
+// Push 当前的处理方式不当，结果被抛弃
 func (s *StandardStrategy) Push() error {
 	_, err := request.NewPostStand(s.H).Do()
 	return err

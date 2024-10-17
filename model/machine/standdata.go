@@ -8,7 +8,7 @@ import (
 	"log"
 )
 
-// Data 暴露原生utils数据
+// StandData 暴露原生utils数据
 type StandData struct {
 	Memory memory.Memory `json:"memory"`
 	Info   info.Info     `json:"info"`

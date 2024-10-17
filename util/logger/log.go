@@ -1,9 +1,8 @@
-package log
+package logger
 
 import (
 	"fmt"
 	"github.com/sirupsen/logrus"
-	"github.com/spf13/viper"
 	"io"
 	"os"
 	"path"
@@ -11,11 +10,7 @@ import (
 
 var DefaultLogger = logrus.New()
 
-func Init() {
-	InitLogger(DefaultLogger, viper.GetString("log.runtimeLogFile"), viper.GetString("log.level"), viper.GetString("log.format"), true)
-}
-
-func InitLogger(l *logrus.Logger, logFile, logLevel, logFormat string, openConsole bool) {
+func InitLogger(logFile, logLevel, logFormat string, openConsole bool) {
 	//确保存放日志文件的目录始终存在
 	logPathDir := path.Dir(logFile)                              //返回路径中除去最后一个元素的剩余部分，也就是路径最后一个元素所在的目录
 	if err := os.MkdirAll(logPathDir, os.ModePerm); err != nil { //创建目录类似于（mkdir -p /aaa/bbb的效果）
@@ -32,26 +27,26 @@ func InitLogger(l *logrus.Logger, logFile, logLevel, logFormat string, openConso
 
 	//设定日志输出位置
 	if openConsole {
-		l.SetOutput(io.MultiWriter(outConsole, outFile))
+		DefaultLogger.SetOutput(io.MultiWriter(outConsole, outFile))
 	} else {
-		l.SetOutput(io.MultiWriter(outFile))
+		DefaultLogger.SetOutput(io.MultiWriter(outFile))
 	}
 
 	//设定输出日志中是否要携带上文件名与行号
-	l.SetReportCaller(false)
+	DefaultLogger.SetReportCaller(false)
 
 	//设定日志等级
-	setLogLevel(l, logLevel)
+	setLogLevel(DefaultLogger, logLevel)
 
 	//设定日志输出格式
-	setLogFormat(l, logFormat)
+	setLogFormat(logFormat)
 
 	//如果开启es的日志投放功能，则加载对应的钩子
 	//if viper.GetBool("l.log2es") {
 	//	l.AddHook(es.NewRuntimeToEsHook())
 	//}
 
-	l.Info("log模块初始化完成...")
+	DefaultLogger.Info("log模块初始化完成...")
 }
 
 // 设定日志等级
@@ -79,26 +74,26 @@ func setLogLevel(l *logrus.Logger, level string) {
 }
 
 // 设定日志格式
-func setLogFormat(l *logrus.Logger, format string) {
+func setLogFormat(format string) {
 	//指定日志输出格式
 	switch format {
 	case "json":
 		//设置日志的输出格式（json格式）
-		l.SetFormatter(
+		DefaultLogger.SetFormatter(
 			&logrus.JSONFormatter{
 				TimestampFormat: "2006-01-02 15:04:05.000 -0700 MST",
 			},
 		)
 	case "text":
 		//设置日志的输出格式（Text格式）
-		l.SetFormatter(
+		DefaultLogger.SetFormatter(
 			&logrus.TextFormatter{
 				TimestampFormat: "2006-01-02 15:04:05.000 -0700 MST",
 			},
 		)
 	default:
 		//设置日志的输出格式（Text格式）
-		l.SetFormatter(
+		DefaultLogger.SetFormatter(
 			&logrus.TextFormatter{
 				TimestampFormat: "2006-01-02 15:04:05.000 -0700 MST",
 			},

@@ -1,5 +1,5 @@
 package request
 
 type RequestInterface interface {
-	do() (interface{}, error)
+	Do() (interface{}, error)
 }
