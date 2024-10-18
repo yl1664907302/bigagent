@@ -2,37 +2,30 @@ package memory
 
 import (
 	"github.com/shirou/gopsutil/v4/mem"
-	"log"
 )
 
+// Memory 定义Memory 类型
 type Memory struct {
-	V1 mem.VirtualMemoryStat `json:"v1"`
+	VirtueMemory mem.VirtualMemoryStat `json:"virtue_memory"`
+	SwapMemory   mem.SwapMemoryStat    `json:"swap_memory"`
 }
 
+// NewMemory 内存对象
 func NewMemory() *Memory {
-	memory, err := mem.VirtualMemory()
-	if err != nil {
-		log.Println(err)
+	virtualMemory, _ := mem.VirtualMemory()
+	swapMemory, _ := mem.SwapMemory()
+	return &Memory{
+		VirtueMemory: *virtualMemory,
+		SwapMemory:   *swapMemory,
 	}
-	return &Memory{V1: *memory}
 }
 
-func (m *Memory) Total() uint64 {
-	return m.V1.Total
+// GetVirtualMemoryStat 虚拟内存
+func (memory *Memory) GetVirtualMemoryStat() mem.VirtualMemoryStat {
+	return memory.VirtueMemory
 }
 
-func (m *Memory) Used() uint64 {
-	return m.V1.Used
-}
-
-func (m *Memory) Free() uint64 {
-	return m.V1.Free
-}
-
-func (m *Memory) Available() uint64 {
-	return m.V1.Available
-}
-
-func (m *Memory) UsedPercent() float64 {
-	return m.V1.UsedPercent
+// GetSwapStat 交换内存
+func (memory *Memory) GetSwapStat() mem.SwapMemoryStat {
+	return memory.SwapMemory
 }
