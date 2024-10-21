@@ -1,5 +1,10 @@
 package model
 
+import (
+	"encoding/json"
+	"log"
+)
+
 type VeopsData struct {
 	Ci_type                string `json:"ci_type,omitempty"`
 	Cmdb_auto_product_uuid string `json:"cmdb_auto_product_uuid,omitempty"`
@@ -20,4 +25,12 @@ type VeopsData struct {
 
 func NewVeopsdata() *VeopsData {
 	return &VeopsData{}
+}
+
+func (d *VeopsData) ToString() string {
+	s, err := json.Marshal(d)
+	if err != nil {
+		log.Println(err)
+	}
+	return string(s)
 }
