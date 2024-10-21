@@ -14,7 +14,7 @@ import (
 // Handler http
 func Hander(port string) {
 	StandRouterGroupApp.StandRouter()
-
+	VeopsRouterGroupApp.VeopsRouter()
 	err := http.ListenAndServe(":"+port, nil)
 	if err != nil {
 		log.Fatal("ListenAndServe: ", err)
@@ -24,6 +24,7 @@ func Hander(port string) {
 // AgentRegister agent注册
 func AgentRegister() {
 	register.StandRegister("", false, false)
+	register.VeopsRegister("192.x.x.1", true, true)
 }
 
 // Crontab 执行定时任务
