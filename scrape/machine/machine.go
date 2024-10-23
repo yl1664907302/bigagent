@@ -16,16 +16,13 @@ func NewMachine() *Machine {
 }
 
 func NotifyMachineAddressChange() {
-	// 非阻塞写入 MachineCh 通道，通知监听者地址变化
 	select {
-	case MachineCh <- struct{}{}:
-		// 通知成功
+	case MachineCh <- true:
 	default:
-		// 通道已满，跳过通知（避免阻塞）
 	}
 }
 
 var (
 	Ma        *Machine
-	MachineCh = make(chan struct{}, 1)
+	MachineCh = make(chan bool, 1)
 )

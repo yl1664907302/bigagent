@@ -36,10 +36,15 @@ func Crontab() {
 func ListerChannel() {
 	go func() {
 		for range machine.MachineCh {
-			for _, agent := range web.Agents {
-				err := agent.ExecutePush()
-				if err != nil {
-					logger.DefaultLogger.Error("Agent execute push error:", err)
+			temp := <-machine.MachineCh
+			if temp {
+				logger.DefaultLogger.Info("触发push", temp)
+				machine.MachineCh <- false
+				for _, agent := range web.Agents {
+					err := agent.ExecutePush()
+					if err != nil {
+						logger.DefaultLogger.Error("Agent execute push error:", err)
+					}
 				}
 			}
 		}
