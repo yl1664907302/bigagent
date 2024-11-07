@@ -6,6 +6,7 @@ import (
 )
 
 func init() {
+	inits.Viper()
 	inits.LoggerInit()
 	inits.AgentRegister()
 	inits.Crontab()
