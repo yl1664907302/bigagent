@@ -41,6 +41,6 @@ func NotifyMachineAddressChange() {
 }
 
 var (
-	Ma        *Machine
-	MachineCh = make(chan struct{}, 1)
+	Ma        *Machine = NewMachine()
+	MachineCh          = make(chan struct{}, 1)
 )
