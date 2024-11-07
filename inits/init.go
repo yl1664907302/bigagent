@@ -14,7 +14,7 @@ import (
 // Handler http
 func Hander(port string) {
 	StandRouterGroupApp.StandRouter()
-
+	VeopsRouterGroupApp.VeopsRouter()
 	err := http.ListenAndServe(":"+port, nil)
 	if err != nil {
 		log.Fatal("ListenAndServe: ", err)
@@ -24,6 +24,7 @@ func Hander(port string) {
 // AgentRegister agent注册
 func AgentRegister() {
 	register.StandRegister("", false, false)
+	register.VeopsRegister("192.x.x.1", true, true)
 }
 
 // Crontab 执行定时任务
@@ -35,10 +36,15 @@ func Crontab() {
 func ListerChannel() {
 	go func() {
 		for range machine.MachineCh {
-			for _, agent := range web.Agents {
-				err := agent.ExecutePush()
-				if err != nil {
-					logger.DefaultLogger.Error("Agent execute push error:", err)
+			temp := <-machine.MachineCh
+			if temp {
+				logger.DefaultLogger.Info("触发push", temp)
+				machine.MachineCh <- false
+				for _, agent := range web.Agents {
+					err := agent.ExecutePush()
+					if err != nil {
+						logger.DefaultLogger.Error("Agent execute push error:", err)
+					}
 				}
 			}
 		}

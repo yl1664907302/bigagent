@@ -1,14 +1,16 @@
 package main
 
-import "bigagent/inits"
+import (
+	"bigagent/config/global"
+	"bigagent/inits"
+)
 
 func init() {
 	inits.LoggerInit()
 	inits.AgentRegister()
 	inits.Crontab()
 	inits.ListerChannel()
-	inits.Hander("8080")
-
+	inits.Hander(global.CONF.System.Addr)
 }
 func main() {
 
