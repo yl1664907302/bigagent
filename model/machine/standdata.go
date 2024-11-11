@@ -10,20 +10,28 @@ import (
 	"bigagent/scrape/machine/processinfo"
 	"encoding/json"
 	"log"
+	"time"
 )
 
 // StandData 暴露原生utils数据
 type StandData struct {
-	Info    info.Info           `json:"info"`
-	Cpu     cpuinfo.Cpus        `json:"cpu"`
-	Disk    diskinfo.DISK       `json:"disk"`
-	Memory  meminfo.Memory      `json:"memory"`
-	Net     netinfo.Net         `json:"net"`
-	Process processinfo.PROCESS `json:"process"`
+	Uuid     string              `json:"uuid"`
+	Hostname string              `json:"hostname"`
+	IPv4     string              `json:"ipv4"`
+	Time     time.Time           `json:"time"`
+	Info     info.Info           `json:"info"`
+	Cpu      cpuinfo.Cpus        `json:"cpu"`
+	Disk     diskinfo.DISK       `json:"disk"`
+	Memory   meminfo.Memory      `json:"memory"`
+	Net      netinfo.Net         `json:"net"`
+	Process  processinfo.PROCESS `json:"process"`
 }
 
 func NewStandData() *StandData {
-	i := machine.Ma.Info
+	u := machine.Ma.Uuid
+	h := machine.Ma.Hostname
+	i := machine.Ma.IPv4
+	t := machine.Ma.Time
 	c := machine.Ma.Cpu
 	d := machine.Ma.Disk
 	m := machine.Ma.Memory
@@ -31,29 +39,38 @@ func NewStandData() *StandData {
 	p := machine.Ma.Process
 
 	return &StandData{
-		Info:    *i,
-		Cpu:     *c,
-		Disk:    *d,
-		Memory:  *m,
-		Net:     *n,
-		Process: *p,
+		Uuid:     u,
+		Hostname: h,
+		IPv4:     i,
+		Time:     t,
+		Cpu:      *c,
+		Disk:     *d,
+		Memory:   *m,
+		Net:      *n,
+		Process:  *p,
 	}
 }
 
 func NewStandDataApi() *StandData {
-	i := info.NewInfo()
+	u := info.NewInfo().Uuid
+	h := info.NewInfo().Hostname
+	i := info.NewInfo().IPv4
+	t := info.NewInfo().Time
 	c := cpuinfo.NewCPU()
 	d := diskinfo.NewDISK()
 	m := meminfo.NewMemory()
 	n := netinfo.NewNET()
 	p := processinfo.NewProcess()
 	return &StandData{
-		Info:    *i,
-		Cpu:     *c,
-		Disk:    *d,
-		Memory:  *m,
-		Net:     *n,
-		Process: *p,
+		Uuid:     u,
+		Hostname: h,
+		IPv4:     i,
+		Time:     t,
+		Cpu:      *c,
+		Disk:     *d,
+		Memory:   *m,
+		Net:      *n,
+		Process:  *p,
 	}
 }
 
