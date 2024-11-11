@@ -18,7 +18,7 @@ func (s *StandardStrategy) Push() error {
 func (s *StandardStrategy) Api(key string) (interface{}, error) {
 	switch key {
 	case "bigagent":
-		return model.NewStandDataApi().ToString(), nil
+		return model.NewStandDataApi(), nil
 	default:
 		return nil, nil
 	}

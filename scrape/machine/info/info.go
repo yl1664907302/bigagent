@@ -1,50 +1,60 @@
 package info
 
 import (
-	"github.com/shirou/gopsutil/v4/host"
+	"github.com/super-l/machine-code/machine"
 	"log"
+	"os"
+	"time"
 )
 
+// 定义系统类型
 type Info struct {
-	V1 host.InfoStat `json:"v1"`
+	Uuid     string    `json:"uuid"`
+	Hostname string    `json:"hostname"`
+	IPv4     string    `json:"ipv4"`
+	Time     time.Time `json:"time"`
 }
 
-func NewInfo() *Info {
-	info, err := host.Info()
+// GetIPv4 获取IP地址
+func (i Info) GetIPv4() string {
+	addr, err := machine.GetLocalIpAddr()
 	if err != nil {
-		log.Println(err)
+		log.Fatal(err)
 	}
-	return &Info{V1: *info}
+	return addr
 }
 
-func (info *Info) Platform() string {
-	return info.V1.Platform
+// GetHostname 获取hostname
+func (i *Info) GetHostname() string {
+	hostname, err := os.Hostname()
+	if err != nil {
+		log.Fatal(err)
+	}
+	return hostname
 }
 
-func (info *Info) PlatformFamily() string {
-	return info.V1.PlatformFamily
+// GetUuid 获得系统uuid
+func (i *Info) GetUuid() string {
+	uuid := machine.GetMachineData()
+
+	return uuid.PlatformUUID
 }
 
-func (Info *Info) PlatformVersion() string {
-	return Info.V1.PlatformVersion
-}
-
-func (info *Info) Hostname() string {
-	return info.V1.Hostname
-}
-
-func (info *Info) KernelVersion() string {
-	return info.V1.KernelVersion
-}
-
-func (info *Info) OS() string {
-	return info.V1.OS
-}
-
-func (info *Info) VirtualizationSystem() string {
-	return info.V1.VirtualizationSystem
-}
-
-func (info *Info) HostID() string {
-	return info.V1.HostID
+// 对外接口
+func NewInfo() *Info {
+	uuid := machine.GetMachineData()
+	hostname, err := os.Hostname()
+	if err != nil {
+		log.Fatal(err)
+	}
+	addr, err := machine.GetLocalIpAddr()
+	if err != nil {
+		log.Fatal(err)
+	}
+	return &Info{
+		Uuid:     uuid.PlatformUUID,
+		Hostname: hostname,
+		IPv4:     addr,
+		Time:     time.Now(),
+	}
 }

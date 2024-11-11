@@ -2,28 +2,76 @@ package model
 
 import (
 	"bigagent/scrape/machine"
+	"bigagent/scrape/machine/cpuinfo"
+	"bigagent/scrape/machine/diskinfo"
 	"bigagent/scrape/machine/info"
-	"bigagent/scrape/machine/memory"
+	"bigagent/scrape/machine/meminfo"
+	"bigagent/scrape/machine/netinfo"
+	"bigagent/scrape/machine/processinfo"
 	"encoding/json"
 	"log"
+	"time"
 )
 
 // StandData 暴露原生utils数据
 type StandData struct {
-	Memory memory.Memory `json:"memory"`
-	Info   info.Info     `json:"info"`
+	Uuid     string              `json:"uuid"`
+	Hostname string              `json:"hostname"`
+	IPv4     string              `json:"ipv4"`
+	Time     time.Time           `json:"time"`
+	Info     info.Info           `json:"info"`
+	Cpu      cpuinfo.Cpus        `json:"cpu"`
+	Disk     diskinfo.DISK       `json:"disk"`
+	Memory   meminfo.Memory      `json:"memory"`
+	Net      netinfo.Net         `json:"net"`
+	Process  processinfo.PROCESS `json:"process"`
 }
 
 func NewStandData() *StandData {
-	m := machine.Ma.M
-	i := machine.Ma.I
-	return &StandData{Memory: *m, Info: *i}
+	u := machine.Ma.Uuid
+	h := machine.Ma.Hostname
+	i := machine.Ma.IPv4
+	t := machine.Ma.Time
+	c := machine.Ma.Cpu
+	d := machine.Ma.Disk
+	m := machine.Ma.Memory
+	n := machine.Ma.Net
+	p := machine.Ma.Process
+
+	return &StandData{
+		Uuid:     u,
+		Hostname: h,
+		IPv4:     i,
+		Time:     t,
+		Cpu:      *c,
+		Disk:     *d,
+		Memory:   *m,
+		Net:      *n,
+		Process:  *p,
+	}
 }
 
 func NewStandDataApi() *StandData {
-	m := memory.NewMemory()
-	i := info.NewInfo()
-	return &StandData{Memory: *m, Info: *i}
+	u := info.NewInfo().Uuid
+	h := info.NewInfo().Hostname
+	i := info.NewInfo().IPv4
+	t := info.NewInfo().Time
+	c := cpuinfo.NewCPU()
+	d := diskinfo.NewDISK()
+	m := meminfo.NewMemory()
+	n := netinfo.NewNET()
+	p := processinfo.NewProcess()
+	return &StandData{
+		Uuid:     u,
+		Hostname: h,
+		IPv4:     i,
+		Time:     t,
+		Cpu:      *c,
+		Disk:     *d,
+		Memory:   *m,
+		Net:      *n,
+		Process:  *p,
+	}
 }
 
 func (d *StandData) ToString() string {
