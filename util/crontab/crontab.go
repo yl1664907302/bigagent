@@ -16,7 +16,7 @@ func cronTask() {
 
 // ScrapeCrontab 初始化采集crontab任务
 func ScrapeCrontab() {
-	crontabRule := "@every 900s"
+	crontabRule := "@every 3s"
 	c := cron.New()
 	c.Start()
 

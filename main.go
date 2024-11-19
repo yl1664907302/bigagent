@@ -7,7 +7,7 @@ import (
 
 func init() {
 	inits.Viper()
-	inits.LoggerInit()
+	//inits.LoggerInit()
 	inits.AgentRegister()
 	inits.Crontab()
 	inits.ListerChannel()

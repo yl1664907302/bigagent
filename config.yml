@@ -1,2 +1,5 @@
 system:
-  addr: ":8080"
+  serct: ""
+  addr: ":8010"
+  grpc: "127.0.0.1:5678"
+  logfile: "log.txt"
