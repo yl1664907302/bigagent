@@ -1,17 +1,25 @@
 package strategy
 
 import (
+	grpc_client "bigagent/grpcs/client"
 	model "bigagent/model/machine"
-	"bigagent/web/request"
+	"fmt"
 )
 
 type StandardStrategy struct {
 	H string
+	G string
 }
 
-// Push 当前的处理方式不当，结果被抛弃
 func (s *StandardStrategy) Push() error {
-	_, err := request.NewPostStand(s.H).Do()
+	//_, err := request.NewPostStand(s.H).Do()
+	conn, err := grpc_client.InitClient(s.G)
+	if err == nil {
+		grpc_client.GrpcStandPush(conn)
+	}
+	if s == nil {
+		return fmt.Errorf("strategy is nil")
+	}
 	return err
 }
 

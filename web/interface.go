@@ -1,5 +1,7 @@
 package web
 
+import "bigagent/util/logger"
+
 // ApiStrategy 定义api接口策略
 type ApiStrategy interface {
 	Api(key string) (interface{}, error)
@@ -32,7 +34,10 @@ func (a *Agent) ExecuteApi(key string) (interface{}, error) {
 }
 
 func (a *Agent) ExecutePush() error {
+	if a.pushStrategy == nil {
+		logger.DefaultLogger.Warn("PushStrategy is nil for agent")
+	}
 	return a.pushStrategy.Push()
 }
 
-var Agents []Agent
+var Agents = make([]Agent, 0)
