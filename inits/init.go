@@ -5,7 +5,7 @@ import (
 	"bigagent/register"
 	"bigagent/scrape/machine"
 	"bigagent/util/crontab"
-	logger "bigagent/util/logger"
+	"bigagent/util/logger"
 	"bigagent/web"
 	"log"
 	"net/http"
