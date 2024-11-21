@@ -7,7 +7,6 @@ import (
 	"bigagent/util/crontab"
 	logger "bigagent/util/logger"
 	"bigagent/web"
-	"github.com/spf13/viper"
 	"log"
 	"net/http"
 )
@@ -57,5 +56,5 @@ func ListerChannel() {
 }
 
 func LoggerInit() {
-	logger.InitLogger(viper.GetString(global.CONF.System.Logfile), viper.GetString("info"), viper.GetString("json"), true)
+	logger.InitLogger(global.CONF.System.Logfile, "info", "json", true)
 }
