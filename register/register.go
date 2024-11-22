@@ -1,15 +1,14 @@
 package register
 
 import (
-	"bigagent/web"
+	"bigagent/strategy"
 	"bigagent/web/router"
-	"bigagent/web/strategy"
 	"log"
 )
 
 // StandRegister 策略注册,openpush值是否开启push, onlypush是否只开启push（关闭api）
 func StandRegister(host string, grpc_host string, openpush bool, onlypush bool) {
-	agent := web.NewAgent()
+	agent := strategy.NewAgent()
 	if !router.StandRouterApp.K {
 		if onlypush {
 			switch host {
@@ -60,12 +59,12 @@ func StandRegister(host string, grpc_host string, openpush bool, onlypush bool) 
 			}
 		}
 	}
-	web.Agents = append(web.Agents, agent)
+	strategy.Agents = append(strategy.Agents, agent)
 }
 
 // VeopsRegister 策略注册,openpush值是否开启push, onlypush是否只开启push（关闭api）
 func VeopsRegister(host string, openpush bool, onlypush bool) {
-	agent := web.NewAgent()
+	agent := strategy.NewAgent()
 	if !router.StandRouterApp.K {
 		if onlypush {
 			switch host {
@@ -116,5 +115,5 @@ func VeopsRegister(host string, openpush bool, onlypush bool) {
 			}
 		}
 	}
-	web.Agents = append(web.Agents, agent)
+	strategy.Agents = append(strategy.Agents, agent)
 }

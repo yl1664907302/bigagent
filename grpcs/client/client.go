@@ -3,11 +3,13 @@ package grpc_client
 import (
 	grpc_server "bigagent/grpcs/server"
 	model "bigagent/model/machine"
+	"bigagent/util/logger"
 	"context"
 	"fmt"
+	"time"
+
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
-	"time"
 )
 
 var (
@@ -38,23 +40,25 @@ func GrpcStandPush(conn *grpc.ClientConn) {
 	//准备好请求参数
 	data := model.NewStandData()
 	request := grpc_server.StandData{
-		Serct:    data.Serct,
-		Uuid:     data.Uuid,
-		Hostname: data.Hostname,
-		Ipv4:     data.IPv4,
-		Time:     uint64(time.Now().Unix()),
-		Info:     nil,
-		Cpu:      nil,
-		Disk:     nil,
-		Memory:   nil,
-		Net:      nil,
+		Serct:        data.Serct,
+		Uuid:         data.Uuid,
+		Hostname:     data.Hostname,
+		Ipv4:         data.IPv4,
+		Time:         uint64(time.Now().Unix()),
+		Info:         nil,
+		Cpu:          nil,
+		Disk:         nil,
+		Memory:       nil,
+		Net:          nil,
+		Status:       "good",
+		ActionDetail: "pushing",
 	}
 	//发送请求，取得响应
 	response, err := client.SendData(context.Background(), &request)
 	if err != nil {
-		fmt.Printf("推送数据失败: %s", err)
+		logger.DefaultLogger.Error("推送数据失败:", err)
 	} else {
-		fmt.Printf("消息推送成功：%s", response)
+		logger.DefaultLogger.Info("消息推送成功:", response)
 	}
 	fmt.Println()
 }

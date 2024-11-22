@@ -1,7 +1,7 @@
 package router
 
 import (
-	"bigagent/web"
+	"bigagent/strategy"
 	"bigagent/web/response"
 	"log"
 	"net/http"
@@ -9,7 +9,7 @@ import (
 
 type VeopsRouter struct {
 	K bool
-	A *web.Agent
+	A *strategy.Agent
 }
 
 func (r *VeopsRouter) ShowData(w http.ResponseWriter, req *http.Request) {

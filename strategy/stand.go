@@ -15,7 +15,7 @@ func (s *StandardStrategy) Push() error {
 	//_, err := request.NewPostStand(s.H).Do()
 	conn, err := grpc_client.InitClient(s.G)
 	if err == nil {
-		grpc_client.GrpcStandPush(conn)
+		go grpc_client.GrpcStandPush(conn)
 	}
 	if s == nil {
 		return fmt.Errorf("strategy is nil")

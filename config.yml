@@ -1,5 +1,5 @@
 system:
-  serct: ""
+  serct: "123456"
   addr: ":8010"
   grpc: "192.168.0.83:5678"
   logfile: "log.txt"

@@ -4,9 +4,9 @@ import (
 	"bigagent/config/global"
 	"bigagent/register"
 	"bigagent/scrape/machine"
+	"bigagent/strategy"
 	"bigagent/util/crontab"
 	"bigagent/util/logger"
-	"bigagent/web"
 	"log"
 	"net/http"
 )
@@ -40,11 +40,11 @@ func ListerChannel() {
 			if temp {
 				logger.DefaultLogger.Info("数据更新，执行推送")
 				machine.MachineCh <- false
-				if web.Agents == nil || len(web.Agents) == 0 {
+				if strategy.Agents == nil || len(strategy.Agents) == 0 {
 					logger.DefaultLogger.Warn("web.Agents is nil or empty")
 					return
 				}
-				for _, agent := range web.Agents {
+				for _, agent := range strategy.Agents {
 					err := agent.ExecutePush()
 					if err != nil {
 						logger.DefaultLogger.Error("数据推送异常:", err)

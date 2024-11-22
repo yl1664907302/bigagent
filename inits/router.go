@@ -1,37 +1,61 @@
 package inits
 
 import (
+	"bigagent/config/global"
 	"bigagent/util/logger"
 	"bigagent/web/router"
 	"net/http"
+	"strings"
 	"time"
 )
 
 type StandRouterGroup struct {
+	Prefix string
 }
-type VeopsRouterGroup struct{}
 
-// 需要优化，自动带上“bigagent”前缀
+type VeopsRouterGroup struct {
+	Prefix string
+}
+
+var StandRouterGroupApp = &StandRouterGroup{Prefix: "/bigagent"}
+var VeopsRouterGroupApp = &VeopsRouterGroup{Prefix: "/veops"}
+
+// StandRouter 添加路由，自动带上前缀
 func (r *StandRouterGroup) StandRouter() {
-	http.Handle("/bigagent/showdata", loggingMiddleware(http.HandlerFunc(router.StandRouterApp.ShowData)))
+	http.Handle(r.Prefix+"/showdata", loggingMiddleware(AuthMiddleware(http.HandlerFunc(router.StandRouterApp.ShowData))))
 }
 
+// VeopsRouter 添加路由，自动带上前缀
 func (r *VeopsRouterGroup) VeopsRouter() {
-	http.Handle("/veops/showdata", loggingMiddleware(http.HandlerFunc(router.VeopsRouterApp.ShowData)))
+	http.Handle(r.Prefix+"/showdata", loggingMiddleware(AuthMiddleware(http.HandlerFunc(router.VeopsRouterApp.ShowData))))
 }
 
-var StandRouterGroupApp = new(StandRouterGroup)
-var VeopsRouterGroupApp = new(VeopsRouterGroup)
-
-// 日志中间件，记录每次请求的访问日志(闭包和适配器（可接口匿名实现）的骚操作)
+// 日志中间件，记录每次请求的访问日志
 func loggingMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		next.ServeHTTP(w, r) //使用适配器方法，等用于ShowData方法，闭包可以直接使用
-		logger.DefaultLogger.Println(
-			r.Method,
-			r.RequestURI,
-			r.RemoteAddr,
-			time.Since(time.Now()),
-		)
+		startTime := time.Now()
+		next.ServeHTTP(w, r) // 处理请求
+		duration := time.Since(startTime)
+		logger.DefaultLogger.Printf("Method: %s, URI: %s, RemoteAddr: %s, Duration: %v",
+			r.Method, r.RequestURI, r.RemoteAddr, duration)
+	})
+}
+
+// AuthMiddleware 验证请求头中的 Token
+func AuthMiddleware(next http.Handler) http.Handler {
+	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
+		authHeader := r.Header.Get("Authorization")
+		if !strings.HasPrefix(authHeader, "Bearer ") {
+			http.Error(w, "Unauthorized: missing or invalid Authorization header", http.StatusUnauthorized)
+			return
+		}
+
+		token := strings.TrimPrefix(authHeader, "Bearer ")
+		if token != global.CONF.System.Serct { // 验证 Token 是否匹配
+			http.Error(w, "Unauthorized: invalid token", http.StatusUnauthorized)
+			return
+		}
+
+		next.ServeHTTP(w, r) // 验证通过，继续处理请求
 	})
 }

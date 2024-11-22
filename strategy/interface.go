@@ -1,4 +1,4 @@
-package web
+package strategy
 
 import "bigagent/util/logger"
 
