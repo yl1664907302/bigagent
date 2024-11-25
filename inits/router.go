@@ -5,7 +5,6 @@ import (
 	"bigagent/util/logger"
 	"bigagent/web/router"
 	"net/http"
-	"strings"
 	"time"
 )
 
@@ -44,13 +43,7 @@ func loggingMiddleware(next http.Handler) http.Handler {
 // AuthMiddleware 验证请求头中的 Token
 func AuthMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		authHeader := r.Header.Get("Authorization")
-		if !strings.HasPrefix(authHeader, "Bearer ") {
-			http.Error(w, "Unauthorized: missing or invalid Authorization header", http.StatusUnauthorized)
-			return
-		}
-
-		token := strings.TrimPrefix(authHeader, "Bearer ")
+		token := r.Header.Get("Authorization")
 		if token != global.CONF.System.Serct { // 验证 Token 是否匹配
 			http.Error(w, "Unauthorized: invalid token", http.StatusUnauthorized)
 			return
