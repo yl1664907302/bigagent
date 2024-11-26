@@ -1,4 +1,4 @@
-package grpc_client
+package grpcs
 
 import (
 	grpc_server "bigagent/grpcs/server"

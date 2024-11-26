@@ -1,7 +1,7 @@
 package strategy
 
 import (
-	grpc_client "bigagent/grpcs/client"
+	"bigagent/grpcs"
 	model "bigagent/model/machine"
 	"fmt"
 )
@@ -13,9 +13,9 @@ type StandardStrategy struct {
 
 func (s *StandardStrategy) Push() error {
 	//_, err := request.NewPostStand(s.H).Do()
-	conn, err := grpc_client.InitClient(s.G)
+	conn, err := grpcs.InitClient(s.G)
 	if err == nil {
-		go grpc_client.GrpcStandPush(conn)
+		go grpcs.GrpcStandPush(conn)
 	}
 	if s == nil {
 		return fmt.Errorf("strategy is nil")

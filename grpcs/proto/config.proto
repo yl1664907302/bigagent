@@ -1,0 +1,58 @@
+// 定义 config 数据结构
+syntax = "proto3";
+
+package grpc_server;
+
+// AuthDetails 类型，支持多种认证方式
+message AuthDetails {
+  oneof auth_type {
+    TokenAuth token_auth = 1; // Token 认证
+  }
+}
+
+// Token 认证方式
+message TokenAuth {
+  string token = 1;
+}
+
+
+// 字段映射类型
+message FieldMapping {
+  string struct_field = 1; // Go中的StructField
+  string type = 2;         // 字段类型，例如string或integer
+  bool  is_required = 3;   // 是否必填
+}
+
+
+
+
+// 网络信息配置
+message NetworkInfo {
+  string protocol = 1; // 网络协议，如http或https
+  string host = 2;     // 主机地址
+  int64 port = 3;      // 端口号
+  string path = 4;     // 请求路径
+}
+
+// Agent 配置
+message AgentConfig {
+  string serct  =1;
+  string auth_name = 2;                          // 认证名称
+  AuthDetails auth_details = 3;                 // 认证信息
+  map<string, FieldMapping> field_mapping = 4;  // 字段映射
+  NetworkInfo network_info = 6;                 // 网络信息
+}
+
+// 服务定义
+service AgentConfigService {
+  // 示例方法：获取 Agent 配置
+  rpc PushAgentConfig (AgentConfig) returns (ResponseMessage);
+}
+
+message ResponseMessage {
+  string code =1;
+  string message = 2;
+}
+
+
+//protoc --gogofaster_out=plugins=grpc:./grpcs/server/ --proto_path=./grpcs/proto/ config.proto
