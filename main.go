@@ -9,10 +9,9 @@ func init() {
 	inits.Viper()
 	inits.LoggerInit()
 	inits.AgentRegister()
+}
+func main() {
 	inits.Crontab()
 	inits.ListerChannel()
 	inits.Hander(global.CONF.System.Addr)
-}
-func main() {
-
 }
