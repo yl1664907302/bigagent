@@ -1,17 +1,12 @@
 package model
 
 type AuthDetails interface {
-	ApplyAuth(args ...interface{}) (interface{}, error)
+	ApplyAuth(args ...interface{}) error
 }
 
 type FieldMapping struct {
 	StructField string `json:"struct_field"`
 	Type        string `json:"type"`
-}
-
-type DataRules struct {
-	GenerateData bool                   `json:"generate_data"`
-	Fields       map[string]interface{} `json:"fields"`
 }
 
 type NetworkInfo struct {
@@ -22,11 +17,9 @@ type NetworkInfo struct {
 }
 
 type AgentConfig struct {
-	Serct        string                  `json:"serct"`
 	AuthName     string                  `json:"auth_name"`
 	AuthDetails  AuthDetails             `json:"auth_details"`
 	FieldMapping map[string]FieldMapping `json:"field_mapping"`
-	DataRules    DataRules               `json:"data_rules"`
 	NetworkInfo  NetworkInfo             `json:"network_info"`
 }
 
