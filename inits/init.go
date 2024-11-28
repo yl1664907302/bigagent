@@ -11,10 +11,9 @@ import (
 	"net/http"
 )
 
-// Handler http
+// Hander 启动http服务
 func Hander(port string) {
 	StandRouterGroupApp.StandRouter()
-	//VeopsRouterGroupApp.VeopsRouter()
 	err := http.ListenAndServe(port, nil)
 	if err != nil {
 		log.Fatal("ListenAndServe: ", err)
@@ -23,8 +22,7 @@ func Hander(port string) {
 
 // AgentRegister agent注册
 func AgentRegister() {
-	register.StandRegister("127.0.0.1:8080", global.CONF.System.Grpc, true, false)
-	//register.VeopsRegister("192.x.x.1", true, true)
+	register.StandRegister("127.0.0.1:8080", global.CONF.System.Client_port, true, false)
 }
 
 // Crontab 执行定时任务
@@ -32,7 +30,7 @@ func Crontab() {
 	crontab.ScrapeCrontab()
 }
 
-// Channel
+// ListerChannel 监听channel
 func ListerChannel() {
 	go func() {
 		for range machine.MachineCh {

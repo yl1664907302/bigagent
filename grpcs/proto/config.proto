@@ -1,14 +1,14 @@
 // 定义 config 数据结构
 syntax = "proto3";
 
-package grpc_server;
+package grpc_config;
 
 // AuthDetails 类型，支持多种认证方式
-message AuthDetails {
-  oneof auth_type {
-    TokenAuth token_auth = 1; // Token 认证
-  }
-}
+//message AuthDetails {
+//  oneof auth_type {
+//    TokenAuth token_auth = 1; // Token 认证
+//  }
+//}
 
 // Token 认证方式
 message TokenAuth {
@@ -38,9 +38,11 @@ message NetworkInfo {
 message AgentConfig {
   string serct  =1;
   string auth_name = 2;                          // 认证名称
-  AuthDetails auth_details = 3;                 // 认证信息
+//  AuthDetails auth_details = 3;                 // 认证信息
   map<string, FieldMapping> field_mapping = 4;  // 字段映射
   NetworkInfo network_info = 6;                 // 网络信息
+  //下面为前端传入的各种认证数据
+  string token = 7;                             // Token
 }
 
 // 服务定义
@@ -55,4 +57,4 @@ message ResponseMessage {
 }
 
 
-//protoc --gogofaster_out=plugins=grpc:./grpcs/server/ --proto_path=./grpcs/proto/ config.proto
+//protoc --gogofaster_out=plugins=grpc:./grpcs/grpc_config/ --proto_path=./grpcs/proto/ config.proto

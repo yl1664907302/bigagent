@@ -1,5 +1,6 @@
 system:
   serct: "123456"
   addr: ":8010"
-  grpc: "192.168.0.83:5678"
+  grpc: "0.0.0.0:5678"
   logfile: "log.txt"
+  client_port: "0.0.0.0:8765"
