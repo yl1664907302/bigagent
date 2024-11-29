@@ -17,8 +17,8 @@ type Agent struct {
 	pushStrategy PushStrategy
 }
 
-func NewAgent() Agent {
-	return Agent{}
+func NewAgent() *Agent {
+	return &Agent{}
 }
 
 func (a *Agent) SetApiStrategy(strategy ApiStrategy) {
@@ -40,4 +40,4 @@ func (a *Agent) ExecutePush() error {
 	return a.pushStrategy.Push()
 }
 
-var Agents = make([]Agent, 0)
+var Agents = make([]Agent, 10)

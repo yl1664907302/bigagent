@@ -8,10 +8,10 @@ import (
 func init() {
 	inits.Viper()
 	inits.LoggerInit()
-	inits.AgentRegister()
+	inits.RunG()
 	inits.Crontab()
 	inits.ListerChannel()
-	inits.Hander(global.CONF.System.Addr)
+	inits.Hander(global.V.GetString("system.addr"))
 }
 func main() {
 

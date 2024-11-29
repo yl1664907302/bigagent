@@ -3,19 +3,39 @@ package inits
 import (
 	"bigagent/config/global"
 	"bigagent/util/logger"
+	"fmt"
+	"github.com/fsnotify/fsnotify"
 	"github.com/spf13/viper"
 )
 
 func Viper() {
-	v := viper.New()
-	v.SetConfigFile("config.yml")
-	v.SetConfigType("yaml")
-	err := v.ReadInConfig()
+	initConfig()
+	go dynamicConfig()
+}
+
+func initConfig() {
+	// 创建新的Viper实例
+	global.V = viper.New()
+
+	// 设置配置文件路径和类型
+	global.V.SetConfigFile("config.yml")
+	global.V.SetConfigType("yaml")
+
+	// 读取配置文件
+	err := global.V.ReadInConfig()
 	if err != nil {
-		logger.DefaultLogger.Error(err.Error())
+		logger.DefaultLogger.Error("Error reading config file: " + err.Error())
+		return
 	}
-	err = v.Unmarshal(&global.CONF)
-	if err != nil {
-		logger.DefaultLogger.Error(err.Error())
-	}
+	AgentRegister(1)
+}
+
+// viper支持应用程序在运行中实时读取配置文件的能力。确保在调用 WatchConfig()之前添加所有的configPaths。
+func dynamicConfig() {
+	global.V.WatchConfig()
+	global.V.OnConfigChange(func(event fsnotify.Event) {
+		fmt.Printf("发现配置信息发生变化: %s\n", event.String())
+	})
+	//覆盖注册
+	AgentRegister(1)
 }

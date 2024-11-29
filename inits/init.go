@@ -21,8 +21,8 @@ func Hander(port string) {
 }
 
 // AgentRegister agent注册
-func AgentRegister() {
-	register.StandRegister("127.0.0.1:8080", global.CONF.System.Client_port, true, false)
+func AgentRegister(i int) {
+	register.StandRegister("127.0.0.1:8080", global.V.GetString("system.client_port"), true, false, i)
 }
 
 // Crontab 执行定时任务
@@ -42,11 +42,12 @@ func ListerChannel() {
 					logger.DefaultLogger.Warn("web.Agents is nil or empty")
 					return
 				}
-				for _, agent := range strategy.Agents {
+				for i, agent := range strategy.Agents {
 					err := agent.ExecutePush()
 					if err != nil {
-						logger.DefaultLogger.Error("数据推送异常:", err)
+						logger.DefaultLogger.Errorf("agent策略序号：%d,数据推送异常: %s", i, err)
 					}
+
 				}
 			}
 		}
@@ -54,5 +55,5 @@ func ListerChannel() {
 }
 
 func LoggerInit() {
-	logger.InitLogger(global.CONF.System.Logfile, "info", "json", true)
+	logger.InitLogger(global.V.GetString("system.logfile"), "info", "json", true)
 }

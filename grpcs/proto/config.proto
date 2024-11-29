@@ -2,28 +2,7 @@
 syntax = "proto3";
 
 package grpc_config;
-
-// AuthDetails 类型，支持多种认证方式
-//message AuthDetails {
-//  oneof auth_type {
-//    TokenAuth token_auth = 1; // Token 认证
-//  }
-//}
-
-// Token 认证方式
-message TokenAuth {
-  string token = 1;
-}
-
-
-// 字段映射类型
-message FieldMapping {
-  string struct_field = 1; // Go中的StructField
-  string type = 2;         // 字段类型，例如string或integer
-  bool  is_required = 3;   // 是否必填
-}
-
-
+option go_package = "./";
 
 
 // 网络信息配置
@@ -37,12 +16,12 @@ message NetworkInfo {
 // Agent 配置
 message AgentConfig {
   string serct  =1;
-  string auth_name = 2;                          // 认证名称
-//  AuthDetails auth_details = 3;                 // 认证信息
-  map<string, FieldMapping> field_mapping = 4;  // 字段映射
-  NetworkInfo network_info = 6;                 // 网络信息
+  string auth_name = 2;
+  string data_name =3;// 认证名称
+  NetworkInfo network_info = 4;                 // 网络信息
+
   //下面为前端传入的各种认证数据
-  string token = 7;                             // Token
+  string token = 5;                             // Token
 }
 
 // 服务定义
@@ -57,4 +36,8 @@ message ResponseMessage {
 }
 
 
+//protoc --go_out=./grpcs/grpc_config/ --proto_path=./grpcs/proto/ config.proto
+
 //protoc --gogofaster_out=plugins=grpc:./grpcs/grpc_config/ --proto_path=./grpcs/proto/ config.proto
+
+// protoc -I . --go_out=plugins=grpc:. ./config.proto
