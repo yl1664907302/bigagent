@@ -29,7 +29,7 @@ type SmpMachine struct {
 }
 
 var (
-	SmpMa        *SmpMachine
+	SmpMa        = NewSmpMachine()
 	MachineChSmp = make(chan bool, 1)
 )
 

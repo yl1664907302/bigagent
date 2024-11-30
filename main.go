@@ -1,8 +1,7 @@
 package main
 
 import (
-	"bigagent/scrape/machine"
-	"encoding/json"
+	model "bigagent/model/machine"
 	"fmt"
 )
 
@@ -15,11 +14,9 @@ import (
 //		inits.Hander(global.CONF.System.Addr)
 //	}
 func main() {
-	smpm := machine.NewSmpMachine()
-	b, _ := json.MarshalIndent(smpm, "", " ")
-	// b, _ := json.Marshal(smpm)
-	fmt.Println(string(b))
-	// km := kmodules.NewKmodules()
-	// fmt.Printf("km.ToString(): %v\n", km.ToString())
-
+	fmt.Printf("model.NewSmpDataApi().ToString(): %v\n", model.NewSmpDataApi().ToString())
+	fmt.Printf("model.NewSmpData().ToString(): %v\n", model.NewSmpData().ToString())
+	// fmt.Printf("model.NewStandData().ToString(): %v\n", model.NewStandData().ToString())
+	// fmt.Println("---------------------------------------------------------------------")
+	// fmt.Printf("model.NewStandDataApi().ToString(): %v\n", model.NewStandDataApi().ToString())
 }
