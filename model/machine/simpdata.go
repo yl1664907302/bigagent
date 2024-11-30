@@ -4,6 +4,7 @@ import (
 	"bigagent/scrape/machine"
 	"bigagent/scrape/machine/cpuinfo"
 	"bigagent/scrape/machine/diskinfo"
+	"bigagent/scrape/machine/kmodule"
 	"bigagent/scrape/machine/meminfo"
 	"bigagent/scrape/machine/netinfo"
 	"bigagent/scrape/machine/processinfo"
@@ -22,6 +23,7 @@ type SmpData struct {
 	Cpu      cpuinfo.SmpCpu    `json:"cpu"`
 	Disk     diskinfo.SmpDisk  `json:"disk"`
 	Memory   meminfo.SmpMemory `json:"memory"`
+	Kmodules kmodule.Kmodules  `json:"kernel_module"`
 	Net      netinfo.SmpNet    `json:"net"`
 	Process  processinfo.SmpPs `json:"process"`
 }
@@ -36,43 +38,25 @@ func NewSmpData() *SmpData {
 	h := machine.SmpMa.Hostname
 	i := machine.SmpMa.IPv4
 	t := machine.SmpMa.Time
+	c := machine.SmpMa.Cpu
+	d := machine.SmpMa.Disk
+	m := machine.SmpMa.Memory
+	k := machine.SmpMa.Kmodules
+	n := machine.SmpMa.Net
+	p := machine.SmpMa.Process
 
-	// 使用空指针检查，避免 nil 解引用
-	var cValue cpuinfo.SmpCpu
-	if machine.SmpMa.Cpu != nil {
-		cValue = *machine.SmpMa.Cpu
-	}
-
-	var dValue diskinfo.SmpDisk
-	if machine.SmpMa.Disk != nil {
-		dValue = *machine.SmpMa.Disk
-	}
-
-	var mValue meminfo.SmpMemory
-	if machine.SmpMa.Memory != nil {
-		mValue = *machine.SmpMa.Memory
-	}
-
-	var nValue netinfo.SmpNet
-	if machine.SmpMa.Net != nil {
-		nValue = *machine.SmpMa.Net
-	}
-
-	var pValue processinfo.SmpPs
-	if machine.SmpMa.Process != nil {
-		pValue = *machine.SmpMa.Process
-	}
 	return &SmpData{
 		// Serct:    s,
 		Uuid:     u,
 		Hostname: h,
 		IPv4:     i,
 		Time:     t,
-		Cpu:      cValue,
-		Disk:     dValue,
-		Memory:   mValue,
-		Net:      nValue,
-		Process:  pValue,
+		Cpu:      *c,
+		Disk:     *d,
+		Memory:   *m,
+		Kmodules: *k,
+		Net:      *n,
+		Process:  *p,
 	}
 }
 
@@ -85,6 +69,7 @@ func NewSmpDataApi() *SmpData {
 	c := cpuinfo.NewSmpCpu()
 	d := diskinfo.NewSmpDisk()
 	m := meminfo.NewSmpMem()
+	k := kmodule.NewKmodules()
 	n := netinfo.NewSmpNet()
 	p := processinfo.NewSmpPs()
 	return &SmpData{
@@ -96,6 +81,7 @@ func NewSmpDataApi() *SmpData {
 		Cpu:      *c,
 		Disk:     *d,
 		Memory:   *m,
+		Kmodules: *k,
 		Net:      *n,
 		Process:  *p,
 	}
