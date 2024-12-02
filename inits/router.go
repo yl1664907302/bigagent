@@ -44,7 +44,7 @@ func loggingMiddleware(next http.Handler) http.Handler {
 func AuthMiddleware(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 		token := r.Header.Get("Authorization")
-		if token != global.CONF.System.Serct { // 验证 Token 是否匹配
+		if token != global.V.GetString("system.serct") { // 验证 Token 是否匹配
 			http.Error(w, "Unauthorized: invalid token", http.StatusUnauthorized)
 			return
 		}

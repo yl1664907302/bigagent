@@ -110,7 +110,7 @@ func JSONToFormData(jsonData interface{}) (string, error) {
 	return formData.Encode(), nil
 }
 
-// 修改 YAML 文件中的字段值
+// ModifyYAML 修改 YAML 文件中的字段值
 func ModifyYAML(filePath, fieldPath, newValue string) error {
 	// 读取 YAML 文件
 	data, err := ioutil.ReadFile(filePath)
@@ -143,15 +143,32 @@ func ModifyYAML(filePath, fieldPath, newValue string) error {
 		return fmt.Errorf("未找到字段: %s", fieldPath)
 	}
 
-	// 将修改后的数据写回 YAML 文件
-	modifiedData, err := yaml.Marshal(&config)
+	// 使用两格缩进序列化 YAML 数据，并保留双引号
+	modifiedData, err := formatYAML(config)
 	if err != nil {
-		return fmt.Errorf("序列化 YAML 失败: %w", err)
+		return fmt.Errorf("格式化 YAML 失败: %w", err)
 	}
+
+	// 写回修改后的 YAML 文件
 	err = ioutil.WriteFile(filePath, modifiedData, 0644)
 	if err != nil {
 		return fmt.Errorf("写入文件失败: %w", err)
 	}
 
 	return nil
+}
+
+// formatYAML 格式化 YAML 输出，保留两格缩进
+func formatYAML(config interface{}) ([]byte, error) {
+	var buf strings.Builder
+	encoder := yaml.NewEncoder(&buf)
+	encoder.SetIndent(2) // 设置两格缩进
+	defer encoder.Close()
+
+	err := encoder.Encode(config)
+	if err != nil {
+		return nil, err
+	}
+
+	return []byte(buf.String()), nil
 }

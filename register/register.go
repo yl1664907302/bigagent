@@ -27,14 +27,17 @@ func Stand1Register(host string, grpc_host string, openpush bool, onlypush bool)
 				case "":
 					agent.SetApiStrategy(&strategy.StandardStrategy{})
 					router.StandRouterApp.A = agent
+					router.StandRouterApp.K = true
 				default:
 					agent.SetApiStrategy(&strategy.StandardStrategy{})
 					agent.SetPushStrategy(&strategy.StandardStrategy{host, grpc_host})
 					router.StandRouterApp.A = agent
+					router.StandRouterApp.K = true
 				}
 			default:
 				agent.SetApiStrategy(&strategy.StandardStrategy{})
 				router.StandRouterApp.A = agent
+				router.StandRouterApp.K = true
 			}
 		}
 	} else {
@@ -44,7 +47,6 @@ func Stand1Register(host string, grpc_host string, openpush bool, onlypush bool)
 				log.Println("请配置push操作的host值")
 			default:
 				agent.SetPushStrategy(&strategy.StandardStrategy{host, grpc_host})
-				router.StandRouterApp.A = agent
 			}
 		} else {
 			switch openpush {
@@ -54,11 +56,9 @@ func Stand1Register(host string, grpc_host string, openpush bool, onlypush bool)
 					log.Println("请配置push操作的host值")
 				default:
 					agent.SetPushStrategy(&strategy.StandardStrategy{host, grpc_host})
-					router.StandRouterApp.A = agent
 				}
 			default:
 				agent.SetPushStrategy(&strategy.StandardStrategy{host, grpc_host})
-				router.StandRouterApp.A = agent
 			}
 		}
 	}
