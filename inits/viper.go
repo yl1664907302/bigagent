@@ -27,7 +27,6 @@ func initConfig() {
 		logger.DefaultLogger.Error("Error reading config file: " + err.Error())
 		return
 	}
-	AgentRegister(1)
 }
 
 // viper支持应用程序在运行中实时读取配置文件的能力。确保在调用 WatchConfig()之前添加所有的configPaths。
@@ -36,6 +35,4 @@ func dynamicConfig() {
 	global.V.OnConfigChange(func(event fsnotify.Event) {
 		fmt.Printf("发现配置信息发生变化: %s\n", event.String())
 	})
-	//覆盖注册
-	AgentRegister(1)
 }

@@ -21,8 +21,20 @@ func Hander(port string) {
 }
 
 // AgentRegister agent注册
-func AgentRegister(i int) {
-	register.StandRegister("127.0.0.1:8080", global.V.GetString("system.client_port"), true, false, i)
+func AgentRegister() {
+	strategy.Agents = nil
+	//注册agent-server
+	register.Stand1Register("127.0.0.1:8080", global.V.GetString("system.grpc_server"), true, false)
+	//注册cmdb
+	register.Stand1Register("127.0.0.1:8080", global.V.GetString("system.grpc_cmdb1_stand1"), true, false)
+	register.Stand1Register("127.0.0.1:8080", global.V.GetString("system.grpc_cmdb2_stand1"), true, false)
+	register.Stand1Register("127.0.0.1:8080", global.V.GetString("system.grpc_cmdb3_stand1"), true, false)
+	//register.Stand2Register("127.0.0.1:8080", global.V.GetString("system.grpc_cmdb1_stand2"), true, false)
+	//register.Stand2Register("127.0.0.1:8080", global.V.GetString("system.grpc_cmdb2_stand2"), true, false)
+	//register.Stand2Register("127.0.0.1:8080", global.V.GetString("system.grpc_cmdb3_stand2"), true, false)
+	//register.Stand3Register("127.0.0.1:8080", global.V.GetString("system.grpc_cmdb1_stand3"), true, false)
+	//register.Stand3Register("127.0.0.1:8080", global.V.GetString("system.grpc_cmdb2_stand3"), true, false)
+	//register.Stand3Register("127.0.0.1:8080", global.V.GetString("system.grpc_cmdb3_stand3"), true, false)
 }
 
 // Crontab 执行定时任务
@@ -38,6 +50,8 @@ func ListerChannel() {
 			if temp {
 				logger.DefaultLogger.Info("数据更新，执行推送")
 				machine.MachineCh <- false
+				//热加载
+				AgentRegister()
 				if strategy.Agents == nil || len(strategy.Agents) == 0 {
 					logger.DefaultLogger.Warn("web.Agents is nil or empty")
 					return

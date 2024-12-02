@@ -7,7 +7,10 @@ import (
 )
 
 // StandRegister 策略注册,openpush值是否开启push, onlypush是否只开启push（关闭api）
-func StandRegister(host string, grpc_host string, openpush bool, onlypush bool, index int) {
+func Stand1Register(host string, grpc_host string, openpush bool, onlypush bool) {
+	if grpc_host == "" {
+		return
+	}
 	agent := strategy.NewAgent()
 	if !router.StandRouterApp.K {
 		if onlypush {
@@ -59,7 +62,7 @@ func StandRegister(host string, grpc_host string, openpush bool, onlypush bool, 
 			}
 		}
 	}
-	strategy.Agents[index] = *agent
+	strategy.Agents = append(strategy.Agents, *agent)
 }
 
 // VeopsRegister 策略注册,openpush值是否开启push, onlypush是否只开启push（关闭api）
