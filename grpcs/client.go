@@ -3,7 +3,7 @@ package grpcs
 import (
 	grpc_server "bigagent/grpcs/server"
 	model "bigagent/model/machine"
-	"bigagent/util/logger"
+	utils "bigagent/util"
 	"context"
 	"fmt"
 	"time"
@@ -56,9 +56,9 @@ func GrpcStandPush(conn *grpc.ClientConn) {
 	//发送请求，取得响应
 	response, err := client.SendData(context.Background(), &request)
 	if err != nil {
-		logger.DefaultLogger.Error("推送数据失败:", err)
+		utils.DefaultLogger.Error("推送数据失败:", err)
 	} else {
-		logger.DefaultLogger.Info("消息推送成功:", response)
+		utils.DefaultLogger.Info("消息推送成功:", response)
 	}
 	fmt.Println()
 }

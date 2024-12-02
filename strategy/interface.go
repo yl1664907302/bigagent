@@ -1,6 +1,6 @@
 package strategy
 
-import "bigagent/util/logger"
+import utils "bigagent/util"
 
 // ApiStrategy 定义api接口策略
 type ApiStrategy interface {
@@ -35,7 +35,7 @@ func (a *Agent) ExecuteApi(key string) (interface{}, error) {
 
 func (a *Agent) ExecutePush() error {
 	if a.pushStrategy == nil {
-		logger.DefaultLogger.Warn("PushStrategy is nil for agent")
+		utils.DefaultLogger.Warn("PushStrategy is nil for agent")
 	}
 	return a.pushStrategy.Push()
 }

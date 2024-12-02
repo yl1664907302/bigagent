@@ -1,0 +1,1551 @@
+{"level":"info","msg":"log模块初始化完成...","time":"2024-11-26 21:11:24.261 +0800 CST"}
+{"level":"info","msg":"定时任务启动成功,EntryID：1","time":"2024-11-26 21:11:24.265 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-26 21:11:34.990 +0800 CST"}
+{"level":"error","msg":"数据推送异常:服务端'192.168.0.83:5678'连接超时!","time":"2024-11-26 21:11:35.991 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-26 21:11:36.901 +0800 CST"}
+{"level":"error","msg":"数据推送异常:服务端'192.168.0.83:5678'连接超时!","time":"2024-11-26 21:11:37.902 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-26 21:11:40.499 +0800 CST"}
+{"level":"error","msg":"数据推送异常:服务端'192.168.0.83:5678'连接超时!","time":"2024-11-26 21:11:41.500 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-26 21:11:44.379 +0800 CST"}
+{"level":"error","msg":"数据推送异常:服务端'192.168.0.83:5678'连接超时!","time":"2024-11-26 21:11:45.380 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-26 21:11:46.320 +0800 CST"}
+{"level":"error","msg":"数据推送异常:服务端'192.168.0.83:5678'连接超时!","time":"2024-11-26 21:11:47.321 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-26 21:11:48.167 +0800 CST"}
+{"level":"error","msg":"数据推送异常:服务端'192.168.0.83:5678'连接超时!","time":"2024-11-26 21:11:49.168 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-26 21:11:50.666 +0800 CST"}
+{"level":"error","msg":"数据推送异常:服务端'192.168.0.83:5678'连接超时!","time":"2024-11-26 21:11:51.667 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-26 21:11:56.055 +0800 CST"}
+{"level":"error","msg":"数据推送异常:服务端'192.168.0.83:5678'连接超时!","time":"2024-11-26 21:11:57.061 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-26 21:12:00.846 +0800 CST"}
+{"level":"error","msg":"数据推送异常:服务端'192.168.0.83:5678'连接超时!","time":"2024-11-26 21:12:01.849 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-26 21:12:02.665 +0800 CST"}
+{"level":"error","msg":"数据推送异常:服务端'192.168.0.83:5678'连接超时!","time":"2024-11-26 21:12:03.666 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-26 21:12:04.751 +0800 CST"}
+{"level":"error","msg":"数据推送异常:服务端'192.168.0.83:5678'连接超时!","time":"2024-11-26 21:12:05.752 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-26 21:12:07.331 +0800 CST"}
+{"level":"error","msg":"数据推送异常:服务端'192.168.0.83:5678'连接超时!","time":"2024-11-26 21:12:08.332 +0800 CST"}
+{"level":"info","msg":"log模块初始化完成...","time":"2024-11-28 21:38:32.045 +0800 CST"}
+{"level":"info","msg":"定时任务启动成功,EntryID：1","time":"2024-11-28 21:38:32.091 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:38:40.337 +0800 CST"}
+{"level":"error","msg":"数据推送异常:服务端'0.0.0.0:8765'连接超时!","time":"2024-11-28 21:38:41.339 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:38:43.105 +0800 CST"}
+{"level":"error","msg":"数据推送异常:服务端'0.0.0.0:8765'连接超时!","time":"2024-11-28 21:38:44.106 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:38:46.109 +0800 CST"}
+{"level":"error","msg":"数据推送异常:服务端'0.0.0.0:8765'连接超时!","time":"2024-11-28 21:38:47.109 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:38:49.091 +0800 CST"}
+{"level":"error","msg":"数据推送异常:服务端'0.0.0.0:8765'连接超时!","time":"2024-11-28 21:38:50.091 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:38:52.271 +0800 CST"}
+{"level":"error","msg":"数据推送异常:服务端'0.0.0.0:8765'连接超时!","time":"2024-11-28 21:38:53.274 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:38:57.407 +0800 CST"}
+{"level":"error","msg":"数据推送异常:服务端'0.0.0.0:8765'连接超时!","time":"2024-11-28 21:38:58.407 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:38:59.299 +0800 CST"}
+{"level":"error","msg":"数据推送异常:服务端'0.0.0.0:8765'连接超时!","time":"2024-11-28 21:39:00.299 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:39:01.750 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:39:01.753 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:39:03.760 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:39:03.762 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:39:06.480 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:39:06.482 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:39:09.416 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:39:09.417 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:39:12.385 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:39:12.387 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:39:15.371 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:39:15.372 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:39:18.372 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:39:18.373 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:39:21.380 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:39:21.381 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:39:24.370 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:39:24.371 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:39:27.381 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:39:27.382 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:39:30.391 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:39:30.392 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:39:33.370 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:39:33.373 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:39:36.382 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:39:36.384 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:39:39.358 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:39:39.360 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:39:42.371 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:39:42.373 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:39:45.350 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:39:45.352 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:39:48.386 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:39:48.388 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:39:51.353 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:39:51.355 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:39:54.353 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:39:54.355 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:39:57.350 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:39:57.352 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:40:00.404 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:40:00.406 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:40:03.398 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:40:03.401 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:40:06.379 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:40:06.380 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:40:09.390 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:40:09.392 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:40:12.372 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:40:12.375 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:40:15.379 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:40:15.381 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:40:18.376 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:40:18.377 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:40:21.364 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:40:21.365 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:40:24.368 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:40:24.370 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:40:27.362 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:40:27.364 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:40:30.360 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:40:30.362 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:40:33.381 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:40:33.383 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:40:36.387 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:40:36.388 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:40:39.423 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:40:39.425 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:40:42.453 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:40:42.456 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:40:45.716 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:40:45.719 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:40:48.541 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:40:48.543 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:40:51.421 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:40:51.422 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:40:54.375 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:40:54.376 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:40:57.384 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:40:57.386 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:41:00.396 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:41:00.397 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:41:03.398 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:41:03.399 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:41:06.395 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:41:06.398 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:41:09.384 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:41:09.386 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:41:12.415 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:41:12.417 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:41:15.387 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:41:15.388 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:41:18.356 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:41:18.358 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:41:21.375 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:41:21.376 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:41:24.345 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:41:24.347 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:41:27.358 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:41:27.359 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:41:30.359 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:41:30.360 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:41:33.351 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:41:33.352 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:41:36.343 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:41:36.345 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:41:39.389 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:41:39.391 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:41:42.386 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:41:42.388 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:41:45.395 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:41:45.397 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:41:48.463 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:41:48.464 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:41:51.987 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:41:51.989 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:41:54.662 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:41:54.663 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:41:58.794 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:41:58.796 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:42:00.909 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:42:00.911 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:42:03.507 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:42:03.508 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:42:06.439 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:42:06.441 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:42:09.389 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:42:09.390 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:42:12.391 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:42:12.392 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:42:15.525 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:42:15.527 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:42:18.498 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:42:18.499 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:42:21.504 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:42:21.506 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:42:24.431 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:42:24.434 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:42:27.658 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:42:27.660 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:42:30.481 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:42:30.482 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:42:33.636 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:42:33.638 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:42:36.711 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:42:36.713 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:42:40.578 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:42:40.582 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:42:45.850 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:42:45.883 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:42:52.531 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:42:52.568 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:42:54.385 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:42:54.388 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:42:55.672 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:42:55.676 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:42:56.932 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:42:56.934 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:42:58.583 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:42:58.585 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:43:01.427 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:43:01.432 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:43:05.353 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:43:05.356 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:43:08.329 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:43:08.332 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:43:10.801 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:43:10.803 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:43:13.196 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:43:13.198 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:43:16.645 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:43:16.648 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:43:18.867 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:43:18.869 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:43:21.992 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:43:21.994 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:43:24.535 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:43:24.537 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:43:27.540 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:43:27.542 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:43:31.262 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:43:31.264 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:43:33.693 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:43:33.695 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:43:36.450 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:43:36.451 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:43:39.595 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:43:39.597 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:43:43.706 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:43:43.709 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:43:46.023 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:43:46.025 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:43:49.251 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:43:49.254 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:43:51.694 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:43:51.696 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:43:54.680 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:43:54.681 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:43:57.427 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:43:57.428 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:44:00.615 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:44:00.616 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:44:03.511 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:44:03.513 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:44:07.221 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:44:07.223 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:44:09.890 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:44:09.891 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:44:12.534 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:44:12.536 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:44:15.667 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:44:15.669 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:44:18.482 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:44:18.483 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:44:22.925 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:44:22.992 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:44:34.941 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:44:35.061 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:44:40.168 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:44:40.295 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:44:45.223 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:44:45.259 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:44:46.238 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:44:46.264 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:44:48.584 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:44:48.702 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:44:49.505 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:44:49.513 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:44:51.573 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:44:51.585 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:44:51.902 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:44:51.905 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:44:53.020 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:44:53.026 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:44:54.337 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:44:54.339 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:44:56.272 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:44:56.274 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:44:58.473 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:44:58.476 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:45:00.801 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:45:00.802 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:45:03.469 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:45:03.470 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:45:06.443 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:45:06.445 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:45:09.387 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:45:09.388 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:45:12.368 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:45:12.370 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:45:15.386 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:45:15.387 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:45:18.377 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:45:18.380 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:45:21.368 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:45:21.369 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:45:24.389 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:45:24.391 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:45:27.349 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:45:27.351 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:45:30.361 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:45:30.363 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:45:33.365 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:45:33.367 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:45:36.382 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:45:36.383 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:45:39.406 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:45:39.408 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:45:42.383 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:45:42.385 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:45:45.395 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:45:45.397 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:45:48.687 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:45:48.689 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:45:52.208 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:45:52.210 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:45:55.103 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:45:55.105 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:45:57.996 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:45:57.998 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:46:00.957 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:46:00.959 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:46:03.730 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:46:03.731 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:46:06.712 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:46:06.714 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:46:09.957 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:46:09.959 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:46:13.661 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:46:13.664 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:46:16.613 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:46:16.614 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:46:19.228 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:46:19.230 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:46:21.598 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:46:21.599 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:46:24.390 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:46:24.392 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:46:27.529 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:46:27.531 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:46:33.142 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:46:33.144 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:46:35.396 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:46:35.399 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:46:37.334 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:46:37.335 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:46:39.766 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:46:39.767 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:46:42.650 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:46:42.651 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:46:45.526 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:46:45.527 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:46:48.470 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:46:48.471 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:46:51.423 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:46:51.424 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:46:54.474 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:46:54.476 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:46:57.633 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:46:57.634 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:47:00.487 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:47:00.489 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:47:03.457 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:47:03.458 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:47:06.989 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:47:06.991 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:47:10.067 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:47:10.068 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:47:12.604 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:47:12.606 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:47:15.549 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:47:15.550 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:47:18.586 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:47:18.588 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:47:22.684 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:47:22.686 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:47:24.767 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:47:24.769 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:47:27.580 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:47:27.582 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:47:30.942 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:47:30.944 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:47:33.508 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:47:33.510 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:47:37.385 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:47:37.387 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:47:39.937 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:47:39.938 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:47:42.915 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:47:42.917 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:47:46.225 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:47:46.227 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:47:49.252 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:47:49.254 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:47:52.308 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:47:52.310 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:47:54.927 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:47:54.929 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:47:58.025 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:47:58.026 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:48:01.169 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:48:01.172 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:48:04.167 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:48:04.168 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:48:06.955 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:48:06.957 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:48:10.085 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:48:10.087 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:48:14.459 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:48:14.462 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:48:16.925 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:48:16.927 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:48:19.702 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:48:19.704 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:48:22.074 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:48:22.076 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:48:24.558 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:48:24.559 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:48:27.535 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:48:27.537 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:48:31.438 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:48:31.440 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:48:34.485 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:48:34.487 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:48:37.246 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:48:37.247 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:48:40.241 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:48:40.243 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:48:42.861 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:48:42.863 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:48:46.505 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:48:46.507 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:48:49.267 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:48:49.269 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:48:52.303 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:48:52.305 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:48:54.760 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:48:54.762 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:48:57.558 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:48:57.560 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:49:01.129 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:49:01.131 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:49:03.796 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:49:03.798 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:49:06.736 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:49:06.738 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:49:09.723 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:49:09.725 +0800 CST"}
+{"level":"info","msg":"log模块初始化完成...","time":"2024-11-28 21:49:19.265 +0800 CST"}
+{"level":"info","msg":"定时任务启动成功,EntryID：1","time":"2024-11-28 21:49:19.303 +0800 CST"}
+{"level":"info","msg":"收到配置信息：serct:\"123456\" auth_name:\"tokenauth\" field_mapping:\u003ckey:\"cmdb_field1\" value:\u003cstruct_field:\"Name\" type:\"string\" \u003e \u003e field_mapping:\u003ckey:\"cmdb_field2\" value:\u003cstruct_field:\"Age\" type:\"integer\" \u003e \u003e network_info:\u003cprotocol:\"http\" host:\"cmdb.example.com\" port:8080 path:\"/api/v1/data\" \u003e token:\"frontend-provided-token\" ","time":"2024-11-28 21:49:24.412 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:49:28.386 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:49:28.390 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:49:30.628 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:49:30.631 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:49:32.884 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:49:32.886 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:49:36.118 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:49:36.120 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:49:38.615 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:49:38.617 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:49:41.423 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:49:41.425 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:49:44.519 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:49:44.521 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:49:48.455 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:49:48.458 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:49:51.008 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:49:51.010 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:49:54.330 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:49:54.332 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:49:57.044 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:49:57.046 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:49:59.632 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:49:59.634 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:50:02.500 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:50:02.502 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:50:05.499 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:50:05.501 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:50:08.520 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:50:08.522 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:50:11.437 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:50:11.439 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:50:14.461 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:50:14.463 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:50:17.633 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:50:17.635 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:50:20.615 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:50:20.617 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:50:23.605 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:50:23.606 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:50:26.768 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:50:26.769 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:50:29.583 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:50:29.584 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:50:32.638 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:50:32.640 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:50:35.663 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:50:35.665 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:50:38.650 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:50:38.652 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:50:41.647 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:50:41.649 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:50:44.805 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:50:44.807 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:50:47.706 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:50:47.708 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:50:50.695 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:50:50.697 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:50:53.634 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:50:53.636 +0800 CST"}
+{"level":"info","msg":"收到配置信息：serct:\"123456\" auth_name:\"tokenauth\" field_mapping:\u003ckey:\"data\" value:\u003c\u003e \u003e network_info:\u003cprotocol:\"http\" host:\"cmdb.example.com\" port:8080 path:\"/api/v1/data\" \u003e token:\"frontend-provided-token\" ","time":"2024-11-28 21:50:55.401 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:51:00.284 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:51:00.287 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:51:01.325 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:51:01.327 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:51:03.213 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:51:03.215 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:51:05.648 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:51:05.649 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:51:08.607 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:51:08.610 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:51:12.297 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:51:12.300 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:51:14.742 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:51:14.744 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:51:17.510 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:51:17.512 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:51:20.437 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:51:20.438 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:51:23.386 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:51:23.388 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:51:26.419 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:51:26.421 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:51:29.409 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:51:29.410 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:51:32.431 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:51:32.433 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:51:35.426 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:51:35.428 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:51:38.635 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:51:38.638 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:51:41.569 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:51:41.572 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:51:44.496 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:51:44.497 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:51:47.467 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:51:47.469 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:51:50.460 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:51:50.462 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:51:53.425 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:51:53.426 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:51:56.468 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:51:56.470 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:51:59.556 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:51:59.558 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:52:02.586 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:52:02.588 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:52:05.520 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:52:05.521 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:52:08.483 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:52:08.485 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:52:11.409 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:52:11.410 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:52:14.477 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:52:14.479 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:52:17.560 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:52:17.562 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:52:20.582 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:52:20.583 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:52:23.495 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:52:23.496 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:52:26.490 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:52:26.492 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:52:29.521 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:52:29.522 +0800 CST"}
+{"level":"info","msg":"收到配置信息：serct:\"123456\" auth_name:\"tokenauth\" field_mapping:\u003ckey:\"data\" value:\u003c\u003e \u003e network_info:\u003cprotocol:\"http\" host:\"cmdb.example.com\" port:8080 path:\"/api/v1/data\" \u003e token:\"frontend-provided-token\" ","time":"2024-11-28 21:52:30.071 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:52:33.340 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:52:33.343 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:52:36.062 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:52:36.064 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:52:38.731 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:52:38.733 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:52:41.504 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:52:41.506 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:52:44.410 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:52:44.412 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:52:48.287 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 21:52:48.290 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:52:51.397 +0800 CST"}
+{"level":"error","msg":"数据推送异常:服务端'0.0.0.0:8765'连接超时!","time":"2024-11-28 21:52:52.397 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:52:54.629 +0800 CST"}
+{"level":"error","msg":"数据推送异常:服务端'0.0.0.0:8765'连接超时!","time":"2024-11-28 21:52:55.630 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:52:56.891 +0800 CST"}
+{"level":"error","msg":"数据推送异常:服务端'0.0.0.0:8765'连接超时!","time":"2024-11-28 21:52:57.891 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:53:00.249 +0800 CST"}
+{"level":"error","msg":"数据推送异常:服务端'0.0.0.0:8765'连接超时!","time":"2024-11-28 21:53:01.249 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 21:53:03.770 +0800 CST"}
+{"level":"error","msg":"数据推送异常:服务端'0.0.0.0:8765'连接超时!","time":"2024-11-28 21:53:04.770 +0800 CST"}
+{"level":"info","msg":"log模块初始化完成...","time":"2024-11-28 22:47:01.769 +0800 CST"}
+{"level":"info","msg":"定时任务启动成功,EntryID：1","time":"2024-11-28 22:47:01.854 +0800 CST"}
+{"level":"info","msg":"收到配置信息：serct:\"123456\" auth_name:\"tokenauth\" field_mapping:{key:\"data\" value:{}} network_info:{protocol:\"http\" host:\"cmdb.example.com\" port:8080 path:\"/api/v1/data\"} token:\"frontend-provided-token\"","time":"2024-11-28 22:47:07.116 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:47:11.104 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:47:11.111 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:47:12.996 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:47:12.998 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:47:15.065 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:47:15.067 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:47:17.796 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:47:17.799 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:47:20.667 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:47:20.669 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:47:25.973 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:47:25.978 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:47:28.239 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:47:28.242 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:47:30.677 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:47:30.679 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:47:32.996 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:47:32.999 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:47:38.277 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:47:38.279 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:47:41.046 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:47:41.053 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:47:43.166 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:47:43.169 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:47:45.418 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:47:45.421 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:47:48.079 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:47:48.081 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:47:51.360 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:47:51.362 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:47:54.171 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:47:54.173 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:47:57.485 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:47:57.487 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:48:00.177 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:48:00.179 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:48:02.910 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:48:02.912 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:48:06.222 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:48:06.224 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:48:08.896 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:48:08.898 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:48:11.970 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:48:11.972 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:48:15.340 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:48:15.342 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:48:18.526 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:48:18.528 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:48:21.448 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:48:21.454 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:48:26.672 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:48:26.675 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:48:33.637 +0800 CST"}
+{"level":"error","msg":"数据推送异常:服务端'0.0.0.0:8765'连接超时!","time":"2024-11-28 22:48:34.646 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:48:37.166 +0800 CST"}
+{"level":"error","msg":"数据推送异常:服务端'0.0.0.0:8765'连接超时!","time":"2024-11-28 22:48:38.167 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:48:38.598 +0800 CST"}
+{"level":"error","msg":"数据推送异常:服务端'0.0.0.0:8765'连接超时!","time":"2024-11-28 22:48:39.599 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:48:39.968 +0800 CST"}
+{"level":"error","msg":"数据推送异常:服务端'0.0.0.0:8765'连接超时!","time":"2024-11-28 22:48:40.982 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:48:42.537 +0800 CST"}
+{"level":"error","msg":"数据推送异常:服务端'0.0.0.0:8765'连接超时!","time":"2024-11-28 22:48:43.538 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:48:44.784 +0800 CST"}
+{"level":"error","msg":"数据推送异常:服务端'0.0.0.0:8765'连接超时!","time":"2024-11-28 22:48:45.785 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:48:46.507 +0800 CST"}
+{"level":"error","msg":"数据推送异常:服务端'0.0.0.0:8765'连接超时!","time":"2024-11-28 22:48:47.508 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:48:48.631 +0800 CST"}
+{"level":"error","msg":"数据推送异常:服务端'0.0.0.0:8765'连接超时!","time":"2024-11-28 22:48:49.631 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:48:51.821 +0800 CST"}
+{"level":"error","msg":"数据推送异常:服务端'0.0.0.0:8765'连接超时!","time":"2024-11-28 22:48:52.821 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:48:55.377 +0800 CST"}
+{"level":"error","msg":"数据推送异常:服务端'0.0.0.0:8765'连接超时!","time":"2024-11-28 22:48:56.378 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:48:57.166 +0800 CST"}
+{"level":"error","msg":"数据推送异常:服务端'0.0.0.0:8765'连接超时!","time":"2024-11-28 22:48:58.167 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:48:59.869 +0800 CST"}
+{"level":"error","msg":"数据推送异常:服务端'0.0.0.0:8765'连接超时!","time":"2024-11-28 22:49:00.870 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:49:03.198 +0800 CST"}
+{"level":"error","msg":"数据推送异常:服务端'0.0.0.0:8765'连接超时!","time":"2024-11-28 22:49:04.199 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:49:06.231 +0800 CST"}
+{"level":"error","msg":"数据推送异常:服务端'0.0.0.0:8765'连接超时!","time":"2024-11-28 22:49:07.232 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:49:08.829 +0800 CST"}
+{"level":"error","msg":"数据推送异常:服务端'0.0.0.0:8765'连接超时!","time":"2024-11-28 22:49:09.829 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:49:11.703 +0800 CST"}
+{"level":"error","msg":"数据推送异常:服务端'0.0.0.0:8765'连接超时!","time":"2024-11-28 22:49:12.704 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:49:16.141 +0800 CST"}
+{"level":"error","msg":"数据推送异常:服务端'0.0.0.0:8765'连接超时!","time":"2024-11-28 22:49:17.142 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:49:18.879 +0800 CST"}
+{"level":"error","msg":"数据推送异常:服务端'0.0.0.0:8765'连接超时!","time":"2024-11-28 22:49:19.880 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:49:21.511 +0800 CST"}
+{"level":"error","msg":"数据推送异常:服务端'0.0.0.0:8765'连接超时!","time":"2024-11-28 22:49:22.512 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:49:24.412 +0800 CST"}
+{"level":"error","msg":"数据推送异常:服务端'0.0.0.0:8765'连接超时!","time":"2024-11-28 22:49:25.412 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:49:27.045 +0800 CST"}
+{"level":"error","msg":"数据推送异常:服务端'0.0.0.0:8765'连接超时!","time":"2024-11-28 22:49:28.045 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:49:29.909 +0800 CST"}
+{"level":"error","msg":"数据推送异常:服务端'0.0.0.0:8765'连接超时!","time":"2024-11-28 22:49:30.910 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:49:32.963 +0800 CST"}
+{"level":"error","msg":"数据推送异常:服务端'0.0.0.0:8765'连接超时!","time":"2024-11-28 22:49:33.963 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:49:36.532 +0800 CST"}
+{"level":"error","msg":"数据推送异常:服务端'0.0.0.0:8765'连接超时!","time":"2024-11-28 22:49:37.532 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:49:39.463 +0800 CST"}
+{"level":"error","msg":"数据推送异常:服务端'0.0.0.0:8765'连接超时!","time":"2024-11-28 22:49:40.463 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:49:42.367 +0800 CST"}
+{"level":"error","msg":"数据推送异常:服务端'0.0.0.0:8765'连接超时!","time":"2024-11-28 22:49:43.368 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:49:45.291 +0800 CST"}
+{"level":"error","msg":"数据推送异常:服务端'0.0.0.0:8765'连接超时!","time":"2024-11-28 22:49:46.291 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:49:49.231 +0800 CST"}
+{"level":"error","msg":"数据推送异常:服务端'0.0.0.0:8765'连接超时!","time":"2024-11-28 22:49:50.238 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:49:55.082 +0800 CST"}
+{"level":"error","msg":"数据推送异常:服务端'0.0.0.0:8765'连接超时!","time":"2024-11-28 22:49:56.094 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:49:57.970 +0800 CST"}
+{"level":"error","msg":"数据推送异常:服务端'0.0.0.0:8765'连接超时!","time":"2024-11-28 22:49:58.971 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:50:02.419 +0800 CST"}
+{"level":"error","msg":"数据推送异常:服务端'0.0.0.0:8765'连接超时!","time":"2024-11-28 22:50:03.420 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:50:04.329 +0800 CST"}
+{"level":"error","msg":"数据推送异常:服务端'0.0.0.0:8765'连接超时!","time":"2024-11-28 22:50:05.334 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:50:06.051 +0800 CST"}
+{"level":"error","msg":"数据推送异常:服务端'0.0.0.0:8765'连接超时!","time":"2024-11-28 22:50:07.056 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:50:07.954 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:50:07.958 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:50:09.526 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:50:09.528 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:50:11.894 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:50:11.896 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:50:15.076 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:50:15.078 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:50:17.831 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:50:17.832 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:50:20.786 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:50:20.788 +0800 CST"}
+{"level":"info","msg":"收到配置信息：serct:\"123456\" auth_name:\"tokenauth\" field_mapping:{key:\"data\" value:{}} network_info:{protocol:\"http\" host:\"cmdb.example.com\" port:8080 path:\"/api/v1/data\"} token:\"frontend-provided-token\"","time":"2024-11-28 22:50:23.156 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:50:25.507 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:50:25.509 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:50:29.865 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:50:29.871 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:50:32.370 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:50:32.373 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:50:33.694 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:50:33.696 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:50:36.205 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:50:36.207 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:50:39.073 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:50:39.076 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:50:42.860 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:50:42.864 +0800 CST"}
+{"level":"info","msg":"收到配置信息：serct:\"123456\" auth_name:\"tokenauth\" field_mapping:{key:\"data\" value:{}} network_info:{protocol:\"http\" host:\"cmdb.example.com\" port:8080 path:\"/api/v1/data\"} token:\"frontend-provided-token\"","time":"2024-11-28 22:50:42.915 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:50:46.461 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:50:46.464 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:50:48.417 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:50:48.418 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:50:51.814 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:50:51.816 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:50:54.095 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:50:54.097 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:50:57.481 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:50:57.483 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:50:59.894 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:50:59.896 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:51:02.763 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:51:02.766 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:51:05.737 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:51:05.739 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:51:08.711 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:51:08.713 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:51:11.640 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:51:11.641 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:51:14.854 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:51:14.856 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:51:17.821 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:51:17.822 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:51:20.703 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:51:20.705 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:51:23.715 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:51:23.716 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:51:26.681 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:51:26.683 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:51:29.603 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:51:29.605 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:51:32.589 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:51:32.590 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:51:35.650 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:51:35.652 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:51:38.673 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:51:38.675 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:51:42.019 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:51:42.021 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:51:44.749 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:51:44.751 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:51:47.660 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:51:47.661 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:51:50.653 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:51:50.655 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:51:53.648 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:51:53.650 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:51:56.694 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:51:56.696 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:51:59.654 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:51:59.656 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:52:02.699 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:52:02.701 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:52:05.887 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:52:05.890 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:52:08.687 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:52:08.689 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:52:11.679 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:52:11.680 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:52:14.736 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:52:14.738 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:52:17.655 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:52:17.656 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:52:20.626 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:52:20.629 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:52:23.703 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:52:23.704 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:52:26.647 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:52:26.648 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:52:29.724 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:52:29.725 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:52:32.984 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:52:32.986 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:52:35.877 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:52:35.879 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:52:39.135 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:52:39.136 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:52:41.801 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:52:41.803 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:52:44.833 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:52:44.834 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:52:47.695 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:52:47.697 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:52:50.622 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:52:50.624 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:52:54.012 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:52:54.015 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:52:59.700 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:52:59.707 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:53:02.478 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:53:02.480 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:53:04.554 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:53:04.556 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:53:06.824 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:53:06.827 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:53:09.432 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:53:09.437 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:53:12.854 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:53:12.856 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:53:15.187 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:53:15.190 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:53:18.038 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:53:18.040 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:53:20.904 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:53:20.906 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:53:23.676 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:53:23.678 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:53:26.644 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:53:26.646 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:53:29.892 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:53:29.896 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:53:33.667 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:53:33.669 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:53:36.811 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:53:36.813 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:53:39.759 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:53:39.761 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:53:42.869 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:53:42.871 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:53:45.892 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:53:45.895 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:53:48.600 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:53:48.602 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:53:51.445 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:53:51.445 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:53:54.608 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:53:54.611 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:53:56.803 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:53:56.805 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:53:59.516 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:53:59.518 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:54:02.457 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:54:02.458 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:54:05.724 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:54:05.726 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:54:08.726 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:54:08.727 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:54:11.600 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:54:11.601 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:54:15.470 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:54:15.473 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:54:18.534 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:54:18.537 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:54:21.016 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:54:21.018 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:54:23.700 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:54:23.702 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:54:26.792 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:54:26.794 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:54:29.810 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:54:29.811 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:54:32.544 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:54:32.546 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:54:35.492 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:54:35.494 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:54:38.479 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:54:38.481 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:54:41.552 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:54:41.553 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:54:44.518 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:54:44.519 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:54:47.459 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:54:47.461 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:54:50.518 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:54:50.519 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:54:53.528 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:54:53.530 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:54:56.546 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:54:56.548 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:54:59.602 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:54:59.603 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:55:02.542 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:55:02.544 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:55:05.708 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:55:05.710 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:55:08.558 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:55:08.560 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:55:11.527 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:55:11.529 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:55:14.528 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:55:14.529 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:55:17.509 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:55:17.511 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:55:20.487 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:55:20.489 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:55:23.473 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:55:23.474 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:55:26.598 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:55:26.600 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:55:30.313 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:55:30.316 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:55:32.831 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:55:32.833 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:55:35.594 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:55:35.596 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:55:38.493 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:55:38.495 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:55:41.551 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:55:41.553 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:55:45.223 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:55:45.226 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:55:48.041 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:55:48.042 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:55:50.642 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:55:50.643 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:55:53.506 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:55:53.508 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:55:58.103 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:55:58.106 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:55:59.980 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:55:59.982 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:56:02.630 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:56:02.632 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:56:05.529 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:56:05.531 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:56:08.499 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:56:08.501 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:56:11.448 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:56:11.450 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:56:14.456 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:56:14.458 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:56:17.448 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:56:17.450 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:56:20.437 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:56:20.439 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:56:23.417 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:56:23.418 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:56:26.447 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:56:26.449 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:56:29.439 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:56:29.441 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:56:32.484 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:56:32.486 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:56:35.604 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:56:35.606 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:56:38.547 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:56:38.548 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:56:41.554 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:56:41.556 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:56:44.559 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:56:44.560 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:56:47.491 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:56:47.493 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:56:50.480 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:56:50.482 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:56:53.447 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:56:53.449 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:56:56.490 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:56:56.492 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:56:59.476 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:56:59.478 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:57:02.582 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:57:02.584 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:57:05.518 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:57:05.520 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:57:08.492 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:57:08.494 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:57:11.475 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:57:11.477 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:57:14.504 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:57:14.506 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:57:17.465 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:57:17.466 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:57:20.462 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:57:20.464 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:57:23.459 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:57:23.460 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:57:26.452 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:57:26.454 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:57:29.437 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:57:29.440 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:57:32.434 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:57:32.436 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:57:35.486 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:57:35.487 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:57:38.478 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:57:38.480 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-11-28 22:57:42.152 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-11-28 22:57:42.154 +0800 CST"}
+{"level":"info","msg":"log模块初始化完成...","time":"2024-12-02 19:57:05.935 +0800 CST"}
+{"level":"info","msg":"定时任务启动成功,EntryID：1","time":"2024-12-02 19:57:05.961 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 19:57:12.437 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 19:57:13.437 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6666'连接超时!","time":"2024-12-02 19:57:14.438 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 19:57:15.472 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 19:57:16.473 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6666'连接超时!","time":"2024-12-02 19:57:17.474 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 19:57:18.458 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 19:57:19.459 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6666'连接超时!","time":"2024-12-02 19:57:20.460 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 19:57:21.414 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 19:57:22.415 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6666'连接超时!","time":"2024-12-02 19:57:23.416 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 19:57:24.451 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 19:57:25.452 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6666'连接超时!","time":"2024-12-02 19:57:26.452 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 19:57:27.506 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 19:57:28.507 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6666'连接超时!","time":"2024-12-02 19:57:29.508 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 19:57:30.522 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 19:57:31.522 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6666'连接超时!","time":"2024-12-02 19:57:32.522 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 19:57:33.543 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 19:57:34.544 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6666'连接超时!","time":"2024-12-02 19:57:35.544 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 19:57:36.438 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 19:57:37.440 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6666'连接超时!","time":"2024-12-02 19:57:38.441 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 19:57:39.481 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 19:57:40.482 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6666'连接超时!","time":"2024-12-02 19:57:41.483 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 19:57:42.446 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 19:57:43.447 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6666'连接超时!","time":"2024-12-02 19:57:44.448 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 19:57:45.445 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 19:57:46.446 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6666'连接超时!","time":"2024-12-02 19:57:47.446 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 19:57:48.421 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 19:57:49.422 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6666'连接超时!","time":"2024-12-02 19:57:50.422 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 19:57:51.510 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 19:57:52.511 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6666'连接超时!","time":"2024-12-02 19:57:53.512 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 19:57:54.546 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 19:57:55.546 +0800 CST"}
+{"level":"info","msg":"log模块初始化完成...","time":"2024-12-02 19:57:59.880 +0800 CST"}
+{"level":"info","msg":"定时任务启动成功,EntryID：1","time":"2024-12-02 19:57:59.900 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 19:58:06.534 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 19:58:07.534 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6666'连接超时!","time":"2024-12-02 19:58:08.535 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 19:58:09.421 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 19:58:10.422 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6666'连接超时!","time":"2024-12-02 19:58:11.423 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 19:58:12.435 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 19:58:13.435 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6666'连接超时!","time":"2024-12-02 19:58:14.436 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 19:58:15.423 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 19:58:16.423 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6666'连接超时!","time":"2024-12-02 19:58:17.424 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 19:58:18.456 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 19:58:19.457 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6666'连接超时!","time":"2024-12-02 19:58:20.458 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 19:58:21.463 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 19:58:22.464 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6666'连接超时!","time":"2024-12-02 19:58:23.465 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 19:58:24.516 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 19:58:25.517 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6666'连接超时!","time":"2024-12-02 19:58:26.517 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 19:58:27.491 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 19:58:28.492 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 19:58:29.492 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 19:58:30.448 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 19:58:31.449 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 19:58:32.450 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 19:58:33.435 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 19:58:34.436 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 19:58:35.437 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 19:58:36.406 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 19:58:37.407 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 19:58:38.408 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 19:58:39.422 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 19:58:40.423 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 19:58:41.424 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 19:58:42.432 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 19:58:43.432 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 19:58:44.433 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 19:58:45.417 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 19:58:46.418 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 19:58:47.419 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 19:58:48.468 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 19:58:49.469 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 19:58:50.469 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 19:58:51.618 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 19:58:52.618 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 19:58:53.619 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 19:58:54.604 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 19:58:55.605 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 19:58:56.606 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 19:58:57.509 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 19:58:58.510 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 19:58:59.510 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 19:59:00.467 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 19:59:01.470 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 19:59:02.471 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 19:59:03.504 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 19:59:04.506 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 19:59:05.507 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 19:59:06.438 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 19:59:07.438 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 19:59:08.439 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 19:59:09.466 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 19:59:10.467 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 19:59:11.467 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 19:59:12.465 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 19:59:13.466 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 19:59:14.467 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 19:59:15.450 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 19:59:16.450 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 19:59:17.451 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 19:59:18.442 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 19:59:19.442 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 19:59:20.443 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 19:59:21.563 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 19:59:22.565 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 19:59:23.566 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 19:59:24.460 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 19:59:25.461 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 19:59:26.461 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 19:59:27.469 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 19:59:28.470 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 19:59:29.471 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 19:59:30.451 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 19:59:31.451 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 19:59:32.452 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 19:59:33.464 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 19:59:34.464 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 19:59:35.465 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 19:59:36.435 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 19:59:37.436 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 19:59:38.437 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 19:59:39.479 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 19:59:40.481 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 19:59:41.481 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 19:59:42.431 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 19:59:43.431 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 19:59:44.432 +0800 CST"}
+{"level":"info","msg":"log模块初始化完成...","time":"2024-12-02 20:09:17.060 +0800 CST"}
+{"level":"info","msg":"定时任务启动成功,EntryID：1","time":"2024-12-02 20:09:17.080 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:09:24.562 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:09:25.563 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 20:09:26.564 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:09:27.635 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:09:28.635 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 20:09:29.635 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:09:30.515 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:09:31.516 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 20:09:32.516 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:09:33.481 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:09:34.482 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 20:09:35.482 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:09:36.529 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:09:37.530 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 20:09:38.532 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:09:39.571 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:09:40.571 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 20:09:41.572 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:09:42.574 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:09:43.574 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 20:09:44.575 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:09:45.593 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:09:46.594 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 20:09:47.595 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:09:48.508 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:09:49.508 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 20:09:50.509 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:09:51.444 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:09:52.445 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 20:09:53.445 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:09:54.458 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:09:55.459 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 20:09:56.460 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:09:57.453 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:09:58.454 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 20:09:59.456 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:10:00.461 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:10:01.462 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 20:10:02.462 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:10:03.520 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:10:04.520 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 20:10:05.521 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:10:06.719 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:10:07.720 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 20:10:08.720 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:10:09.506 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:10:10.507 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 20:10:11.507 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:10:12.497 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:10:13.498 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 20:10:14.498 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:10:15.583 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:10:16.584 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 20:10:17.584 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:10:18.524 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:10:19.531 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 20:10:20.538 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:10:21.527 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:10:22.528 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 20:10:23.528 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:10:24.487 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:10:25.488 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 20:10:26.488 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:10:27.447 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:10:28.447 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 20:10:29.448 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:10:30.490 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:10:31.491 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 20:10:32.492 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:10:33.521 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:10:34.522 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 20:10:35.523 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:10:36.509 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:10:37.510 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 20:10:38.510 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:10:39.578 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:10:40.578 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 20:10:41.579 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:10:43.340 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:10:44.341 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 20:10:45.341 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:10:46.141 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:10:47.142 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 20:10:48.142 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:10:48.783 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:10:49.784 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 20:10:50.784 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:10:51.537 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:10:52.538 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 20:10:53.539 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:10:54.503 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:10:55.503 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 20:10:56.504 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:10:57.526 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:10:58.526 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 20:10:59.527 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:11:00.503 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:11:01.505 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 20:11:02.505 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:11:03.560 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:11:04.561 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 20:11:05.561 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:11:06.536 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:11:07.537 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 20:11:08.538 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:11:09.485 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:11:10.485 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 20:11:11.486 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:11:12.566 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:11:13.567 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 20:11:14.567 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:11:15.555 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:11:16.555 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 20:11:17.556 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:11:18.510 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:11:19.511 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 20:11:20.512 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:11:21.564 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:11:22.564 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 20:11:23.565 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:11:24.508 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:11:25.509 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 20:11:26.509 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:11:27.874 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:11:28.874 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 20:11:29.876 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:11:30.488 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:11:31.489 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 20:11:32.490 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:11:33.545 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:11:34.546 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 20:11:35.546 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:11:36.606 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:11:37.607 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 20:11:38.607 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:11:39.563 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:11:40.564 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 20:11:41.564 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:11:42.510 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:11:43.512 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 20:11:44.512 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:11:45.522 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:11:46.522 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 20:11:47.523 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:11:48.522 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:11:49.523 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 20:11:50.523 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:11:51.573 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:11:52.573 +0800 CST"}
+{"level":"info","msg":"log模块初始化完成...","time":"2024-12-02 20:16:21.380 +0800 CST"}
+{"level":"info","msg":"定时任务启动成功,EntryID：1","time":"2024-12-02 20:16:21.380 +0800 CST"}
+{"level":"info","msg":"log模块初始化完成...","time":"2024-12-02 20:17:36.382 +0800 CST"}
+{"level":"info","msg":"定时任务启动成功,EntryID：1","time":"2024-12-02 20:17:36.382 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:17:43.511 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:17:44.512 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 20:17:45.512 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:17:46.613 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:17:47.614 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:6667'连接超时!","time":"2024-12-02 20:17:48.615 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:17:49.544 +0800 CST"}
+{"level":"info","msg":"log模块初始化完成...","time":"2024-12-02 20:17:53.154 +0800 CST"}
+{"level":"info","msg":"定时任务启动成功,EntryID：1","time":"2024-12-02 20:17:53.154 +0800 CST"}
+{"level":"info","msg":"log模块初始化完成...","time":"2024-12-02 20:23:52.176 +0800 CST"}
+{"level":"info","msg":"定时任务启动成功,EntryID：1","time":"2024-12-02 20:23:52.199 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:23:59.538 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:24:00.539 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:7777'连接超时!","time":"2024-12-02 20:24:01.539 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:24:02.529 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:24:03.529 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:7777'连接超时!","time":"2024-12-02 20:24:04.529 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:24:05.565 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:24:06.566 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:7777'连接超时!","time":"2024-12-02 20:24:07.566 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:24:08.479 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:24:09.480 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:7777'连接超时!","time":"2024-12-02 20:24:10.480 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:24:11.515 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:24:12.516 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:7777'连接超时!","time":"2024-12-02 20:24:13.517 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:24:14.483 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:24:15.484 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:7777'连接超时!","time":"2024-12-02 20:24:16.485 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:24:17.485 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:24:18.486 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:7777'连接超时!","time":"2024-12-02 20:24:19.486 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:24:20.493 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:24:21.493 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:7777'连接超时!","time":"2024-12-02 20:24:22.494 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:24:23.497 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:24:24.499 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:7777'连接超时!","time":"2024-12-02 20:24:25.499 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:24:26.597 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:24:27.598 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:7776'连接超时!","time":"2024-12-02 20:24:28.598 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:24:29.488 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:24:30.489 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:7776'连接超时!","time":"2024-12-02 20:24:31.490 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:24:32.556 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:24:33.557 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:7777'连接超时!","time":"2024-12-02 20:24:34.558 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:24:35.457 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:24:36.457 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:7777'连接超时!","time":"2024-12-02 20:24:37.458 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:24:38.562 +0800 CST"}
+{"level":"info","msg":"log模块初始化完成...","time":"2024-12-02 20:29:02.004 +0800 CST"}
+{"level":"info","msg":"定时任务启动成功,EntryID：1","time":"2024-12-02 20:29:02.029 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:29:09.607 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:29:10.608 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:7777'连接超时!","time":"2024-12-02 20:29:11.608 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:29:12.616 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:29:13.617 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:7777'连接超时!","time":"2024-12-02 20:29:14.617 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:29:15.474 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:29:16.475 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:7777'连接超时!","time":"2024-12-02 20:29:17.475 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:29:19.624 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:29:20.624 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:7777'连接超时!","time":"2024-12-02 20:29:21.625 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:29:22.315 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:29:23.315 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:7777'连接超时!","time":"2024-12-02 20:29:24.316 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:29:25.543 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:29:26.544 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:7777'连接超时!","time":"2024-12-02 20:29:27.545 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:29:28.371 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:29:29.372 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:7777'连接超时!","time":"2024-12-02 20:29:30.374 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:29:32.565 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:29:33.568 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:7777'连接超时!","time":"2024-12-02 20:29:34.584 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:29:35.348 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:29:36.352 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:7777'连接超时!","time":"2024-12-02 20:29:37.353 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:29:37.882 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:29:38.885 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:7777'连接超时!","time":"2024-12-02 20:29:39.893 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:29:41.854 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:29:42.857 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:7777'连接超时!","time":"2024-12-02 20:29:43.857 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:29:44.299 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:29:45.303 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:7777'连接超时!","time":"2024-12-02 20:29:46.308 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:29:47.280 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:29:48.296 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:7777'连接超时!","time":"2024-12-02 20:29:49.300 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:29:51.042 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:29:52.043 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:7777'连接超时!","time":"2024-12-02 20:29:53.044 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:29:55.159 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:29:56.160 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:7777'连接超时!","time":"2024-12-02 20:29:57.162 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:29:58.367 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:29:59.368 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:7777'连接超时!","time":"2024-12-02 20:30:00.368 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:30:01.929 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:30:02.929 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:7777'连接超时!","time":"2024-12-02 20:30:03.930 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:30:03.939 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:30:04.940 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:7777'连接超时!","time":"2024-12-02 20:30:05.941 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:30:06.919 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:30:07.920 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:7777'连接超时!","time":"2024-12-02 20:30:08.926 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:30:11.130 +0800 CST"}
+{"level":"error","msg":"agent策略序号：0,数据推送异常: 服务端'0.0.0.0:8765'连接超时!","time":"2024-12-02 20:30:12.131 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:7777'连接超时!","time":"2024-12-02 20:30:13.131 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:30:14.029 +0800 CST"}
+{"level":"info","msg":"log模块初始化完成...","time":"2024-12-02 20:31:26.744 +0800 CST"}
+{"level":"info","msg":"定时任务启动成功,EntryID：1","time":"2024-12-02 20:31:26.768 +0800 CST"}
+{"level":"info","msg":"收到配置信息：serct:\"123456\" auth_name:\"tokenauth\" network_info:{protocol:\"http\" host:\"cmdb.example.com\" port:8080 path:\"/api/v1/data\"} token:\"frontend-provided-token\"","time":"2024-12-02 20:31:29.286 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:31:33.521 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-12-02 20:31:33.524 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:7777'连接超时!","time":"2024-12-02 20:31:34.523 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:31:36.521 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-12-02 20:31:36.522 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:7777'连接超时!","time":"2024-12-02 20:31:37.522 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:31:39.529 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-12-02 20:31:39.531 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:7777'连接超时!","time":"2024-12-02 20:31:40.531 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:31:42.515 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-12-02 20:31:42.517 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:7777'连接超时!","time":"2024-12-02 20:31:43.517 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:31:45.499 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-12-02 20:31:45.501 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:7777'连接超时!","time":"2024-12-02 20:31:46.501 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:31:48.597 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-12-02 20:31:48.599 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:7777'连接超时!","time":"2024-12-02 20:31:49.599 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:31:51.609 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-12-02 20:31:51.611 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:7777'连接超时!","time":"2024-12-02 20:31:52.611 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:31:54.628 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-12-02 20:31:54.631 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:7777'连接超时!","time":"2024-12-02 20:31:55.629 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:31:57.627 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-12-02 20:31:57.628 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:7777'连接超时!","time":"2024-12-02 20:31:58.628 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:32:00.582 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-12-02 20:32:00.583 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:7777'连接超时!","time":"2024-12-02 20:32:01.583 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:32:03.555 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-12-02 20:32:03.557 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:7777'连接超时!","time":"2024-12-02 20:32:04.557 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:32:06.507 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-12-02 20:32:06.509 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:7777'连接超时!","time":"2024-12-02 20:32:07.508 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:32:09.481 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-12-02 20:32:09.483 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:7777'连接超时!","time":"2024-12-02 20:32:10.483 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:32:12.478 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-12-02 20:32:12.481 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:7777'连接超时!","time":"2024-12-02 20:32:13.480 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:32:15.515 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-12-02 20:32:15.517 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:7777'连接超时!","time":"2024-12-02 20:32:16.517 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:32:18.512 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-12-02 20:32:18.514 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:7777'连接超时!","time":"2024-12-02 20:32:19.514 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:32:21.511 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-12-02 20:32:21.514 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:7777'连接超时!","time":"2024-12-02 20:32:22.514 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:32:24.497 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-12-02 20:32:24.498 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:7777'连接超时!","time":"2024-12-02 20:32:25.498 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:32:27.483 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-12-02 20:32:27.485 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:7777'连接超时!","time":"2024-12-02 20:32:28.485 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:32:30.546 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-12-02 20:32:30.547 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:7777'连接超时!","time":"2024-12-02 20:32:31.547 +0800 CST"}
+{"level":"info","msg":"log模块初始化完成...","time":"2024-12-02 20:34:03.424 +0800 CST"}
+{"level":"info","msg":"定时任务启动成功,EntryID：1","time":"2024-12-02 20:34:03.442 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:34:10.670 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-12-02 20:34:10.678 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'0.0.0.0:7777'连接超时!","time":"2024-12-02 20:34:11.675 +0800 CST"}
+{"level":"info","msg":"收到配置信息：serct:\"123456\"  auth_name:\"tokenauth\"  data_name:\"grpc_cmdb1_stand1\"  network_info:{protocol:\"http\"  host:\"cmdb.example.com\"  port:8080  path:\"/api/v1/data\"}  token:\"frontend-provided-token\"","time":"2024-12-02 20:34:13.158 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:34:13.698 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-12-02 20:34:13.699 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'cmdb.example.com'连接超时!","time":"2024-12-02 20:34:14.699 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:34:16.707 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-12-02 20:34:16.708 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'cmdb.example.com'连接超时!","time":"2024-12-02 20:34:17.708 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:34:19.568 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-12-02 20:34:19.570 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'cmdb.example.com'连接超时!","time":"2024-12-02 20:34:20.569 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:34:22.489 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-12-02 20:34:22.491 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'cmdb.example.com'连接超时!","time":"2024-12-02 20:34:23.491 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:34:25.490 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-12-02 20:34:25.493 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'cmdb.example.com'连接超时!","time":"2024-12-02 20:34:26.492 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:34:28.508 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-12-02 20:34:28.509 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'cmdb.example.com'连接超时!","time":"2024-12-02 20:34:29.509 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:34:31.476 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-12-02 20:34:31.478 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'cmdb.example.com'连接超时!","time":"2024-12-02 20:34:32.478 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:34:34.489 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-12-02 20:34:34.490 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'cmdb.example.com'连接超时!","time":"2024-12-02 20:34:35.490 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:34:37.508 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-12-02 20:34:37.510 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'cmdb.example.com'连接超时!","time":"2024-12-02 20:34:38.510 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:34:40.486 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-12-02 20:34:40.488 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'cmdb.example.com'连接超时!","time":"2024-12-02 20:34:41.487 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:34:43.500 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-12-02 20:34:43.501 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'cmdb.example.com'连接超时!","time":"2024-12-02 20:34:44.502 +0800 CST"}
+{"level":"info","msg":"数据更新，执行推送","time":"2024-12-02 20:34:46.506 +0800 CST"}
+{"level":"info","msg":"消息推送成功:code:\"200\" message:\"agent update success! \" ","time":"2024-12-02 20:34:46.508 +0800 CST"}
+{"level":"error","msg":"agent策略序号：1,数据推送异常: 服务端'cmdb.example.com'连接超时!","time":"2024-12-02 20:34:47.507 +0800 CST"}

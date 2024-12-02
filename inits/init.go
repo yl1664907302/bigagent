@@ -5,8 +5,8 @@ import (
 	"bigagent/register"
 	"bigagent/scrape/machine"
 	"bigagent/strategy"
+	utils "bigagent/util"
 	"bigagent/util/crontab"
-	"bigagent/util/logger"
 	"log"
 	"net/http"
 )
@@ -48,18 +48,18 @@ func ListerChannel() {
 		for range machine.MachineCh {
 			temp := <-machine.MachineCh
 			if temp {
-				logger.DefaultLogger.Info("数据更新，执行推送")
+				utils.DefaultLogger.Info("数据更新，执行推送")
 				machine.MachineCh <- false
 				//热加载
 				AgentRegister()
 				if strategy.Agents == nil || len(strategy.Agents) == 0 {
-					logger.DefaultLogger.Warn("web.Agents is nil or empty")
+					utils.DefaultLogger.Warn("web.Agents is nil or empty")
 					return
 				}
 				for i, agent := range strategy.Agents {
 					err := agent.ExecutePush()
 					if err != nil {
-						logger.DefaultLogger.Errorf("agent策略序号：%d,数据推送异常: %s", i, err)
+						utils.DefaultLogger.Errorf("agent策略序号：%d,数据推送异常: %s", i, err)
 					}
 
 				}
@@ -69,5 +69,5 @@ func ListerChannel() {
 }
 
 func LoggerInit() {
-	logger.InitLogger(global.V.GetString("system.logfile"), "info", "json", true)
+	utils.InitLogger(global.V.GetString("system.logfile"), "info", "json", true)
 }

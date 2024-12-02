@@ -2,7 +2,7 @@ package inits
 
 import (
 	"bigagent/config/global"
-	"bigagent/util/logger"
+	utils "bigagent/util"
 	"bigagent/web/router"
 	"net/http"
 	"time"
@@ -35,7 +35,7 @@ func loggingMiddleware(next http.Handler) http.Handler {
 		startTime := time.Now()
 		next.ServeHTTP(w, r) // 处理请求
 		duration := time.Since(startTime)
-		logger.DefaultLogger.Printf("Method: %s, URI: %s, RemoteAddr: %s, Duration: %v",
+		utils.DefaultLogger.Printf("Method: %s, URI: %s, RemoteAddr: %s, Duration: %v",
 			r.Method, r.RequestURI, r.RemoteAddr, duration)
 	})
 }

@@ -2,7 +2,7 @@ package inits
 
 import (
 	"bigagent/config/global"
-	"bigagent/util/logger"
+	utils "bigagent/util"
 	"fmt"
 	"github.com/fsnotify/fsnotify"
 	"github.com/spf13/viper"
@@ -24,7 +24,7 @@ func initConfig() {
 	// 读取配置文件
 	err := global.V.ReadInConfig()
 	if err != nil {
-		logger.DefaultLogger.Error("Error reading config file: " + err.Error())
+		utils.DefaultLogger.Error("Error reading config file: " + err.Error())
 		return
 	}
 }

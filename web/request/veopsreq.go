@@ -2,8 +2,7 @@ package request
 
 import (
 	model "bigagent/model/machine"
-	"bigagent/util"
-	"bigagent/util/logger"
+	utils "bigagent/util"
 	"bigagent/web/response"
 	"crypto/sha1"
 	"encoding/hex"
@@ -42,13 +41,13 @@ func (p *PostVeops) CreateMachineUUID() {
 
 		responses, err := p.PostCMDBci(veopsdata)
 		if err != nil {
-			logger.DefaultLogger.Error("唯一键数据更新失败：", veopsdata)
+			utils.DefaultLogger.Error("唯一键数据更新失败：", veopsdata)
 			return
 		}
-		logger.DefaultLogger.Info("唯一键数据创建成功：", veopsdata)
+		utils.DefaultLogger.Info("唯一键数据创建成功：", veopsdata)
 		p.k = true
 		oIdStr := strconv.FormatFloat((*responses)["ci_id"].(float64), 'f', -1, 64)
-		logger.DefaultLogger.Info("创建实例成功ci_id为：", oIdStr)
+		utils.DefaultLogger.Info("创建实例成功ci_id为：", oIdStr)
 	}
 }
 
@@ -68,10 +67,10 @@ func (p *PostVeops) UpdateMachineData() {
 
 	_, err := p.PutCMDBci(veopsdata, "")
 	if err != nil {
-		logger.DefaultLogger.Error("主机数据更新失败：", veopsdata)
+		utils.DefaultLogger.Error("主机数据更新失败：", veopsdata)
 		return
 	}
-	logger.DefaultLogger.Info("数据更新成功：", veopsdata)
+	utils.DefaultLogger.Info("数据更新成功：", veopsdata)
 }
 
 func (p *PostVeops) CheckClient() {
@@ -81,7 +80,7 @@ func (p *PostVeops) CheckClient() {
 
 	fullURL, err := CmdbClient(urlPath, params)
 	if err != nil {
-		logger.DefaultLogger.Error("CMDB客户端连接串配置错误", err)
+		utils.DefaultLogger.Error("CMDB客户端连接串配置错误", err)
 		panic("CMDB客户端连接串配置错误")
 	}
 	//fmt.Println("完整的url：", fullURL)
@@ -90,25 +89,25 @@ func (p *PostVeops) CheckClient() {
 	resp, err := http.Get(fullURL)
 	if err != nil {
 		//fmt.Println("发送请求时出错:", err)
-		logger.DefaultLogger.Error("CMDB客户端连接检测请求发送失败：", err)
+		utils.DefaultLogger.Error("CMDB客户端连接检测请求发送失败：", err)
 		panic("CMDB客户端连接检测请求发送失败")
 	}
 	defer func(Body io.ReadCloser) {
 		err := Body.Close()
 		if err != nil {
-			logger.DefaultLogger.Error("CMDB客户端连接关闭失败：", err)
+			utils.DefaultLogger.Error("CMDB客户端连接关闭失败：", err)
 		}
 	}(resp.Body)
 
 	// 读取并打印响应体
 	if resp.StatusCode != 200 {
-		logger.DefaultLogger.Error("CMDB客户端连接检测失败：")
+		utils.DefaultLogger.Error("CMDB客户端连接检测失败：")
 		panic("CMDB客户端连接检测失败,错误码为：" + strconv.Itoa(resp.StatusCode))
 	}
 	_, err = ioutil.ReadAll(resp.Body)
 	if err != nil {
 		//fmt.Println("Error reading response body:", err)
-		logger.DefaultLogger.Error("读取响应结果时异常：", err)
+		utils.DefaultLogger.Error("读取响应结果时异常：", err)
 		panic("读取CMDB客户端响应结果失败")
 	}
 }
@@ -174,9 +173,9 @@ func CmdbClient(apiPath string, params map[string]string) (string, error) {
 func (p *PostVeops) Flurl(apiPath string, params model.VeopsData) (string, error) {
 	err := HashCMDBSecret(apiPath, params)
 	if err != nil {
-		logger.DefaultLogger.Error("密钥对hash加密失败：", err)
+		utils.DefaultLogger.Error("密钥对hash加密失败：", err)
 	}
-	hashCMDBSecret, err := util.JSONToFormData(params)
+	hashCMDBSecret, err := utils.JSONToFormData(params)
 	fullURL := p.h + apiPath + "?" + hashCMDBSecret
 
 	return fullURL, nil
@@ -187,7 +186,7 @@ func HashCMDBSecret(apiPath string, params model.VeopsData) error {
 	if params.Cmdb_auto_product_uuid == "" {
 		params = model.VeopsData{}
 	}
-	ks, vs := util.GetNonEmptyFields(params)
+	ks, vs := utils.GetNonEmptyFields(params)
 
 	//	对keys进行可排序格式的转换，转换后进行排序
 	keysSorted := sort.StringSlice(ks)
@@ -195,8 +194,8 @@ func HashCMDBSecret(apiPath string, params model.VeopsData) error {
 	ks = []string(keysSorted)
 
 	//  移除指定key值
-	util.RemoveString(vs, "_secret")
-	util.RemoveString(vs, "_key")
+	utils.RemoveString(vs, "_secret")
+	utils.RemoveString(vs, "_key")
 	valuesStr := strings.Join(vs, "")
 
 	//	构造用于计算SHA1签名的字符串
@@ -223,27 +222,27 @@ func (p *PostVeops) QueryCMDBci(params *model.VeopsData) (*response.QueryCMDBciR
 	//拼接完整的CMDB连接串
 	fullURL, err := p.Flurl(urlPath, *params)
 	if err != nil {
-		logger.DefaultLogger.Error("CMDB客户端连接串配置错误", err)
+		utils.DefaultLogger.Error("CMDB客户端连接串配置错误", err)
 		return nil, err
 	}
 
 	// 发送HTTP GET请求
 	resp, err := http.Get(fullURL)
 	if err != nil {
-		logger.DefaultLogger.Error("CMDB客户端连接检测请求发送失败：", err)
+		utils.DefaultLogger.Error("CMDB客户端连接检测请求发送失败：", err)
 		return nil, err
 	}
 	defer func(Body io.ReadCloser) {
 		err := Body.Close()
 		if err != nil {
-			logger.DefaultLogger.Error("CMDB客户端连接关闭失败：", err)
+			utils.DefaultLogger.Error("CMDB客户端连接关闭失败：", err)
 		}
 	}(resp.Body)
 
 	// 读取并打印响应体
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		logger.DefaultLogger.Error("CMDB客户端连接检测失败：")
+		utils.DefaultLogger.Error("CMDB客户端连接检测失败：")
 		return nil, err
 	}
 	if resp.StatusCode != 200 {
@@ -270,7 +269,7 @@ func (p *PostVeops) PostCMDBci(params *model.VeopsData) (*response.ResultRespons
 	//拼接完整的CMDB连接串
 	fullURL, err := p.Flurl(urlPath, *params)
 	if err != nil {
-		logger.DefaultLogger.Error("CMDB客户端连接串配置错误", err)
+		utils.DefaultLogger.Error("CMDB客户端连接串配置错误", err)
 		return nil, err
 	}
 
@@ -278,20 +277,20 @@ func (p *PostVeops) PostCMDBci(params *model.VeopsData) (*response.ResultRespons
 	resp, err := http.Post(fullURL, "application/json", nil)
 	//resp, err := http.NewRequest("POST", fullURL, nil)
 	if err != nil {
-		logger.DefaultLogger.Error("CMDB客户端连接检测请求发送失败：", err)
+		utils.DefaultLogger.Error("CMDB客户端连接检测请求发送失败：", err)
 		return nil, err
 	}
 	defer func(Body io.ReadCloser) {
 		err := Body.Close()
 		if err != nil {
-			logger.DefaultLogger.Error("CMDB客户端连接关闭失败：", err)
+			utils.DefaultLogger.Error("CMDB客户端连接关闭失败：", err)
 		}
 	}(resp.Body)
 
 	// 读取并打印响应体
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		logger.DefaultLogger.Error("CMDB客户端响应体读取异常：", err)
+		utils.DefaultLogger.Error("CMDB客户端响应体读取异常：", err)
 		return nil, err
 	}
 	if resp.StatusCode != 200 {
@@ -306,7 +305,7 @@ func (p *PostVeops) PostCMDBci(params *model.VeopsData) (*response.ResultRespons
 		return nil, err
 	}
 
-	logger.DefaultLogger.Info("新增数据返回结果为：", jsonData)
+	utils.DefaultLogger.Info("新增数据返回结果为：", jsonData)
 	return jsonData, nil
 }
 
@@ -324,7 +323,7 @@ func (p *PostVeops) PutCMDBci(params *model.VeopsData, ciId string) (*response.R
 	//拼接完整的CMDB连接串
 	fullURL, err := p.Flurl(urlPath, *params)
 	if err != nil {
-		logger.DefaultLogger.Error("CMDB客户端连接串配置错误", err)
+		utils.DefaultLogger.Error("CMDB客户端连接串配置错误", err)
 		return nil, err
 	}
 
@@ -337,24 +336,24 @@ func (p *PostVeops) PutCMDBci(params *model.VeopsData, ciId string) (*response.R
 	// 发送HTTP PUT请求
 	req, err := http.NewRequest("PUT", fullURL, nil)
 	if err != nil {
-		logger.DefaultLogger.Error("CMDB客户端连接请求发送失败：", err)
+		utils.DefaultLogger.Error("CMDB客户端连接请求发送失败：", err)
 	}
 	resp, err := client.Do(req)
 	if err != nil {
-		logger.DefaultLogger.Error("CMDB客户端连接异常：", err)
+		utils.DefaultLogger.Error("CMDB客户端连接异常：", err)
 	}
 
 	defer func(Body io.ReadCloser) {
 		err := Body.Close()
 		if err != nil {
-			logger.DefaultLogger.Error("CMDB客户端连接关闭失败：", err)
+			utils.DefaultLogger.Error("CMDB客户端连接关闭失败：", err)
 		}
 	}(resp.Body)
 
 	// 读取并打印响应体
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil {
-		logger.DefaultLogger.Error("CMDB客户端响应体读取异常：", err)
+		utils.DefaultLogger.Error("CMDB客户端响应体读取异常：", err)
 		return nil, err
 	}
 

@@ -1,7 +1,10 @@
-package util
+package utils
 
 import (
+	config2 "bigagent/config"
 	"fmt"
+	"gopkg.in/yaml.v3"
+	"io/ioutil"
 	"net/url"
 	"reflect"
 	"strings"
@@ -105,4 +108,50 @@ func JSONToFormData(jsonData interface{}) (string, error) {
 
 	// 编码为表单格式
 	return formData.Encode(), nil
+}
+
+// 修改 YAML 文件中的字段值
+func ModifyYAML(filePath, fieldPath, newValue string) error {
+	// 读取 YAML 文件
+	data, err := ioutil.ReadFile(filePath)
+	if err != nil {
+		return fmt.Errorf("无法读取文件: %w", err)
+	}
+
+	// 解析 YAML 数据
+	var config config2.Server
+	err = yaml.Unmarshal(data, &config)
+	if err != nil {
+		return fmt.Errorf("解析 YAML 失败: %w", err)
+	}
+
+	// 修改指定字段
+	switch fieldPath {
+	case "system.serct":
+		config.System.Serct = newValue
+	case "system.addr":
+		config.System.Addr = newValue
+	case "system.grpc":
+		config.System.Grpc = newValue
+	case "system.logfile":
+		config.System.Logfile = newValue
+	case "system.grpc_server":
+		config.System.Grpc_server = newValue
+	case "system.grpc_cmdb1_stand1":
+		config.System.Grpc_cmdb1_stand1 = newValue
+	default:
+		return fmt.Errorf("未找到字段: %s", fieldPath)
+	}
+
+	// 将修改后的数据写回 YAML 文件
+	modifiedData, err := yaml.Marshal(&config)
+	if err != nil {
+		return fmt.Errorf("序列化 YAML 失败: %w", err)
+	}
+	err = ioutil.WriteFile(filePath, modifiedData, 0644)
+	if err != nil {
+		return fmt.Errorf("写入文件失败: %w", err)
+	}
+
+	return nil
 }

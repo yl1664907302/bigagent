@@ -5,17 +5,10 @@ type Server struct {
 }
 
 type System struct {
-	Addr        string `json:"addr" yaml:"addr"`
-	Grpc        string `json:"grpc" yaml:"grpc"`
-	Serct       string `json:"serct" yaml:"serct"`
-	Logfile     string `json:"logfile" yaml:"logfile"`
-	Client_port string `json:"client_port" yaml:"client_port"`
-	Cmdb        Cmdb   `json:"cmdb"  yaml:"cmdb"`
-}
-
-type Cmdb struct {
-	Addr     string `json:"addr" yaml:"addr"`
-	Port     string `json:"port" yaml:"port"`
-	Authname string `json:"authname" yaml:"authname"`
-	Dataname string `json:"dataname" yaml:"dataname"`
+	Addr              string `json:"addr" yaml:"addr"`
+	Grpc              string `json:"grpc" yaml:"grpc"`
+	Serct             string `json:"serct" yaml:"serct"`
+	Logfile           string `json:"logfile" yaml:"logfile"`
+	Grpc_server       string `json:"grpc_server" yaml:"grpc_server"`
+	Grpc_cmdb1_stand1 string `json:"grpc_cmdb_1_stand_1" yaml:"grpc_cmdb1_stand1"`
 }

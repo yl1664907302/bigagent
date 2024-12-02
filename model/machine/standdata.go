@@ -28,7 +28,7 @@ type StandData struct {
 }
 
 func NewStandData() *StandData {
-	s := global.CONF.System.Serct
+	s := global.V.GetString("system.serct")
 	u := machine.Ma.Uuid
 	h := machine.Ma.Hostname
 	i := machine.Ma.IPv4
@@ -54,7 +54,7 @@ func NewStandData() *StandData {
 }
 
 func NewStandDataApi() *StandData {
-	s := global.CONF.System.Serct
+	s := global.V.GetString("system.serct")
 	u := info.NewInfo().Uuid
 	h := info.NewInfo().Hostname
 	i := info.NewInfo().IPv4

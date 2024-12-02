@@ -1,11 +1,7 @@
 system:
-  serct: "123456"
-  addr: ":8010"
-  grpc: "0.0.0.0:5678"
-  logfile: "log.txt"
-  client_port: "0.0.0.0:8765"
-cmdb:
-  addr: ""
-  port: ""
-  authname: ""
-  dataname: ""
+    addr: :8010
+    grpc: 0.0.0.0:5678
+    serct: "123456"
+    logfile: log.txt
+    grpc_server: 0.0.0.0:8765
+    grpc_cmdb1_stand1: cmdb.example.com
