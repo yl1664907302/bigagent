@@ -1,6 +1,7 @@
 package model
 
 import (
+	grpc_server "bigagent/grpcs/server"
 	"bigagent/scrape/machine"
 	"bigagent/scrape/machine/cpuinfo"
 	"bigagent/scrape/machine/diskinfo"
@@ -8,6 +9,7 @@ import (
 	"bigagent/scrape/machine/meminfo"
 	"bigagent/scrape/machine/netinfo"
 	"bigagent/scrape/machine/processinfo"
+	utils "bigagent/util"
 	"encoding/json"
 	"log"
 	"time"
@@ -15,7 +17,6 @@ import (
 
 // StandData 暴露原生utils数据
 type SmpData struct {
-	// Serct    string            `json:"serct"`
 	Uuid     string            `json:"uuid"`
 	Hostname string            `json:"hostname"`
 	IPv4     string            `json:"ipv4"`
@@ -28,9 +29,22 @@ type SmpData struct {
 	Process  processinfo.SmpPs `json:"process"`
 }
 
+type SmpDataGrpc struct {
+	Uuid     string                                     `json:"uuid"`
+	Hostname string                                     `json:"hostname"`
+	IPv4     string                                     `json:"ipv4"`
+	Time     time.Time                                  `json:"time"`
+	Cpu      cpuinfo.SmpCpu                             `json:"cpu"`
+	Disk     map[string]*grpc_server.SmpDisk            `json:"disk"`
+	Memory   meminfo.SmpMemory                          `json:"memory"`
+	Kmodules map[string]*grpc_server.Win32_SystemDriver `json:"kernel_module"`
+	Net      map[string]*grpc_server.SmpNetInfo         `json:"net"`
+	Process  map[string]*grpc_server.SmPsInfo           `json:"process"`
+}
+
 func NewSmpData() *SmpData {
 	if machine.SmpMa == nil {
-		log.Fatal("machine.SmpMa is nil!")
+		utils.DefaultLogger.Error("machine.SmpMa is nil!")
 	}
 
 	// s := global.CONF.System.Serct
@@ -57,6 +71,38 @@ func NewSmpData() *SmpData {
 		Kmodules: *k,
 		Net:      *n,
 		Process:  *p,
+	}
+}
+
+func NewSmpDataGrpc() *SmpDataGrpc {
+	if machine.SmpMaGrpc == nil {
+		utils.DefaultLogger.Error("machine.SmpMa is nil!")
+	}
+
+	// s := global.CONF.System.Serct
+	u := machine.SmpMaGrpc.Uuid
+	h := machine.SmpMaGrpc.Hostname
+	i := machine.SmpMaGrpc.IPv4
+	t := machine.SmpMaGrpc.Time
+	c := machine.SmpMaGrpc.Cpu
+	d := machine.SmpMaGrpc.Disk
+	m := machine.SmpMaGrpc.Memory
+	k := machine.SmpMaGrpc.Kmodules
+	n := machine.SmpMaGrpc.Net
+	p := machine.SmpMaGrpc.Process
+
+	return &SmpDataGrpc{
+		// Serct:    s,
+		Uuid:     u,
+		Hostname: h,
+		IPv4:     i,
+		Time:     t,
+		Cpu:      *c,
+		Disk:     d,
+		Memory:   *m,
+		Kmodules: k,
+		Net:      n,
+		Process:  p,
 	}
 }
 

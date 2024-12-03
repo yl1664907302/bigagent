@@ -9,6 +9,7 @@ func init() {
 	inits.Viper()
 	inits.LoggerInit()
 	inits.Crontab()
+	inits.AgentRegister()
 	inits.ListerChannel()
 }
 func main() {

@@ -10,7 +10,7 @@ import (
 
 type SmpCpu struct {
 	Name  string `json:"name"`
-	Core  int    `json:"core"`
+	Core  int64  `json:"core"`
 	Usage string `json:"usage"`
 }
 
@@ -28,7 +28,7 @@ func NewSmpCpu() *SmpCpu {
 
 	return &SmpCpu{
 		Name:  c[0].ModelName,
-		Core:  len(c),
+		Core:  int64(len(c)),
 		Usage: formatsize.FormatPercent(usage[0]),
 	}
 }

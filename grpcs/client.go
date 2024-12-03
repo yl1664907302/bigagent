@@ -1,6 +1,7 @@
 package grpcs
 
 import (
+	"bigagent/config/global"
 	grpc_server "bigagent/grpcs/server"
 	model "bigagent/model/machine"
 	utils "bigagent/util"
@@ -10,6 +11,7 @@ import (
 
 	"google.golang.org/grpc"
 	"google.golang.org/grpc/credentials/insecure"
+	"google.golang.org/protobuf/types/known/timestamppb"
 )
 
 var (
@@ -38,20 +40,36 @@ func InitClient(host string) (*grpc.ClientConn, error) {
 func GrpcStandPush(conn *grpc.ClientConn) {
 	client = grpc_server.NewPushAgantDataClient(conn)
 	//准备好请求参数
-	data := model.NewStandData()
-	request := grpc_server.StandData{
-		Serct:        data.Serct,
-		Uuid:         data.Uuid,
-		Hostname:     data.Hostname,
-		Ipv4:         data.IPv4,
-		Time:         uint64(time.Now().Unix()),
-		Info:         nil,
-		Cpu:          nil,
-		Disk:         nil,
-		Memory:       nil,
-		Net:          nil,
-		Status:       "good",
-		ActionDetail: "pushing",
+	data := model.NewSmpDataGrpc()
+	request := grpc_server.SmpData{
+		Serct:    global.V.GetString("system.serct"),
+		Uuid:     data.Uuid,
+		Hostname: data.Hostname,
+		Ipv4:     data.IPv4,
+		Time:     timestamppb.New(data.Time),
+		Cpu: &grpc_server.SmpCpu{
+			Name:  data.Cpu.Name,
+			Core:  data.Cpu.Core,
+			Usage: data.Cpu.Usage,
+		},
+		Disk: data.Disk,
+		Memory: &grpc_server.SmpMemory{
+			VirtualMemory: &grpc_server.VirtualMemory{
+				Total:       data.Memory.Vmem.Total,
+				Used:        data.Memory.Vmem.Used,
+				Free:        data.Memory.Vmem.Free,
+				UsedPercent: data.Memory.Vmem.UsedPercent,
+			},
+			SwapMemory: &grpc_server.SwapMemory{
+				Total:       data.Memory.Swap.Total,
+				Used:        data.Memory.Swap.Used,
+				Free:        data.Memory.Swap.Free,
+				UsedPercent: data.Memory.Swap.UsedPercent,
+			},
+		},
+		Kmodules: data.Kmodules,
+		Smpnet:   data.Net,
+		Smpps:    data.Process,
 	}
 	//发送请求，取得响应
 	response, err := client.SendData(context.Background(), &request)
