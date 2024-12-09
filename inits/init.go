@@ -20,6 +20,16 @@ func Hander(port string) {
 	}
 }
 
+/*
+   关于AgentRegister
+   参数 host，填充的是http推送端口，目前未启用，如下仅为占位符
+   参数 grpc_host，读取的是配置文中的grpc服务器地址，由server端发送的配置进行热加载
+   参数 openpush，是否开启推送
+   参数 onlypush，是否只开启推送
+
+   此外，在进行agent注册的时候，每种标准数据类型的api功能只会注册一次
+*/
+
 // AgentRegister agent注册
 func AgentRegister() {
 	strategy.Agents = nil
