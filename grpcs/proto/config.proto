@@ -18,10 +18,11 @@ message AgentConfig {
   string serct  =1;
   string auth_name = 2;
   string data_name =3;// 认证名称
-  NetworkInfo network_info = 4;                 // 网络信息
+  string solt_name =4;// 认证名称
+  NetworkInfo network_info = 5;                 // 网络信息
 
   //下面为前端传入的各种认证数据
-  string token = 5;                             // Token
+  string token = 6;                             // Token
 }
 
 // 服务定义

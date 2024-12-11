@@ -1,7 +1,17 @@
 system:
   addr: :8010
-  grpc: 0.0.0.0:5678
-  serct: "123456"
-  logfile: log.txt
+  grpc: 127.0.0.1
+  grpc_port: 5678
   grpc_server: 0.0.0.0:8765
-  grpc_cmdb1_stand1: cmdb.example.cn
+  logfile: log.txt
+  serct: "123456"
+#如下配置为自动生成，请勿修改！
+grpc_cmdb1_stand1: 192.168.162.4:7672
+grpc_cmdb2_stand1: 192.168.163.88:8865
+grpc_cmdb3_stand1:
+grpc_cmdb1_stand2:
+grpc_cmdb2_stand2:
+grpc_cmdb3_stand2:
+grpc_cmdb1_stand3:
+grpc_cmdb2_stand3:
+grpc_cmdb3_stand3:

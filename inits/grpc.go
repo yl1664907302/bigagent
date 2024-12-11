@@ -13,7 +13,7 @@ func RunG() {
 		server := grpc_config.GrpcConfigServer{}
 		grpc_config.RegisterAgentConfigServiceServer(s, &server)
 		// 启动服务
-		lis, err := net.Listen("tcp", global.V.GetString("system.grpc"))
+		lis, err := net.Listen("tcp", global.V.GetString("system.grpc")+":"+global.V.GetString("system.grpc_port"))
 		if err != nil {
 			panic(err)
 		}

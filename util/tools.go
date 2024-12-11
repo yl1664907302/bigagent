@@ -1,13 +1,13 @@
 package utils
 
 import (
-	config2 "bigagent/config"
 	"fmt"
-	"gopkg.in/yaml.v3"
 	"io/ioutil"
 	"net/url"
 	"reflect"
 	"strings"
+
+	"gopkg.in/yaml.v3"
 )
 
 // 获取结构体实例中绑定了json标签的key值
@@ -110,7 +110,7 @@ func JSONToFormData(jsonData interface{}) (string, error) {
 	return formData.Encode(), nil
 }
 
-// ModifyYAML 修改 YAML 文件中的字段值
+// ModifyYAML 修改 YAML 文件中的字段值，保留原有格式和注释
 func ModifyYAML(filePath, fieldPath, newValue string) error {
 	// 读取 YAML 文件
 	data, err := ioutil.ReadFile(filePath)
@@ -118,39 +118,35 @@ func ModifyYAML(filePath, fieldPath, newValue string) error {
 		return fmt.Errorf("无法读取文件: %w", err)
 	}
 
-	// 解析 YAML 数据
-	var config config2.Server
-	err = yaml.Unmarshal(data, &config)
+	// 解析为节点树
+	var node yaml.Node
+	err = yaml.Unmarshal(data, &node)
 	if err != nil {
 		return fmt.Errorf("解析 YAML 失败: %w", err)
 	}
 
-	// 修改指定字段
-	switch fieldPath {
-	case "system.serct":
-		config.System.Serct = newValue
-	case "system.addr":
-		config.System.Addr = newValue
-	case "system.grpc":
-		config.System.Grpc = newValue
-	case "system.logfile":
-		config.System.Logfile = newValue
-	case "system.grpc_server":
-		config.System.Grpc_server = newValue
-	case "system.grpc_cmdb1_stand1":
-		config.System.Grpc_cmdb1_stand1 = newValue
-	default:
-		return fmt.Errorf("未找到字段: %s", fieldPath)
-	}
+	// 将字段路径分割为数组
+	paths := strings.Split(fieldPath, ".")
 
-	// 使用两格缩进序列化 YAML 数据，并保留双引号
-	modifiedData, err := formatYAML(config)
+	// 更新节点值
+	err = updateYAMLNode(&node, paths, newValue)
 	if err != nil {
-		return fmt.Errorf("格式化 YAML 失败: %w", err)
+		return err
 	}
 
-	// 写回修改后的 YAML 文件
-	err = ioutil.WriteFile(filePath, modifiedData, 0644)
+	// 将修改后的节点树写回文件
+	var buf strings.Builder
+	encoder := yaml.NewEncoder(&buf)
+	encoder.SetIndent(2)
+	defer encoder.Close()
+
+	err = encoder.Encode(&node)
+	if err != nil {
+		return fmt.Errorf("编码 YAML 失败: %w", err)
+	}
+
+	// 写回文件
+	err = ioutil.WriteFile(filePath, []byte(buf.String()), 0644)
 	if err != nil {
 		return fmt.Errorf("写入文件失败: %w", err)
 	}
@@ -158,17 +154,31 @@ func ModifyYAML(filePath, fieldPath, newValue string) error {
 	return nil
 }
 
-// formatYAML 格式化 YAML 输出，保留两格缩进
-func formatYAML(config interface{}) ([]byte, error) {
-	var buf strings.Builder
-	encoder := yaml.NewEncoder(&buf)
-	encoder.SetIndent(2) // 设置两格缩进
-	defer encoder.Close()
-
-	err := encoder.Encode(config)
-	if err != nil {
-		return nil, err
+// updateYAMLNode 在节点树中查找并更新指定路径的值
+func updateYAMLNode(node *yaml.Node, paths []string, newValue string) error {
+	// 跳过文档节点
+	if node.Kind == yaml.DocumentNode {
+		return updateYAMLNode(node.Content[0], paths, newValue)
 	}
 
-	return []byte(buf.String()), nil
+	// 处理映射节点
+	if node.Kind == yaml.MappingNode {
+		for i := 0; i < len(node.Content); i += 2 {
+			keyNode := node.Content[i]
+			valueNode := node.Content[i+1]
+
+			if keyNode.Value == paths[0] {
+				if len(paths) == 1 {
+					// 找到目标字段，更新值
+					valueNode.Value = newValue
+					valueNode.Tag = "!!str" // 确保值被设置为字符串类型
+					return nil
+				}
+				// 继续递归查找下一级
+				return updateYAMLNode(valueNode, paths[1:], newValue)
+			}
+		}
+	}
+
+	return fmt.Errorf("未找到字段: %s", paths[0])
 }

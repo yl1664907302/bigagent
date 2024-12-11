@@ -10,14 +10,14 @@ type GrpcConfigServer struct {
 }
 
 func (g *GrpcConfigServer) PushAgentConfig(ctx context.Context, req *AgentConfig) (*ResponseMessage, error) {
-	utils.DefaultLogger.Infof("收到配置信息：%v", req)
+
 	switch req.DataName {
-	case "grpc_cmdb1_stand1":
-		err := utils.ModifyYAML("config.yml", "system.grpc_cmdb1_stand1", req.NetworkInfo.Host)
+	case "stand1":
+		err := utils.ModifyYAML("config.yml", "grpc_cmdb"+req.SlotName+"_stand1", req.NetworkInfo.Host)
 		if err != nil {
 			utils.DefaultLogger.Error(err)
 		}
-	case "grpc_cmdb2_stand1":
+	case "stand2":
 
 	default:
 
