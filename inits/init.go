@@ -70,25 +70,58 @@ func Crontab() {
 // ListerChannel 监听channel
 func ListerChannel() {
 	go func() {
-		for range machine.MachineCh {
-			temp := <-machine.MachineCh
-			if temp {
+		// 使用 select 实现更好的通道处理
+		for {
+			select {
+			case signal := <-machine.MachineCh:
+				if !signal {
+					continue
+				}
+				// 使用非阻塞方式发送 false
+				select {
+				case machine.MachineCh <- false:
+				default:
+				}
 				utils.DefaultLogger.Info("数据更新，执行推送")
-				machine.MachineCh <- false
-				//热加载
-				AgentRegister()
-				if strategy.Agents == nil || len(strategy.Agents) == 0 {
-					utils.DefaultLogger.Warn("web.Agents is nil or empty")
-					return
-				}
-				for i, agent := range strategy.Agents {
-					err := agent.ExecutePush()
-					if err != nil {
-						utils.DefaultLogger.Errorf("agent策略序号：%d,数据推送异常: %s", i, err)
-						global.ASTATUS = "部分数据推送异常"
+
+				// 异步执行注册和推送
+				go func() {
+					AgentRegister()
+
+					agents := strategy.Agents
+					if len(agents) == 0 {
+						utils.DefaultLogger.Warn("strategy.Agents 为空")
+						global.ASTATUS = "无可用agent策略"
+						return
 					}
-				}
-				global.ASTATUS = "数据推送正常"
+
+					// 并发执行推送
+					errChan := make(chan error, len(agents))
+					for i, agent := range agents {
+						go func(index int, a strategy.Agent) {
+							if err := a.ExecutePush(); err != nil {
+								utils.DefaultLogger.Errorf("agent策略序号：%d,数据推送异常: %s", index, err)
+								errChan <- err
+							} else {
+								errChan <- nil
+							}
+						}(i, agent)
+					}
+
+					// 收集错误结果
+					var hasError bool
+					for i := 0; i < len(agents); i++ {
+						if err := <-errChan; err != nil {
+							hasError = true
+						}
+					}
+
+					if hasError {
+						global.ASTATUS = "部分数据推送异常"
+					} else {
+						global.ASTATUS = "数据推送正常"
+					}
+				}()
 			}
 		}
 	}()
