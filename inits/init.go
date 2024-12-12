@@ -85,9 +85,10 @@ func ListerChannel() {
 					err := agent.ExecutePush()
 					if err != nil {
 						utils.DefaultLogger.Errorf("agent策略序号：%d,数据推送异常: %s", i, err)
+						global.ASTATUS = "部分数据推送异常"
 					}
-
 				}
+				global.ASTATUS = "数据推送正常"
 			}
 		}
 	}()

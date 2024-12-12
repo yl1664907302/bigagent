@@ -42,12 +42,14 @@ func GrpcStandPush(conn *grpc.ClientConn) {
 	//准备好请求参数
 	data := model.NewSmpDataGrpc()
 	request := grpc_server.SmpData{
-		Serct:    global.V.GetString("system.serct"),
-		Uuid:     data.Uuid,
-		Hostname: data.Hostname,
-		Ipv4:     data.IPv4,
-		GrpcPort: global.V.GetString("system.grpc_port"),
-		Time:     timestamppb.New(data.Time),
+		Serct:        global.V.GetString("system.serct"),
+		Uuid:         data.Uuid,
+		Hostname:     data.Hostname,
+		Ipv4:         data.IPv4,
+		Actiondetail: global.ACTION_DETAIL,
+		Status:       global.ASTATUS,
+		GrpcPort:     global.V.GetString("system.grpc_port"),
+		Time:         timestamppb.New(data.Time),
 		Cpu: &grpc_server.SmpCpu{
 			Name:  data.Cpu.Name,
 			Core:  data.Cpu.Core,

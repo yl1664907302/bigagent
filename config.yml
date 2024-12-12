@@ -6,7 +6,7 @@ system:
   logfile: log.txt
   serct: "123456"
 #如下配置为自动生成，请勿修改！
-grpc_cmdb1_stand1: 192.168.162.4:7672
+grpc_cmdb1_stand1: 192.168.11.11:1111
 grpc_cmdb2_stand1: 192.168.163.88:8865
 grpc_cmdb3_stand1:
 grpc_cmdb1_stand2:
