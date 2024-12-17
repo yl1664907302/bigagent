@@ -14,7 +14,7 @@ type StandRouter struct {
 
 func (r *StandRouter) ShowData(w http.ResponseWriter, req *http.Request) {
 	if req.Method == "GET" {
-		data, err := r.A.ExecuteApi("bigagent")
+		data, err := r.A.ExecuteApi("showdata")
 		if err != nil {
 			log.Println(err)
 		}

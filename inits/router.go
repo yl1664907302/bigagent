@@ -16,12 +16,17 @@ type VeopsRouterGroup struct {
 	Prefix string
 }
 
-var StandRouterGroupApp = &StandRouterGroup{Prefix: "/bigagent"}
+var StandRouterGroupApp = &StandRouterGroup{Prefix: "/stand1"}
 var VeopsRouterGroupApp = &VeopsRouterGroup{Prefix: "/veops"}
 
 // StandRouter 添加路由，自动带上前缀
 func (r *StandRouterGroup) StandRouter() {
 	http.Handle(r.Prefix+"/showdata", loggingMiddleware(AuthMiddleware(http.HandlerFunc(router.StandRouterApp.ShowData))))
+}
+
+// Stand2Router 添加路由，自动带上前缀
+func (r *StandRouterGroup) Stand2Router() {
+	http.Handle(r.Prefix+"/showdata", loggingMiddleware(AuthMiddleware(http.HandlerFunc(router.StandRouterApp2.ShowData))))
 }
 
 // VeopsRouter 添加路由，自动带上前缀

@@ -46,7 +46,7 @@ func GrpcStandPush(conn *grpc.ClientConn) {
 		Uuid:         data.Uuid,
 		Hostname:     data.Hostname,
 		Ipv4:         data.IPv4,
-		Actiondetail: global.ACTION_DETAIL,
+		Actiondetail: global.V.GetString("action_detail"),
 		Status:       global.ASTATUS,
 		GrpcPort:     global.V.GetString("system.grpc_port"),
 		Time:         timestamppb.New(data.Time),

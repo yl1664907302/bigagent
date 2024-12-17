@@ -5,9 +5,10 @@ system:
   grpc_server: 0.0.0.0:8765
   logfile: log.txt
   serct: "123456"
+
 #如下配置为自动生成，请勿修改！
-grpc_cmdb1_stand1: 192.168.11.11:1111
-grpc_cmdb2_stand1: 192.168.163.88:8865
+grpc_cmdb1_stand1: 
+grpc_cmdb2_stand1:
 grpc_cmdb3_stand1:
 grpc_cmdb1_stand2:
 grpc_cmdb2_stand2:
@@ -15,3 +16,5 @@ grpc_cmdb3_stand2:
 grpc_cmdb1_stand3:
 grpc_cmdb2_stand3:
 grpc_cmdb3_stand3:
+
+action_detail: 当前配置[18]

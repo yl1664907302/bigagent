@@ -10,7 +10,6 @@ import (
 */
 
 var (
-	V             *viper.Viper
-	ACTION_DETAIL string
-	ASTATUS       string
+	V       *viper.Viper
+	ASTATUS string
 )

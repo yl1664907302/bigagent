@@ -25,9 +25,15 @@ func (s *StandardStrategy) Push() error {
 
 func (s *StandardStrategy) Api(key string) (interface{}, error) {
 	switch key {
-	case "bigagent":
-		return model.NewStandDataApi(), nil
+	case "showdata":
+		return map[string]interface{}{
+			"code": 0,
+			"data": model.NewSmpData(),
+		}, nil
 	default:
-		return nil, nil
+		return map[string]interface{}{
+			"code": 500,
+			"data": "",
+		}, nil
 	}
 }

@@ -1,7 +1,6 @@
 package grpc_config
 
 import (
-	"bigagent/config/global"
 	utils "bigagent/util"
 	"context"
 )
@@ -14,6 +13,7 @@ func (g *GrpcConfigServer) PushAgentConfig(ctx context.Context, req *AgentConfig
 	switch req.DataName {
 	case "stand1":
 		err := utils.ModifyYAML("config.yml", "grpc_cmdb"+req.SlotName+"_stand1", req.NetworkInfo.Host)
+		err = utils.ModifyYAML("config.yml", "action_detail", "当前配置["+req.Id+"]")
 		if err != nil {
 			utils.DefaultLogger.Error(err)
 			return &ResponseMessage{
@@ -21,7 +21,6 @@ func (g *GrpcConfigServer) PushAgentConfig(ctx context.Context, req *AgentConfig
 				Message: "config update failed",
 			}, err
 		}
-		global.ACTION_DETAIL = "当前配置[" + req.Id + "]"
 	case "stand2":
 	default:
 	}

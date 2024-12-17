@@ -40,6 +40,7 @@ func AgentRegister() {
 	strategy.Agents = nil
 	//注册server端
 	register.Stand1Register("127.0.0.1:8080", global.V.GetString("system.grpc_server"), true, false)
+	register.Stand2Register("127.0.0.1:8080", "", false, false)
 	//注册cmdb端
 	configs := global.V.AllSettings()
 	for key, value := range configs {
@@ -51,7 +52,7 @@ func AgentRegister() {
 			case "1":
 				register.Stand1Register("127.0.0.1:8080", value.(string), true, false)
 			case "2":
-				//register.Stand2Register("127.0.0.1:8080", value.(string), true, false)
+				register.Stand2Register("127.0.0.1:8080", value.(string), true, false)
 			case "3":
 				//register.Stand3Register("127.0.0.1:8080", value.(string), true, false)
 			// 可以继续添加更多的 case 以支持更多的 stand类型
