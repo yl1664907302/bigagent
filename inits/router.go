@@ -12,12 +12,18 @@ type StandRouterGroup struct {
 	Prefix string
 }
 
+type StandRouterGroup2 struct {
+	Prefix string
+}
+
 type VeopsRouterGroup struct {
 	Prefix string
 }
 
 var StandRouterGroupApp = &StandRouterGroup{Prefix: "/stand1"}
-var VeopsRouterGroupApp = &VeopsRouterGroup{Prefix: "/veops"}
+var StandRouterGroupApp2 = &StandRouterGroup2{Prefix: "/stand2"}
+
+// var VeopsRouterGroupApp = &VeopsRouterGroup{Prefix: "/veops"}
 
 // StandRouter 添加路由，自动带上前缀
 func (r *StandRouterGroup) StandRouter() {
@@ -25,14 +31,14 @@ func (r *StandRouterGroup) StandRouter() {
 }
 
 // Stand2Router 添加路由，自动带上前缀
-func (r *StandRouterGroup) Stand2Router() {
+func (r *StandRouterGroup2) StandRouter() {
 	http.Handle(r.Prefix+"/showdata", loggingMiddleware(AuthMiddleware(http.HandlerFunc(router.StandRouterApp2.ShowData))))
 }
 
 // VeopsRouter 添加路由，自动带上前缀
-func (r *VeopsRouterGroup) VeopsRouter() {
-	http.Handle(r.Prefix+"/showdata", loggingMiddleware(AuthMiddleware(http.HandlerFunc(router.VeopsRouterApp.ShowData))))
-}
+// func (r *VeopsRouterGroup) VeopsRouter() {
+// 	http.Handle(r.Prefix+"/showdata", loggingMiddleware(AuthMiddleware(http.HandlerFunc(router.VeopsRouterApp.ShowData))))
+// }
 
 // 日志中间件，记录每次请求的访问日志
 func loggingMiddleware(next http.Handler) http.Handler {

@@ -19,6 +19,7 @@ var (
 // Hander 启动http服务
 func Hander(port string) {
 	StandRouterGroupApp.StandRouter()
+	StandRouterGroupApp2.StandRouter()
 	err := http.ListenAndServe(port, nil)
 	if err != nil {
 		log.Fatal("ListenAndServe: ", err)
@@ -40,7 +41,7 @@ func AgentRegister() {
 	strategy.Agents = nil
 	//注册server端
 	register.Stand1Register("127.0.0.1:8080", global.V.GetString("system.grpc_server"), true, false)
-	register.Stand2Register("127.0.0.1:8080", "", false, false)
+	register.Stand2Register("127.0.0.1:8080", "xxx", false, false)
 	//注册cmdb端
 	configs := global.V.AllSettings()
 	for key, value := range configs {

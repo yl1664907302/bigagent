@@ -30,6 +30,9 @@ func (a *Agent) SetPushStrategy(strategy PushStrategy) {
 }
 
 func (a *Agent) ExecuteApi(key string) (interface{}, error) {
+	if a.apiStrategy == nil {
+		utils.DefaultLogger.Warn("apiStrategy is nil for agent")
+	}
 	return a.apiStrategy.Api(key)
 }
 
