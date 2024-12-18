@@ -9,11 +9,10 @@ import (
 	"bigagent/scrape/machine/meminfo"
 	"bigagent/scrape/machine/netinfo"
 	"bigagent/scrape/machine/processinfo"
+	machine "github.com/super-l/machine-code"
 	"log"
 	"os"
 	"time"
-
-	"github.com/super-l/machine-code/machine"
 )
 
 type SmpMachine struct {
@@ -50,8 +49,8 @@ var (
 
 // Machine 存放所有的采集层数据，被懒汉式创建
 func NewSmpMachine() *SmpMachine {
-	uuid := machine.GetMachineData()
-	addr, err := machine.GetLocalIpAddr()
+	uuid := machine.Machine
+	addr, err := machine.GetIpAddr()
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -61,7 +60,7 @@ func NewSmpMachine() *SmpMachine {
 	}
 
 	return &SmpMachine{
-		Uuid:     uuid.PlatformUUID,
+		Uuid:     uuid.UUID,
 		Hostname: hostname,
 		IPv4:     addr,
 		Time:     time.Now(),
@@ -75,8 +74,8 @@ func NewSmpMachine() *SmpMachine {
 }
 
 func NewSmpMachineGrpc() *SmpMachineGrpc {
-	uuid := machine.GetMachineData()
-	addr, err := machine.GetLocalIpAddr()
+	uuid := machine.Machine
+	addr, err := machine.GetIpAddr()
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -86,7 +85,7 @@ func NewSmpMachineGrpc() *SmpMachineGrpc {
 	}
 
 	return &SmpMachineGrpc{
-		Uuid:     uuid.PlatformUUID,
+		Uuid:     uuid.UUID,
 		Hostname: hostname,
 		IPv4:     addr,
 		Time:     time.Now(),

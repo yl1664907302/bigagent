@@ -5,22 +5,21 @@ go 1.22.0
 require (
 	github.com/leemcloughlin/gofarmhash v0.0.0-20160919192320-0a055c5b87a8
 	github.com/robfig/cron/v3 v3.0.1
-	github.com/shirou/gopsutil/v4 v4.24.10
+	github.com/shirou/gopsutil/v4 v4.24.11
 	github.com/sirupsen/logrus v1.9.3
 	github.com/spf13/viper v1.19.0
-	github.com/super-l/machine-code v0.0.0-20240104080917-14388119a8dd
+	github.com/super-l/machine-code v0.0.0-20241121142923-4cb40646deba
 	github.com/yusufpapurcu/wmi v1.2.4
-	golang.org/x/exp v0.0.0-20241108190413-2d47ceb2692f
-	google.golang.org/grpc v1.62.1
-	google.golang.org/protobuf v1.33.0
+	golang.org/x/exp v0.0.0-20241217172543-b2144cdd0a67
+	google.golang.org/grpc v1.69.0
+	google.golang.org/protobuf v1.36.0
 	gopkg.in/yaml.v3 v3.0.1
 )
 
 require (
 	github.com/ebitengine/purego v0.8.1 // indirect
 	github.com/fsnotify/fsnotify v1.7.0 // indirect
-	github.com/go-ole/go-ole v1.3.0 // indirect
-	github.com/golang/protobuf v1.5.3 // indirect
+	github.com/go-ole/go-ole v1.2.6 // indirect
 	github.com/hashicorp/hcl v1.0.0 // indirect
 	github.com/lufia/plan9stats v0.0.0-20211012122336-39d0f177ccd0 // indirect
 	github.com/magiconair/properties v1.8.7 // indirect
@@ -38,9 +37,9 @@ require (
 	github.com/tklauser/numcpus v0.6.1 // indirect
 	go.uber.org/atomic v1.9.0 // indirect
 	go.uber.org/multierr v1.9.0 // indirect
-	golang.org/x/net v0.23.0 // indirect
-	golang.org/x/sys v0.27.0 // indirect
-	golang.org/x/text v0.14.0 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20240314234333-6e1732d8331c // indirect
+	golang.org/x/net v0.30.0 // indirect
+	golang.org/x/sys v0.26.0 // indirect
+	golang.org/x/text v0.19.0 // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20241015192408-796eee8c2d53 // indirect
 	gopkg.in/ini.v1 v1.67.0 // indirect
 )

@@ -1,7 +1,7 @@
 package info
 
 import (
-	"github.com/super-l/machine-code/machine"
+	machine "github.com/super-l/machine-code"
 	"log"
 	"os"
 	"time"
@@ -17,7 +17,7 @@ type Info struct {
 
 // GetIPv4 获取IP地址
 func (i Info) GetIPv4() string {
-	addr, err := machine.GetLocalIpAddr()
+	addr, err := machine.GetIpAddr()
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -35,24 +35,24 @@ func (i *Info) GetHostname() string {
 
 // GetUuid 获得系统uuid
 func (i *Info) GetUuid() string {
-	uuid := machine.GetMachineData()
+	uuid := machine.Machine
 
-	return uuid.PlatformUUID
+	return uuid.UUID
 }
 
 // 对外接口
 func NewInfo() *Info {
-	uuid := machine.GetMachineData()
+	uuid := machine.Machine
 	hostname, err := os.Hostname()
 	if err != nil {
 		log.Fatal(err)
 	}
-	addr, err := machine.GetLocalIpAddr()
+	addr, err := machine.GetIpAddr()
 	if err != nil {
 		log.Fatal(err)
 	}
 	return &Info{
-		Uuid:     uuid.PlatformUUID,
+		Uuid:     uuid.UUID,
 		Hostname: hostname,
 		IPv4:     addr,
 		Time:     time.Now(),
