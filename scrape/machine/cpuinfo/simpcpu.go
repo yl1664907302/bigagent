@@ -30,8 +30,9 @@ func NewSmpCpu() *SmpCpu {
 	cores := runtime.NumCPU()
 
 	return &SmpCpu{
-		Name:  c[0].ModelName,
-		Core:  int64(cores),
+		Name: c[0].ModelName,
+		Core: int64(cores),
+		// Usage: fmt.Sprint(usage[0]) + "%",
 		Usage: formatsize.FormatPercent(usage[0]),
 	}
 }

@@ -3,6 +3,7 @@ package meminfo
 import (
 	"bigagent/scrape/machine/formatsize"
 	"encoding/json"
+	"fmt"
 	"log"
 
 	"github.com/shirou/gopsutil/v4/mem"
@@ -41,19 +42,22 @@ func NewSmpMem() *SmpMemory {
 		log.Fatal(err)
 	}
 
+	// 获取物理内存信息
+
 	// 构建 SmpMemory
 	return &SmpMemory{
+
 		Vmem: &SmpMem{
 			Total:       formatsize.FormatSize(m.Total),
 			Used:        formatsize.FormatSize(m.Used),
 			Free:        formatsize.FormatSize(m.Free),
-			UsedPercent: formatsize.FormatPercent(m.UsedPercent),
+			UsedPercent: fmt.Sprint(m.UsedPercent) + "%",
 		},
 		Swap: &SmpSwap{
 			Total:       formatsize.FormatSize(sm.Total),
 			Used:        formatsize.FormatSize(sm.Used),
 			Free:        formatsize.FormatSize(sm.Free),
-			UsedPercent: formatsize.FormatPercent(sm.UsedPercent),
+			UsedPercent: fmt.Sprint(sm.UsedPercent) + "%",
 		},
 	}
 }

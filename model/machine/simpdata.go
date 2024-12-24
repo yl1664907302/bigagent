@@ -16,22 +16,25 @@ import (
 
 // StandData 暴露原生utils数据
 type SmpData struct {
-	Serct    string            `json:"serct"`
-	Uuid     string            `json:"uuid"`
-	Os       string            `json:"os"`
-	Kernel   string            `json:"kernel"`
-	Platform string            `json:"system_platform"`
-	Hostname string            `json:"hostname"`
-	IPv4     string            `json:"ipv4"`
-	Arch     string            `json:"arch"`
-	Virtual  string            `json:"virtual_machine"`
-	Time     time.Time         `json:"time"`
-	Cpu      cpuinfo.SmpCpu    `json:"cpu"`
-	Disk     diskinfo.SmpDisk  `json:"disk"`
-	Memory   meminfo.SmpMemory `json:"memory"`
-	Kmodules kmodule.Kmodules  `json:"kernel_module"`
-	Net      netinfo.SmpNet    `json:"net"`
-	Process  processinfo.SmpPs `json:"process"`
+	Serct      string            `json:"serct"`
+	Uuid       string            `json:"uuid"`
+	Os         string            `json:"os"`
+	Kernel     string            `json:"kernel"`
+	Platform   string            `json:"system_platform"`
+	Hostname   string            `json:"hostname"`
+	IPv4       string            `json:"ipv4"`
+	Arch       string            `json:"arch"`
+	Virtual    string            `json:"virtual_machine"`
+	Disk_use   map[string]string `json:"disk_use"`
+	Memory_use string            `json:"memory_use"`
+	Cpu_use    string            `json:"cpu_use"`
+	Time       time.Time         `json:"time"`
+	Cpu        cpuinfo.SmpCpu    `json:"cpu"`
+	Disk       diskinfo.SmpDisk  `json:"disk"`
+	Memory     meminfo.SmpMemory `json:"memory"`
+	Kmodules   kmodule.Kmodules  `json:"kernel_module"`
+	Net        netinfo.SmpNet    `json:"net"`
+	Process    processinfo.SmpPs `json:"process"`
 }
 
 // type SmpDataGrpc struct {
@@ -52,6 +55,13 @@ func NewSmpData() *SmpData {
 		utils.DefaultLogger.Error("machine.SmpMa is nil!")
 	}
 
+	disk_use := make(map[string]string)
+	smpma := machine.NewSmpMachine()
+
+	for _, v := range *smpma.Disk {
+		disk_use[v.Device] = v.UsedPercent
+	}
+
 	// s := global.CONF.System.Serct
 	u := machine.SmpMa.Uuid
 	s := machine.SmpMa.Platform
@@ -61,6 +71,9 @@ func NewSmpData() *SmpData {
 	i := machine.SmpMa.IPv4
 	arh := machine.SmpMa.Arch
 	v := machine.SmpMa.Machine
+	du := disk_use
+	mu := machine.SmpMa.Memory.Vmem.UsedPercent
+	cu := machine.SmpMa.Cpu.Usage
 	t := machine.SmpMa.Time
 	c := machine.SmpMa.Cpu
 	d := machine.SmpMa.Disk
@@ -71,21 +84,24 @@ func NewSmpData() *SmpData {
 
 	return &SmpData{
 		// Serct:    s,
-		Uuid:     u,
-		Platform: s,
-		Os:       o,
-		Kernel:   ker,
-		Hostname: h,
-		IPv4:     i,
-		Arch:     arh,
-		Virtual:  v,
-		Time:     t,
-		Cpu:      *c,
-		Disk:     *d,
-		Memory:   *m,
-		Kmodules: *k,
-		Net:      *n,
-		Process:  *p,
+		Uuid:       u,
+		Platform:   s,
+		Os:         o,
+		Kernel:     ker,
+		Hostname:   h,
+		IPv4:       i,
+		Arch:       arh,
+		Virtual:    v,
+		Disk_use:   du,
+		Memory_use: mu,
+		Cpu_use:    cu,
+		Time:       t,
+		Cpu:        *c,
+		Disk:       *d,
+		Memory:     *m,
+		Kmodules:   *k,
+		Net:        *n,
+		Process:    *p,
 	}
 }
 
@@ -122,6 +138,14 @@ func NewSmpData() *SmpData {
 // }
 
 func NewSmpDataApi() *SmpData {
+
+	disk_use := make(map[string]string)
+	smpma := machine.NewSmpMachine()
+
+	for _, v := range *smpma.Disk {
+		disk_use[v.Device] = v.UsedPercent
+	}
+
 	// s := global.CONF.System.Serct
 	u := machine.SmpMa.Uuid
 	s := machine.SmpMa.Platform
@@ -131,6 +155,9 @@ func NewSmpDataApi() *SmpData {
 	i := machine.SmpMa.IPv4
 	arh := machine.SmpMa.Arch
 	v := machine.SmpMa.Machine
+	du := disk_use
+	mu := machine.SmpMa.Memory.Vmem.UsedPercent
+	cu := machine.SmpMa.Cpu.Usage
 	t := machine.SmpMa.Time
 	c := cpuinfo.NewSmpCpu()
 	d := diskinfo.NewSmpDisk()
@@ -140,21 +167,24 @@ func NewSmpDataApi() *SmpData {
 	p := processinfo.NewSmpPs()
 	return &SmpData{
 		// Serct:    s,
-		Uuid:     u,
-		Platform: s,
-		Os:       o,
-		Kernel:   ker,
-		Hostname: h,
-		IPv4:     i,
-		Arch:     arh,
-		Virtual:  v,
-		Time:     t,
-		Cpu:      *c,
-		Disk:     *d,
-		Memory:   *m,
-		Kmodules: *k,
-		Net:      *n,
-		Process:  *p,
+		Uuid:       u,
+		Platform:   s,
+		Os:         o,
+		Kernel:     ker,
+		Hostname:   h,
+		IPv4:       i,
+		Arch:       arh,
+		Virtual:    v,
+		Disk_use:   du,
+		Memory_use: mu,
+		Cpu_use:    cu,
+		Time:       t,
+		Cpu:        *c,
+		Disk:       *d,
+		Memory:     *m,
+		Kmodules:   *k,
+		Net:        *n,
+		Process:    *p,
 	}
 }
 
