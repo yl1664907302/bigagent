@@ -22,4 +22,14 @@ func (r *StandRouter) ShowData(w http.ResponseWriter, req *http.Request) {
 	}
 }
 
+func (r *StandRouter) PatrolData(w http.ResponseWriter, req *http.Request) {
+	if req.Method == "GET" {
+		data, err := r.A.ExecuteApi("patroldata")
+		if err != nil {
+			log.Println(err)
+		}
+		response.SuccessWithDetailed(w, data)
+	}
+}
+
 var StandRouterApp = &StandRouter{false, nil}

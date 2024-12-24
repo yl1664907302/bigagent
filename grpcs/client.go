@@ -50,6 +50,7 @@ func GrpcStandPush(conn *grpc.ClientConn) {
 		MachineType:  "physical",
 		Os:           "windows 11",
 		Kernel:       "windows 11 xxx",
+		Arch:         "amd64",
 		Actiondetail: global.V.GetString("action_detail"),
 		Status:       global.ASTATUS,
 		GrpcPort:     global.V.GetString("system.grpc_port"),
