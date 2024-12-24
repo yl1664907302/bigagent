@@ -1,7 +1,7 @@
 package response
 
 import (
-	"bigagent/util/logger"
+	utils "bigagent/util"
 	"encoding/json"
 )
 
@@ -29,13 +29,13 @@ func ErrorMessageProcess(body []byte) (*ErrorMessage, error) {
 
 	_, err := json.Marshal(body)
 	if err != nil {
-		logger.DefaultLogger.Error("json转换失败")
+		utils.DefaultLogger.Error("json转换失败")
 		return nil, err
 	}
 
 	err = json.Unmarshal(body, &jsonData)
 	if err != nil {
-		logger.DefaultLogger.Error("解析json出错：", err)
+		utils.DefaultLogger.Error("解析json出错：", err)
 		return nil, err
 	}
 	return jsonData, nil
@@ -47,13 +47,13 @@ func ResultResponseDataProcess(body []byte) (*ResultResponse, error) {
 
 	_, err := json.Marshal(body)
 	if err != nil {
-		logger.DefaultLogger.Error("json转换失败")
+		utils.DefaultLogger.Error("json转换失败")
 		return nil, err
 	}
 
 	err = json.Unmarshal(body, &jsonData)
 	if err != nil {
-		logger.DefaultLogger.Error("解析json出错：", err)
+		utils.DefaultLogger.Error("解析json出错：", err)
 		return nil, err
 	}
 	return jsonData, nil
@@ -65,13 +65,13 @@ func QueryCMDBciDataProcess(body []byte) (*QueryCMDBciResponse, error) {
 
 	_, err := json.Marshal(body)
 	if err != nil {
-		logger.DefaultLogger.Error("json转换失败")
+		utils.DefaultLogger.Error("json转换失败")
 		return nil, err
 	}
 
 	err = json.Unmarshal(body, &jsonData)
 	if err != nil {
-		logger.DefaultLogger.Error("解析json出错：", err)
+		utils.DefaultLogger.Error("解析json出错：", err)
 		return nil, err
 	}
 	return jsonData, nil
@@ -81,13 +81,13 @@ func QueryCMDBciDataProcess(body []byte) (*QueryCMDBciResponse, error) {
 func ResponseErrorData(respStatusCode int, body []byte) (message string, err error) {
 	jsonData, err := ErrorMessageProcess(body)
 	if err != nil {
-		logger.DefaultLogger.Error("json转换失败")
+		utils.DefaultLogger.Error("json转换失败")
 		return "", err
 	}
 
 	switch respStatusCode {
 	default:
-		logger.DefaultLogger.Error("错误码:", respStatusCode, " message:", jsonData.Message)
+		utils.DefaultLogger.Error("错误码:", respStatusCode, " message:", jsonData.Message)
 		return jsonData.Message, nil
 	}
 }

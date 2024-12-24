@@ -4,13 +4,14 @@ import (
 	"bigagent/scrape/machine/formatsize"
 	"encoding/json"
 	"log"
+	"runtime"
 
 	"github.com/shirou/gopsutil/v4/cpu"
 )
 
 type SmpCpu struct {
 	Name  string `json:"name"`
-	Core  int    `json:"core"`
+	Core  int64  `json:"core"`
 	Usage string `json:"usage"`
 }
 
@@ -26,9 +27,11 @@ func NewSmpCpu() *SmpCpu {
 		log.Fatal(err)
 	}
 
+	cores := runtime.NumCPU()
+
 	return &SmpCpu{
 		Name:  c[0].ModelName,
-		Core:  len(c),
+		Core:  int64(cores),
 		Usage: formatsize.FormatPercent(usage[0]),
 	}
 }

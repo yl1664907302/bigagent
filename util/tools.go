@@ -1,10 +1,13 @@
-package util
+package utils
 
 import (
 	"fmt"
+	"io/ioutil"
 	"net/url"
 	"reflect"
 	"strings"
+
+	"gopkg.in/yaml.v3"
 )
 
 // 获取结构体实例中绑定了json标签的key值
@@ -105,4 +108,77 @@ func JSONToFormData(jsonData interface{}) (string, error) {
 
 	// 编码为表单格式
 	return formData.Encode(), nil
+}
+
+// ModifyYAML 修改 YAML 文件中的字段值，保留原有格式和注释
+func ModifyYAML(filePath, fieldPath, newValue string) error {
+	// 读取 YAML 文件
+	data, err := ioutil.ReadFile(filePath)
+	if err != nil {
+		return fmt.Errorf("无法读取文件: %w", err)
+	}
+
+	// 解析为节点树
+	var node yaml.Node
+	err = yaml.Unmarshal(data, &node)
+	if err != nil {
+		return fmt.Errorf("解析 YAML 失败: %w", err)
+	}
+
+	// 将字段路径分割为数组
+	paths := strings.Split(fieldPath, ".")
+
+	// 更新节点值
+	err = updateYAMLNode(&node, paths, newValue)
+	if err != nil {
+		return err
+	}
+
+	// 将修改后的节点树写回文件
+	var buf strings.Builder
+	encoder := yaml.NewEncoder(&buf)
+	encoder.SetIndent(2)
+	defer encoder.Close()
+
+	err = encoder.Encode(&node)
+	if err != nil {
+		return fmt.Errorf("编码 YAML 失败: %w", err)
+	}
+
+	// 写回文件
+	err = ioutil.WriteFile(filePath, []byte(buf.String()), 0644)
+	if err != nil {
+		return fmt.Errorf("写入文件失败: %w", err)
+	}
+
+	return nil
+}
+
+// updateYAMLNode 在节点树中查找并更新指定路径的值
+func updateYAMLNode(node *yaml.Node, paths []string, newValue string) error {
+	// 跳过文档节点
+	if node.Kind == yaml.DocumentNode {
+		return updateYAMLNode(node.Content[0], paths, newValue)
+	}
+
+	// 处理映射节点
+	if node.Kind == yaml.MappingNode {
+		for i := 0; i < len(node.Content); i += 2 {
+			keyNode := node.Content[i]
+			valueNode := node.Content[i+1]
+
+			if keyNode.Value == paths[0] {
+				if len(paths) == 1 {
+					// 找到目标字段，更新值
+					valueNode.Value = newValue
+					valueNode.Tag = "!!str" // 确保值被设置为字符串类型
+					return nil
+				}
+				// 继续递归查找下一级
+				return updateYAMLNode(valueNode, paths[1:], newValue)
+			}
+		}
+	}
+
+	return fmt.Errorf("未找到字段: %s", paths[0])
 }

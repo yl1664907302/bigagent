@@ -4,6 +4,7 @@
 package kmodule
 
 import (
+	grpc_server "bigagent/grpcs/server"
 	"context"
 	"log"
 
@@ -47,6 +48,26 @@ func NewKmodules() *Kmodules {
 			Name:      i.Name,
 			State:     i.State,
 			StartMode: i.StartMode,
+		}
+
+		k[i.Name] = wininfo
+	}
+
+	return &k
+}
+
+func NewKmodulesGrpc() *map[string]*grpc_server.Win32_SystemDriver {
+	k := make(map[string]*grpc_server.Win32_SystemDriver)
+	kinfos, err := Info()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	for _, i := range kinfos {
+		wininfo := &grpc_server.Win32_SystemDriver{
+			Name:      i.Name,
+			State:     i.State,
+			Startmode: i.StartMode,
 		}
 
 		k[i.Name] = wininfo

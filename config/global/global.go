@@ -1,9 +1,15 @@
 package global
 
 import (
-	"bigagent/config"
+	"github.com/spf13/viper"
 )
 
+/*
+	    V为全局变量，用于读取配置文件
+		ASTATUS为全局变量，用于记录agent状态
+*/
+
 var (
-	CONF *config.Server
+	V       *viper.Viper
+	ASTATUS string
 )

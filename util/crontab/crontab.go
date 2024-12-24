@@ -2,7 +2,7 @@ package crontab
 
 import (
 	"bigagent/scrape/machine"
-	"bigagent/util/logger"
+	utils "bigagent/util"
 	"github.com/robfig/cron/v3"
 )
 
@@ -16,14 +16,14 @@ func cronTask() {
 
 // ScrapeCrontab 初始化采集crontab任务
 func ScrapeCrontab() {
-	crontabRule := "@every 900s"
+	crontabRule := "@every 3s"
 	c := cron.New()
 	c.Start()
 
 	addFunc, err := c.AddFunc(crontabRule, cronTask)
 	if err != nil {
-		logger.DefaultLogger.Error("定时任务启动异常：", err)
+		utils.DefaultLogger.Error("定时任务启动异常：", err)
 		return
 	}
-	logger.DefaultLogger.Info("定时任务启动成功,EntryID：", addFunc)
+	utils.DefaultLogger.Info("定时任务启动成功,EntryID：", addFunc)
 }

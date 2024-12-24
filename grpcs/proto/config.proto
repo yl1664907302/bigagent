@@ -1,0 +1,45 @@
+// 定义 config 数据结构
+syntax = "proto3";
+
+package grpc_config;
+option go_package = "./";
+
+
+// 网络信息配置
+message NetworkInfo {
+  string protocol = 1; // 网络协议，如http或https
+  string host = 2;     // 主机地址
+  int64 port = 3;      // 端口号
+  string path = 4;     // 请求路径
+}
+
+// Agent 配置
+message AgentConfig {
+  string serct  =1;
+  string id = 2;                                // Agent ID
+  string auth_name = 6;
+  string data_name =3;// 认证名称
+  string slot_name =4;// 认证名称
+  NetworkInfo network_info = 5;                 // 网络信息
+
+  //下面为前端传入的各种认证数据
+  string token = 9;                             // Token
+}
+
+// 服务定义
+service AgentConfigService {
+  // 示例方法：获取 Agent 配置
+  rpc PushAgentConfig (AgentConfig) returns (ResponseMessage);
+}
+
+message ResponseMessage {
+  string code =1;
+  string message = 2;
+}
+
+
+//protoc --go_out=./grpcs/grpc_config/ --proto_path=./grpcs/proto/ config.proto
+
+//protoc --gogofaster_out=plugins=grpc:./grpcs/grpc_config/ --proto_path=./grpcs/proto/ config.proto
+
+// protoc -I . --go_out=plugins=grpc:. ./config.proto

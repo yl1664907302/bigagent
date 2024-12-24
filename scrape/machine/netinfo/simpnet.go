@@ -1,8 +1,10 @@
 package netinfo
 
 import (
+	grpc_server "bigagent/grpcs/server"
 	"encoding/json"
 	"log"
+	"regexp"
 
 	"github.com/shirou/gopsutil/v4/net"
 )
@@ -31,11 +33,38 @@ func NewSmpNet() *SmpNet {
 			ip = i.Addrs[0].Addr
 		}
 
+		reIPv4 := regexp.MustCompile(`(\d{1,3}\.){3}\d{1,3}\/\d{1,2}`)
+		matchesIPv4 := reIPv4.FindString(ip)
+
 		smpinfo := smpInfo{
 			Name: i.Name,
 			Mtu:  i.MTU,
 			Mac:  i.HardwareAddr,
-			IP:   ip,
+			IP:   matchesIPv4,
+		}
+		smpnet[i.Name] = smpinfo
+	}
+
+	return &smpnet
+}
+
+func NewSmpNetGrpc() *map[string]*grpc_server.SmpNetInfo {
+	smpnet := make(map[string]*grpc_server.SmpNetInfo)
+	n, err := net.Interfaces()
+	if err != nil {
+		log.Fatal(err)
+	}
+	for _, i := range n {
+		ip := ""
+		if len(i.Addrs) > 0 {
+			ip = i.Addrs[0].Addr
+		}
+
+		smpinfo := &grpc_server.SmpNetInfo{
+			Name: i.Name,
+			Mtu:  int64(i.MTU),
+			Mac:  i.HardwareAddr,
+			Ip:   ip,
 		}
 		smpnet[i.Name] = smpinfo
 	}

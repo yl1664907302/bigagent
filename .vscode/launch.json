@@ -9,6 +9,13 @@
             "type": "go",
             "request": "launch",
             "mode": "auto",
+            "program": "${workspaceFolder}"
+        },
+        {
+            "name": "Launch Package",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
             "program": "${fileDirname}"
         }
     ]
