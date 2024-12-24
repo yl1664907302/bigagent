@@ -30,6 +30,11 @@ func (s *StandardStrategy) Api(key string) (interface{}, error) {
 			"code": 0,
 			"data": model.NewSmpData(),
 		}, nil
+	case "patroldata":
+		return map[string]interface{}{
+			"code": 0,
+			"data": model.NewPatrolData(),
+		}, nil
 	default:
 		return map[string]interface{}{
 			"code": 500,

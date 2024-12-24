@@ -28,6 +28,7 @@ var StandRouterGroupApp2 = &StandRouterGroup2{Prefix: "/stand2"}
 // StandRouter 添加路由，自动带上前缀
 func (r *StandRouterGroup) StandRouter() {
 	http.Handle(r.Prefix+"/showdata", loggingMiddleware(AuthMiddleware(http.HandlerFunc(router.StandRouterApp.ShowData))))
+	http.Handle(r.Prefix+"/patroldata", loggingMiddleware(AuthMiddleware(http.HandlerFunc(router.StandRouterApp.PatrolData))))
 }
 
 // Stand2Router 添加路由，自动带上前缀

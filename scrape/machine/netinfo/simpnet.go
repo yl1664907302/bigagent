@@ -4,7 +4,7 @@ import (
 	grpc_server "bigagent/grpcs/server"
 	"encoding/json"
 	"log"
-	"regexp"
+	"runtime"
 
 	"github.com/shirou/gopsutil/v4/net"
 )
@@ -29,18 +29,24 @@ func NewSmpNet() *SmpNet {
 	}
 	for _, i := range n {
 		ip := ""
+
 		if len(i.Addrs) > 0 {
-			ip = i.Addrs[0].Addr
+			if runtime.GOOS == "windows" {
+				ip = i.Addrs[1].Addr
+			} else {
+				ip = i.Addrs[0].Addr
+			}
+
 		}
 
-		reIPv4 := regexp.MustCompile(`(\d{1,3}\.){3}\d{1,3}\/\d{1,2}`)
-		matchesIPv4 := reIPv4.FindString(ip)
+		// reIPv4 := regexp.MustCompile(`(\d{1,3}\.){3}\d{1,3}\/\d{1,2}`)
+		// matchesIPv4 := reIPv4.FindString(ip)
 
 		smpinfo := smpInfo{
 			Name: i.Name,
 			Mtu:  i.MTU,
 			Mac:  i.HardwareAddr,
-			IP:   matchesIPv4,
+			IP:   ip,
 		}
 		smpnet[i.Name] = smpinfo
 	}
@@ -57,9 +63,15 @@ func NewSmpNetGrpc() *map[string]*grpc_server.SmpNetInfo {
 	for _, i := range n {
 		ip := ""
 		if len(i.Addrs) > 0 {
-			ip = i.Addrs[0].Addr
-		}
+			if runtime.GOOS == "windows" {
+				ip = i.Addrs[1].Addr
+			} else {
+				ip = i.Addrs[0].Addr
+			}
 
+		}
+		// reIPv4 := regexp.MustCompile(`(\d{1,3}\.){3}\d{1,3}\/\d{1,2}`)
+		// matchesIPv4 := reIPv4.FindString(ip)
 		smpinfo := &grpc_server.SmpNetInfo{
 			Name: i.Name,
 			Mtu:  int64(i.MTU),

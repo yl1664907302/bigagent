@@ -51,13 +51,13 @@ func NewSmpMem() *SmpMemory {
 			Total:       formatsize.FormatSize(m.Total),
 			Used:        formatsize.FormatSize(m.Used),
 			Free:        formatsize.FormatSize(m.Free),
-			UsedPercent: fmt.Sprint(m.UsedPercent) + "%",
+			UsedPercent: fmt.Sprintf("%.2f%%", m.UsedPercent),
 		},
 		Swap: &SmpSwap{
 			Total:       formatsize.FormatSize(sm.Total),
 			Used:        formatsize.FormatSize(sm.Used),
 			Free:        formatsize.FormatSize(sm.Free),
-			UsedPercent: fmt.Sprint(sm.UsedPercent) + "%",
+			UsedPercent: fmt.Sprintf("%.2f%%", sm.UsedPercent),
 		},
 	}
 }

@@ -75,13 +75,13 @@ func ListerChannel() {
 		// 使用 select 实现更好的通道处理
 		for {
 			select {
-			case signal := <-machine.MachineCh:
+			case signal := <-machine.MachineChSmp:
 				if !signal {
 					continue
 				}
 				// 使用非阻塞方式发送 false
 				select {
-				case machine.MachineCh <- false:
+				case machine.MachineChSmp <- false:
 				default:
 				}
 				utils.DefaultLogger.Info("数据更新，执行推送")

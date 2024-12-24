@@ -1,6 +1,7 @@
 package machine
 
 import (
+	grpc_server "bigagent/grpcs/server"
 	"bigagent/scrape/machine/cpuinfo"
 	"bigagent/scrape/machine/diskinfo"
 	"bigagent/scrape/machine/info"
@@ -13,39 +14,50 @@ import (
 )
 
 type SmpMachine struct {
-	Uuid     string             `json:"uuid"`
-	Platform string             `json:"platform"`
-	Os       string             `json:"os"`
-	Kernel   string             `json:"kernel"`
-	Hostname string             `json:"hostname"`
-	IPv4     string             `json:"ipv4"`
-	Arch     string             `json:"arch"`
-	Machine  string             `json:"machine"`
-	Time     time.Time          `json:"time"`
-	Cpu      *cpuinfo.SmpCpu    `json:"cpu"`
-	Disk     *diskinfo.SmpDisk  `json:"disk"`
-	Memory   *meminfo.SmpMemory `json:"memory"`
-	Kmodules *kmodule.Kmodules  `json:"kernel_modules"`
-	Net      *netinfo.SmpNet    `json:"network"`
-	Process  *processinfo.SmpPs `json:"process"`
+	Uuid       string             `json:"uuid"`
+	Platform   string             `json:"platform"`
+	Os         string             `json:"os"`
+	Kernel     string             `json:"kernel"`
+	Hostname   string             `json:"hostname"`
+	IPv4       string             `json:"ipv4"`
+	Arch       string             `json:"arch"`
+	Machine    string             `json:"machine"`
+	Disk_use   map[string]string  `json:"disk_use"`
+	Memory_use string             `json:"memory_use"`
+	Cpu_use    string             `json:"cpu_use"`
+	Time       time.Time          `json:"time"`
+	Cpu        *cpuinfo.SmpCpu    `json:"cpu"`
+	Disk       *diskinfo.SmpDisk  `json:"disk"`
+	Memory     *meminfo.SmpMemory `json:"memory"`
+	Kmodules   *kmodule.Kmodules  `json:"kernel_modules"`
+	Net        *netinfo.SmpNet    `json:"network"`
+	Process    *processinfo.SmpPs `json:"process"`
 }
 
-// type SmpMachineGrpc struct {
-// 	Uuid     string                                     `json:"uuid"`
-// 	Hostname string                                     `json:"hostname"`
-// 	IPv4     string                                     `json:"ipv4"`
-// 	Time     time.Time                                  `json:"time"`
-// 	Cpu      *cpuinfo.SmpCpu                            `json:"cpu"`
-// 	Disk     map[string]*grpc_server.SmpDisk            `json:"disk"`
-// 	Memory   *meminfo.SmpMemory                         `json:"memory"`
-// 	Kmodules map[string]*grpc_server.Win32_SystemDriver `json:"kernel_modules"`
-// 	Net      map[string]*grpc_server.SmpNetInfo         `json:"network"`
-// 	Process  map[string]*grpc_server.SmPsInfo           `json:"process"`
-// }
+type SmpMachineGrpc struct {
+	Uuid       string                                     `json:"uuid"`
+	Platform   string                                     `json:"platform"`
+	Os         string                                     `json:"os"`
+	Kernel     string                                     `json:"kernel"`
+	Hostname   string                                     `json:"hostname"`
+	IPv4       string                                     `json:"ipv4"`
+	Arch       string                                     `json:"arch"`
+	Machine    string                                     `json:"machine"`
+	Disk_use   map[string]string                          `json:"disk_use"`
+	Memory_use string                                     `json:"memory_use"`
+	Cpu_use    string                                     `json:"cpu_use"`
+	Time       time.Time                                  `json:"time"`
+	Cpu        *cpuinfo.SmpCpu                            `json:"cpu"`
+	Disk       map[string]*grpc_server.SmpDisk            `json:"disk"`
+	Memory     *meminfo.SmpMemory                         `json:"memory"`
+	Kmodules   map[string]*grpc_server.Win32_SystemDriver `json:"kernel_modules"`
+	Net        map[string]*grpc_server.SmpNetInfo         `json:"network"`
+	Process    map[string]*grpc_server.SmPsInfo           `json:"process"`
+}
 
 var (
-	SmpMa = NewSmpMachine()
-	// SmpMaGrpc    = NewSmpMachineGrpc()
+	SmpMa        = NewSmpMachine()
+	SmpMaGrpc    = NewSmpMachineGrpc()
 	MachineChSmp = make(chan bool, 1)
 )
 
@@ -53,53 +65,70 @@ var (
 func NewSmpMachine() *SmpMachine {
 	info := info.NewInfo()
 
+	disk_use := make(map[string]string)
+
+	disks := diskinfo.NewSmpDisk()
+
+	for _, v := range *disks {
+		disk_use[v.Device] = v.UsedPercent
+	}
 	return &SmpMachine{
-		Uuid:     info.Uuid,
-		Os:       info.Os,
-		Kernel:   info.Kernel,
-		Platform: info.Platform,
-		Hostname: info.Hostname,
-		IPv4:     info.IPv4,
-		Arch:     info.Arch,
-		Machine:  info.Virtual,
-		Time:     time.Now(),
-		Cpu:      cpuinfo.NewSmpCpu(),
-		Disk:     diskinfo.NewSmpDisk(),
-		Memory:   meminfo.NewSmpMem(),
-		Kmodules: kmodules.NewKmodules(),
-		Net:      netinfo.NewSmpNet(),
-		Process:  processinfo.NewSmpPs(),
+		Uuid:       info.Uuid,
+		Os:         info.Os,
+		Kernel:     info.Kernel,
+		Platform:   info.Platform,
+		Hostname:   info.Hostname,
+		IPv4:       info.IPv4,
+		Arch:       info.Arch,
+		Machine:    info.Virtual,
+		Disk_use:   disk_use,
+		Memory_use: meminfo.NewSmpMem().Vmem.UsedPercent,
+		Cpu_use:    cpuinfo.NewSmpCpu().Usage,
+		Time:       time.Now(),
+		Cpu:        cpuinfo.NewSmpCpu(),
+		Disk:       disks,
+		Memory:     meminfo.NewSmpMem(),
+		Kmodules:   kmodules.NewKmodules(),
+		Net:        netinfo.NewSmpNet(),
+		Process:    processinfo.NewSmpPs(),
 	}
 }
 
-// func NewSmpMachineGrpc() *SmpMachineGrpc {
-// 	uuid := machine.GetMachineData()
-// 	addr, err := machine.GetLocalIpAddr()
-// 	if err != nil {
-// 		log.Fatal(err)
-// 	}
-// 	hostname, err := os.Hostname()
-// 	if err != nil {
-// 		log.Fatal(err)
-// 	}
+func NewSmpMachineGrpc() *SmpMachineGrpc {
+	info := info.NewInfo()
 
-// 	return &SmpMachineGrpc{
-// 		Uuid:     uuid.PlatformUUID,
-// 		Hostname: hostname,
-// 		IPv4:     addr,
-// 		Time:     time.Now(),
-// 		Cpu:      cpuinfo.NewSmpCpu(),
-// 		Disk:     *diskinfo.NewSmpDiskGrpc(),
-// 		Memory:   meminfo.NewSmpMem(),
-// 		Kmodules: *kmodules.NewKmodulesGrpc(),
-// 		Net:      *netinfo.NewSmpNetGrpc(),
-// 		Process:  *processinfo.NewSmpPsGrpc(),
-// 	}
-// }
+	disk_use := make(map[string]string)
+
+	disks := diskinfo.NewSmpDisk()
+
+	for _, v := range *disks {
+		disk_use[v.Device] = v.UsedPercent
+	}
+	return &SmpMachineGrpc{
+		Uuid:       info.Uuid,
+		Os:         info.Os,
+		Kernel:     info.Kernel,
+		Platform:   info.Platform,
+		Hostname:   info.Hostname,
+		IPv4:       info.IPv4,
+		Arch:       info.Arch,
+		Machine:    info.Virtual,
+		Disk_use:   disk_use,
+		Memory_use: meminfo.NewSmpMem().Vmem.UsedPercent,
+		Cpu_use:    cpuinfo.NewSmpCpu().Usage,
+		Time:       time.Now(),
+		Cpu:        cpuinfo.NewSmpCpu(),
+		Disk:       *diskinfo.NewSmpDiskGrpc(),
+		Memory:     meminfo.NewSmpMem(),
+		// Kmodules:   kmodules.NewKmodules(),
+		Net:     *netinfo.NewSmpNetGrpc(),
+		Process: *processinfo.NewSmpPsGrpc(),
+	}
+}
 
 func NotifySmpMachineAddressChange() {
 	select {
-	case MachineCh <- true:
+	case MachineChSmp <- true:
 	default:
 	}
 }

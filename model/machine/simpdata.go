@@ -1,6 +1,7 @@
 package model
 
 import (
+	grpc_server "bigagent/grpcs/server"
 	"bigagent/scrape/machine"
 	"bigagent/scrape/machine/cpuinfo"
 	"bigagent/scrape/machine/diskinfo"
@@ -37,41 +38,42 @@ type SmpData struct {
 	Process    processinfo.SmpPs `json:"process"`
 }
 
-// type SmpDataGrpc struct {
-// 	Uuid     string                                     `json:"uuid"`
-// 	Hostname string                                     `json:"hostname"`
-// 	IPv4     string                                     `json:"ipv4"`
-// 	Time     time.Time                                  `json:"time"`
-// 	Cpu      cpuinfo.SmpCpu                             `json:"cpu"`
-// 	Disk     map[string]*grpc_server.SmpDisk            `json:"disk"`
-// 	Memory   meminfo.SmpMemory                          `json:"memory"`
-// 	Kmodules map[string]*grpc_server.Win32_SystemDriver `json:"kernel_module"`
-// 	Net      map[string]*grpc_server.SmpNetInfo         `json:"net"`
-// 	Process  map[string]*grpc_server.SmPsInfo           `json:"process"`
-// }
+type SmpDataGrpc struct {
+	Uuid       string                                     `json:"uuid"`
+	Os         string                                     `json:"os"`
+	Kernel     string                                     `json:"kernel"`
+	Platform   string                                     `json:"system_platform"`
+	Hostname   string                                     `json:"hostname"`
+	IPv4       string                                     `json:"ipv4"`
+	Arch       string                                     `json:"arch"`
+	Virtual    string                                     `json:"virtual_machine"`
+	Disk_use   map[string]string                          `json:"disk_use"`
+	Memory_use string                                     `json:"memory_use"`
+	Cpu_use    string                                     `json:"cpu_use"`
+	Time       time.Time                                  `json:"time"`
+	Cpu        cpuinfo.SmpCpu                             `json:"cpu"`
+	Disk       map[string]*grpc_server.SmpDisk            `json:"disk"`
+	Memory     meminfo.SmpMemory                          `json:"memory"`
+	Kmodules   map[string]*grpc_server.Win32_SystemDriver `json:"kernel_module"`
+	Net        map[string]*grpc_server.SmpNetInfo         `json:"net"`
+	Process    map[string]*grpc_server.SmPsInfo           `json:"process"`
+}
 
 func NewSmpData() *SmpData {
 	if machine.SmpMa == nil {
 		utils.DefaultLogger.Error("machine.SmpMa is nil!")
 	}
 
-	disk_use := make(map[string]string)
-	smpma := machine.NewSmpMachine()
-
-	for _, v := range *smpma.Disk {
-		disk_use[v.Device] = v.UsedPercent
-	}
-
 	// s := global.CONF.System.Serct
 	u := machine.SmpMa.Uuid
-	s := machine.SmpMa.Platform
+	z := machine.SmpMa.Platform
 	o := machine.SmpMa.Os
 	ker := machine.SmpMa.Kernel
 	h := machine.SmpMa.Hostname
 	i := machine.SmpMa.IPv4
 	arh := machine.SmpMa.Arch
 	v := machine.SmpMa.Machine
-	du := disk_use
+	du := machine.SmpMa.Disk_use
 	mu := machine.SmpMa.Memory.Vmem.UsedPercent
 	cu := machine.SmpMa.Cpu.Usage
 	t := machine.SmpMa.Time
@@ -83,9 +85,9 @@ func NewSmpData() *SmpData {
 	p := machine.SmpMa.Process
 
 	return &SmpData{
-		// Serct:    s,
+		// Serct:      s,
 		Uuid:       u,
-		Platform:   s,
+		Platform:   z,
 		Os:         o,
 		Kernel:     ker,
 		Hostname:   h,
@@ -105,37 +107,53 @@ func NewSmpData() *SmpData {
 	}
 }
 
-// func NewSmpDataGrpc() *SmpDataGrpc {
-// 	if machine.SmpMaGrpc == nil {
-// 		utils.DefaultLogger.Error("machine.SmpMa is nil!")
-// 	}
+func NewSmpDataGrpc() *SmpDataGrpc {
+	if machine.SmpMaGrpc == nil {
+		utils.DefaultLogger.Error("machine.SmpMa is nil!")
+	}
 
-// 	// s := global.CONF.System.Serct
-// 	u := machine.SmpMaGrpc.Uuid
-// 	h := machine.SmpMaGrpc.Hostname
-// 	i := machine.SmpMaGrpc.IPv4
-// 	t := machine.SmpMaGrpc.Time
-// 	c := machine.SmpMaGrpc.Cpu
-// 	d := machine.SmpMaGrpc.Disk
-// 	m := machine.SmpMaGrpc.Memory
-// 	k := machine.SmpMaGrpc.Kmodules
-// 	n := machine.SmpMaGrpc.Net
-// 	p := machine.SmpMaGrpc.Process
+	// s :=glc.CONF.System.Serct
+	u := machine.SmpMaGrpc.Uuid
+	z := machine.SmpMaGrpc.Platform
+	o := machine.SmpMaGrpc.Os
+	ker := machine.SmpMaGrpc.Kernel
+	h := machine.SmpMaGrpc.Hostname
+	i := machine.SmpMaGrpc.IPv4
+	arh := machine.SmpMaGrpc.Arch
+	v := machine.SmpMaGrpc.Machine
+	du := machine.SmpMaGrpc.Disk_use
+	mu := machine.SmpMaGrpc.Memory_use
+	cu := machine.SmpMaGrpc.Cpu_use
+	t := machine.SmpMaGrpc.Time
+	c := machine.SmpMaGrpc.Cpu
+	d := machine.SmpMaGrpc.Disk
+	m := machine.SmpMaGrpc.Memory
+	k := machine.SmpMaGrpc.Kmodules
+	n := machine.SmpMaGrpc.Net
+	p := machine.SmpMaGrpc.Process
 
-// 	return &SmpDataGrpc{
-// 		// Serct:    s,
-// 		Uuid:     u,
-// 		Hostname: h,
-// 		IPv4:     i,
-// 		Time:     t,
-// 		Cpu:      *c,
-// 		Disk:     d,
-// 		Memory:   *m,
-// 		Kmodules: k,
-// 		Net:      n,
-// 		Process:  p,
-// 	}
-// }
+	return &SmpDataGrpc{
+		// Serct:    s,
+		Uuid:       u,
+		Platform:   z,
+		Os:         o,
+		Kernel:     ker,
+		Hostname:   h,
+		IPv4:       i,
+		Arch:       arh,
+		Virtual:    v,
+		Disk_use:   du,
+		Memory_use: mu,
+		Cpu_use:    cu,
+		Time:       t,
+		Cpu:        *c,
+		Disk:       d,
+		Memory:     *m,
+		Kmodules:   k,
+		Net:        n,
+		Process:    p,
+	}
+}
 
 func NewSmpDataApi() *SmpData {
 
@@ -146,16 +164,16 @@ func NewSmpDataApi() *SmpData {
 		disk_use[v.Device] = v.UsedPercent
 	}
 
-	// s := global.CONF.System.Serct
+	// s :=config.CONF.System.Serct
 	u := machine.SmpMa.Uuid
-	s := machine.SmpMa.Platform
+	z := machine.SmpMa.Platform
 	o := machine.SmpMa.Os
 	ker := machine.SmpMa.Kernel
 	h := machine.SmpMa.Hostname
 	i := machine.SmpMa.IPv4
 	arh := machine.SmpMa.Arch
 	v := machine.SmpMa.Machine
-	du := disk_use
+	du := machine.SmpMa.Disk_use
 	mu := machine.SmpMa.Memory.Vmem.UsedPercent
 	cu := machine.SmpMa.Cpu.Usage
 	t := machine.SmpMa.Time
@@ -166,9 +184,9 @@ func NewSmpDataApi() *SmpData {
 	n := netinfo.NewSmpNet()
 	p := processinfo.NewSmpPs()
 	return &SmpData{
-		// Serct:    s,
+		// Serct:      s,
 		Uuid:       u,
-		Platform:   s,
+		Platform:   z,
 		Os:         o,
 		Kernel:     ker,
 		Hostname:   h,

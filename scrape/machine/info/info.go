@@ -6,9 +6,10 @@ import (
 	"runtime"
 	"time"
 
+	machine "github.com/super-l/machine-code"
+
 	"github.com/elastic/go-sysinfo"
 	"github.com/shirou/gopsutil/v4/host"
-	"github.com/super-l/machine-code/machine"
 )
 
 // 定义系统类型
@@ -33,8 +34,8 @@ func (i *Info) GetPlatform() string {
 }
 
 // GetIPv4 获取IP地址
-func (i *Info) GetIPv4() string {
-	addr, err := machine.GetLocalIpAddr()
+func (i Info) GetIPv4() string {
+	addr, err := machine.GetIpAddr()
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -52,9 +53,9 @@ func (i *Info) GetHostname() string {
 
 // GetUuid 获得系统uuid
 func (i *Info) GetUuid() string {
-	uuid := machine.GetMachineData()
-
-	return uuid.PlatformUUID
+	// uuid := machine.GetMachineData()
+	uuid := machine.Machine.UUID
+	return uuid
 }
 
 func (i *Info) GetVirtual() string {
@@ -72,12 +73,12 @@ func (i *Info) GetVirtual() string {
 
 // 对外接口
 func NewInfo() *Info {
-	uuid := machine.GetMachineData()
+	uuid := machine.Machine
 	hostname, err := os.Hostname()
 	if err != nil {
 		log.Fatal(err)
 	}
-	addr, err := machine.GetLocalIpAddr()
+	addr, err := machine.GetIpAddr()
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -100,7 +101,7 @@ func NewInfo() *Info {
 
 	os_version := os.OS.Name + "" + os.OS.Version
 	return &Info{
-		Uuid:     uuid.PlatformUUID,
+		Uuid:     uuid.UUID,
 		Platform: runtime.GOOS,
 		Os:       os_version,
 		Kernel:   os.KernelVersion,
