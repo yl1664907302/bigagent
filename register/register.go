@@ -7,30 +7,30 @@ import (
 )
 
 // Stand1Register  策略注册,open push值是否开启push, only push是否只开启push（关闭api）
-func Stand1Register(host string, grpcHost string, openPush bool, onlyPush bool) {
-	if grpcHost == "" {
+func Stand1Register(grpcHost string, token string, openPush bool, onlyPush bool) {
+	if grpcHost == "" || grpcHost == "xxx" {
 		return
 	}
 	agent := strategy.NewAgent()
 	if !router.StandRouterApp.K {
 		if onlyPush {
-			switch host {
+			switch token {
 			case "":
-				log.Println("请配置push操作的host值")
+				log.Println("请配置push操作的token值")
 			default:
-				agent.SetPushStrategy(&strategy.StandardStrategy{H: host, G: grpcHost})
+				agent.SetPushStrategy(&strategy.StandardStrategy{K: token, G: grpcHost})
 			}
 		} else {
 			switch openPush {
 			case true:
-				switch host {
+				switch token {
 				case "":
 					agent.SetApiStrategy(&strategy.StandardStrategy{})
 					router.StandRouterApp.A = agent
 					router.StandRouterApp.K = true
 				default:
 					agent.SetApiStrategy(&strategy.StandardStrategy{})
-					agent.SetPushStrategy(&strategy.StandardStrategy{H: host, G: grpcHost})
+					agent.SetPushStrategy(&strategy.StandardStrategy{K: token, G: grpcHost})
 					router.StandRouterApp.A = agent
 					router.StandRouterApp.K = true
 				}
@@ -42,23 +42,23 @@ func Stand1Register(host string, grpcHost string, openPush bool, onlyPush bool) 
 		}
 	} else {
 		if onlyPush {
-			switch host {
+			switch token {
 			case "":
-				log.Println("请配置push操作的host值")
+				log.Println("请配置push操作的token值")
 			default:
-				agent.SetPushStrategy(&strategy.StandardStrategy{H: host, G: grpcHost})
+				agent.SetPushStrategy(&strategy.StandardStrategy{K: token, G: grpcHost})
 			}
 		} else {
 			switch openPush {
 			case true:
-				switch host {
+				switch token {
 				case "":
-					log.Println("请配置push操作的host值")
+					log.Println("请配置push操作的token值")
 				default:
-					agent.SetPushStrategy(&strategy.StandardStrategy{H: host, G: grpcHost})
+					agent.SetPushStrategy(&strategy.StandardStrategy{K: token, G: grpcHost})
 				}
 			default:
-				agent.SetPushStrategy(&strategy.StandardStrategy{H: host, G: grpcHost})
+				agent.SetPushStrategy(&strategy.StandardStrategy{K: token, G: grpcHost})
 			}
 		}
 	}
@@ -66,30 +66,30 @@ func Stand1Register(host string, grpcHost string, openPush bool, onlyPush bool) 
 }
 
 // Stand2Register  策略注册,open push值是否开启push, only push是否只开启push（关闭api）
-func Stand2Register(host string, grpcHost string, openPush bool, onlyPush bool) {
+func Stand2Register(grpcHost string, token string, openPush bool, onlyPush bool) {
 	if grpcHost == "" {
 		return
 	}
 	agent := strategy.NewAgent()
 	if !router.StandRouterApp2.K {
 		if onlyPush {
-			switch host {
+			switch token {
 			case "":
 				log.Println("请配置push操作的host值")
 			default:
-				agent.SetPushStrategy(&strategy.StandardStrategy2{H: host, G: grpcHost})
+				agent.SetPushStrategy(&strategy.StandardStrategy2{K: token, G: grpcHost})
 			}
 		} else {
 			switch openPush {
 			case true:
-				switch host {
+				switch token {
 				case "":
 					agent.SetApiStrategy(&strategy.StandardStrategy2{})
 					router.StandRouterApp2.A = agent
 					router.StandRouterApp2.K = true
 				default:
 					agent.SetApiStrategy(&strategy.StandardStrategy2{})
-					agent.SetPushStrategy(&strategy.StandardStrategy2{H: host, G: grpcHost})
+					agent.SetPushStrategy(&strategy.StandardStrategy2{K: token, G: grpcHost})
 					router.StandRouterApp2.A = agent
 					router.StandRouterApp2.K = true
 				}
@@ -101,23 +101,23 @@ func Stand2Register(host string, grpcHost string, openPush bool, onlyPush bool) 
 		}
 	} else {
 		if onlyPush {
-			switch host {
+			switch token {
 			case "":
 				log.Println("请配置push操作的host值")
 			default:
-				agent.SetPushStrategy(&strategy.StandardStrategy2{H: host, G: grpcHost})
+				agent.SetPushStrategy(&strategy.StandardStrategy2{K: token, G: grpcHost})
 			}
 		} else {
 			switch openPush {
 			case true:
-				switch host {
+				switch token {
 				case "":
 					log.Println("请配置push操作的host值")
 				default:
-					agent.SetPushStrategy(&strategy.StandardStrategy2{H: host, G: grpcHost})
+					agent.SetPushStrategy(&strategy.StandardStrategy2{K: token, G: grpcHost})
 				}
 			default:
-				agent.SetPushStrategy(&strategy.StandardStrategy2{H: host, G: grpcHost})
+				agent.SetPushStrategy(&strategy.StandardStrategy2{K: token, G: grpcHost})
 			}
 		}
 	}

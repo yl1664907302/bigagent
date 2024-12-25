@@ -14,6 +14,7 @@ import (
 
 var (
 	cmdbPattern = regexp.MustCompile(`grpc_cmdb(\d+)_stand(\d+)`)
+	//cmdbPattern = regexp.MustCompile(`(\w+)`)
 )
 
 // Hander 启动http服务
@@ -40,8 +41,8 @@ func Hander(port string) {
 func AgentRegister() {
 	strategy.Agents = nil
 	//注册server端
-	register.Stand1Register("127.0.0.1:8080", global.V.GetString("system.grpc_server"), true, false)
-	register.Stand2Register("127.0.0.1:8080", "xxx", false, false)
+	register.Stand1Register(global.V.GetString("system.grpc_server"), global.V.GetString("system.serct"), true, false)
+	register.Stand2Register("xx", global.V.GetString("system.serct"), false, false)
 	//注册cmdb端
 	configs := global.V.AllSettings()
 	for key, value := range configs {
@@ -51,9 +52,17 @@ func AgentRegister() {
 			// 根据stand序号选择对应的注册函数
 			switch standNum {
 			case "1":
-				register.Stand1Register("127.0.0.1:8080", value.(string), true, false)
+				for k, v := range configs {
+					if k == key+"_token" {
+						register.Stand1Register(value.(string), v.(string), true, false)
+					}
+				}
 			case "2":
-				register.Stand2Register("127.0.0.1:8080", value.(string), true, false)
+				for k, v := range configs {
+					if k == key+"_token" {
+						register.Stand2Register(value.(string), v.(string), true, false)
+					}
+				}
 			case "3":
 				//register.Stand3Register("127.0.0.1:8080", value.(string), true, false)
 			// 可以继续添加更多的 case 以支持更多的 stand类型

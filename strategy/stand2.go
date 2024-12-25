@@ -7,13 +7,13 @@ import (
 )
 
 type StandardStrategy2 struct {
-	H string
+	K string
 	G string
 }
 
 func (s *StandardStrategy2) Push() error {
 	//_, err := request.NewPostStand(s.H).Do()
-	conn, err := grpcs.InitClient(s.G)
+	conn, err := grpcs.InitClient(s.G, s.K)
 	if err == nil {
 		go grpcs.GrpcStandPush(conn)
 	}
