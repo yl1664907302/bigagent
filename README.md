@@ -1,14 +1,10 @@
 
 
-![logo](README.assets/logo-1735116559160.png)
 
 
+                                  ![](https://cdn.nlark.com/yuque/0/2024/png/39165256/1735117873583-959c04e2-6aab-4f31-b1b7-f86fb5858cca.png)
 
-
-
-# agent
-
-## <font style="color:rgb(31, 35, 40);">BUILD</font>
+## Build
 ```shell
 go env -w GOOS=linux
 go build -o "bigagent"
@@ -19,7 +15,7 @@ go env -w GOOS=windows
 go build -o "bigagent"
 ```
 
-## <font style="color:rgb(31, 35, 40);">RUN</font>
+## Run
 ```shell
 ./bigagent -s start 
 ```
@@ -32,9 +28,9 @@ go build -o "bigagent"
 ./bigagent -s restart
 ```
 
-## <font style="color:rgb(31, 35, 40);">Contributing</font>
+## Contributing
 <font style="color:rgb(31, 35, 40);">如果你有好的意见或建议，欢迎给我们提 Issues 或 Pull Requests</font>
 
-## <font style="color:rgb(31, 35, 40);">Partners</font>
+## Partners
 [@李泽建](undefined/lizejian)[@叶凌](undefined/yeling-cqybb)
 
