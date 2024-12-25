@@ -2,7 +2,7 @@
 
 
 
-                                  ![](https://cdn.nlark.com/yuque/0/2024/png/39165256/1735117873583-959c04e2-6aab-4f31-b1b7-f86fb5858cca.png)
+                                                   ![logo.png](../logo.png)
 
 ## Build
 ```shell
