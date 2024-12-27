@@ -3,7 +3,6 @@ package strategy
 import (
 	"bigagent/grpcs"
 	model "bigagent/model/machine"
-	"fmt"
 )
 
 type StandardStrategy struct {
@@ -18,7 +17,7 @@ func (s *StandardStrategy) Push() error {
 		go grpcs.GrpcStandPush(conn)
 	}
 	if s == nil {
-		return fmt.Errorf("strategy is nil")
+		return nil
 	}
 	return err
 }

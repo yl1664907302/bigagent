@@ -42,7 +42,7 @@ func AgentRegister() {
 	strategy.Agents = nil
 	//注册server端
 	register.Stand1Register(global.V.GetString("system.grpc_server"), global.V.GetString("system.serct"), true, false)
-	register.Stand2Register("xx", global.V.GetString("system.serct"), false, false)
+	register.Stand2Register("占位符，只开启api", global.V.GetString("system.serct"), false, false)
 	//注册cmdb端
 	configs := global.V.AllSettings()
 	for key, value := range configs {
@@ -93,7 +93,7 @@ func ListerChannel() {
 				case machine.MachineChSmp <- false:
 				default:
 				}
-				utils.DefaultLogger.Info("数据更新，执行推送")
+				//utils.DefaultLogger.Info("数据更新，执行推送")
 
 				// 异步执行注册和推送
 				go func() {
@@ -111,7 +111,7 @@ func ListerChannel() {
 					for i, agent := range agents {
 						go func(index int, a strategy.Agent) {
 							if err := a.ExecutePush(); err != nil {
-								utils.DefaultLogger.Errorf("agent策略序号：%d,数据推送异常: %s", index, err)
+								//utils.DefaultLogger.Errorf("agent策略序号：%d,数据推送异常: %s", index, err)
 								errChan <- err
 							} else {
 								errChan <- nil

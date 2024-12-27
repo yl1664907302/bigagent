@@ -8,7 +8,7 @@ import (
 
 // Stand1Register  策略注册,open push值是否开启push, only push是否只开启push（关闭api）
 func Stand1Register(grpcHost string, token string, openPush bool, onlyPush bool) {
-	if grpcHost == "" || grpcHost == "xxx" {
+	if grpcHost == "" {
 		return
 	}
 	agent := strategy.NewAgent()

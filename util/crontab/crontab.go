@@ -1,6 +1,7 @@
 package crontab
 
 import (
+	"bigagent/config/global"
 	"bigagent/scrape/machine"
 	utils "bigagent/util"
 
@@ -18,7 +19,11 @@ func cronTask() {
 
 // ScrapeCrontab 初始化采集crontab任务
 func ScrapeCrontab() {
-	crontabRule := "@every 3s"
+	var crontabRule string
+	if global.V.GetString("collection_frequency") == "" {
+		crontabRule = "@every 3s"
+	}
+	crontabRule = "@every " + global.V.GetString("collection_frequency")
 	c := cron.New()
 	c.Start()
 

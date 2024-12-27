@@ -15,6 +15,10 @@ func (g *GrpcConfigServer) PushAgentConfig(ctx context.Context, req *AgentConfig
 	//密钥验证
 	md, ok := metadata.FromIncomingContext(ctx)
 	if !ok {
+		err := utils.ModifyYAML("config.yml", "action_detail", "config update failed["+req.Id+"]")
+		if err != nil {
+			utils.DefaultLogger.Error(err)
+		}
 		return &ResponseMessage{
 			Code:    "500",
 			Message: "agent_config serct is error ！",
@@ -30,18 +34,23 @@ func (g *GrpcConfigServer) PushAgentConfig(ctx context.Context, req *AgentConfig
 		}
 	}
 	if !validTokenFound {
-		return &ResponseMessage{
-			Code:    "500",
-			Message: "agent_config Authorization token is missing！",
-		}, nil
+		err := utils.ModifyYAML("config.yml", "action_detail", "config update failed["+req.Id+"]")
+		if err != nil {
+			utils.DefaultLogger.Error(err)
+			return &ResponseMessage{
+				Code:    "500",
+				Message: "agent_config Authorization token is missing！",
+			}, nil
+		}
 	}
 	switch req.DataName {
 	case "stand1":
 		err := utils.ModifyYAML("config.yml", "grpc_cmdb"+req.SlotName+"_stand1", req.NetworkInfo.Host)
 		err = utils.ModifyYAML("config.yml", "grpc_cmdb"+req.SlotName+"_stand1"+"_token", req.Token)
-		err = utils.ModifyYAML("config.yml", "action_detail", "当前配置["+req.Id+"]")
+		err = utils.ModifyYAML("config.yml", "action_detail", req.Id)
 		if err != nil {
 			utils.DefaultLogger.Error(err)
+			err = utils.ModifyYAML("config.yml", "action_detail", "config update failed["+req.Id+"]")
 			return &ResponseMessage{
 				Code:    "500",
 				Message: "config update failed",
@@ -49,6 +58,15 @@ func (g *GrpcConfigServer) PushAgentConfig(ctx context.Context, req *AgentConfig
 		}
 	case "stand2":
 	default:
+	}
+	err := utils.ModifyYAML("config.yml", "collection_frequency", req.CollectionFrequency)
+	if err != nil {
+		utils.DefaultLogger.Error(err)
+		err = utils.ModifyYAML("config.yml", "action_detail", "config update failed["+req.Id+"]")
+		return &ResponseMessage{
+			Code:    "500",
+			Message: "config update failed",
+		}, err
 	}
 	return &ResponseMessage{
 		Code:    "200",
