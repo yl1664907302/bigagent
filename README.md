@@ -1,9 +1,3 @@
-
-
-
-
-                                                   ![logo.png](../logo.png)
-
 ## Build
 ```shell
 go env -w GOOS=linux

@@ -1,22 +1,22 @@
 package inits
 
 import (
-	"bigagent/config/global"
-	utils "bigagent/util"
+	"bigagent/internal/config/global"
+	"bigagent/internal/util"
 	"github.com/spf13/viper"
 )
 
-func Viper() {
-	initConfig()
+func Viper(path string) {
+	initConfig(path)
 	go dynamicConfig()
 }
 
-func initConfig() {
+func initConfig(path string) {
 	// 创建新的Viper实例
 	global.V = viper.New()
 
 	// 设置配置文件路径和类型
-	global.V.SetConfigFile("config.yml")
+	global.V.SetConfigFile(path)
 	global.V.SetConfigType("yaml")
 
 	// 读取配置文件

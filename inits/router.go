@@ -1,9 +1,9 @@
 package inits
 
 import (
-	"bigagent/config/global"
-	utils "bigagent/util"
-	"bigagent/web/router"
+	"bigagent/internal/config/global"
+	"bigagent/internal/util"
+	router2 "bigagent/internal/web/router"
 	"net/http"
 	"time"
 )
@@ -27,13 +27,13 @@ var StandRouterGroupApp2 = &StandRouterGroup2{Prefix: "/stand2"}
 
 // StandRouter 添加路由，自动带上前缀
 func (r *StandRouterGroup) StandRouter() {
-	http.Handle(r.Prefix+"/showdata", loggingMiddleware(AuthMiddleware(http.HandlerFunc(router.StandRouterApp.ShowData))))
-	http.Handle(r.Prefix+"/patroldata", loggingMiddleware(AuthMiddleware(http.HandlerFunc(router.StandRouterApp.PatrolData))))
+	http.Handle(r.Prefix+"/showdata", loggingMiddleware(AuthMiddleware(http.HandlerFunc(router2.StandRouterApp.ShowData))))
+	http.Handle(r.Prefix+"/patroldata", loggingMiddleware(AuthMiddleware(http.HandlerFunc(router2.StandRouterApp.PatrolData))))
 }
 
 // Stand2Router 添加路由，自动带上前缀
 func (r *StandRouterGroup2) StandRouter() {
-	http.Handle(r.Prefix+"/showdata", loggingMiddleware(AuthMiddleware(http.HandlerFunc(router.StandRouterApp2.ShowData))))
+	http.Handle(r.Prefix+"/showdata", loggingMiddleware(AuthMiddleware(http.HandlerFunc(router2.StandRouterApp2.ShowData))))
 }
 
 // VeopsRouter 添加路由，自动带上前缀

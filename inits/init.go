@@ -1,12 +1,12 @@
 package inits
 
 import (
-	"bigagent/config/global"
-	"bigagent/register"
-	"bigagent/scrape/machine"
-	"bigagent/strategy"
-	utils "bigagent/util"
-	"bigagent/util/crontab"
+	"bigagent/internal/config/global"
+	"bigagent/internal/register"
+	"bigagent/internal/scrape/machine"
+	"bigagent/internal/strategy"
+	"bigagent/internal/util"
+	"bigagent/internal/util/crontab"
 	"log"
 	"net/http"
 	"regexp"
