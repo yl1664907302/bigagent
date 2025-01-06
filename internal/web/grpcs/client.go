@@ -103,7 +103,7 @@ func GrpcStandPush(conn *grpc.ClientConn) {
 				UsedPercent: data.Memory.Swap.UsedPercent,
 			},
 		},
-		Kmodules: data.Kmodules,
+		Kmodules: nil,
 		Smpnet:   data.Net,
 		Smpps:    data.Process,
 	}

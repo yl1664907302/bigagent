@@ -84,13 +84,13 @@ func ListerChannel() {
 		// 使用 select 实现更好的通道处理
 		for {
 			select {
-			case signal := <-machine.MachineChSmp:
+			case signal := <-machine.MachineCh:
 				if !signal {
 					continue
 				}
 				// 使用非阻塞方式发送 false
 				select {
-				case machine.MachineChSmp <- false:
+				case machine.MachineCh <- false:
 				default:
 				}
 				//utils.DefaultLogger.Info("数据更新，执行推送")
@@ -111,7 +111,7 @@ func ListerChannel() {
 					for i, agent := range agents {
 						go func(index int, a strategy.Agent) {
 							if err := a.ExecutePush(); err != nil {
-								//utils.DefaultLogger.Errorf("agent策略序号：%d,数据推送异常: %s", index, err)
+								utils.DefaultLogger.Errorf("agent策略序号：%d,数据推送异常: %s", index, err)
 								errChan <- err
 							} else {
 								errChan <- nil

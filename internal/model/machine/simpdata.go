@@ -4,7 +4,6 @@ import (
 	"bigagent/internal/scrape/machine"
 	"bigagent/internal/scrape/machine/cpuinfo"
 	"bigagent/internal/scrape/machine/diskinfo"
-	"bigagent/internal/scrape/machine/kmodule"
 	"bigagent/internal/scrape/machine/meminfo"
 	"bigagent/internal/scrape/machine/netinfo"
 	"bigagent/internal/scrape/machine/processinfo"
@@ -32,30 +31,30 @@ type SmpData struct {
 	Cpu        cpuinfo.SmpCpu    `json:"cpu"`
 	Disk       diskinfo.SmpDisk  `json:"disk"`
 	Memory     meminfo.SmpMemory `json:"memory"`
-	Kmodules   kmodule.Kmodules  `json:"kernel_module"`
-	Net        netinfo.SmpNet    `json:"net"`
-	Process    processinfo.SmpPs `json:"process"`
+	//Kmodules   kmodule.Kmodules  `json:"kernel_module"`
+	Net     netinfo.SmpNet    `json:"net"`
+	Process processinfo.SmpPs `json:"process"`
 }
 
 type SmpDataGrpc struct {
-	Uuid       string                                     `json:"uuid"`
-	Os         string                                     `json:"os"`
-	Kernel     string                                     `json:"kernel"`
-	Platform   string                                     `json:"system_platform"`
-	Hostname   string                                     `json:"hostname"`
-	IPv4       string                                     `json:"ipv4"`
-	Arch       string                                     `json:"arch"`
-	Virtual    string                                     `json:"virtual_machine"`
-	Disk_use   map[string]string                          `json:"disk_use"`
-	Memory_use string                                     `json:"memory_use"`
-	Cpu_use    string                                     `json:"cpu_use"`
-	Time       time.Time                                  `json:"time"`
-	Cpu        cpuinfo.SmpCpu                             `json:"cpu"`
-	Disk       map[string]*grpc_server.SmpDisk            `json:"disk"`
-	Memory     meminfo.SmpMemory                          `json:"memory"`
-	Kmodules   map[string]*grpc_server.Win32_SystemDriver `json:"kernel_module"`
-	Net        map[string]*grpc_server.SmpNetInfo         `json:"net"`
-	Process    map[string]*grpc_server.SmPsInfo           `json:"process"`
+	Uuid       string                          `json:"uuid"`
+	Os         string                          `json:"os"`
+	Kernel     string                          `json:"kernel"`
+	Platform   string                          `json:"system_platform"`
+	Hostname   string                          `json:"hostname"`
+	IPv4       string                          `json:"ipv4"`
+	Arch       string                          `json:"arch"`
+	Virtual    string                          `json:"virtual_machine"`
+	Disk_use   map[string]string               `json:"disk_use"`
+	Memory_use string                          `json:"memory_use"`
+	Cpu_use    string                          `json:"cpu_use"`
+	Time       time.Time                       `json:"time"`
+	Cpu        cpuinfo.SmpCpu                  `json:"cpu"`
+	Disk       map[string]*grpc_server.SmpDisk `json:"disk"`
+	Memory     meminfo.SmpMemory               `json:"memory"`
+	//Kmodules   map[string]*grpc_server.Win32_SystemDriver `json:"kernel_module"`
+	Net     map[string]*grpc_server.SmpNetInfo `json:"net"`
+	Process map[string]*grpc_server.SmPsInfo   `json:"process"`
 }
 
 func NewSmpData() *SmpData {
@@ -79,7 +78,7 @@ func NewSmpData() *SmpData {
 	c := machine.SmpMa.Cpu
 	d := machine.SmpMa.Disk
 	m := machine.SmpMa.Memory
-	k := machine.SmpMa.Kmodules
+	//k := machine.SmpMa.Kmodules
 	n := machine.SmpMa.Net
 	p := machine.SmpMa.Process
 
@@ -100,9 +99,9 @@ func NewSmpData() *SmpData {
 		Cpu:        *c,
 		Disk:       *d,
 		Memory:     *m,
-		Kmodules:   *k,
-		Net:        *n,
-		Process:    *p,
+		//Kmodules:   *k,
+		Net:     *n,
+		Process: *p,
 	}
 }
 
@@ -127,7 +126,7 @@ func NewSmpDataGrpc() *SmpDataGrpc {
 	c := machine.SmpMaGrpc.Cpu
 	d := machine.SmpMaGrpc.Disk
 	m := machine.SmpMaGrpc.Memory
-	k := machine.SmpMaGrpc.Kmodules
+	//k := machine.SmpMaGrpc.Kmodules
 	n := machine.SmpMaGrpc.Net
 	p := machine.SmpMaGrpc.Process
 
@@ -148,9 +147,9 @@ func NewSmpDataGrpc() *SmpDataGrpc {
 		Cpu:        *c,
 		Disk:       d,
 		Memory:     *m,
-		Kmodules:   k,
-		Net:        n,
-		Process:    p,
+		//Kmodules:   k,
+		Net:     n,
+		Process: p,
 	}
 }
 
@@ -179,7 +178,7 @@ func NewSmpDataApi() *SmpData {
 	c := cpuinfo.NewSmpCpu()
 	d := diskinfo.NewSmpDisk()
 	m := meminfo.NewSmpMem()
-	k := kmodule.NewKmodules()
+	//k := kmodule.NewKmodules()
 	n := netinfo.NewSmpNet()
 	p := processinfo.NewSmpPs()
 	return &SmpData{
@@ -199,9 +198,9 @@ func NewSmpDataApi() *SmpData {
 		Cpu:        *c,
 		Disk:       *d,
 		Memory:     *m,
-		Kmodules:   *k,
-		Net:        *n,
-		Process:    *p,
+		//Kmodules:   *k,
+		Net:     *n,
+		Process: *p,
 	}
 }
 

@@ -55,12 +55,11 @@ type SmpMachineGrpc struct {
 }
 
 var (
-	SmpMa        = NewSmpMachine()
-	SmpMaGrpc    = NewSmpMachineGrpc()
-	MachineChSmp = make(chan bool, 1)
+	SmpMa     *SmpMachine
+	SmpMaGrpc *SmpMachineGrpc
 )
 
-// Machine 存放所有的采集层数据，被懒汉式创建
+// NewSmpMachine 存放所有的采集层数据，被懒汉式创建
 func NewSmpMachine() *SmpMachine {
 	info := info.NewInfo()
 
@@ -82,14 +81,14 @@ func NewSmpMachine() *SmpMachine {
 		Machine:    info.Virtual,
 		Disk_use:   disk_use,
 		Memory_use: meminfo.NewSmpMem().Vmem.UsedPercent,
-		Cpu_use:    cpuinfo.NewSmpCpu().Usage,
+		Cpu_use:    "20%",
 		Time:       time.Now(),
 		Cpu:        cpuinfo.NewSmpCpu(),
 		Disk:       disks,
 		Memory:     meminfo.NewSmpMem(),
-		Kmodules:   kmodules.NewKmodules(),
-		Net:        netinfo.NewSmpNet(),
-		Process:    processinfo.NewSmpPs(),
+		//Kmodules:   kmodules.NewKmodules(),
+		Net:     netinfo.NewSmpNet(),
+		Process: processinfo.NewSmpPs(),
 	}
 }
 
@@ -114,7 +113,7 @@ func NewSmpMachineGrpc() *SmpMachineGrpc {
 		Machine:    info.Virtual,
 		Disk_use:   disk_use,
 		Memory_use: meminfo.NewSmpMem().Vmem.UsedPercent,
-		Cpu_use:    cpuinfo.NewSmpCpu().Usage,
+		Cpu_use:    "20%",
 		Time:       time.Now(),
 		Cpu:        cpuinfo.NewSmpCpu(),
 		Disk:       *diskinfo.NewSmpDiskGrpc(),
@@ -127,7 +126,7 @@ func NewSmpMachineGrpc() *SmpMachineGrpc {
 
 func NotifySmpMachineAddressChange() {
 	select {
-	case MachineChSmp <- true:
+	case MachineCh <- true:
 	default:
 	}
 }

@@ -85,6 +85,14 @@ func InitCmd(sigs chan os.Signal) {
 	pflag.CommandLine.SetNormalizeFunc(wordSepNormalizeFunc)
 	// 解析命令行参数
 	pflag.Parse()
+
+	// 运行时处理信号
+	go func() {
+		<-sigs
+		utils.DefaultLogger.Info(runInfo) // 直接停止进程
+		os.Exit(0)
+	}()
+
 	if len(*env) == 0 && len(*conf) == 0 {
 		log.Println("必须提供操作参数,请输入--help查看帮助")
 		log.Println(runInfo)
@@ -96,6 +104,7 @@ func InitCmd(sigs chan os.Signal) {
 		case "start":
 			Viper("config.yml")
 			log.Println("启动完成")
+			return
 		default:
 			log.Println("无效的操作参数")
 			log.Println(runInfo)
@@ -115,11 +124,4 @@ func InitCmd(sigs chan os.Signal) {
 		log.Println(runInfo)
 		os.Exit(0)
 	}
-
-	// 运行时处理信号
-	go func() {
-		<-sigs
-		utils.DefaultLogger.Info(runInfo) // 直接停止进程
-		os.Exit(0)
-	}()
 }
