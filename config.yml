@@ -1,6 +1,6 @@
 system:
-  addr: :8010
-  grpc: 192.168.0.83
+  addr: 0.0.0.0:8010
+  grpc: 0.0.0.0
   grpc_port: 5678
   grpc_server: 192.168.0.83:8765
   logfile: log.txt

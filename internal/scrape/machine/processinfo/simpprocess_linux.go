@@ -5,9 +5,9 @@ package processinfo
 
 import (
 	"bigagent/internal/scrape/machine/formatsize"
+	utils "bigagent/internal/util"
 	"bigagent/internal/web/grpcs/server"
 	"encoding/json"
-	"log"
 	"time"
 
 	"github.com/shirou/gopsutil/v4/process"
@@ -33,47 +33,47 @@ func NewSmpPs() *SmpPs {
 	smpps := make(SmpPs)
 	psinfo, err := process.Processes()
 	if err != nil {
-		log.Fatal(err)
+		utils.DefaultLogger.Error(err)
 	}
 
 	for _, info := range psinfo {
 		name, err := info.Name()
 		if err != nil {
-			log.Print(err)
+			utils.DefaultLogger.Error(err)
 		}
 		username, err := info.Username()
 		if err != nil {
-			log.Print(err)
+			utils.DefaultLogger.Error(err)
 		}
 		cpupercent, err := info.CPUPercent()
 		if err != nil {
-			log.Print(err)
+			utils.DefaultLogger.Error(err)
 		}
 		mempercent, err := info.MemoryPercent()
 		if err != nil {
-			log.Print(err)
+			utils.DefaultLogger.Error(err)
 		}
 		mem, err := info.MemoryInfo()
 		if err != nil {
-			log.Print(err)
+			utils.DefaultLogger.Error(err)
 		}
 		tty, err := info.Terminal()
 		if err != nil {
-			log.Print(err)
+			utils.DefaultLogger.Error(err)
 		}
 		stat, err := info.Status()
 		if err != nil {
-			log.Print(err)
+			utils.DefaultLogger.Error(err)
 		}
 		start, err := info.CreateTime()
 		if err != nil {
-			log.Print(err)
+			utils.DefaultLogger.Error(err)
 		}
 		t := time.Unix(start/1000, 0)
 		starts := t.Format("2006-01-02 15:04:05")
 		cmd, err := info.Cmdline()
 		if err != nil {
-			log.Print(err)
+			utils.DefaultLogger.Error(err)
 		}
 
 		smpinfo := smpInfo{
@@ -98,7 +98,7 @@ func NewSmpPs() *SmpPs {
 func (p *SmpPs) ToString() string {
 	b, err := json.MarshalIndent(p, "", " ")
 	if err != nil {
-		log.Fatal(err)
+		utils.DefaultLogger.Error(err)
 	}
 	return string(b)
 }
@@ -107,7 +107,7 @@ func NewSmpPsGrpc() *map[string]*grpc_server.SmPsInfo {
 	smpps := make(map[string]*grpc_server.SmPsInfo)
 	psinfo, err := process.Processes()
 	if err != nil {
-		log.Fatal(err)
+		utils.DefaultLogger.Error(err)
 	}
 
 	for _, info := range psinfo {
@@ -121,30 +121,30 @@ func NewSmpPsGrpc() *map[string]*grpc_server.SmPsInfo {
 		}
 		cpupercent, err := info.CPUPercent()
 		if err != nil {
-			log.Printf("get ps cpupercent err: %s", err)
+			utils.DefaultLogger.Errorf("get ps cpupercent err: %s", err)
 			continue
 		}
 		mempercent, err := info.MemoryPercent()
 		if err != nil {
-			log.Printf("get ps mempercent err: %s", err)
+			utils.DefaultLogger.Errorf("get ps mempercent err: %s", err)
 			continue
 		}
 		mem, err := info.MemoryInfo()
 		if err != nil {
-			log.Printf("get ps meminfo err: %s", err)
+			utils.DefaultLogger.Errorf("get ps meminfo err: %s", err)
 			continue
 		}
 
 		start, err := info.CreateTime()
 		if err != nil {
-			log.Printf("get ps start err: %s", err)
+			utils.DefaultLogger.Errorf("get ps start err: %s", err)
 			continue
 		}
 		t := time.Unix(start/1000, 0)
 		starts := t.Format("2006-01-02 15:04:05")
 		cmd, err := info.Cmdline()
 		if err != nil {
-			log.Print(err)
+			utils.DefaultLogger.Errorf(err)
 		}
 		// wg.Lock()
 		smpps[name] = &grpc_server.SmPsInfo{

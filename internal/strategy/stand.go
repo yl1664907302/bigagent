@@ -2,6 +2,7 @@ package strategy
 
 import (
 	model2 "bigagent/internal/model/machine"
+	utils "bigagent/internal/util"
 	"bigagent/internal/web/grpcs"
 )
 
@@ -13,12 +14,11 @@ type StandardStrategy struct {
 func (s *StandardStrategy) Push() error {
 	//_, err := request.NewPostStand(s.H).Do()
 	conn, err := grpcs.InitClient(s.G, s.K)
-	if err == nil {
-		go grpcs.GrpcStandPush(conn)
+	if err != nil {
+		utils.DefaultLogger.Errorf("grpc服务端连接异常: %v", err)
+		return err
 	}
-	if s == nil {
-		return nil
-	}
+	go grpcs.GrpcStandPush(conn)
 	return err
 }
 

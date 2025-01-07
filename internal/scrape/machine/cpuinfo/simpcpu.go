@@ -17,7 +17,10 @@ type SmpCpu struct {
 }
 
 func GetCpuPercent() float64 {
-	percent, _ := cpu.Percent(time.Second, false)
+	percent, err := cpu.Percent(time.Second, false)
+	if err != nil {
+		utils.DefaultLogger.Error(err)
+	}
 	return percent[0]
 }
 
@@ -31,11 +34,6 @@ func NewSmpCpu() *SmpCpu {
 	if err != nil {
 		utils.DefaultLogger.Error(err)
 	}
-
-	//usage, _ := cpu.Percent(0, false)
-	//if err != nil {
-	//	utils.DefaultLogger.Error(err)
-	//}
 
 	cores := runtime.NumCPU()
 

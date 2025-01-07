@@ -2,7 +2,6 @@ package model
 
 import (
 	"bigagent/internal/config/global"
-	"bigagent/internal/scrape/machine"
 	"bigagent/internal/scrape/machine/cpuinfo"
 	"bigagent/internal/scrape/machine/diskinfo"
 	"bigagent/internal/scrape/machine/info"
@@ -27,31 +26,31 @@ type StandData struct {
 	//Process  processinfo.PROCESS `json:"process"`
 }
 
-func NewStandData() *StandData {
-	s := global.V.GetString("system.serct")
-	u := machine.Ma.Uuid
-	h := machine.Ma.Hostname
-	i := machine.Ma.IPv4
-	t := machine.Ma.Time
-	c := machine.Ma.Cpu
-	d := machine.Ma.Disk
-	m := machine.Ma.Memory
-	//n := machine.Ma.Net
-	//p := machine.Ma.Process
-
-	return &StandData{
-		Serct:    s,
-		Uuid:     u,
-		Hostname: h,
-		IPv4:     i,
-		Time:     t,
-		Cpu:      *c,
-		Disk:     *d,
-		Memory:   *m,
-		//Net:     *n,
-		//Process:  *p,
-	}
-}
+//func NewStandData() *StandData {
+//	s := global.V.GetString("system.serct")
+//	u := machine.Ma.Uuid
+//	h := machine.Ma.Hostname
+//	i := machine.Ma.IPv4
+//	t := machine.Ma.Time
+//	c := machine.Ma.Cpu
+//	d := machine.Ma.Disk
+//	m := machine.Ma.Memory
+//	//n := machine.Ma.Net
+//	//p := machine.Ma.Process
+//
+//	return &StandData{
+//		Serct:    s,
+//		Uuid:     u,
+//		Hostname: h,
+//		IPv4:     i,
+//		Time:     t,
+//		Cpu:      *c,
+//		Disk:     *d,
+//		Memory:   *m,
+//		//Net:     *n,
+//		//Process:  *p,
+//	}
+//}
 
 func NewStandDataApi() *StandData {
 	s := global.V.GetString("system.serct")

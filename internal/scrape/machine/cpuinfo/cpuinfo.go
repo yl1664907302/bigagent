@@ -1,9 +1,9 @@
 package cpuinfo
 
 import (
+	utils "bigagent/internal/util"
 	"encoding/json"
 	"github.com/shirou/gopsutil/v4/cpu"
-	"log"
 )
 
 type Cpus struct {
@@ -23,7 +23,7 @@ func (cpus *Cpus) ToString() string {
 
 func WithC(info []cpu.InfoStat, err error) Options {
 	if err != nil {
-		log.Fatal(err)
+		utils.DefaultLogger.Error(err)
 	}
 	return func(c *Cpus) {
 		c.C = info
@@ -32,7 +32,7 @@ func WithC(info []cpu.InfoStat, err error) Options {
 
 func WithT(times []cpu.TimesStat, err error) Options {
 	if err != nil {
-		log.Fatal(err)
+		utils.DefaultLogger.Error(err)
 	}
 	return func(c *Cpus) {
 		c.T = times
@@ -42,11 +42,11 @@ func WithT(times []cpu.TimesStat, err error) Options {
 func NewCPU(options ...Options) *Cpus {
 	info, err := cpu.Info()
 	if err != nil {
-		log.Fatal(err)
+		utils.DefaultLogger.Error(err)
 	}
 	times, err := cpu.Times(true)
 	if err != nil {
-		log.Fatal(err)
+		utils.DefaultLogger.Error(err)
 	}
 
 	cpus := &Cpus{

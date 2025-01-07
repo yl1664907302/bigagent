@@ -2,8 +2,8 @@ package strategy
 
 import (
 	"bigagent/internal/model/machine"
+	utils "bigagent/internal/util"
 	"bigagent/internal/web/grpcs"
-	"fmt"
 )
 
 type StandardStrategy2 struct {
@@ -14,12 +14,11 @@ type StandardStrategy2 struct {
 func (s *StandardStrategy2) Push() error {
 	//_, err := request.NewPostStand(s.H).Do()
 	conn, err := grpcs.InitClient(s.G, s.K)
-	if err == nil {
-		go grpcs.GrpcStandPush(conn)
+	if err != nil {
+		utils.DefaultLogger.Errorf("grpc服务端连接异常: %v", err)
+		return err
 	}
-	if s == nil {
-		return fmt.Errorf("strategy is nil")
-	}
+	go grpcs.GrpcStandPush(conn)
 	return err
 }
 
@@ -28,7 +27,7 @@ func (s *StandardStrategy2) Api(key string) (interface{}, error) {
 	case "showdata":
 		return map[string]interface{}{
 			"code": 0,
-			"data": model.NewStandData(),
+			"data": model.NewStandDataApi(),
 		}, nil
 	default:
 		return map[string]interface{}{

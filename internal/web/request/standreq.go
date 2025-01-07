@@ -21,9 +21,9 @@ type Response struct {
 	Msg  string `json:"msg"`
 }
 
-func NewPostStand(host string) *PostStand {
-	return &PostStand{h: host, c: &http.Client{}, d: model.NewStandData()}
-}
+//func NewPostStand(host string) *PostStand {
+//	return &PostStand{h: host, c: &http.Client{}, d: model.NewStandData()}
+//}
 
 func (p *PostStand) Do() (interface{}, error) {
 	body, err := json.Marshal(p.d)

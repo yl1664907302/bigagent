@@ -6,13 +6,13 @@ require (
 	github.com/elastic/go-sysinfo v1.15.0
 	github.com/leemcloughlin/gofarmhash v0.0.0-20160919192320-0a055c5b87a8
 	github.com/robfig/cron/v3 v3.0.1
-	github.com/shirou/gopsutil/v4 v4.24.11
+	github.com/shirou/gopsutil/v4 v4.24.12
 	github.com/sirupsen/logrus v1.9.3
 	github.com/spf13/pflag v1.0.5
 	github.com/spf13/viper v1.19.0
 	github.com/super-l/machine-code v0.0.0-20241121142923-4cb40646deba
 	github.com/yusufpapurcu/wmi v1.2.4
-	golang.org/x/exp v0.0.0-20241217172543-b2144cdd0a67
+	golang.org/x/exp v0.0.0-20250103183323-7d7fa50e5329
 	google.golang.org/grpc v1.69.2
 	google.golang.org/protobuf v1.36.1
 	gopkg.in/yaml.v3 v3.0.1
@@ -40,9 +40,9 @@ require (
 	github.com/tklauser/numcpus v0.6.1 // indirect
 	go.uber.org/multierr v1.11.0 // indirect
 	golang.org/x/net v0.33.0 // indirect
-	golang.org/x/sys v0.28.0 // indirect
+	golang.org/x/sys v0.29.0 // indirect
 	golang.org/x/text v0.21.0 // indirect
-	google.golang.org/genproto/googleapis/rpc v0.0.0-20241223144023-3abc09e42ca8 // indirect
+	google.golang.org/genproto/googleapis/rpc v0.0.0-20250102185135-69823020774d // indirect
 	gopkg.in/ini.v1 v1.67.0 // indirect
 	howett.net/plist v1.0.1 // indirect
 )
