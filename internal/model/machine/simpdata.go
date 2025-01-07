@@ -80,7 +80,7 @@ func NewSmpData() *SmpData {
 	m := machine.SmpMa.Memory
 	//k := machine.SmpMa.Kmodules
 	n := machine.SmpMa.Net
-	p := machine.SmpMa.Process
+	//p := machine.SmpMa.Process
 
 	return &SmpData{
 		// Serct:      s,
@@ -100,35 +100,35 @@ func NewSmpData() *SmpData {
 		Disk:       *d,
 		Memory:     *m,
 		//Kmodules:   *k,
-		Net:     *n,
-		Process: *p,
+		Net: *n,
+		//Process: *p,
 	}
 }
 
 func NewSmpDataGrpc() *SmpDataGrpc {
-	if machine.SmpMaGrpc == nil {
+	if machine.SmpMa == nil {
 		utils.DefaultLogger.Error("machine.SmpMa is nil!")
 	}
 
 	// s :=glc.CONF.System.Serct
-	u := machine.SmpMaGrpc.Uuid
-	z := machine.SmpMaGrpc.Platform
-	o := machine.SmpMaGrpc.Os
-	ker := machine.SmpMaGrpc.Kernel
-	h := machine.SmpMaGrpc.Hostname
-	i := machine.SmpMaGrpc.IPv4
-	arh := machine.SmpMaGrpc.Arch
-	v := machine.SmpMaGrpc.Machine
-	du := machine.SmpMaGrpc.Disk_use
-	mu := machine.SmpMaGrpc.Memory_use
-	cu := machine.SmpMaGrpc.Cpu_use
-	t := machine.SmpMaGrpc.Time
-	c := machine.SmpMaGrpc.Cpu
-	d := machine.SmpMaGrpc.Disk
-	m := machine.SmpMaGrpc.Memory
+	u := machine.SmpMa.Uuid
+	z := machine.SmpMa.Platform
+	o := machine.SmpMa.Os
+	ker := machine.SmpMa.Kernel
+	h := machine.SmpMa.Hostname
+	i := machine.SmpMa.IPv4
+	arh := machine.SmpMa.Arch
+	v := machine.SmpMa.Machine
+	du := machine.SmpMa.Disk_use
+	mu := machine.SmpMa.Memory_use
+	cu := machine.SmpMa.Cpu_use
+	t := machine.SmpMa.Time
+	c := machine.SmpMa.Cpu
+	d := machine.SmpMa.Disk_g
+	m := machine.SmpMa.Memory
 	//k := machine.SmpMaGrpc.Kmodules
-	n := machine.SmpMaGrpc.Net
-	p := machine.SmpMaGrpc.Process
+	n := machine.SmpMa.Net_g
+	//p := machine.SmpMa.Process
 
 	return &SmpDataGrpc{
 		// Serct:    s,
@@ -148,8 +148,8 @@ func NewSmpDataGrpc() *SmpDataGrpc {
 		Disk:       d,
 		Memory:     *m,
 		//Kmodules:   k,
-		Net:     n,
-		Process: p,
+		Net: n,
+		//Process: p,
 	}
 }
 
@@ -180,7 +180,7 @@ func NewSmpDataApi() *SmpData {
 	m := meminfo.NewSmpMem()
 	//k := kmodule.NewKmodules()
 	n := netinfo.NewSmpNet()
-	p := processinfo.NewSmpPs()
+	//p := processinfo.NewSmpPs() 错误范例，禁止在此处调用采集层方法
 	return &SmpData{
 		// Serct:      s,
 		Uuid:       u,
@@ -199,8 +199,8 @@ func NewSmpDataApi() *SmpData {
 		Disk:       *d,
 		Memory:     *m,
 		//Kmodules:   *k,
-		Net:     *n,
-		Process: *p,
+		Net: *n,
+		//Process: *p,
 	}
 }
 

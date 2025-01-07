@@ -18,14 +18,11 @@ type PatrolData struct {
 }
 
 func NewPatrolData() *PatrolData {
-	if machine.SmpMa == nil {
-		utils.DefaultLogger.Error("machine.SmpMa is nil!")
-	}
-
-	t := machine.SmpMa.Time
-	c := machine.SmpMa.Cpu
-	d := machine.SmpMa.Disk
-	m := machine.SmpMa.Memory
+	smpMachine := machine.NewSmpMachine()
+	t := smpMachine.Time
+	c := smpMachine.Cpu
+	d := smpMachine.Disk
+	m := smpMachine.Memory
 
 	return &PatrolData{
 		Disk:   *d,

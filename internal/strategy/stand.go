@@ -27,7 +27,7 @@ func (s *StandardStrategy) Api(key string) (interface{}, error) {
 	case "showdata":
 		return map[string]interface{}{
 			"code": 0,
-			"data": model2.NewSmpData(),
+			"data": model2.NewSmpDataApi(),
 		}, nil
 	case "patroldata":
 		return map[string]interface{}{

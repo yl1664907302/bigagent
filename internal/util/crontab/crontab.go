@@ -11,7 +11,6 @@ import (
 func cronTask() {
 	//开始采集
 	machine.SmpMa = machine.NewSmpMachine()
-	machine.SmpMaGrpc = machine.NewSmpMachineGrpc()
 	//更新通知
 	machine.NotifySmpMachineAddressChange()
 }
