@@ -120,17 +120,15 @@ func ListerChannel() {
 					}
 
 					// 收集错误结果
-					var hasError bool
+					var e_len int
 					for i := 0; i < len(agents); i++ {
 						if err := <-errChan; err != nil {
-							hasError = true
+							global.ASTATUS = "部分数据推送异常"
+							e_len++
 						}
 					}
-
-					if hasError {
-						global.ASTATUS = "部分数据推送异常"
-					} else {
-						global.ASTATUS = "数据推送正常"
+					if e_len == 1 {
+						global.ASTATUS = "数据推送成功"
 					}
 				}()
 			}
