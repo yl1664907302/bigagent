@@ -1,6 +1,7 @@
 package cpuinfo
 
 import (
+	"bigagent/internal/scrape/machine/formatsize"
 	utils "bigagent/internal/util"
 	"encoding/json"
 	"fmt"
@@ -35,13 +36,17 @@ func NewSmpCpu() *SmpCpu {
 		utils.DefaultLogger.Error(err)
 	}
 
+	usage, _ := cpu.Percent(0, false)
+	if err != nil {
+		utils.DefaultLogger.Error(err)
+	}
 	cores := runtime.NumCPU()
 
 	return &SmpCpu{
-		Name:  c[0].ModelName,
-		Core:  int64(cores),
-		Usage: fmt.Sprintf("%.2f%%", GetCpuPercent()),
-		// Usage: formatsize.FormatPercent(usage[0]),
+		Name: c[0].ModelName,
+		Core: int64(cores),
+		// Usage: fmt.Sprintf("%.2f%%", GetCpuPercent()),
+		Usage: formatsize.FormatPercent(usage[0]),
 	}
 }
 

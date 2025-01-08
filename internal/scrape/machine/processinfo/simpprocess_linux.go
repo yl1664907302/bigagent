@@ -6,7 +6,7 @@ package processinfo
 import (
 	"bigagent/internal/scrape/machine/formatsize"
 	utils "bigagent/internal/util"
-	"bigagent/internal/web/grpcs/server"
+	grpc_server "bigagent/internal/web/grpcs/server"
 	"encoding/json"
 	"time"
 
@@ -144,7 +144,7 @@ func NewSmpPsGrpc() *map[string]*grpc_server.SmPsInfo {
 		starts := t.Format("2006-01-02 15:04:05")
 		cmd, err := info.Cmdline()
 		if err != nil {
-			utils.DefaultLogger.Errorf(err)
+			utils.DefaultLogger.Errorf(err.Error())
 		}
 		// wg.Lock()
 		smpps[name] = &grpc_server.SmPsInfo{

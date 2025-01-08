@@ -6,7 +6,9 @@ import (
 	"bigagent/internal/scrape/machine/info"
 	"bigagent/internal/scrape/machine/meminfo"
 	"bigagent/internal/scrape/machine/netinfo"
-	"bigagent/internal/web/grpcs/server"
+	grpc_server "bigagent/internal/web/grpcs/server"
+	"runtime"
+	"strings"
 	"time"
 )
 
@@ -68,8 +70,18 @@ func NewSmpMachine() *SmpMachine {
 	disks := diskinfo.NewSmpDisk()
 
 	for _, v := range *disks {
-		disk_use[v.Device] = v.UsedPercent
+		if runtime.GOOS == "windows" {
+			disk_use[v.Device] = v.UsedPercent
+		} else if runtime.GOOS == "linux" && strings.HasPrefix(v.Device, "/dev/") {
+			disk_use[v.Device] = v.UsedPercent
+		}
+
 	}
+	cpu := cpuinfo.NewSmpCpu()
+	memory := meminfo.NewSmpMem()
+	disk_g := *diskinfo.NewSmpDiskGrpc()
+	net := netinfo.NewSmpNet()
+	net_g := *netinfo.NewSmpNetGrpc()
 	return &SmpMachine{
 		Uuid:       info.Uuid,
 		Os:         info.Os,
@@ -80,16 +92,16 @@ func NewSmpMachine() *SmpMachine {
 		Arch:       info.Arch,
 		Machine:    info.Virtual,
 		Disk_use:   disk_use,
-		Memory_use: meminfo.NewSmpMem().Vmem.UsedPercent,
-		Cpu_use:    "20%",
+		Memory_use: memory.Vmem.UsedPercent,
+		Cpu_use:    cpu.Usage,
 		Time:       time.Now(),
-		Cpu:        cpuinfo.NewSmpCpu(),
+		Cpu:        cpu,
 		Disk:       disks,
-		Disk_g:     *diskinfo.NewSmpDiskGrpc(),
-		Memory:     meminfo.NewSmpMem(),
+		Disk_g:     disk_g,
+		Memory:     memory,
 		//Kmodules:   kmodules.NewKmodules(),
-		Net:   netinfo.NewSmpNet(),
-		Net_g: *netinfo.NewSmpNetGrpc(),
+		Net:   net,
+		Net_g: net_g,
 		//Process: processinfo.NewSmpPs(),
 	}
 }
