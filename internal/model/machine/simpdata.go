@@ -7,9 +7,11 @@ import (
 	"bigagent/internal/scrape/machine/meminfo"
 	"bigagent/internal/scrape/machine/netinfo"
 	"bigagent/internal/scrape/machine/processinfo"
-	"bigagent/internal/util"
-	"bigagent/internal/web/grpcs/server"
+	utils "bigagent/internal/util"
+	grpc_server "bigagent/internal/web/grpcs/server"
 	"encoding/json"
+	"runtime"
+	"strings"
 	"time"
 )
 
@@ -159,9 +161,19 @@ func NewSmpDataApi() *SmpData {
 	smpma := machine.NewSmpMachine()
 
 	for _, v := range *smpma.Disk {
-		disk_use[v.Device] = v.UsedPercent
+
+		if runtime.GOOS == "windows" {
+			disk_use[v.Device] = v.UsedPercent
+		} else if runtime.GOOS == "linux" && strings.HasPrefix(v.Device, "/dev/") {
+			disk_use[v.Device] = v.UsedPercent
+		}
+
 	}
 
+	// cpu := cpuinfo.NewSmpCpu()
+	// disk := diskinfo.NewSmpDisk()
+	// memory := meminfo.NewSmpMem()
+	// net := netinfo.NewSmpNet()
 	// s :=config.CONF.System.Serct
 	u := machine.SmpMa.Uuid
 	z := machine.SmpMa.Platform
@@ -175,11 +187,11 @@ func NewSmpDataApi() *SmpData {
 	mu := machine.SmpMa.Memory.Vmem.UsedPercent
 	cu := machine.SmpMa.Cpu.Usage
 	t := machine.SmpMa.Time
-	c := cpuinfo.NewSmpCpu()
-	d := diskinfo.NewSmpDisk()
-	m := meminfo.NewSmpMem()
+	c := machine.SmpMa.Cpu
+	d := machine.SmpMa.Disk
+	m := machine.SmpMa.Memory
 	//k := kmodule.NewKmodules()
-	n := netinfo.NewSmpNet()
+	n := machine.SmpMa.Net
 	//p := processinfo.NewSmpPs() 错误范例，禁止在此处调用采集层方法
 	return &SmpData{
 		// Serct:      s,

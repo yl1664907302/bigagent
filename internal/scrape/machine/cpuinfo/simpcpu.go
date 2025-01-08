@@ -36,7 +36,7 @@ func NewSmpCpu() *SmpCpu {
 		utils.DefaultLogger.Error(err)
 	}
 
-	usage, _ := cpu.Percent(0, false)
+	usage, _ := cpu.Percent(time.Second, false)
 	if err != nil {
 		utils.DefaultLogger.Error(err)
 	}

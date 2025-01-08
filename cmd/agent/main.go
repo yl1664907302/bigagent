@@ -3,7 +3,6 @@ package main
 import (
 	"bigagent/inits"
 	"bigagent/internal/config/global"
-
 	utils "bigagent/internal/util"
 	"os"
 )
@@ -22,5 +21,4 @@ func init() {
 func main() {
 	inits.RunG()
 	inits.Hander(global.V.GetString("system.addr"))
-
 }
