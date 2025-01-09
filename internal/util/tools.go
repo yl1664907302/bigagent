@@ -5,10 +5,47 @@ import (
 	"io/ioutil"
 	"net/url"
 	"reflect"
+	"regexp"
 	"strings"
 
 	"gopkg.in/yaml.v3"
 )
+
+func RemoveStringAndPrevious(s string, substr string) string {
+	var result strings.Builder
+	substrLen := len(substr) // 目标子串的长度
+	runes := []rune(s)       // 将字符串转换为 rune 切片以支持 Unicode
+
+	for i := 0; i < len(runes); i++ {
+		// 检查当前位置是否匹配目标子串
+		if i+substrLen <= len(runes) && string(runes[i:i+substrLen]) == substr {
+			// 跳过目标子串及其前一个字符
+			if i > 0 {
+				i += substrLen - 1 // 跳过前一个字符和整个子串
+			} else {
+				i += substrLen - 1 // 如果子串在开头，只跳过子串
+			}
+		} else {
+			result.WriteRune(runes[i]) // 将当前字符写入结果
+		}
+	}
+
+	return result.String()
+}
+
+// 检查字符串中是否包含独立的 req.Id（不包含在 failed[req.Id] 中）
+func ContainsReqId(actionDetail string, reqId string) bool {
+	// 使用正则表达式匹配独立的 req.Id
+	pattern := `(^|\s)` + regexp.QuoteMeta(reqId) + `(\s|$)`
+	re := regexp.MustCompile(pattern)
+	return re.MatchString(actionDetail)
+}
+
+// 检查字符串中是否包含 failed[req.Id]
+func ContainsFailedReqId(actionDetail string, reqId string) bool {
+	failedPattern := "failed[" + reqId + "]"
+	return strings.Contains(actionDetail, failedPattern)
+}
 
 // 获取结构体实例中绑定了json标签的key值
 func GetJSONKeysFromInstance(v interface{}) []string {
