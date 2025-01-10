@@ -2,9 +2,11 @@ package inits
 
 import (
 	utils "bigagent/internal/util"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"os"
+	"os/exec"
 	"os/signal"
 	"strconv"
 	"strings"
@@ -61,6 +63,33 @@ func fileExists(filePath string) bool {
 	return !os.IsNotExist(err)
 }
 
+func Stop() error {
+	// 1. 读取 PID 文件
+	pidData, err := ioutil.ReadFile(pidFile)
+	if err != nil {
+		return fmt.Errorf("无法读取 PID 文件: %v", err)
+	}
+
+	// 2. 解析 PID
+	pid := string(pidData)
+	if pid == "" {
+		return fmt.Errorf("PID 文件为空")
+	}
+
+	// 3. 执行停止命令
+	cmd := exec.Command("kill", "-9", pid) // 使用 kill -9 强制停止进程
+	if err := cmd.Run(); err != nil {
+		return fmt.Errorf("停止进程失败: %v", err)
+	}
+
+	// 4. 删除 PID 文件
+	if err := os.Remove(pidFile); err != nil {
+		return fmt.Errorf("删除 PID 文件失败: %v", err)
+	}
+
+	return nil
+}
+
 // InitCmd 启动时初始化环境以及信号
 func InitCmd(sigs chan os.Signal) {
 	// 监听捕获信号
@@ -77,7 +106,6 @@ func InitCmd(sigs chan os.Signal) {
 		utils.DefaultLogger.Error("无法写入 PID 文件:", err)
 		return
 	}
-	defer os.Remove(pidFile) // 确保在退出时删除 PID 文件
 	// 解析命令行参数
 	var env = pflag.StringP("server", "s", "", "指定agent默认启动操作: start")
 	var conf = pflag.StringP("config", "c", "", "指定agent配置文件路径: /path/config.yaml")
@@ -89,6 +117,7 @@ func InitCmd(sigs chan os.Signal) {
 	// 运行时处理信号
 	go func() {
 		<-sigs
+		os.Remove(pidFile)
 		utils.DefaultLogger.Info(runInfo) // 直接停止进程
 		os.Exit(0)
 	}()

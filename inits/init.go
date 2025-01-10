@@ -21,6 +21,7 @@ var (
 func Hander(port string) {
 	StandRouterGroupApp.StandRouter()
 	StandRouterGroupApp2.StandRouter()
+	SysRouterGroupApp.SysRouter()
 	err := http.ListenAndServe(port, nil)
 	if err != nil {
 		log.Fatal("ListenAndServe: ", err)

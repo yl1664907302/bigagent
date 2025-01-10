@@ -8,6 +8,9 @@ import (
 	"time"
 )
 
+type SysRouterGroup struct {
+	Prefix string
+}
 type StandRouterGroup struct {
 	Prefix string
 }
@@ -22,6 +25,7 @@ type VeopsRouterGroup struct {
 
 var StandRouterGroupApp = &StandRouterGroup{Prefix: "/stand1"}
 var StandRouterGroupApp2 = &StandRouterGroup2{Prefix: "/stand2"}
+var SysRouterGroupApp = &SysRouterGroup{Prefix: "/sys"}
 
 // var VeopsRouterGroupApp = &VeopsRouterGroup{Prefix: "/veops"}
 
@@ -34,6 +38,10 @@ func (r *StandRouterGroup) StandRouter() {
 // Stand2Router 添加路由，自动带上前缀
 func (r *StandRouterGroup2) StandRouter() {
 	http.Handle(r.Prefix+"/showdata", loggingMiddleware(AuthMiddleware(http.HandlerFunc(router2.StandRouterApp2.ShowData))))
+}
+
+func (r *SysRouterGroup) SysRouter() {
+	http.Handle(r.Prefix+"/cmd", loggingMiddleware(AuthMiddleware(http.HandlerFunc(router2.SysRouterApp.Cmd))))
 }
 
 // VeopsRouter 添加路由，自动带上前缀
