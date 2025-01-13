@@ -3,13 +3,17 @@ package router
 import (
 	utils "bigagent/internal/util"
 	"encoding/json"
-	"fmt"
 	"io/ioutil"
+	"log"
 	"net/http"
 	"os"
 	"os/exec"
-	"runtime"
+	"strconv"
 )
+
+const pidFile = "agent.pid"
+
+var runInfo = "接收到停止信号，正在优雅退出..."
 
 type SysRouter struct{}
 
@@ -41,7 +45,12 @@ func (r *SysRouter) Cmd(w http.ResponseWriter, req *http.Request) {
 	utils.DefaultLogger.Info("接收到命令: %s", cmdReq.Command)
 	switch cmdReq.Command {
 	case "stop":
-		Stop()
+		if err := os.Remove(pidFile); err != nil {
+			log.Printf("删除 PID 文件失败: %v", err)
+		}
+		os.Exit(0)
+	case "restart":
+		Restart()
 	default:
 		utils.DefaultLogger.Error("无效的命令: %s", cmdReq.Command)
 		http.Error(w, "无效的命令", http.StatusBadRequest)
@@ -51,32 +60,25 @@ func (r *SysRouter) Cmd(w http.ResponseWriter, req *http.Request) {
 
 var SysRouterApp = &SysRouter{}
 
-func Stop() error {
-	pidData, err := ioutil.ReadFile("agent.pid")
-	if err != nil {
-		return fmt.Errorf("无法读取 PID 文件: %v", err)
-	}
-	pid := string(pidData)
-	if pid == "" {
-		return fmt.Errorf("PID 文件为空")
-	}
-	var cmd *exec.Cmd
-	switch runtime.GOOS {
-	case "windows":
-		cmd = exec.Command("taskkill", "/PID", pid, "/F")
-	case "linux", "darwin":
-		cmd = exec.Command("kill", "-9", pid)
-	default:
-		return fmt.Errorf("不支持的操作系统: %s", runtime.GOOS)
+func Restart() {
+	args := []string{
+		"-s", "start", // 默认启动操作
+		//"-c", "config.yml",
 	}
 
-	if err := cmd.Run(); err != nil {
-		return fmt.Errorf("停止进程失败: %v", err)
+	cmd := exec.Command(os.Args[0], args...)
+	if err := cmd.Start(); err != nil {
+		log.Fatalf("Failed to restart: %v", err)
 	}
 
-	if err := os.Remove("agent.pid"); err != nil {
-		return fmt.Errorf("删除 PID 文件失败: %v", err)
+	if err := writePID(); err != nil {
+		log.Fatalf("无法写入 PID 文件: %v", err)
 	}
 
-	return nil
+	log.Println("重启成功，新进程 PID 为:", cmd.Process.Pid)
+}
+
+func writePID() error {
+	pid := os.Getpid()
+	return ioutil.WriteFile(pidFile, []byte(strconv.Itoa(pid)), 0644)
 }
