@@ -25,7 +25,7 @@ type CommandRequest struct {
 
 func (r *SysRouter) Cmd(w http.ResponseWriter, req *http.Request) {
 	if req.Method != http.MethodPost {
-		http.Error(w, "仅支持 POST 请求", http.StatusMethodNotAllowed)
+		http.Error(w, "仅支持POST请求", http.StatusMethodNotAllowed)
 		return
 	}
 	var cmdReq CommandRequest
