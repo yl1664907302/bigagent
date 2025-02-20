@@ -78,11 +78,11 @@ collection_frequency: 2s
 
 ## Run
 ```shell
-nohup ./bigagent -s start > /dev/null 2>&1  &
+./bigagent  -d -s start
 ```
 
 ```shell
-nohup ./bigagent -c /path/config.yml > /dev/null 2>&1  &
+./bigagent -s start -c /path/config.yml
 ```
 
 # server端
