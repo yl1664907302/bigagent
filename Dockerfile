@@ -21,4 +21,4 @@ EXPOSE 8010
 EXPOSE 5678
 
 # 设置容器启动时执行的命令
-CMD ["./bigagent -s start"]
+CMD ./bigagent -s start
