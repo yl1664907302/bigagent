@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: bigagent  # ConfigMap的名称
+  namespace: ${SNAME}  # 所属命名空间，params.env 变量表示环境参数，如 'test', 'prod' 等
+data:
+  config.yml: |
+    system:
+      addr: 0.0.0.0:8010
+      grpc: 0.0.0.0
+      grpc_port: 5678
+      grpc_server: 192.168.0.83:8765
+      logfile: log.txt
+      serct: "123456"
+    #如下配置为自动生成，请勿修改!!！
+
+    grpc_cmdb1_stand1: "192.122.11.22:99"
+    grpc_cmdb1_stand1_token: "123456"
+    grpc_cmdb2_stand1: ""
+    grpc_cmdb2_stand1_token: ""
+    grpc_cmdb3_stand1:
+    grpc_cmdb3_stand1_token:
+    grpc_cmdb1_stand2:
+    grpc_cmdb1_stand2_token:
+    grpc_cmdb2_stand2:
+    grpc_cmdb2_stand2_token:
+    grpc_cmdb3_stand2:
+    grpc_cmdb3_stand2_token:
+    grpc_cmdb1_stand3:
+    grpc_cmdb1_stand3_token:
+    grpc_cmdb2_stand3:
+    grpc_cmdb2_stand3_token:
+    grpc_cmdb3_stand3:
+    grpc_cmdb3_stand3_token:
+    action_detail: '         33'
+    collection_frequency: "3s"
+
