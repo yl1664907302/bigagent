@@ -115,7 +115,7 @@ func InitCmd(sigs chan os.Signal) {
 
 	// 解析命令行参数
 	var daemon = pflag.BoolP("daemon", "d", false, "是否以守护进程方式运行")
-	var env = pflag.StringP("server", "s", "", "指定agent默认启动操作: start")
+	var env = pflag.StringP("server", "s", "start", "指定agent默认启动操作: start")
 	var conf = pflag.StringP("config", "c", "", "指定agent配置文件路径: /path/config.yaml")
 	// 设置命令行参数标准化兼容函数
 	pflag.CommandLine.SetNormalizeFunc(wordSepNormalizeFunc)

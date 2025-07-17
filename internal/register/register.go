@@ -125,57 +125,57 @@ func Stand2Register(grpcHost string, token string, openPush bool, onlyPush bool)
 }
 
 // VeopsRegister 策略注册,openpush值是否开启push, onlypush是否只开启push（关闭api）
-//func VeopsRegister(host string, openpush bool, onlypush bool) {
-//	agent := strategy.NewAgent()
-//	if !router.StandRouterApp.K {
-//		if onlypush {
-//			switch host {
-//			case "":
-//				log.Println("请配置push操作的host值")
-//			default:
-//				agent.SetPushStrategy(&strategy.VeopsStrategy{host})
-//			}
-//		} else {
-//			switch openpush {
-//			case true:
-//				switch host {
-//				case "":
-//					agent.SetApiStrategy(&strategy.VeopsStrategy{})
-//					router.StandRouterApp.A = &agent
-//				default:
-//					agent.SetApiStrategy(&strategy.VeopsStrategy{})
-//					agent.SetPushStrategy(&strategy.VeopsStrategy{host})
-//					router.StandRouterApp.A = &agent
-//				}
-//			default:
-//				agent.SetApiStrategy(&strategy.VeopsStrategy{})
-//				router.StandRouterApp.A = &agent
-//			}
-//		}
-//	} else {
-//		if onlypush {
-//			switch host {
-//			case "":
-//				log.Println("请配置push操作的host值")
-//			default:
-//				agent.SetPushStrategy(&strategy.VeopsStrategy{host})
-//				router.StandRouterApp.A = &agent
-//			}
-//		} else {
-//			switch openpush {
-//			case true:
-//				switch host {
-//				case "":
-//					log.Println("请配置push操作的host值")
-//				default:
-//					agent.SetPushStrategy(&strategy.VeopsStrategy{host})
-//					router.StandRouterApp.A = &agent
-//				}
-//			default:
-//				agent.SetPushStrategy(&strategy.VeopsStrategy{host})
-//				router.StandRouterApp.A = &agent
-//			}
-//		}
-//	}
-//	strategy.Agents = append(strategy.Agents, agent)
-//}
+func VeopsRegister(host string, openpush bool, onlypush bool) {
+	agent := strategy2.NewAgent()
+	if !router2.StandRouterApp.K {
+		if onlypush {
+			switch host {
+			case "":
+				log.Println("请配置push操作的host值")
+			default:
+				agent.SetPushStrategy(&strategy2.VeopsStrategy{host})
+			}
+		} else {
+			switch openpush {
+			case true:
+				switch host {
+				case "":
+					agent.SetApiStrategy(&strategy2.VeopsStrategy{})
+					router2.StandRouterApp.A = agent
+				default:
+					agent.SetApiStrategy(&strategy2.VeopsStrategy{})
+					agent.SetPushStrategy(&strategy2.VeopsStrategy{host})
+					router2.StandRouterApp.A = agent
+				}
+			default:
+				agent.SetApiStrategy(&strategy2.VeopsStrategy{})
+				router2.StandRouterApp.A = agent
+			}
+		}
+	} else {
+		if onlypush {
+			switch host {
+			case "":
+				log.Println("请配置push操作的host值")
+			default:
+				agent.SetPushStrategy(&strategy2.VeopsStrategy{host})
+				router2.StandRouterApp.A = agent
+			}
+		} else {
+			switch openpush {
+			case true:
+				switch host {
+				case "":
+					log.Println("请配置push操作的host值")
+				default:
+					agent.SetPushStrategy(&strategy2.VeopsStrategy{host})
+					router2.StandRouterApp.A = agent
+				}
+			default:
+				agent.SetPushStrategy(&strategy2.VeopsStrategy{host})
+				router2.StandRouterApp.A = agent
+			}
+		}
+	}
+	strategy2.Agents = append(strategy2.Agents, *agent)
+}

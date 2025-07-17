@@ -44,7 +44,9 @@ func AgentRegister() {
 	//注册server端
 	register.Stand1Register(global.V.GetString("system.grpc_server"), global.V.GetString("system.serct"), true, false)
 	register.Stand2Register("占位符，只开启api", global.V.GetString("system.serct"), false, false)
-	//注册cmdb端
+	//注册维易cmdb端
+	register.VeopsRegister("192.168.210.103", true, true)
+	//自动注册cmdb端
 	configs := global.V.AllSettings()
 	for key, value := range configs {
 		matches := cmdbPattern.FindStringSubmatch(key)
