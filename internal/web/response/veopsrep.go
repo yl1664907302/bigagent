@@ -1,11 +1,10 @@
 package response
 
 import (
-	"bigagent/internal/util"
+	utils "bigagent/internal/util"
 	"encoding/json"
 )
 
-// QueryCMDBciResponse	CMDBci查询接口返回的数据类型
 type QueryCMDBciResponse struct {
 	Counter  map[string]int         `json:"counter"`  //	当前页按模型的分类统计
 	Facet    map[string]interface{} `json:"facet"`    //	返回的CI列表
@@ -15,12 +14,20 @@ type QueryCMDBciResponse struct {
 	Total    int                    `json:"total"`    //	当前页的CI数
 }
 
-// ErrorMessage	查询报错结果返回的数据类型
+// QueryResp	Query查询接口返回的数据类型
+type QueryResp struct {
+	Counter  map[string]int             `json:"counter"`  //	当前页按模型的分类统计
+	Facet    map[string]json.RawMessage `json:"facet"`    //	返回的CI列表
+	Numfound int                        `json:"numfound"` //	CI总数
+	Page     int                        `json:"page"`     //	分页
+	Result   json.RawMessage            `json:"result"`   //	返回的CI列表
+	Total    int                        `json:"total"`    //	当前页的CI数
+}
+
 type ErrorMessage struct {
 	Message string `json:"message"`
 }
 
-// ResultResponse	CMDBci 增、改、删接口返回的数据类型
 type ResultResponse map[string]interface{}
 
 // ErrorMessageProcess CMDBci 错误信息的格式化
@@ -44,24 +51,6 @@ func ErrorMessageProcess(body []byte) (*ErrorMessage, error) {
 // ResultResponseDataProcess CMDBci 增、改、删接口返回的数据进行json格式化
 func ResultResponseDataProcess(body []byte) (*ResultResponse, error) {
 	var jsonData *ResultResponse
-
-	_, err := json.Marshal(body)
-	if err != nil {
-		utils.DefaultLogger.Error("json转换失败")
-		return nil, err
-	}
-
-	err = json.Unmarshal(body, &jsonData)
-	if err != nil {
-		utils.DefaultLogger.Error("解析json出错：", err)
-		return nil, err
-	}
-	return jsonData, nil
-}
-
-// QueryCMDBciDataProcess 针对查询到的数据进行json格式化
-func QueryCMDBciDataProcess(body []byte) (*QueryCMDBciResponse, error) {
-	var jsonData *QueryCMDBciResponse
 
 	_, err := json.Marshal(body)
 	if err != nil {

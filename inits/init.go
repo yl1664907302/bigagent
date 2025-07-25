@@ -42,10 +42,11 @@ func Hander(port string) {
 func AgentRegister() {
 	strategy.Agents = nil
 	//注册server端
-	register.Stand1Register(global.V.GetString("system.grpc_server"), global.V.GetString("system.serct"), true, false)
+	//register.Stand1Register(global.V.GetString("system.grpc_server"), global.V.GetString("system.serct"), true, false)
+	//注册api功能
 	register.Stand2Register("占位符，只开启api", global.V.GetString("system.serct"), false, false)
 	//注册维易cmdb端
-	register.VeopsRegister("192.168.210.103", true, true)
+	register.VeopsRegister(global.V.GetString("veops.address"), true, true)
 	//自动注册cmdb端
 	configs := global.V.AllSettings()
 	for key, value := range configs {

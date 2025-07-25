@@ -35,8 +35,9 @@ type SmpMachine struct {
 	Disk_g     map[string]*grpc_server.SmpDisk `json:"disk_g"`
 	Memory     *meminfo.SmpMemory              `json:"memory"`
 	//Kmodules   *kmodules.Kmodules `json:"kernel_modules"`
-	Net   *netinfo.SmpNet                    `json:"network"`
-	Net_g map[string]*grpc_server.SmpNetInfo `json:"network_g"`
+	Net      *netinfo.SmpNet                    `json:"network"`
+	Net_g    map[string]*grpc_server.SmpNetInfo `json:"network_g"`
+	BiosData string                             `json:"bios_data"`
 	//Process    *processinfo.SmpPs `json:"process"`
 }
 
@@ -100,8 +101,9 @@ func NewSmpMachine() *SmpMachine {
 		Disk_g:     disk_g,
 		Memory:     memory,
 		//Kmodules:   kmodules.NewKmodules(),
-		Net:   net,
-		Net_g: net_g,
+		Net:      net,
+		Net_g:    net_g,
+		BiosData: "",
 		//Process: processinfo.NewSmpPs(),
 	}
 }

@@ -17,6 +17,7 @@ func cronTask() {
 
 // ScrapeCrontab 初始化采集crontab任务
 func ScrapeCrontab() {
+	machine.SmpMa = machine.NewSmpMachine()
 	var crontabRule string
 	if global.V.GetString("collection_frequency") == "" {
 		crontabRule = "@every 3s"

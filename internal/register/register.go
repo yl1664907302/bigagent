@@ -35,7 +35,7 @@ func Stand1Register(grpcHost string, token string, openPush bool, onlyPush bool)
 					router2.StandRouterApp.K = true
 				}
 			default:
-				agent.SetApiStrategy(&strategy2.StandardStrategy{})
+				agent.SetApiStrategy(&strategy2.StandardStrategy{KeyUse: false})
 				router2.StandRouterApp.A = agent
 				router2.StandRouterApp.K = true
 			}
@@ -94,7 +94,7 @@ func Stand2Register(grpcHost string, token string, openPush bool, onlyPush bool)
 					router2.StandRouterApp2.K = true
 				}
 			default:
-				agent.SetApiStrategy(&strategy2.StandardStrategy2{})
+				agent.SetApiStrategy(&strategy2.StandardStrategy2{KeyUse: false})
 				router2.StandRouterApp2.A = agent
 				router2.StandRouterApp2.K = true
 			}
@@ -126,6 +126,9 @@ func Stand2Register(grpcHost string, token string, openPush bool, onlyPush bool)
 
 // VeopsRegister 策略注册,openpush值是否开启push, onlypush是否只开启push（关闭api）
 func VeopsRegister(host string, openpush bool, onlypush bool) {
+	if host == "" {
+		return
+	}
 	agent := strategy2.NewAgent()
 	if !router2.StandRouterApp.K {
 		if onlypush {
@@ -133,7 +136,7 @@ func VeopsRegister(host string, openpush bool, onlypush bool) {
 			case "":
 				log.Println("请配置push操作的host值")
 			default:
-				agent.SetPushStrategy(&strategy2.VeopsStrategy{host})
+				agent.SetPushStrategy(&strategy2.VeopsStrategy{host, true})
 			}
 		} else {
 			switch openpush {
@@ -144,7 +147,7 @@ func VeopsRegister(host string, openpush bool, onlypush bool) {
 					router2.StandRouterApp.A = agent
 				default:
 					agent.SetApiStrategy(&strategy2.VeopsStrategy{})
-					agent.SetPushStrategy(&strategy2.VeopsStrategy{host})
+					agent.SetPushStrategy(&strategy2.VeopsStrategy{host, true})
 					router2.StandRouterApp.A = agent
 				}
 			default:
@@ -158,7 +161,7 @@ func VeopsRegister(host string, openpush bool, onlypush bool) {
 			case "":
 				log.Println("请配置push操作的host值")
 			default:
-				agent.SetPushStrategy(&strategy2.VeopsStrategy{host})
+				agent.SetPushStrategy(&strategy2.VeopsStrategy{host, true})
 				router2.StandRouterApp.A = agent
 			}
 		} else {
@@ -168,11 +171,11 @@ func VeopsRegister(host string, openpush bool, onlypush bool) {
 				case "":
 					log.Println("请配置push操作的host值")
 				default:
-					agent.SetPushStrategy(&strategy2.VeopsStrategy{host})
+					agent.SetPushStrategy(&strategy2.VeopsStrategy{host, true})
 					router2.StandRouterApp.A = agent
 				}
 			default:
-				agent.SetPushStrategy(&strategy2.VeopsStrategy{host})
+				agent.SetPushStrategy(&strategy2.VeopsStrategy{host, true})
 				router2.StandRouterApp.A = agent
 			}
 		}

@@ -1,17 +1,21 @@
 package strategy
 
 import (
-	"bigagent/internal/model/machine"
+	"bigagent/internal/scrape/machine"
 	utils "bigagent/internal/util"
 	"bigagent/internal/web/grpcs"
 )
 
 type StandardStrategy2 struct {
-	K string
-	G string
+	K      string
+	G      string
+	KeyUse bool
 }
 
 func (s *StandardStrategy2) Push() error {
+	if !s.KeyUse {
+		return nil
+	}
 	//_, err := request.NewPostStand(s.H).Do()
 	conn, err := grpcs.InitClient(s.G, s.K)
 	if err != nil {
@@ -27,7 +31,7 @@ func (s *StandardStrategy2) Api(key string) (interface{}, error) {
 	case "showdata":
 		return map[string]interface{}{
 			"code": 0,
-			"data": model.NewStandDataApi(),
+			"data": machine.SmpMa,
 		}, nil
 	default:
 		return map[string]interface{}{
