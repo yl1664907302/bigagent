@@ -2,12 +2,14 @@ system:
   addr: 0.0.0.0:8010
   grpc: 0.0.0.0
   grpc_port: 5678
-  grpc_server: 192.168.0.83:8765
+  grpc_server:
+#  grpc_server: 192.168.0.83:8765
   logfile: log.txt
   serct: "123456"
 
 veops:
-  address:  "http://192.168.210.108:8000"
+  address:
+#  address:  "http://192.168.210.108:8000"
   key:  "1afef87ae36a4942a14b16a82033fbcb"
   secret: "mQ3l7GTIB0@Ua4Rpqzx?!HfiWcusorD#"
   ciType: "guochu_auto_machine_v2"

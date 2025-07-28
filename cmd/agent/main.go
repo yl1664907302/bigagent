@@ -12,7 +12,7 @@ func init() {
 	sigs := make(chan os.Signal, 1)
 	inits.InitCmd(sigs)
 	inits.LoggerInit()
-	utils.DefaultLogger.Info("当前代码版本为：", "20241230")
+	utils.DefaultLogger.Info("当前代码版本为：", "20250728")
 	inits.Crontab()
 	inits.AgentRegister()
 	inits.ListerChannel()

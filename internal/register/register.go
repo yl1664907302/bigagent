@@ -18,19 +18,14 @@ func Stand1Register(grpcHost string, token string, openPush bool, onlyPush bool)
 			case "":
 				log.Println("请配置push操作的token值")
 			default:
-				agent.SetPushStrategy(&strategy2.StandardStrategy{K: token, G: grpcHost})
+				agent.SetPushStrategy(&strategy2.StandardStrategy{K: token, G: grpcHost, KeyUse: true})
 			}
 		} else {
 			switch openPush {
 			case true:
 				switch token {
-				case "":
-					agent.SetApiStrategy(&strategy2.StandardStrategy{})
-					router2.StandRouterApp.A = agent
-					router2.StandRouterApp.K = true
 				default:
-					agent.SetApiStrategy(&strategy2.StandardStrategy{})
-					agent.SetPushStrategy(&strategy2.StandardStrategy{K: token, G: grpcHost})
+					agent.SetPushStrategy(&strategy2.StandardStrategy{K: token, G: grpcHost, KeyUse: true})
 					router2.StandRouterApp.A = agent
 					router2.StandRouterApp.K = true
 				}
@@ -46,7 +41,7 @@ func Stand1Register(grpcHost string, token string, openPush bool, onlyPush bool)
 			case "":
 				log.Println("请配置push操作的token值")
 			default:
-				agent.SetPushStrategy(&strategy2.StandardStrategy{K: token, G: grpcHost})
+				agent.SetPushStrategy(&strategy2.StandardStrategy{K: token, G: grpcHost, KeyUse: true})
 			}
 		} else {
 			switch openPush {
@@ -55,10 +50,10 @@ func Stand1Register(grpcHost string, token string, openPush bool, onlyPush bool)
 				case "":
 					log.Println("请配置push操作的token值")
 				default:
-					agent.SetPushStrategy(&strategy2.StandardStrategy{K: token, G: grpcHost})
+					agent.SetPushStrategy(&strategy2.StandardStrategy{K: token, G: grpcHost, KeyUse: true})
 				}
 			default:
-				agent.SetPushStrategy(&strategy2.StandardStrategy{K: token, G: grpcHost})
+				agent.SetPushStrategy(&strategy2.StandardStrategy{K: token, G: grpcHost, KeyUse: true})
 			}
 		}
 	}
@@ -77,19 +72,14 @@ func Stand2Register(grpcHost string, token string, openPush bool, onlyPush bool)
 			case "":
 				log.Println("请配置push操作的host值")
 			default:
-				agent.SetPushStrategy(&strategy2.StandardStrategy2{K: token, G: grpcHost})
+				agent.SetPushStrategy(&strategy2.StandardStrategy2{K: token, G: grpcHost, KeyUse: true})
 			}
 		} else {
 			switch openPush {
 			case true:
 				switch token {
-				case "":
-					agent.SetApiStrategy(&strategy2.StandardStrategy2{})
-					router2.StandRouterApp2.A = agent
-					router2.StandRouterApp2.K = true
 				default:
-					agent.SetApiStrategy(&strategy2.StandardStrategy2{})
-					agent.SetPushStrategy(&strategy2.StandardStrategy2{K: token, G: grpcHost})
+					agent.SetPushStrategy(&strategy2.StandardStrategy2{K: token, G: grpcHost, KeyUse: true})
 					router2.StandRouterApp2.A = agent
 					router2.StandRouterApp2.K = true
 				}
@@ -105,7 +95,7 @@ func Stand2Register(grpcHost string, token string, openPush bool, onlyPush bool)
 			case "":
 				log.Println("请配置push操作的host值")
 			default:
-				agent.SetPushStrategy(&strategy2.StandardStrategy2{K: token, G: grpcHost})
+				agent.SetPushStrategy(&strategy2.StandardStrategy2{K: token, G: grpcHost, KeyUse: true})
 			}
 		} else {
 			switch openPush {
@@ -114,10 +104,10 @@ func Stand2Register(grpcHost string, token string, openPush bool, onlyPush bool)
 				case "":
 					log.Println("请配置push操作的host值")
 				default:
-					agent.SetPushStrategy(&strategy2.StandardStrategy2{K: token, G: grpcHost})
+					agent.SetPushStrategy(&strategy2.StandardStrategy2{K: token, G: grpcHost, KeyUse: true})
 				}
 			default:
-				agent.SetPushStrategy(&strategy2.StandardStrategy2{K: token, G: grpcHost})
+				agent.SetPushStrategy(&strategy2.StandardStrategy2{K: token, G: grpcHost, KeyUse: false})
 			}
 		}
 	}
@@ -146,7 +136,6 @@ func VeopsRegister(host string, openpush bool, onlypush bool) {
 					agent.SetApiStrategy(&strategy2.VeopsStrategy{})
 					router2.StandRouterApp.A = agent
 				default:
-					agent.SetApiStrategy(&strategy2.VeopsStrategy{})
 					agent.SetPushStrategy(&strategy2.VeopsStrategy{host, true})
 					router2.StandRouterApp.A = agent
 				}

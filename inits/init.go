@@ -5,7 +5,7 @@ import (
 	"bigagent/internal/register"
 	"bigagent/internal/scrape/machine"
 	"bigagent/internal/strategy"
-	"bigagent/internal/util"
+	utils "bigagent/internal/util"
 	"bigagent/internal/util/crontab"
 	"log"
 	"net/http"
@@ -42,7 +42,7 @@ func Hander(port string) {
 func AgentRegister() {
 	strategy.Agents = nil
 	//注册server端
-	//register.Stand1Register(global.V.GetString("system.grpc_server"), global.V.GetString("system.serct"), true, false)
+	register.Stand1Register(global.V.GetString("system.grpc_server"), global.V.GetString("system.serct"), true, false)
 	//注册api功能
 	register.Stand2Register("占位符，只开启api", global.V.GetString("system.serct"), false, false)
 	//注册维易cmdb端
