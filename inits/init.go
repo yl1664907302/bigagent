@@ -9,7 +9,11 @@ import (
 	"bigagent/internal/util/crontab"
 	"log"
 	"net/http"
+	"os"
+	"os/exec"
 	"regexp"
+	"runtime"
+	"strings"
 )
 
 var (
@@ -44,7 +48,9 @@ func AgentRegister() {
 	//注册server端
 	register.Stand1Register(global.V.GetString("system.grpc_server"), global.V.GetString("system.serct"), true, false)
 	//注册api功能
-	register.Stand2Register("占位符，只开启api", global.V.GetString("system.serct"), false, false)
+	if global.V.GetString("system.api") == "1" {
+		register.Stand2Register("占位符，只开启api", global.V.GetString("system.serct"), false, false)
+	}
 	//注册维易cmdb端
 	register.VeopsRegister(global.V.GetString("veops.address"), true, true)
 	//自动注册cmdb端
@@ -142,4 +148,67 @@ func ListerChannel() {
 
 func LoggerInit() {
 	utils.InitLogger(global.V.GetString("system.logfile"), "info", "json", true)
+}
+
+// InstallIfNotExists 必要软件包预检
+func InstallIfNotExists(pkgs []string) {
+	if runtime.GOOS == "windows" {
+		utils.DefaultLogger.Info("当前为 Windows 系统，跳过安装检测与安装逻辑。")
+		return
+	}
+	for _, pkg := range pkgs {
+		if isInstalled(pkg) {
+			utils.DefaultLogger.Info("已安装：%s，跳过安装。\n", pkg)
+		} else {
+			err := InstallSomeThing(pkg)
+			if err != nil {
+				utils.DefaultLogger.Info("❌ 安装 %s 失败：%v\n", pkg, err)
+				panic("安装失败，请检查软件包是否存在或网络连接是否正常。")
+			} else {
+				utils.DefaultLogger.Info("✅ 成功安装：%s\n", pkg)
+			}
+		}
+	}
+}
+
+// 从URL中提取rpm包名
+func extractRPMName(url string) string {
+	// 获取URL的最后一部分
+	parts := strings.Split(url, "/")
+	filename := parts[len(parts)-1]
+
+	// 移除.rpm扩展名和版本号等
+	name := filename
+	if idx := strings.LastIndex(filename, ".rpm"); idx > 0 {
+		name = filename[:idx]
+	}
+	// 移除版本号（形如 -1.2.3-1.el7）
+	if idx := strings.LastIndex(name, "-"); idx > 0 {
+		name = name[:idx]
+	}
+	return name
+}
+
+// 检查包是否已安装
+func isInstalled(pkg string) bool {
+	// 如果是远程包，提取包名
+	if strings.Contains(pkg, "http") {
+		pkg = extractRPMName(pkg)
+	}
+
+	// 使用rpm -q检查包是否安装
+	cmd := exec.Command("rpm", "-q", pkg)
+	err := cmd.Run()
+	return err == nil
+}
+
+// InstallSomeThing 安装指定的包（使用 yum 命令）
+func InstallSomeThing(pkg string) error {
+	utils.DefaultLogger.Info("正在安装 %s...\n", pkg)
+
+	cmd := exec.Command("yum", "install", "-y", pkg)
+	cmd.Stdout = os.Stdout
+	cmd.Stderr = os.Stderr
+
+	return cmd.Run()
 }

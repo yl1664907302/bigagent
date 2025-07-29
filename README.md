@@ -39,22 +39,43 @@ chmod 755 bigagent
 配置文件修改
 
 ```yaml
+# bigagent的系统基础配置
 system:
-  #http端口
-  addr: :8010
-  #grpc客户端host
-  grpc: 127.0.0.1
-  #grpc客户端端口
+  # http暴露套接字
+  addr: 0.0.0.0:8010
+  # grpc暴露ip
+  grpc: 0.0.0.0
+  # grpc暴露端口
   grpc_port: 5678
-  #grpc服务端套接字
-  grpc_server: 0.0.0.0:8765
-  #日志文件路径
+  # bigagent-server的grpc套接字
+  grpc_server:
+  #  grpc_server: 192.168.0.83:8765
+  # 日志文件路径
   logfile: log.txt
-  #认证密钥， 前端、agent端、server端、配置文件都需要一致
+  # api与push的bear的token
   serct: "123456"
+  # 是否开启api服务，0为不开启，1为开启
+  api : 0
+
+# 全局类型设置
+global:
+  # 指定主机类型（virtual、physical、hwy、aly）
+  machineType:  "virtual"
+  # 指定主机所属的环境信息（offline、prod）
+  env:  "offline"
+
+# 维易cmdb配置
+veops:
+  #address:
+  address:  "http://192.168.210.108:8000"
+  key:  "1afef87ae36a4942a14b16a82033fbcb"
+  secret: "mQ3l7GTIB0@Ua4Rpqzx?!HfiWcusorD#"
+  ciType: "guochu_auto_machine_v2"
+
 #如下配置为自动生成，请勿修改!!！
-grpc_cmdb1_stand1: 192.168.11.11:5555
-grpc_cmdb1_stand1_token: "123456"
+
+grpc_cmdb1_stand1:
+grpc_cmdb1_stand1_token:
 grpc_cmdb2_stand1:
 grpc_cmdb2_stand1_token:
 grpc_cmdb3_stand1:
@@ -71,17 +92,20 @@ grpc_cmdb2_stand3:
 grpc_cmdb2_stand3_token:
 grpc_cmdb3_stand3:
 grpc_cmdb3_stand3_token:
-action_detail: "26"
-collection_frequency: 2s
+action_detail: '33'
+collection_frequency: "10s"
 
 ```
 
 ## Run
 ```shell
+推荐后台启动方式：
 ./bigagent  -d -s start
-```
+./bigagent   -s restart
+./bigagent   -s stop
 
-```shell
+前台运行方式：
+./bigagent 
 ./bigagent -s start -c /path/config.yml
 ```
 

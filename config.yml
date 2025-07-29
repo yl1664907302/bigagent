@@ -1,25 +1,36 @@
+# bigagent的系统基础配置
 system:
+  # http暴露套接字
   addr: 0.0.0.0:8010
+  # grpc暴露ip
   grpc: 0.0.0.0
+  # grpc暴露端口
   grpc_port: 5678
+  # bigagent-server的grpc套接字
   grpc_server:
-#  grpc_server: 192.168.0.83:8765
+  #  grpc_server: 192.168.0.83:8765
+  # 日志文件路径
   logfile: log.txt
+  # api与push的bear的token
   serct: "123456"
+  # 是否开启api服务，0为不开启，1为开启
+  api : 0
 
-veops:
-  address:
-#  address:  "http://192.168.210.108:8000"
-  key:  "1afef87ae36a4942a14b16a82033fbcb"
-  secret: "mQ3l7GTIB0@Ua4Rpqzx?!HfiWcusorD#"
-  ciType: "guochu_auto_machine_v2"
-
-# 主机类型设置
+# 全局类型设置
 global:
   # 指定主机类型（virtual、physical、hwy、aly）
   machineType:  "virtual"
   # 指定主机所属的环境信息（offline、prod）
   env:  "offline"
+
+# 维易cmdb配置
+veops:
+  #address:
+  address:  "http://192.168.210.108:8000"
+  key:  "1afef87ae36a4942a14b16a82033fbcb"
+  secret: "mQ3l7GTIB0@Ua4Rpqzx?!HfiWcusorD#"
+  ciType: "guochu_auto_machine_v2"
+
 #如下配置为自动生成，请勿修改!!！
 
 grpc_cmdb1_stand1:

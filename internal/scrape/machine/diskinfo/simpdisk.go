@@ -9,7 +9,7 @@ import (
 	"github.com/shirou/gopsutil/v4/disk"
 )
 
-type smpInfo struct {
+type SmpInfo struct {
 	Path        string `json:"path"`
 	Total       string `json:"total"`
 	Free        string `json:"free"`
@@ -20,7 +20,7 @@ type smpInfo struct {
 	MountPoint  string `json:"mountpoint"`
 }
 
-type SmpDisk map[string]smpInfo
+type SmpDisk map[string]SmpInfo
 
 func NewSmpDisk() *SmpDisk {
 	// 初始化smpdisk
@@ -36,10 +36,7 @@ func NewSmpDisk() *SmpDisk {
 		if err != nil {
 			continue
 		}
-
-		// smpdisk[i.Device] = make(map[string]smpInfo)
-
-		smpinfo := smpInfo{
+		smpinfo := SmpInfo{
 			Path:        usage.Path,
 			Total:       formatsize.FormatSize(usage.Total),
 			Free:        formatsize.FormatSize(usage.Free),
@@ -75,7 +72,7 @@ func NewSmpDiskGrpc() *map[string]*grpc_server.SmpDisk {
 			continue
 		}
 
-		smpinfo := smpInfo{
+		smpinfo := SmpInfo{
 			Path:        usage.Path,
 			Total:       formatsize.FormatSize(usage.Total),
 			Free:        formatsize.FormatSize(usage.Free),

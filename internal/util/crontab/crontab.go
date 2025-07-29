@@ -3,6 +3,7 @@ package crontab
 import (
 	"bigagent/internal/config/global"
 	"bigagent/internal/scrape/machine"
+	"bigagent/internal/strategy"
 	"bigagent/internal/util"
 	"github.com/robfig/cron/v3"
 )
@@ -17,6 +18,10 @@ func cronTask() {
 
 // ScrapeCrontab 初始化采集crontab任务
 func ScrapeCrontab() {
+	if strategy.Agents == nil {
+		utils.DefaultLogger.Warn("agent策略为空，暂停采集任务")
+		return
+	}
 	machine.SmpMa = machine.NewSmpMachine()
 	var crontabRule string
 	if global.V.GetString("collection_frequency") == "" {

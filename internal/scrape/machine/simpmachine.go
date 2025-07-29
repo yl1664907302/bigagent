@@ -69,15 +69,35 @@ func NewSmpMachine() *SmpMachine {
 	disk_use := make(map[string]string)
 
 	disks := diskinfo.NewSmpDisk()
-
-	for _, v := range *disks {
+	// 创建一个新的 SmpDisk 来存储过滤后的结果
+	filteredDisks := &diskinfo.SmpDisk{}
+	for _, d := range *disks {
+		// Windows 系统下保留所有设备
 		if runtime.GOOS == "windows" {
-			disk_use[v.Device] = v.UsedPercent
-		} else if runtime.GOOS == "linux" && strings.HasPrefix(v.Device, "/dev/") {
-			disk_use[v.Device] = v.UsedPercent
+			(*filteredDisks)[d.Path] = d
+			disk_use[d.Device] = d.UsedPercent
+			continue
 		}
 
+		// Linux 系统下过滤掉特定挂载点
+		if runtime.GOOS == "linux" {
+			if strings.Contains(d.Path, "/proc") ||
+				strings.Contains(d.Path, "/docker") ||
+				strings.Contains(d.Path, "/kubelet") ||
+				strings.Contains(d.Path, "/run") ||
+				strings.Contains(d.Path, "/tmp") ||
+				strings.Contains(d.Path, "/var") ||
+				strings.Contains(d.Path, "/sys") {
+				continue
+			}
+			// 只添加需要保留的设备
+			(*filteredDisks)[d.Path] = d
+			disk_use[d.Device] = d.UsedPercent
+		}
 	}
+
+	// 使用过滤后的结果替换原始数据
+	disks = filteredDisks
 	cpu := cpuinfo.NewSmpCpu()
 	memory := meminfo.NewSmpMem()
 	disk_g := *diskinfo.NewSmpDiskGrpc()

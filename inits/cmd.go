@@ -60,7 +60,7 @@ func fileExists(filePath string) bool {
 	return true // 文件存在且有内容
 }
 
-func Stop() {
+func Stop(re bool) {
 	pidData, err := ioutil.ReadFile(pidFile)
 	if err != nil {
 		log.Printf("无法读取 PID 文件: %v", err)
@@ -81,31 +81,15 @@ func Stop() {
 	}
 
 	log.Println(runInfo)
-	time.Sleep(3 * time.Second)
+	time.Sleep(6 * time.Second)
 	cmd.Run()
 
 	if err := os.Remove(pidFile); err != nil {
 		log.Printf("删除 PID 文件失败: %v", err)
 	}
-}
-
-func Restart() {
-	Stop()
-	args := []string{
-		"-s", "start", // 默认启动操作
-		//"-c", "config.yml",
+	if !re {
+		os.Exit(0)
 	}
-
-	cmd := exec.Command(os.Args[0], args...)
-	if err := cmd.Start(); err != nil {
-		log.Fatalf("Failed to restart: %v", err)
-	}
-
-	if err := writePID(); err != nil {
-		log.Fatalf("无法写入 PID 文件: %v", err)
-	}
-
-	log.Println("重启成功，新进程 PID 为:", cmd.Process.Pid)
 }
 
 // InitCmd 启动时初始化环境以及信号
@@ -192,10 +176,16 @@ func InitCmd(sigs chan os.Signal) {
 				}
 				break
 			case "stop":
-				Stop()
+				Stop(false)
 				os.Exit(0)
 			case "restart":
-				Restart()
+				Stop(true)
+				args := []string{}
+				args = append(args, "-s", "start")
+				cmd := exec.Command(os.Args[0], args...)
+				if err := cmd.Start(); err != nil {
+					log.Fatalf("Failed to start daemon: %v", err)
+				}
 				os.Exit(0)
 			default:
 				log.Println("无效的操作参数")
@@ -205,9 +195,12 @@ func InitCmd(sigs chan os.Signal) {
 			}
 		}
 
-		if err := writePID(); err != nil {
-			utils.DefaultLogger.Error("无法写入 PID 文件:", err)
-			return
+		if *env != "stop" {
+			err := writePID()
+			if err != nil {
+				utils.DefaultLogger.Error("无法写入 PID 文件:", err)
+				return
+			}
 		}
 	}
 }
