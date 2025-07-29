@@ -15,6 +15,8 @@ system:
   serct: "123456"
   # 是否开启api服务，0为不开启，1为开启
   api : 0
+  # osqueryd的套接字文件路径
+  empath: "/var/osquery/osquery.em"
 
 # 全局类型设置
 global:

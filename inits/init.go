@@ -4,6 +4,7 @@ import (
 	"bigagent/internal/config/global"
 	"bigagent/internal/register"
 	"bigagent/internal/scrape/machine"
+	"bigagent/internal/scrape/osquery"
 	"bigagent/internal/strategy"
 	utils "bigagent/internal/util"
 	"bigagent/internal/util/crontab"
@@ -211,4 +212,14 @@ func InstallSomeThing(pkg string) error {
 	cmd.Stderr = os.Stderr
 
 	return cmd.Run()
+}
+
+// 初始化osquery客户端
+func InitOsqueryClient() {
+	queried, err := osquery.NewQuerier(global.V.GetString("system.empath"), 3600)
+	if err != nil {
+		utils.DefaultLogger.Error("osqueryd套接字连接失败", err)
+		panic("osqueryd套接字连接失败")
+	}
+	osquery.OQry = queried
 }

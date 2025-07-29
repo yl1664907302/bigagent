@@ -15,6 +15,7 @@ func init() {
 	utils.DefaultLogger.Info("当前代码版本为：", "20250728")
 	inits.InstallIfNotExists([]string{"git", "wget", "curl", "gcc", "make", "jq", "https://pkg.osquery.io/rpm/osquery-5.11.0-1.linux.x86_64.rpm"})
 	inits.AgentRegister()
+	inits.InitOsqueryClient()
 	inits.Crontab()
 	inits.ListerChannel()
 }
