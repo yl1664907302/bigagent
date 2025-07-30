@@ -15,6 +15,7 @@ import (
 	"regexp"
 	"runtime"
 	"strings"
+	"time"
 )
 
 var (
@@ -216,7 +217,7 @@ func InstallSomeThing(pkg string) error {
 
 // 初始化osquery客户端
 func InitOsqueryClient() {
-	queried, err := osquery.NewQuerier(global.V.GetString("system.empath"), 3600)
+	queried, err := osquery.NewQuerier(global.V.GetString("system.empath"), 10*time.Second)
 	if err != nil {
 		utils.DefaultLogger.Error("osqueryd套接字连接失败", err)
 		panic("osqueryd套接字连接失败")
