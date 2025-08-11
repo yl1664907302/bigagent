@@ -2,7 +2,7 @@ package inits
 
 import (
 	"bigagent/internal/config/global"
-	"bigagent/internal/util"
+	utils "bigagent/internal/util"
 	router2 "bigagent/internal/web/router"
 	"net/http"
 	"time"
@@ -23,9 +23,14 @@ type VeopsRouterGroup struct {
 	Prefix string
 }
 
+type K8sRouterGroup struct {
+	Prefix string
+}
+
 var StandRouterGroupApp = &StandRouterGroup{Prefix: "/stand1"}
 var StandRouterGroupApp2 = &StandRouterGroup2{Prefix: "/stand2"}
 var SysRouterGroupApp = &SysRouterGroup{Prefix: "/sys"}
+var K8sRouterGroupApp = &K8sRouterGroup{Prefix: "/k8s"}
 
 // var VeopsRouterGroupApp = &VeopsRouterGroup{Prefix: "/veops"}
 
@@ -38,6 +43,12 @@ func (r *StandRouterGroup) StandRouter() {
 // Stand2Router 添加路由，自动带上前缀
 func (r *StandRouterGroup2) StandRouter() {
 	http.Handle(r.Prefix+"/showdata", loggingMiddleware(AuthMiddleware(http.HandlerFunc(router2.StandRouterApp2.ShowData))))
+}
+
+// K8sRouter 添加路由，自动带上前缀
+func (r *K8sRouterGroup) K8sRouter() {
+	http.Handle(r.Prefix+"/ping", loggingMiddleware(AuthMiddleware(http.HandlerFunc(router2.K8sRouterApp.Ping))))
+	http.Handle(r.Prefix+"/info", loggingMiddleware(AuthMiddleware(http.HandlerFunc(router2.K8sRouterApp.Info))))
 }
 
 func (r *SysRouterGroup) SysRouter() {

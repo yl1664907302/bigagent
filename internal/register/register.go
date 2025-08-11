@@ -1,173 +1,96 @@
 package register
 
 import (
-	strategy2 "bigagent/internal/strategy"
-	router2 "bigagent/internal/web/router"
+	"bigagent/internal/strategy"
+	"bigagent/internal/web/router"
 	"log"
 )
 
-// Stand1Register  策略注册,open push值是否开启push, only push是否只开启push（关闭api）
-func Stand1Register(grpcHost string, token string, openPush bool, onlyPush bool) {
-	if grpcHost == "" {
+// 抽取通用注册流程
+func registerCommon(hostEmpty bool, token string, openPush bool, onlyPush bool,
+	missingMsg string,
+	pushFactory func() strategy.PushStrategy,
+	apiFactory func() strategy.ApiStrategy,
+	attach func(*strategy.Agent),
+) {
+	if hostEmpty {
 		return
 	}
-	agent := strategy2.NewAgent()
-	if !router2.StandRouterApp.K {
-		if onlyPush {
-			switch token {
-			case "":
-				log.Println("请配置push操作的token值")
-			default:
-				agent.SetPushStrategy(&strategy2.StandardStrategy{K: token, G: grpcHost, KeyUse: true})
-			}
+	agent := strategy.NewAgent()
+
+	if onlyPush {
+		if token == "" {
+			log.Println(missingMsg)
+			// 仅提示，不附加到router
 		} else {
-			switch openPush {
-			case true:
-				switch token {
-				default:
-					agent.SetPushStrategy(&strategy2.StandardStrategy{K: token, G: grpcHost, KeyUse: true})
-					router2.StandRouterApp.A = agent
-					router2.StandRouterApp.K = true
-				}
-			default:
-				agent.SetApiStrategy(&strategy2.StandardStrategy{KeyUse: false})
-				router2.StandRouterApp.A = agent
-				router2.StandRouterApp.K = true
-			}
+			agent.SetPushStrategy(pushFactory())
+		}
+	} else if openPush {
+		if token == "" {
+			log.Println(missingMsg)
+		} else {
+			agent.SetPushStrategy(pushFactory())
+			attach(agent)
 		}
 	} else {
-		if onlyPush {
-			switch token {
-			case "":
-				log.Println("请配置push操作的token值")
-			default:
-				agent.SetPushStrategy(&strategy2.StandardStrategy{K: token, G: grpcHost, KeyUse: true})
-			}
-		} else {
-			switch openPush {
-			case true:
-				switch token {
-				case "":
-					log.Println("请配置push操作的token值")
-				default:
-					agent.SetPushStrategy(&strategy2.StandardStrategy{K: token, G: grpcHost, KeyUse: true})
-				}
-			default:
-				agent.SetPushStrategy(&strategy2.StandardStrategy{K: token, G: grpcHost, KeyUse: true})
-			}
-		}
+		agent.SetApiStrategy(apiFactory())
+		attach(agent)
 	}
-	strategy2.Agents = append(strategy2.Agents, *agent)
+
+	strategy.Agents = append(strategy.Agents, *agent)
+}
+
+func attachStand1(agent *strategy.Agent) {
+	router.StandRouterApp.A = agent
+	router.StandRouterApp.K = true
+}
+
+func attachStand2(agent *strategy.Agent) {
+	router.StandRouterApp2.A = agent
+	router.StandRouterApp2.K = true
+}
+
+// Stand1Register  策略注册,open push值是否开启push, only push是否只开启push（关闭api）
+func Stand1Register(grpcHost string, token string, openPush bool, onlyPush bool) {
+	registerCommon(
+		grpcHost == "",
+		token,
+		openPush,
+		onlyPush,
+		"请配置push操作的token值",
+		func() strategy.PushStrategy { return &strategy.StandardStrategy{K: token, G: grpcHost, KeyUse: true} },
+		func() strategy.ApiStrategy { return &strategy.StandardStrategy{KeyUse: false} },
+		attachStand1,
+	)
 }
 
 // Stand2Register  策略注册,open push值是否开启push, only push是否只开启push（关闭api）
 func Stand2Register(grpcHost string, token string, openPush bool, onlyPush bool) {
-	if grpcHost == "" {
-		return
-	}
-	agent := strategy2.NewAgent()
-	if !router2.StandRouterApp2.K {
-		if onlyPush {
-			switch token {
-			case "":
-				log.Println("请配置push操作的host值")
-			default:
-				agent.SetPushStrategy(&strategy2.StandardStrategy2{K: token, G: grpcHost, KeyUse: true})
-			}
-		} else {
-			switch openPush {
-			case true:
-				switch token {
-				default:
-					agent.SetPushStrategy(&strategy2.StandardStrategy2{K: token, G: grpcHost, KeyUse: true})
-					router2.StandRouterApp2.A = agent
-					router2.StandRouterApp2.K = true
-				}
-			default:
-				agent.SetApiStrategy(&strategy2.StandardStrategy2{KeyUse: false})
-				router2.StandRouterApp2.A = agent
-				router2.StandRouterApp2.K = true
-			}
-		}
-	} else {
-		if onlyPush {
-			switch token {
-			case "":
-				log.Println("请配置push操作的host值")
-			default:
-				agent.SetPushStrategy(&strategy2.StandardStrategy2{K: token, G: grpcHost, KeyUse: true})
-			}
-		} else {
-			switch openPush {
-			case true:
-				switch token {
-				case "":
-					log.Println("请配置push操作的host值")
-				default:
-					agent.SetPushStrategy(&strategy2.StandardStrategy2{K: token, G: grpcHost, KeyUse: true})
-				}
-			default:
-				agent.SetPushStrategy(&strategy2.StandardStrategy2{K: token, G: grpcHost, KeyUse: false})
-			}
-		}
-	}
-	strategy2.Agents = append(strategy2.Agents, *agent)
+	registerCommon(
+		grpcHost == "",
+		token,
+		openPush,
+		onlyPush,
+		"请配置push操作的host值",
+		func() strategy.PushStrategy {
+			return &strategy.StandardStrategy2{K: token, G: grpcHost, KeyUse: true}
+		},
+		func() strategy.ApiStrategy { return &strategy.StandardStrategy2{KeyUse: false} },
+		attachStand2,
+	)
 }
 
 // VeopsRegister 策略注册,openpush值是否开启push, onlypush是否只开启push（关闭api）
 func VeopsRegister(host string, openpush bool, onlypush bool) {
-	if host == "" {
-		return
-	}
-	agent := strategy2.NewAgent()
-	if !router2.StandRouterApp.K {
-		if onlypush {
-			switch host {
-			case "":
-				log.Println("请配置push操作的host值")
-			default:
-				agent.SetPushStrategy(&strategy2.VeopsStrategy{host, true})
-			}
-		} else {
-			switch openpush {
-			case true:
-				switch host {
-				case "":
-					agent.SetApiStrategy(&strategy2.VeopsStrategy{})
-					router2.StandRouterApp.A = agent
-				default:
-					agent.SetPushStrategy(&strategy2.VeopsStrategy{host, true})
-					router2.StandRouterApp.A = agent
-				}
-			default:
-				agent.SetApiStrategy(&strategy2.VeopsStrategy{})
-				router2.StandRouterApp.A = agent
-			}
-		}
-	} else {
-		if onlypush {
-			switch host {
-			case "":
-				log.Println("请配置push操作的host值")
-			default:
-				agent.SetPushStrategy(&strategy2.VeopsStrategy{host, true})
-				router2.StandRouterApp.A = agent
-			}
-		} else {
-			switch openpush {
-			case true:
-				switch host {
-				case "":
-					log.Println("请配置push操作的host值")
-				default:
-					agent.SetPushStrategy(&strategy2.VeopsStrategy{host, true})
-					router2.StandRouterApp.A = agent
-				}
-			default:
-				agent.SetPushStrategy(&strategy2.VeopsStrategy{host, true})
-				router2.StandRouterApp.A = agent
-			}
-		}
-	}
-	strategy2.Agents = append(strategy2.Agents, *agent)
+	registerCommon(
+		host == "",
+		// Veops 不使用 token，沿用提示语义
+		host,
+		openpush,
+		onlypush,
+		"请配置push操作的host值",
+		func() strategy.PushStrategy { return &strategy.VeopsStrategy{host, true} },
+		func() strategy.ApiStrategy { return &strategy.VeopsStrategy{} },
+		attachStand1,
+	)
 }

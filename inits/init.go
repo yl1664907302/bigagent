@@ -23,66 +23,126 @@ var (
 	//cmdbPattern = regexp.MustCompile(`(\w+)`)
 )
 
-// Hander 启动http服务
-func Hander(port string) {
-	StandRouterGroupApp.StandRouter()
-	StandRouterGroupApp2.StandRouter()
-	SysRouterGroupApp.SysRouter()
-	err := http.ListenAndServe(port, nil)
-	if err != nil {
-		log.Fatal("ListenAndServe: ", err)
-	}
+// 用于描述一条注册计划
+type registrationSpec struct {
+	kind     string // stand1 | stand2 | veops | stand3(预留)
+	host     string
+	token    string
+	openPush bool
+	onlyPush bool
 }
 
-/*
-   关于AgentRegister
-   参数 host，填充的是http推送端口，目前未启用，如下仅为占位符
-   参数 grpc_host，读取的是配置文中的grpc服务器地址，由server端发送的配置进行热加载
-   参数 openpush，是否开启推送
-   参数 onlypush，是否只开启推送
+type regKey struct {
+	kind     string
+	host     string
+	token    string
+	openPush bool
+	onlyPush bool
+}
 
-   此外，在进行agent注册的时候，每种标准数据类型的api功能只会注册一次
-*/
+// 根据配置编译出所有需要执行的注册计划（显式 + 自动发现）
+func compileRegistrationSpecs() []registrationSpec {
+	specs := make([]registrationSpec, 0, 8)
 
-// AgentRegister agent注册
-func AgentRegister() {
-	strategy.Agents = nil
-	//注册server端
-	register.Stand1Register(global.V.GetString("system.grpc_server"), global.V.GetString("system.serct"), true, false)
-	//注册api功能
+	// 显式：server 端（stand1）
+	specs = append(specs, registrationSpec{
+		kind:     "stand1",
+		host:     global.V.GetString("system.grpc_server"),
+		token:    global.V.GetString("system.serct"),
+		openPush: true,
+		onlyPush: false,
+	})
+
+	// 显式：仅开启 API（stand2）
 	if global.V.GetString("system.api") == "1" {
-		register.Stand2Register("占位符，只开启api", global.V.GetString("system.serct"), false, false)
+		specs = append(specs, registrationSpec{
+			kind:     "stand2",
+			host:     "占位符，只开启api",
+			token:    global.V.GetString("system.serct"),
+			openPush: false,
+			onlyPush: false,
+		})
 	}
-	//注册维易cmdb端
-	register.VeopsRegister(global.V.GetString("veops.address"), true, true)
-	//自动注册cmdb端
+
+	// 显式：维易 cmdb
+	specs = append(specs, registrationSpec{
+		kind:     "veops",
+		host:     global.V.GetString("veops.address"),
+		openPush: true,
+		onlyPush: true,
+	})
+
+	// 自动发现：grpc_cmdbX_standY 与其 _token
 	configs := global.V.AllSettings()
+	hostByBase := make(map[string]string)
+	tokenByBase := make(map[string]string)
 	for key, value := range configs {
-		matches := cmdbPattern.FindStringSubmatch(key)
-		if len(matches) == 3 {
-			standNum := matches[2]
-			// 根据stand序号选择对应的注册函数
-			switch standNum {
-			case "1":
-				for k, v := range configs {
-					if k == key+"_token" {
-						register.Stand1Register(value.(string), v.(string), true, false)
-					}
-				}
-			case "2":
-				for k, v := range configs {
-					if k == key+"_token" {
-						register.Stand2Register(value.(string), v.(string), true, false)
-					}
-				}
-			case "3":
-				//register.Stand3Register("127.0.0.1:8080", value.(string), true, false)
-			// 可以继续添加更多的 case 以支持更多的 stand类型
-			default:
-				utils.DefaultLogger.Error("未识别的标准数据类型 序号: %s", standNum)
+		valStr, ok := value.(string)
+		if !ok {
+			continue
+		}
+		if matches := cmdbPattern.FindStringSubmatch(key); len(matches) == 3 {
+			hostByBase[key] = valStr
+			continue
+		}
+		if strings.HasSuffix(key, "_token") {
+			base := strings.TrimSuffix(key, "_token")
+			if matches := cmdbPattern.FindStringSubmatch(base); len(matches) == 3 {
+				tokenByBase[base] = valStr
 			}
 		}
 	}
+	for base, host := range hostByBase {
+		matches := cmdbPattern.FindStringSubmatch(base)
+		if len(matches) != 3 {
+			continue
+		}
+		standNum := matches[2]
+		token := tokenByBase[base]
+		switch standNum {
+		case "1":
+			specs = append(specs, registrationSpec{kind: "stand1", host: host, token: token, openPush: true, onlyPush: false})
+		case "2":
+			specs = append(specs, registrationSpec{kind: "stand2", host: host, token: token, openPush: true, onlyPush: false})
+		case "3":
+			// 预留 stand3
+		default:
+			utils.DefaultLogger.Error("未识别的标准数据类型 序号: %s", standNum)
+		}
+	}
+	return specs
+}
+
+// 统一执行注册计划（包含去重）
+func applyRegistrationSpecs(specs []registrationSpec) {
+	seen := make(map[regKey]struct{}, len(specs))
+	for _, s := range specs {
+		k := regKey{s.kind, s.host, s.token, s.openPush, s.onlyPush}
+		if _, ok := seen[k]; ok {
+			continue
+		}
+		seen[k] = struct{}{}
+
+		switch s.kind {
+		case "stand1":
+			register.Stand1Register(s.host, s.token, s.openPush, s.onlyPush)
+		case "stand2":
+			register.Stand2Register(s.host, s.token, s.openPush, s.onlyPush)
+		case "veops":
+			register.VeopsRegister(s.host, s.openPush, s.onlyPush)
+		default:
+			utils.DefaultLogger.Error("未知的注册类型: %s", s.kind)
+		}
+	}
+}
+
+// AgentRegister agent注册
+func AgentRegister() {
+	// 重置已注册的 agent 策略
+	strategy.Agents = nil
+	// 编译并统一执行注册计划
+	specs := compileRegistrationSpecs()
+	applyRegistrationSpecs(specs)
 }
 
 // Crontab 执行定时任务
@@ -223,4 +283,15 @@ func InitOsqueryClient() {
 		panic("osqueryd套接字连接失败")
 	}
 	osquery.OQry = queried
+}
+
+// Hander 启动http服务
+func Hander(port string) {
+	StandRouterGroupApp.StandRouter()
+	StandRouterGroupApp2.StandRouter()
+	SysRouterGroupApp.SysRouter()
+	err := http.ListenAndServe(port, nil)
+	if err != nil {
+		log.Fatal("ListenAndServe: ", err)
+	}
 }

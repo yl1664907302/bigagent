@@ -17,7 +17,7 @@ system:
   api : 0
   # osqueryd的套接字文件路径
 #  empath: "/var/osquery/osquery.em"
-  empath: "\\\\.\\pipe\\osquery.em"
+  empath: "\\\\.\\\\pipe\\\\osquery.em"
 
 # 全局类型设置
 global:
