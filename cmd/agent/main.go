@@ -3,7 +3,8 @@ package main
 import (
 	"bigagent/inits"
 	"bigagent/internal/config/global"
-	"bigagent/internal/scrape/osquery"
+	"bigagent/internal/decision"
+	"bigagent/internal/kubernetes"
 	utils "bigagent/internal/util"
 	"context"
 	"os"
@@ -23,13 +24,30 @@ func init() {
 }
 
 func main() {
-	ctx := context.Background()
-	query, err := osquery.OQry.Query(ctx, "select * from os_version")
-	if err != nil {
-		utils.DefaultLogger.Errorf("osquery查询失败: %v", err)
-		return
-	}
-	utils.DefaultLogger.Infof("osquery查询结果: %v", query)
+	// 测试代码
+	func() {
+		// 生成参数
+		ctx := context.Background()
+		clusters := []kubernetes.KubeCluster{
+			{
+				Name:       "test",
+				Kubeconfig: "kubeconfig.yaml",
+			},
+		}
+
+		k := decision.NewKubeDecision(decision.NewAbnormalPod(func() *kubernetes.DefaultK8sOperator {
+			return &kubernetes.DefaultK8sOperator{
+				Clusters: clusters,
+			}
+		}, ctx, "test", "nantong-20"))
+
+		err := k.C.StartCheck()
+		if err != nil {
+			utils.DefaultLogger.Error("Kubernetes集群检查失败:", err)
+			return
+		}
+	}()
+
 	inits.RunG()
 	inits.Hander(global.V.GetString("system.addr"))
 }

@@ -96,7 +96,7 @@ func updateData(dataMap map[string]string, wg *sync.WaitGroup) {
 		utils.DefaultLogger.Error("主机数据更新失败：", err)
 		return
 	}
-	utils.DefaultLogger.Info("数据更新成功：", requestParams)
+	utils.DefaultLogger.Info("数据更新成功")
 }
 
 func Query(q string, result any) (*response.QueryResp, error) {
@@ -318,8 +318,6 @@ func PutCMDBci(params map[string]string, ciId string) (*response.ResultResponse,
 	if ciId != "" {
 		urlPath = "/api/v0.1/ci/" + ciId
 	}
-
-	fmt.Println(params)
 	//	这里将默认的模型信息和变动的ci数据结合
 	allParams := make(map[string]string, len(params)+len(defaultParams))
 	for k, v := range params {
@@ -342,8 +340,8 @@ func PutCMDBci(params map[string]string, ciId string) (*response.ResultResponse,
 	// 初始化一个Client客户端
 	client := &http.Client{}
 
-	// 发送HTTP PUT请求
-	fmt.Println(fullURL)
+	//// 发送HTTP PUT请求
+	//fmt.Println(fullURL)
 	req, err := http.NewRequest("PUT", fullURL, nil)
 	if err != nil {
 		utils.DefaultLogger.Error("CMDB客户端连接请求发送失败：", err)
@@ -362,7 +360,7 @@ func PutCMDBci(params map[string]string, ciId string) (*response.ResultResponse,
 
 	// 读取并打印响应体
 	body, err := ioutil.ReadAll(resp.Body)
-	fmt.Println("body:", string(body))
+	//fmt.Println("body:", string(body))
 	if err != nil {
 		utils.DefaultLogger.Error("CMDB客户端响应体读取异常：", err)
 		return nil, err

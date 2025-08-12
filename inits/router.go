@@ -45,12 +45,6 @@ func (r *StandRouterGroup2) StandRouter() {
 	http.Handle(r.Prefix+"/showdata", loggingMiddleware(AuthMiddleware(http.HandlerFunc(router2.StandRouterApp2.ShowData))))
 }
 
-// K8sRouter 添加路由，自动带上前缀
-func (r *K8sRouterGroup) K8sRouter() {
-	http.Handle(r.Prefix+"/ping", loggingMiddleware(AuthMiddleware(http.HandlerFunc(router2.K8sRouterApp.Ping))))
-	http.Handle(r.Prefix+"/info", loggingMiddleware(AuthMiddleware(http.HandlerFunc(router2.K8sRouterApp.Info))))
-}
-
 func (r *SysRouterGroup) SysRouter() {
 	http.Handle(r.Prefix+"/cmd", loggingMiddleware(AuthMiddleware(http.HandlerFunc(router2.SysRouterApp.Cmd))))
 }
