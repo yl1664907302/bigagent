@@ -1,11 +1,10 @@
-package decision
+package check
 
 import (
 	"bigagent/internal/kubernetes"
 	"context"
 	"fmt"
 	corev1 "k8s.io/api/core/v1"
-	"log"
 )
 
 // AbnormalPod 定义“重启不正常”的 Pod 结构体
@@ -21,22 +20,30 @@ type AbnormalPod struct {
 	Message      string
 }
 
-func NewAbnormalPod(k func() *kubernetes.DefaultK8sOperator, ctx context.Context, cluster string, namespace string) *AbnormalPod {
+func NewAbnormalPod(ctx context.Context, k func() *kubernetes.DefaultK8sOperator, cluster string, namespace string) *AbnormalPod {
 	return &AbnormalPod{k: k, ctx: ctx, Cluster: cluster, Namespace: namespace}
 }
 
-func (d *AbnormalPod) StartCheck() error {
-	report, err := d.CheckPodAbnormalRestarts(d.ctx, d.k, d.Cluster, d.Namespace, 1)
-	for _, pod := range report {
-		log.Printf("重启异常的pod为%s", pod.Pod)
+func (d *AbnormalPod) Check() (Result, error) {
+	report, err := d.getPodAbnormalRestarts(d.ctx, d.k, d.Cluster, d.Namespace, 1)
+	if err != nil {
+		return Result{}, err
 	}
-	return err
+	res := Result{
+		CheckName: "PodAbnormalRestarts",
+		Cluster:   d.Cluster,
+		Namespace: d.Namespace,
+		Severity:  "warn",
+		Count:     len(report),
+		Items:     report,
+	}
+	return res, nil
 }
 
 // CheckPodAbnormalRestarts 使用 DefaultK8sOperator 判定 Pod 是否“重启不正常”
 // - namespace 为空则扫描所有命名空间
 // - restartThreshold: 重启次数阈值（如 3）
-func (d *AbnormalPod) CheckPodAbnormalRestarts(ctx context.Context, op func() *kubernetes.DefaultK8sOperator, cluster, namespace string, restartThreshold int32) ([]AbnormalPod, error) {
+func (d *AbnormalPod) getPodAbnormalRestarts(ctx context.Context, op func() *kubernetes.DefaultK8sOperator, cluster, namespace string, restartThreshold int32) ([]AbnormalPod, error) {
 	if op() == nil {
 		return nil, fmt.Errorf("k8s 操作手没创建！")
 	}

@@ -2,9 +2,11 @@ package main
 
 import (
 	"bigagent/inits"
+	"bigagent/internal/check"
 	"bigagent/internal/config/global"
 	"bigagent/internal/decision"
 	"bigagent/internal/kubernetes"
+	"bigagent/internal/polling"
 	utils "bigagent/internal/util"
 	"context"
 	"os"
@@ -35,17 +37,19 @@ func main() {
 			},
 		}
 
-		k := decision.NewKubeDecision(decision.NewAbnormalPod(func() *kubernetes.DefaultK8sOperator {
+		result, _ := polling.NewKubePolling(check.NewAbnormalPod(ctx, func() *kubernetes.DefaultK8sOperator {
 			return &kubernetes.DefaultK8sOperator{
 				Clusters: clusters,
 			}
-		}, ctx, "test", "nantong-20"))
+		}, "test", "")).P.Check()
 
-		err := k.C.StartCheck()
+		num, err := decision.NewAbnormalPodDecision(result).Judge()
 		if err != nil {
-			utils.DefaultLogger.Error("Kubernetes集群检查失败:", err)
+			utils.DefaultLogger.Errorf("判断异常 Pod 时发生错误: %v", err)
 			return
 		}
+		utils.DefaultLogger.Info("pod诊断分数为：", num)
+
 	}()
 
 	inits.RunG()

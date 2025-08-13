@@ -23,13 +23,6 @@ type DefaultK8sOperator struct {
 	cache    *ClientCache
 }
 
-func NewDefaultK8sOperator(clusters []KubeCluster) *DefaultK8sOperator {
-	m := []KubeCluster{}
-	return &DefaultK8sOperator{
-		Clusters: m,
-	}
-}
-
 func (op *DefaultK8sOperator) getClient(clusterName string) (*kubernetes.Clientset, *rest.Config, error) {
 	var cluster *KubeCluster
 
