@@ -1,53 +1,58 @@
 package check
 
 import (
+	"bigagent/internal/check/result"
 	"bigagent/internal/kubernetes"
 	"context"
 	"fmt"
 	corev1 "k8s.io/api/core/v1"
+	"log"
 )
 
 // AbnormalPod 定义“重启不正常”的 Pod 结构体
 type AbnormalPod struct {
-	k            func() *kubernetes.DefaultK8sOperator
-	ctx          context.Context
-	Cluster      string // 集群名称
-	Namespace    string
-	Pod          string
-	Container    string
-	RestartCount int32
-	Reason       string
-	Message      string
+	k            func() *kubernetes.DefaultK8sOperator `json:"-"`
+	ctx          context.Context                       `json:"-"`
+	Cluster      string                                `json:"cluster"`
+	Namespace    string                                `json:"namespace"`
+	Pod          string                                `json:"pod"`
+	Container    string                                `json:"container"`
+	RestartCount int32                                 `json:"restart_count"`
+	Reason       string                                `json:"reason"`
+	Message      string                                `json:"message"`
 }
 
 func NewAbnormalPod(ctx context.Context, k func() *kubernetes.DefaultK8sOperator, cluster string, namespace string) *AbnormalPod {
 	return &AbnormalPod{k: k, ctx: ctx, Cluster: cluster, Namespace: namespace}
 }
 
-func (d *AbnormalPod) Check() (Result, error) {
+func (d *AbnormalPod) Check() (result.Result, error) {
+	var severity string
 	report, err := d.getPodAbnormalRestarts(d.ctx, d.k, d.Cluster, d.Namespace, 1)
 	if err != nil {
-		return Result{}, err
+		return nil, err
 	}
-	res := Result{
-		CheckName: "PodAbnormalRestarts",
-		Cluster:   d.Cluster,
-		Namespace: d.Namespace,
-		Severity:  "warn",
-		Count:     len(report),
-		Items:     report,
+	switch len(report) {
+
+	case 0:
+		severity = "info"
+	case 1:
+		severity = "warn"
+	default:
+		severity = "critical"
 	}
-	return res, nil
+	// 返回异常核心报告
+	return result.NewResultPod(result.Base{
+		Cluster: d.Cluster,
+		Items:   report,
+	}, nil, "PodAbnormalRestarts", severity, len(report), report), nil
 }
 
-// CheckPodAbnormalRestarts 使用 DefaultK8sOperator 判定 Pod 是否“重启不正常”
-// - namespace 为空则扫描所有命名空间
-// - restartThreshold: 重启次数阈值（如 3）
 func (d *AbnormalPod) getPodAbnormalRestarts(ctx context.Context, op func() *kubernetes.DefaultK8sOperator, cluster, namespace string, restartThreshold int32) ([]AbnormalPod, error) {
 	if op() == nil {
 		return nil, fmt.Errorf("k8s 操作手没创建！")
 	}
-	// 通过 op.ListPods 列表 Pod（确保使用你的 op）
+
 	pods, err := op().ListPods(ctx, cluster, namespace, "")
 	if err != nil {
 		return nil, err
@@ -67,6 +72,7 @@ func (d *AbnormalPod) getPodAbnormalRestarts(ctx context.Context, op func() *kub
 			// Waiting 异常
 			if cs.State.Waiting != nil && isBadWaitingReason(cs.State.Waiting.Reason) {
 				out = append(out, AbnormalPod{
+					Cluster:      cluster,
 					Namespace:    p.Namespace,
 					Pod:          p.Name,
 					Container:    cs.Name,
@@ -80,6 +86,7 @@ func (d *AbnormalPod) getPodAbnormalRestarts(ctx context.Context, op func() *kub
 			if term := cs.LastTerminationState.Terminated; term != nil {
 				if term.ExitCode != 0 && cs.RestartCount >= restartThreshold {
 					out = append(out, AbnormalPod{
+						Cluster:      cluster,
 						Namespace:    p.Namespace,
 						Pod:          p.Name,
 						Container:    cs.Name,
@@ -92,6 +99,7 @@ func (d *AbnormalPod) getPodAbnormalRestarts(ctx context.Context, op func() *kub
 				// OOMKilled 直接判异常
 				if term.Reason == "OOMKilled" {
 					out = append(out, AbnormalPod{
+						Cluster:      cluster,
 						Namespace:    p.Namespace,
 						Pod:          p.Name,
 						Container:    cs.Name,
@@ -105,15 +113,19 @@ func (d *AbnormalPod) getPodAbnormalRestarts(ctx context.Context, op func() *kub
 			// 重启次数过高
 			if cs.RestartCount >= restartThreshold {
 				out = append(out, AbnormalPod{
+					Cluster:      cluster,
 					Namespace:    p.Namespace,
 					Pod:          p.Name,
 					Container:    cs.Name,
 					RestartCount: cs.RestartCount,
 					Reason:       "HighRestartCount",
-					Message:      "",
+					Message:      "Container has restarted too many times",
 				})
 			}
 		}
+	}
+	for _, pod := range out {
+		log.Println(pod.Reason)
 	}
 	return out, nil
 }

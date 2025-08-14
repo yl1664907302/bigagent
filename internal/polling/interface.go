@@ -1,7 +1,9 @@
 package polling
 
-import "bigagent/internal/check"
+import (
+	"bigagent/internal/check/result"
+)
 
 type polling interface {
-	Check() (check.Result, error)
+	Check() (result.Result, error)
 }

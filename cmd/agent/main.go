@@ -36,20 +36,17 @@ func main() {
 				Kubeconfig: "kubeconfig.yaml",
 			},
 		}
-
 		result, _ := polling.NewKubePolling(check.NewAbnormalPod(ctx, func() *kubernetes.DefaultK8sOperator {
 			return &kubernetes.DefaultK8sOperator{
 				Clusters: clusters,
 			}
 		}, "test", "")).P.Check()
 
-		num, err := decision.NewAbnormalPodDecision(result).Judge()
-		if err != nil {
-			utils.DefaultLogger.Errorf("判断异常 Pod 时发生错误: %v", err)
-			return
+		recovery := decision.NewAbnormalPodDecision(result).Judge()
+		// 执行恢复
+		if recovery != nil {
+			recovery()
 		}
-		utils.DefaultLogger.Info("pod诊断分数为：", num)
-
 	}()
 
 	inits.RunG()

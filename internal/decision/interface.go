@@ -1,6 +1,6 @@
 package decision
 
 type decision interface {
-	Recovery() error
-	Judge() (interface{}, error)
+	Recovery(bool2 bool) error
+	Judge() func()
 }
