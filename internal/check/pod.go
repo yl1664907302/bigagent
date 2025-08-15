@@ -28,7 +28,7 @@ func NewAbnormalPod(ctx context.Context, k func() *kubernetes.DefaultK8sOperator
 
 func (d *AbnormalPod) Check() (result.Result, error) {
 	var severity string
-	report, err := d.getPodAbnormalRestarts(d.ctx, d.k, d.Cluster, d.Namespace, 1)
+	report, err := d.getDeploymentPodAbnormal(d.ctx, d.k, d.Cluster, d.Namespace, "")
 	if err != nil {
 		return nil, err
 	}
@@ -48,86 +48,168 @@ func (d *AbnormalPod) Check() (result.Result, error) {
 	}, nil, "PodAbnormalRestarts", severity, len(report), report), nil
 }
 
-func (d *AbnormalPod) getPodAbnormalRestarts(ctx context.Context, op func() *kubernetes.DefaultK8sOperator, cluster, namespace string, restartThreshold int32) ([]AbnormalPod, error) {
-	if op() == nil {
+func (d *AbnormalPod) getPodAbnormalRestarts(
+	ctx context.Context,
+	op func() *kubernetes.DefaultK8sOperator,
+	cluster, namespace string,
+	restartThreshold int32,
+) ([]AbnormalPod, error) {
+
+	k8sOp := op()
+	if k8sOp == nil {
 		return nil, fmt.Errorf("k8s 操作手没创建！")
 	}
 
-	pods, err := op().ListPods(ctx, cluster, namespace, "")
+	// 只获取 Running 状态的 Pod
+	pods, err := k8sOp.ListPods(ctx, cluster, namespace, "status.phase=Running")
 	if err != nil {
 		return nil, err
 	}
+
 	var out []AbnormalPod
+
 	for _, p := range pods {
-		// 跳过已完成
 		if p.Status.Phase == corev1.PodSucceeded {
-			continue
+			continue // 跳过已完成的 Pod
 		}
-		// 聚合 init 与 app 容器
-		statuses := make([]corev1.ContainerStatus, 0, len(p.Status.InitContainerStatuses)+len(p.Status.ContainerStatuses))
-		statuses = append(statuses, p.Status.InitContainerStatuses...)
-		statuses = append(statuses, p.Status.ContainerStatuses...)
+
+		// 聚合 Init 容器 + 普通容器
+		statuses := append(p.Status.InitContainerStatuses, p.Status.ContainerStatuses...)
 
 		for _, cs := range statuses {
-			// Waiting 异常
+			// 1. Waiting 异常
 			if cs.State.Waiting != nil && isBadWaitingReason(cs.State.Waiting.Reason) {
-				out = append(out, AbnormalPod{
-					Cluster:      cluster,
-					Namespace:    p.Namespace,
-					Pod:          p.Name,
-					Container:    cs.Name,
-					RestartCount: cs.RestartCount,
-					Reason:       cs.State.Waiting.Reason,
-					Message:      cs.State.Waiting.Message,
-				})
+				out = append(out, newAbnormalPod(cluster, p.Namespace, p.Name, cs, cs.State.Waiting.Reason, cs.State.Waiting.Message))
 				continue
 			}
-			// 非零退出 + 重启次数过高
+
+			// 2. Terminated 异常
 			if term := cs.LastTerminationState.Terminated; term != nil {
-				if term.ExitCode != 0 && cs.RestartCount >= restartThreshold {
-					out = append(out, AbnormalPod{
-						Cluster:      cluster,
-						Namespace:    p.Namespace,
-						Pod:          p.Name,
-						Container:    cs.Name,
-						RestartCount: cs.RestartCount,
-						Reason:       term.Reason,
-						Message:      term.Message,
-					})
+				switch {
+				case term.Reason == "OOMKilled":
+					out = append(out, newAbnormalPod(
+						cluster,
+						p.Namespace,
+						p.Name,
+						cs,
+						term.Reason,
+						term.Message))
 					continue
-				}
-				// OOMKilled 直接判异常
-				if term.Reason == "OOMKilled" {
-					out = append(out, AbnormalPod{
-						Cluster:      cluster,
-						Namespace:    p.Namespace,
-						Pod:          p.Name,
-						Container:    cs.Name,
-						RestartCount: cs.RestartCount,
-						Reason:       term.Reason,
-						Message:      term.Message,
-					})
+				case term.ExitCode != 0 && cs.RestartCount >= restartThreshold:
+					out = append(out, newAbnormalPod(
+						cluster,
+						p.Namespace,
+						p.Name,
+						cs,
+						term.Reason,
+						term.Message))
 					continue
 				}
 			}
-			// 重启次数过高
+
+			// 3. 高重启次数异常
 			if cs.RestartCount >= restartThreshold {
-				out = append(out, AbnormalPod{
-					Cluster:      cluster,
-					Namespace:    p.Namespace,
-					Pod:          p.Name,
-					Container:    cs.Name,
-					RestartCount: cs.RestartCount,
-					Reason:       "HighRestartCount",
-					Message:      "Container has restarted too many times",
-				})
+				out = append(out, newAbnormalPod(
+					cluster,
+					p.Namespace,
+					p.Name,
+					cs,
+					"HighRestartCount",
+					"Container has restarted too many times"))
 			}
 		}
 	}
-	for _, pod := range out {
-		log.Println(pod.Reason)
-	}
 	return out, nil
+}
+
+// 内存缓存：记录每个容器连续异常次数
+var podFailedCounter = make(map[string]int)
+
+// 连续异常阈值
+const consecutiveThreshold = 3
+
+func (d *AbnormalPod) getDeploymentPodAbnormal(
+	ctx context.Context,
+	op func() *kubernetes.DefaultK8sOperator,
+	cluster, namespace, deploymentName string,
+) ([]AbnormalPod, error) {
+
+	k8sOp := op()
+	if k8sOp == nil {
+		return nil, fmt.Errorf("k8s 操作手没创建！")
+	}
+
+	// 1. 获取 Deployment 的 Pods
+	dm, err := k8sOp.GetDeployment(ctx, cluster, namespace, deploymentName)
+	if err != nil {
+		log.Println(err)
+		return nil, fmt.Errorf("获取 Deployment 失败: %v", err)
+	}
+
+	podList, err := k8sOp.ListPodsByDeployment(ctx, cluster, namespace, dm.Name)
+	if err != nil {
+		return nil, err
+	}
+
+	var out []AbnormalPod
+
+	for _, p := range podList.Items {
+		if p.Status.Phase != corev1.PodRunning {
+			continue // 只关注 Running Pod
+		}
+
+		statuses := append(p.Status.InitContainerStatuses, p.Status.ContainerStatuses...)
+
+		for _, cs := range statuses {
+			key := fmt.Sprintf("%s/%s/%s", p.Namespace, p.Name, cs.Name)
+			isAbnormal := false
+
+			// 判断异常条件
+			if cs.State.Waiting != nil && isBadWaitingReason(cs.State.Waiting.Reason) {
+				isAbnormal = true
+			} else if term := cs.LastTerminationState.Terminated; term != nil {
+				if term.Reason == "OOMKilled" || (term.ExitCode != 0) {
+					isAbnormal = true
+				}
+			} else if cs.RestartCount > 0 {
+				isAbnormal = true
+			}
+
+			// 更新计数
+			if isAbnormal {
+				podFailedCounter[key]++
+			} else {
+				podFailedCounter[key] = 0
+			}
+
+			// 达到连续异常阈值才记录
+			if podFailedCounter[key] >= consecutiveThreshold {
+				out = append(out, newAbnormalPod(
+					cluster,
+					p.Namespace,
+					p.Name,
+					cs,
+					"ConsecutiveRestart",
+					fmt.Sprintf("Container has abnormal state for %d consecutive times", consecutiveThreshold),
+				))
+			}
+		}
+	}
+
+	return out, nil
+}
+
+// newAbnormalPod 创建异常 Pod 记录
+func newAbnormalPod(cluster, namespace, podName string, cs corev1.ContainerStatus, reason, message string) AbnormalPod {
+	return AbnormalPod{
+		Cluster:      cluster,
+		Namespace:    namespace,
+		Pod:          podName,
+		Container:    cs.Name,
+		RestartCount: cs.RestartCount,
+		Reason:       reason,
+		Message:      message,
+	}
 }
 
 func isBadWaitingReason(reason string) bool {

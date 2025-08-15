@@ -143,6 +143,27 @@ func (op *DefaultK8sOperator) ListPods(ctx context.Context, cluster, namespace, 
 	return list.Items, nil
 }
 
+func (op *DefaultK8sOperator) ListPodsByDeployment(ctx context.Context, cluster, namespace, name string) (*corev1.PodList, error) {
+	cs, _, err := op.Client(cluster)
+	if err != nil {
+		return nil, err
+	}
+
+	// 首先获取 Deployment
+	deployment, err := cs.AppsV1().Deployments(namespace).Get(ctx, name, metav1.GetOptions{})
+	if err != nil {
+		return nil, err
+	}
+
+	// 获取 Deployment 的标签选择器
+	labelSelector := metav1.FormatLabelSelector(deployment.Spec.Selector)
+
+	// 使用标签选择器列出所有相关的 Pods
+	return cs.CoreV1().Pods(namespace).List(ctx, metav1.ListOptions{
+		LabelSelector: labelSelector,
+	})
+}
+
 func (op *DefaultK8sOperator) DeletePod(ctx context.Context, cluster, namespace, name string, graceSeconds int64) error {
 	cs, _, err := op.Client(cluster)
 	if err != nil {
