@@ -2,13 +2,8 @@ package main
 
 import (
 	"bigagent/inits"
-	"bigagent/internal/check"
 	"bigagent/internal/config/global"
-	"bigagent/internal/decision"
-	"bigagent/internal/kubernetes"
-	"bigagent/internal/polling"
-	utils "bigagent/internal/util"
-	"context"
+	"bigagent/internal/utils"
 	"os"
 )
 
@@ -27,27 +22,27 @@ func init() {
 
 func main() {
 	// 测试代码
-	func() {
-		// 生成参数
-		ctx := context.Background()
-		clusters := []kubernetes.KubeCluster{
-			{
-				Name:       "test",
-				Kubeconfig: "kubeconfig.yaml",
-			},
-		}
-		result, _ := polling.NewKubePolling(check.NewAbnormalPod(ctx, func() *kubernetes.DefaultK8sOperator {
-			return &kubernetes.DefaultK8sOperator{
-				Clusters: clusters,
-			}
-		}, "test", "")).P.Check()
-
-		recovery := decision.NewAbnormalPodDecision(result).Judge()
-		// 执行恢复
-		if recovery != nil {
-			recovery()
-		}
-	}()
+	//func() {
+	//	// 生成参数
+	//	ctx := context.Background()
+	//	clusters := []kubernetes.KubeCluster{
+	//		{
+	//			Name:       "test",
+	//			Kubeconfig: "kubeconfig1.yaml",
+	//		},
+	//	}
+	//	result, _ := polling.NewKubePolling(check.NewAbnormalPod(ctx, func() *kubernetes.DefaultK8sOperator {
+	//		return &kubernetes.DefaultK8sOperator{
+	//			Clusters: clusters,
+	//		}
+	//	}, "test", "")).P.Check()
+	//
+	//	recovery := decision.NewAbnormalPodDecision(result).Judge()
+	//	// 执行恢复
+	//	if recovery != nil {
+	//		recovery()
+	//	}
+	//}()
 
 	inits.RunG()
 	inits.Hander(global.V.GetString("system.addr"))

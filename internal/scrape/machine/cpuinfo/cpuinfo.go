@@ -1,7 +1,7 @@
 package cpuinfo
 
 import (
-	utils "bigagent/internal/util"
+	utils "bigagent/internal/utils"
 	"encoding/json"
 	"github.com/shirou/gopsutil/v4/cpu"
 )

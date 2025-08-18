@@ -2,7 +2,7 @@ package request
 
 import (
 	"bigagent/internal/model/machine"
-	"bigagent/internal/util"
+	"bigagent/internal/utils"
 	"bytes"
 	"encoding/json"
 	"io"

@@ -2,7 +2,7 @@ package grpc_config
 
 import (
 	"bigagent/internal/config/global"
-	utils2 "bigagent/internal/util"
+	utils2 "bigagent/internal/utils"
 	"context"
 	"google.golang.org/grpc/metadata"
 )

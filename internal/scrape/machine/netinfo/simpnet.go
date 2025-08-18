@@ -1,7 +1,7 @@
 package netinfo
 
 import (
-	utils "bigagent/internal/util"
+	utils "bigagent/internal/utils"
 	"bigagent/internal/web/grpcs/server"
 	"encoding/json"
 	"log"

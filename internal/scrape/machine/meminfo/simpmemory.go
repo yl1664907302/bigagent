@@ -2,7 +2,7 @@ package meminfo
 
 import (
 	"bigagent/internal/scrape/machine/formatsize"
-	utils "bigagent/internal/util"
+	utils "bigagent/internal/utils"
 	"encoding/json"
 	"fmt"
 	"github.com/shirou/gopsutil/v4/mem"

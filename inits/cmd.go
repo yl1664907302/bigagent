@@ -1,7 +1,7 @@
 package inits
 
 import (
-	utils "bigagent/internal/util"
+	utils "bigagent/internal/utils"
 	"github.com/spf13/pflag"
 	"io/ioutil"
 	"log"

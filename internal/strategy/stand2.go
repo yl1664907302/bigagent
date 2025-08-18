@@ -2,7 +2,7 @@ package strategy
 
 import (
 	"bigagent/internal/scrape/machine"
-	utils "bigagent/internal/util"
+	utils "bigagent/internal/utils"
 	"bigagent/internal/web/grpcs"
 )
 

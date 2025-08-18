@@ -5,7 +5,7 @@ package processinfo
 
 import (
 	"bigagent/internal/scrape/machine/formatsize"
-	utils "bigagent/internal/util"
+	utils "bigagent/internal/utils"
 	"bigagent/internal/web/grpcs/server"
 	"encoding/json"
 	"log"

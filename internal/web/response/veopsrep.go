@@ -1,7 +1,7 @@
 package response
 
 import (
-	utils "bigagent/internal/util"
+	utils "bigagent/internal/utils"
 	"encoding/json"
 )
 

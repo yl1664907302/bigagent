@@ -3,7 +3,7 @@ package strategy
 import (
 	model2 "bigagent/internal/model/machine"
 	"bigagent/internal/scrape/machine"
-	utils "bigagent/internal/util"
+	utils "bigagent/internal/utils"
 	"bigagent/internal/web/grpcs"
 )
 

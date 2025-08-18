@@ -2,7 +2,7 @@ package inits
 
 import (
 	"bigagent/internal/config/global"
-	"bigagent/internal/util"
+	"bigagent/internal/utils"
 	"github.com/spf13/viper"
 )
 

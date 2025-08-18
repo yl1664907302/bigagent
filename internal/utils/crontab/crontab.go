@@ -4,7 +4,7 @@ import (
 	"bigagent/internal/config/global"
 	"bigagent/internal/scrape/machine"
 	"bigagent/internal/strategy"
-	"bigagent/internal/util"
+	"bigagent/internal/utils"
 	"github.com/robfig/cron/v3"
 )
 

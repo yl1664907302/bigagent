@@ -3,7 +3,7 @@ package grpcs
 import (
 	"bigagent/internal/config/global"
 	"bigagent/internal/model/machine"
-	"bigagent/internal/util"
+	"bigagent/internal/utils"
 	"bigagent/internal/web/grpcs/server"
 	"context"
 	"fmt"

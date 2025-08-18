@@ -2,7 +2,7 @@ package cpuinfo
 
 import (
 	"bigagent/internal/scrape/machine/formatsize"
-	utils "bigagent/internal/util"
+	utils "bigagent/internal/utils"
 	"encoding/json"
 	"fmt"
 	"runtime"

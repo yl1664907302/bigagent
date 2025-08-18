@@ -3,18 +3,14 @@ package decision
 import (
 	"bigagent/internal/check"
 	"bigagent/internal/check/result"
-	utils "bigagent/internal/utils"
+	"bigagent/internal/utils"
 )
 
-type AbnormalPodDecision struct {
+type AbnormalNodeDecision struct {
 	Result result.Result
 }
 
-func NewAbnormalPodDecision(res result.Result) *AbnormalPodDecision {
-	return &AbnormalPodDecision{Result: res}
-}
-
-func (p *AbnormalPodDecision) Recovery(key bool) error {
+func (p *AbnormalNodeDecision) Recovery(key bool) error {
 	if key {
 		utils.DefaultLogger.Warnf("正在处理pod异常")
 		item, err := p.Result.GetItem()
@@ -34,7 +30,7 @@ func (p *AbnormalPodDecision) Recovery(key bool) error {
 	return nil
 }
 
-func (p *AbnormalPodDecision) Judge() func() {
+func (p *AbnormalNodeDecision) Judge() func() {
 	score, err := p.Result.SetScore()
 	if err != nil {
 		utils.DefaultLogger.Errorf("设置分数失败pod：%s", err.Error())

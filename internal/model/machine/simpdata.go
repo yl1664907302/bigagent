@@ -7,7 +7,7 @@ import (
 	"bigagent/internal/scrape/machine/meminfo"
 	"bigagent/internal/scrape/machine/netinfo"
 	"bigagent/internal/scrape/machine/processinfo"
-	utils "bigagent/internal/util"
+	utils "bigagent/internal/utils"
 	grpc_server "bigagent/internal/web/grpcs/server"
 	"encoding/json"
 	"runtime"

@@ -5,7 +5,7 @@ import (
 	"bigagent/internal/scrape/machine/cpuinfo"
 	"bigagent/internal/scrape/machine/diskinfo"
 	"bigagent/internal/scrape/machine/meminfo"
-	"bigagent/internal/util"
+	"bigagent/internal/utils"
 	"encoding/json"
 	"time"
 )

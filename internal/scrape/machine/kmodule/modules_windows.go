@@ -4,7 +4,7 @@
 package kmodule
 
 import (
-	utils "bigagent/internal/util"
+	utils "bigagent/internal/utils"
 	"bigagent/internal/web/grpcs/server"
 	"context"
 	"log"

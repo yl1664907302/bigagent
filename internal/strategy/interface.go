@@ -1,7 +1,7 @@
 package strategy
 
 import (
-	"bigagent/internal/util"
+	"bigagent/internal/utils"
 )
 
 // ApiStrategy 定义api接口策略

@@ -4,7 +4,7 @@ import (
 	"bigagent/internal/config/global"
 	"bigagent/internal/model"
 	"bigagent/internal/scrape/machine"
-	utils "bigagent/internal/util"
+	utils "bigagent/internal/utils"
 	"bigagent/internal/web/response"
 	"crypto/sha1"
 	"encoding/hex"

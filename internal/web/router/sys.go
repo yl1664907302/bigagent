@@ -1,7 +1,7 @@
 package router
 
 import (
-	utils "bigagent/internal/util"
+	utils "bigagent/internal/utils"
 	"encoding/json"
 	"io/ioutil"
 	"log"
