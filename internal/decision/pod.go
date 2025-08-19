@@ -7,17 +7,17 @@ import (
 )
 
 type AbnormalPodDecision struct {
-	Result result.Result
+	result result.Result
 }
 
 func NewAbnormalPodDecision(res result.Result) *AbnormalPodDecision {
-	return &AbnormalPodDecision{Result: res}
+	return &AbnormalPodDecision{result: res}
 }
 
-func (p *AbnormalPodDecision) Recovery(key bool) error {
+func (p *AbnormalPodDecision) recovery(key bool) error {
 	if key {
 		utils.DefaultLogger.Warnf("正在处理pod异常")
-		item, err := p.Result.GetItem()
+		item, err := p.result.GetItem()
 		if err != nil {
 			return err
 		}
@@ -34,8 +34,29 @@ func (p *AbnormalPodDecision) Recovery(key bool) error {
 	return nil
 }
 
+func (p *AbnormalPodDecision) recoveryTem(key bool) error {
+	if key {
+		utils.DefaultLogger.Warnf("正在处理pod异常")
+		item, err := p.result.GetItem()
+		if err != nil {
+			return err
+		}
+		pod, ok := item.(check.AbnormalPod)
+		if !ok {
+			return nil
+		}
+		// 检查 Pod 是否仍处于终止状态，默认无操作
+		if pod.Terminating {
+			utils.DefaultLogger.Warnf("正在删除pod%s", pod.Pod)
+		} else {
+			utils.DefaultLogger.Warnf("Pod %s 失效，无效处理", pod.Pod)
+		}
+	}
+	return nil
+}
+
 func (p *AbnormalPodDecision) Judge() func() {
-	score, err := p.Result.SetScore()
+	score, err := p.result.SetScore()
 	if err != nil {
 		utils.DefaultLogger.Errorf("设置分数失败pod：%s", err.Error())
 		return nil
@@ -43,7 +64,26 @@ func (p *AbnormalPodDecision) Judge() func() {
 	if score > 2 {
 		return func() {
 			utils.DefaultLogger.Warnf("开始处理pod异常")
-			if err := p.Recovery(true); err != nil {
+			if err := p.recovery(true); err != nil {
+				utils.DefaultLogger.Errorf("失败处理pod异常：%s", err.Error())
+			} else {
+				utils.DefaultLogger.Warnf("完成处理pod异常")
+			}
+		}
+	}
+	return nil
+}
+
+func (p *AbnormalPodDecision) JudgeTem() func() {
+	score, err := p.result.SetScore()
+	if err != nil {
+		utils.DefaultLogger.Errorf("设置分数失败pod：%s", err.Error())
+		return nil
+	}
+	if score > 2 {
+		return func() {
+			utils.DefaultLogger.Warnf("开始处理pod异常")
+			if err := p.recoveryTem(true); err != nil {
 				utils.DefaultLogger.Errorf("失败处理pod异常：%s", err.Error())
 			} else {
 				utils.DefaultLogger.Warnf("完成处理pod异常")

@@ -4,6 +4,4 @@ import (
 	"bigagent/internal/check/result"
 )
 
-type polling interface {
-	Check() (result.Result, error)
-}
+type PollFunc func(args ...interface{}) result.Result

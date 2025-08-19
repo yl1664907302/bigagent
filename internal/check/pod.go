@@ -3,10 +3,11 @@ package check
 import (
 	"bigagent/internal/check/result"
 	"bigagent/internal/kubernetes"
+	"bigagent/internal/utils"
 	"context"
 	"fmt"
 	corev1 "k8s.io/api/core/v1"
-	"log"
+	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 )
 
 // AbnormalPod 定义“重启不正常”的 Pod 结构体
@@ -16,6 +17,7 @@ type AbnormalPod struct {
 	Cluster      string                                `json:"cluster"`
 	Namespace    string                                `json:"namespace"`
 	Pod          string                                `json:"pod"`
+	Terminating  bool                                  `json:"terminating,omitempty"` // 是否仍处于终止状态
 	Container    string                                `json:"container"`
 	RestartCount int32                                 `json:"restart_count"`
 	Reason       string                                `json:"reason"`
@@ -26,11 +28,12 @@ func NewAbnormalPod(ctx context.Context, k func() *kubernetes.DefaultK8sOperator
 	return &AbnormalPod{k: k, ctx: ctx, Cluster: cluster, Namespace: namespace}
 }
 
-func (d *AbnormalPod) Check() (result.Result, error) {
+// Check 结果整合
+func (d *AbnormalPod) Check(args ...interface{}) result.Result {
 	var severity string
-	report, err := d.getDeploymentPodAbnormal(d.ctx, d.k, d.Cluster, d.Namespace, "")
+	report, err := d.getPodAbnormalRestarts(d.k, d.Cluster, d.Namespace, 3)
 	if err != nil {
-		return nil, err
+		utils.DefaultLogger.Errorf(err.Error())
 	}
 	switch len(report) {
 
@@ -45,11 +48,58 @@ func (d *AbnormalPod) Check() (result.Result, error) {
 	return result.NewResultPod(result.Base{
 		Cluster: d.Cluster,
 		Items:   report,
-	}, nil, "PodAbnormalRestarts", severity, len(report), report), nil
+	}, nil, "PodAbnormalRestarts", severity, len(report), report)
+}
+
+func (d *AbnormalPod) CheckPodTerminating(args ...interface{}) result.Result {
+	if len(args) > 0 {
+		if pod, ok := args[0].(*corev1.Pod); ok {
+			return d.getPodTerminating(d.k, d.Cluster, pod)
+		}
+	}
+	return result.NewResultPod(result.Base{Cluster: d.Cluster, Items: nil}, nil, "PodTerminating", "info", 0, nil)
+}
+
+// CheckPodTerminating 判断传入的旧 Pod 是否仍处于终止状态且未被重建，整合为 Result 返回
+func (d *AbnormalPod) getPodTerminating(op func() *kubernetes.DefaultK8sOperator, cluster string, oldPod *corev1.Pod) result.Result {
+	severity := "critical"
+	var items interface{}
+	var count int
+	if op == nil || oldPod == nil {
+		return result.NewResultPod(result.Base{Cluster: cluster, Items: nil}, nil, "PodTerminating", severity, 0, nil)
+	}
+	k8sOp := op()
+	cs, _, err := k8sOp.Client(cluster)
+	if err != nil {
+		return result.NewResultPod(result.Base{Cluster: cluster, Items: nil}, nil, "PodTerminating", severity, 0, nil)
+	}
+	// 获取该pod的最新状态
+	newPod, err := cs.CoreV1().Pods(oldPod.Namespace).Get(d.ctx, oldPod.Name, metav1.GetOptions{})
+	if err != nil {
+		utils.DefaultLogger.Errorf("获取oldPod %s/%s 失败: %v", oldPod.Namespace, oldPod.Name, err)
+	}
+	stillTerminating := true
+	count = 0
+	if newPod == nil {
+		severity = "warn"
+		stillTerminating = false
+	} else if newPod.UID != oldPod.UID {
+		severity = "warn"
+		stillTerminating = false
+	} else if newPod.DeletionTimestamp.IsZero() {
+		severity = "warn"
+		stillTerminating = false
+	}
+	items = AbnormalPod{
+		Cluster:     cluster,
+		Namespace:   oldPod.Namespace,
+		Pod:         oldPod.Name,
+		Terminating: stillTerminating,
+	}
+	return result.NewResultPod(result.Base{Cluster: cluster, Items: items}, nil, "PodTerminating", severity, count, items)
 }
 
 func (d *AbnormalPod) getPodAbnormalRestarts(
-	ctx context.Context,
 	op func() *kubernetes.DefaultK8sOperator,
 	cluster, namespace string,
 	restartThreshold int32,
@@ -61,7 +111,7 @@ func (d *AbnormalPod) getPodAbnormalRestarts(
 	}
 
 	// 只获取 Running 状态的 Pod
-	pods, err := k8sOp.ListPods(ctx, cluster, namespace, "status.phase=Running")
+	pods, err := k8sOp.ListPods(d.ctx, cluster, namespace, "status.phase=Running")
 	if err != nil {
 		return nil, err
 	}
@@ -119,83 +169,6 @@ func (d *AbnormalPod) getPodAbnormalRestarts(
 			}
 		}
 	}
-	return out, nil
-}
-
-// 内存缓存：记录每个容器连续异常次数
-var podFailedCounter = make(map[string]int)
-
-// 连续异常阈值
-const consecutiveThreshold = 3
-
-func (d *AbnormalPod) getDeploymentPodAbnormal(
-	ctx context.Context,
-	op func() *kubernetes.DefaultK8sOperator,
-	cluster, namespace, deploymentName string,
-) ([]AbnormalPod, error) {
-
-	k8sOp := op()
-	if k8sOp == nil {
-		return nil, fmt.Errorf("k8s 操作手没创建！")
-	}
-
-	// 1. 获取 Deployment 的 Pods
-	dm, err := k8sOp.GetDeployment(ctx, cluster, namespace, deploymentName)
-	if err != nil {
-		log.Println(err)
-		return nil, fmt.Errorf("获取 Deployment 失败: %v", err)
-	}
-
-	podList, err := k8sOp.ListPodsByDeployment(ctx, cluster, namespace, dm.Name)
-	if err != nil {
-		return nil, err
-	}
-
-	var out []AbnormalPod
-
-	for _, p := range podList.Items {
-		if p.Status.Phase != corev1.PodRunning {
-			continue // 只关注 Running Pod
-		}
-
-		statuses := append(p.Status.InitContainerStatuses, p.Status.ContainerStatuses...)
-
-		for _, cs := range statuses {
-			key := fmt.Sprintf("%s/%s/%s", p.Namespace, p.Name, cs.Name)
-			isAbnormal := false
-
-			// 判断异常条件
-			if cs.State.Waiting != nil && isBadWaitingReason(cs.State.Waiting.Reason) {
-				isAbnormal = true
-			} else if term := cs.LastTerminationState.Terminated; term != nil {
-				if term.Reason == "OOMKilled" || (term.ExitCode != 0) {
-					isAbnormal = true
-				}
-			} else if cs.RestartCount > 0 {
-				isAbnormal = true
-			}
-
-			// 更新计数
-			if isAbnormal {
-				podFailedCounter[key]++
-			} else {
-				podFailedCounter[key] = 0
-			}
-
-			// 达到连续异常阈值才记录
-			if podFailedCounter[key] >= consecutiveThreshold {
-				out = append(out, newAbnormalPod(
-					cluster,
-					p.Namespace,
-					p.Name,
-					cs,
-					"ConsecutiveRestart",
-					fmt.Sprintf("Container has abnormal state for %d consecutive times", consecutiveThreshold),
-				))
-			}
-		}
-	}
-
 	return out, nil
 }
 

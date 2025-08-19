@@ -1,9 +1,16 @@
 package polling
 
+import (
+	"bigagent/internal/check/result"
+)
+
 type KubePolling struct {
-	P polling
 }
 
-func NewKubePolling(p polling) *KubePolling {
-	return &KubePolling{P: p}
+func NewKubePolling() *KubePolling {
+	return &KubePolling{}
+}
+
+func (k *KubePolling) RunPolling(fn PollFunc) result.Result {
+	return fn()
 }
