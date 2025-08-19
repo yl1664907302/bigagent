@@ -1,8 +1,7 @@
 package decision
 
 import (
-	"bigagent/internal/check"
-	"bigagent/internal/check/result"
+	"bigagent/internal/result"
 	utils "bigagent/internal/utils"
 )
 
@@ -21,7 +20,7 @@ func (p *AbnormalPodDecision) recovery(key bool) error {
 		if err != nil {
 			return err
 		}
-		pods, ok := item.([]check.AbnormalPod)
+		pods, ok := item.([]pod.AbnormalPod)
 		if !ok {
 			return nil
 		}
@@ -41,7 +40,7 @@ func (p *AbnormalPodDecision) recoveryTem(key bool) error {
 		if err != nil {
 			return err
 		}
-		pod, ok := item.(check.AbnormalPod)
+		pod, ok := item.(pod.AbnormalPod)
 		if !ok {
 			return nil
 		}

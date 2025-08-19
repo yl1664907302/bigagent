@@ -1,7 +1,7 @@
 package check
 
 import (
-	"bigagent/internal/check/result"
+	result2 "bigagent/internal/result"
 	"bigagent/internal/utils"
 	"context"
 	"fmt"
@@ -25,7 +25,7 @@ func NewNodeDownCheck(ctx context.Context, cluster, promAddr string, checkQls []
 	return &NodeDownCheck{ctx: ctx, Cluster: cluster, PromAddr: promAddr, CheckQlList: checkQls, NodeNameToIpQ: nodeNameToIpQl}
 }
 
-func (c *NodeDownCheck) Check() result.Result {
+func (c *NodeDownCheck) Check() result2.Result {
 	// 统计每个节点命中规则的次数
 	nodeHit := map[string]int{}
 	for _, ql := range c.CheckQlList {
@@ -69,7 +69,7 @@ func (c *NodeDownCheck) Check() result.Result {
 	default:
 		severity = "critical"
 	}
-	return result.NewResultNode(result.Base{Cluster: c.Cluster, Items: items}, nil, "NodeDown", severity, len(items), items)
+	return result2.NewResultNode(result2.Base{Cluster: c.Cluster, Items: items}, nil, "NodeDown", severity, len(items), items)
 }
 
 func formatNodeNameQl(tpl, node string) string {

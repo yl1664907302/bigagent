@@ -2,7 +2,7 @@ package main
 
 import (
 	"bigagent/inits"
-	"bigagent/internal/check"
+	"bigagent/internal/check/pod"
 	"bigagent/internal/config/global"
 	"bigagent/internal/decision"
 	"bigagent/internal/kubernetes"
@@ -53,7 +53,7 @@ func main() {
 		}
 
 		//  创建一个轮询链路，妈的写的潦草
-		recovery := decision.NewAbnormalPodDecision(check.NewAbnormalPod(ctx, func() *kubernetes.DefaultK8sOperator {
+		recovery := decision.NewAbnormalPodDecision(pod.NewAbnormalPod(ctx, func() *kubernetes.DefaultK8sOperator {
 			return &kubernetes.DefaultK8sOperator{
 				Clusters: clusters,
 			}

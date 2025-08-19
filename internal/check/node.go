@@ -1,8 +1,8 @@
 package check
 
 import (
-	"bigagent/internal/check/result"
 	"bigagent/internal/kubernetes"
+	result2 "bigagent/internal/result"
 	"context"
 )
 
@@ -19,6 +19,6 @@ func NewAbnormalNode(ctx context.Context, k func() *kubernetes.DefaultK8sOperato
 	return &AbnormalNode{k: k, ctx: ctx, Cluster: cluster}
 }
 
-func (n *AbnormalNode) Check() result.Result {
-	return result.NewResultNode(result.Base{Cluster: n.Cluster, Items: nil}, nil, "NodeDown", "info", 0, nil)
+func (n *AbnormalNode) Check() result2.Result {
+	return result2.NewResultNode(result2.Base{Cluster: n.Cluster, Items: nil}, nil, "NodeDown", "info", 0, nil)
 }

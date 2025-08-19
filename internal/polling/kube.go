@@ -1,7 +1,7 @@
 package polling
 
 import (
-	"bigagent/internal/check/result"
+	"bigagent/internal/result"
 )
 
 type KubePolling struct {

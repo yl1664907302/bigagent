@@ -2,7 +2,7 @@ package decision
 
 import (
 	"bigagent/internal/check"
-	"bigagent/internal/check/result"
+	"bigagent/internal/result"
 	"bigagent/internal/utils"
 )
 
