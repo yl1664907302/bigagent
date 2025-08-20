@@ -42,8 +42,8 @@ k8s_configs:
 
 
 k8s_compute_prom_addr_map:
-  cpu-compute-01: http://192.168.0.100:8091
-  gpu-compute-01: http://192.168.0.100:8091
+  cpu-compute-01: http://192.168.210.108:9090
+  gpu-compute-01: http://192.168.210.108:9090
 
 mysql_info:
   name: deploy # 跟真实的库没关系，只是我们代码中标识：区别多个库
@@ -101,12 +101,18 @@ common_module:
 
 
 
-  check_ql_map:
-    file_system_read_only: |-
-      node_filesystem_readonly{mountpoint="/"}==1
-    arp_too_many: |-
-      node_arp_entries{device="ens33"} >2
-  
+check_ql_map:
+  file_system_read_only: node_filesystem_readonly{mountpoint="/"}==1
+  arp_too_many: node_arp_entries{device="ens33"} >2
+#  查询 node_arp_entries{device="ens33"} > 2
+#
+#  Prometheus 会扫描所有符合标签 device="ens33" 的时间序列。
+#
+#  对每个时间序列，它会判断当前值是否 大于 2。
+#
+#  如果满足条件，则 这个时间序列会被返回，值保持原来的数值。
+#
+#  如果不满足条件，则 时间序列不会被返回（不会显示 0 或 false）。
 
   recovery_ql_map:
     file_system_read_only: |-

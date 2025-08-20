@@ -1,7 +1,7 @@
 package decision
 
 import (
-	check "bigagent/internal/check/pod"
+	"bigagent/internal/check/pod"
 	"encoding/json"
 	"fmt"
 	metaV1 "k8s.io/apimachinery/pkg/apis/meta/v1"

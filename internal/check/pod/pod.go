@@ -32,25 +32,25 @@ func (d *AbnormalPod) CheckPodNeedDelete(args ...interface{}) result.Result {
 		pods, err := d.FetchPods("status.phase!=Running")
 		if err != nil {
 			utils.DefaultLogger.Infof("集群：%s ,未发现非Running的pod", d.Cluster)
-			return result.NewResultPod(result.Base{Cluster: d.Cluster, Items: nil}, nil, "PodNeedDelete", "info", 1, nil)
+			return result.NewResults(result.Base{Cluster: d.Cluster, Items: nil}, nil, "PodNeedDelete", "info", 1, nil)
 		}
-		return result.NewResultPod(result.Base{Cluster: d.Cluster, Items: pods}, nil, "PodNeedDelete", "critical", 1, nil)
+		return result.NewResults(result.Base{Cluster: d.Cluster, Items: pods}, nil, "PodNeedDelete", "critical", 1, nil)
 	}
-	return result.NewResultPod(result.Base{Cluster: d.Cluster, Items: nil}, nil, "PodNeedDelete", "info", 0, nil)
+	return result.NewResults(result.Base{Cluster: d.Cluster, Items: nil}, nil, "PodNeedDelete", "info", 0, nil)
 }
 
 func (d *AbnormalPod) CheckPodTerminating(args ...interface{}) result.Result {
 	if len(args) > 0 {
 		if pod, ok := args[0].(*corev1.Pod); ok {
 			if d.GetPodTerminating(pod) {
-				return result.NewResultPod(result.Base{
+				return result.NewResults(result.Base{
 					Cluster: d.Cluster,
 					Items:   []AbnormalPod{newAbnormalPod(d.Cluster, pod.Namespace, pod.Name, corev1.ContainerStatus{}, "Terminating", "Pod is terminating")},
 				}, nil, "PodTerminating", "critical", 0, nil)
 			}
 		}
 	}
-	return result.NewResultPod(result.Base{Cluster: d.Cluster, Items: nil}, nil, "PodTerminating", "info", 0, nil)
+	return result.NewResults(result.Base{Cluster: d.Cluster, Items: nil}, nil, "PodTerminating", "info", 0, nil)
 }
 
 // newAbnormalPod 创建异常 Pod 记录

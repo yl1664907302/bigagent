@@ -1,7 +1,7 @@
 package decision
 
 import (
-	"bigagent/internal/check"
+	"bigagent/internal/check/node"
 	"bigagent/internal/result"
 	"bigagent/internal/utils"
 )
@@ -17,7 +17,7 @@ func (p *AbnormalNodeDecision) Recovery(key bool) error {
 		if err != nil {
 			return err
 		}
-		nodes, ok := item.([]check.NodeDownItem)
+		nodes, ok := item.([]node.NodeDownItem)
 		if !ok {
 			return nil
 		}

@@ -1,7 +1,7 @@
 package decision
 
 import (
-	check "bigagent/internal/check/pod"
+	"bigagent/internal/check/pod"
 	"bigagent/internal/kubernetes"
 	"bigagent/internal/result"
 	"bigagent/internal/utils"
