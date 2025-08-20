@@ -4,7 +4,7 @@ import (
 	"bigagent/internal/config/global"
 	"bigagent/internal/model"
 	"bigagent/internal/scrape/machine"
-	utils "bigagent/internal/utils"
+	"bigagent/internal/utils"
 	"bigagent/internal/web/response"
 	"crypto/sha1"
 	"encoding/hex"
@@ -34,8 +34,13 @@ func CreateMachineUUID() {
 		return
 	}
 	utils.DefaultLogger.Info("唯一键数据创建成功：", requestParams)
+	var oIdStr string
 
-	oIdStr := strconv.FormatFloat((*resp)["ci_id"].(float64), 'f', -1, 64)
+	key := (*resp)["message"]
+	containsAny := strings.ContainsAny(key.(string), "400")
+	if !containsAny {
+		oIdStr = strconv.FormatFloat((*resp)["ci_id"].(float64), 'f', -1, 64)
+	}
 	requestParams["oid"] = oIdStr
 	requestParams["cmdb_auto_update_time"] = time.Now().Format("2006-01-02 15:04:05")
 	_, err = PutCMDBci(requestParams, "")
@@ -55,11 +60,11 @@ func UpdateMachineData() {
 	os := runtime.GOOS
 	switch os {
 	case "windows":
-		utils.DefaultLogger.Infof("主机是windows类型主机")
+		//utils.DefaultLogger.Infof("主机是windows类型主机")
 		wg.Add(1)
 		go updateData(dataMap, &wg)
 	case "linux":
-		utils.DefaultLogger.Infof("主机是linux类型主机")
+		//utils.DefaultLogger.Infof("主机是linux类型主机")
 		wg.Add(1)
 		go updateData(dataMap, &wg)
 	default:
@@ -269,9 +274,6 @@ func PostCMDBci(params map[string]string) (*response.ResultResponse, error) {
 		return nil, err
 	}
 
-	//	调试
-	//fmt.Println("完整的url：", fullURL)
-
 	// 发送HTTP Post请求
 	resp, err := http.Post(fullURL, "application/json", nil)
 	//resp, err := http.NewRequest("POST", fullURL, nil)
@@ -293,11 +295,13 @@ func PostCMDBci(params map[string]string) (*response.ResultResponse, error) {
 		return nil, err
 	}
 	if resp.StatusCode != 200 {
-		errorData, err := response.ResponseErrorData(resp.StatusCode, body)
-		if err != nil {
-			return nil, err
+		if resp.StatusCode != 400 {
+			errorData, err := response.ResponseErrorData(resp.StatusCode, body)
+			if err != nil {
+				return nil, err
+			}
+			return nil, fmt.Errorf(errorData)
 		}
-		return nil, fmt.Errorf(errorData)
 	}
 	jsonData, err := response.ResultResponseDataProcess(body)
 	if err != nil {

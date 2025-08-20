@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-func (d *AbnormalPod) GetK8sTwContext() (context.Context, context.CancelFunc) {
+func GetK8sTwContext() (context.Context, context.CancelFunc) {
 	return context.WithTimeout(context.Background(), time.Duration(3)*time.Second)
 }
 

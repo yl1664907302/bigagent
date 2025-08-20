@@ -2,7 +2,7 @@ package check
 
 import (
 	"bigagent/internal/kubernetes"
-	result2 "bigagent/internal/result"
+	"bigagent/internal/result"
 	"bigagent/internal/utils"
 	"context"
 	corev1 "k8s.io/api/core/v1"
@@ -26,36 +26,31 @@ func NewAbnormalPod(ctx context.Context, k func() *kubernetes.DefaultK8sOperator
 	return &AbnormalPod{k: k, ctx: ctx, Cluster: cluster, Namespace: namespace}
 }
 
-// Check 结果整合
-func (d *AbnormalPod) Check(args ...interface{}) result2.Result {
-	var severity string
-	report, err := d.getPodAbnormalRestarts(d.k, d.Cluster, d.Namespace, 3)
-	if err != nil {
-		utils.DefaultLogger.Errorf(err.Error())
+func (d *AbnormalPod) CheckPodNeedDelete(args ...interface{}) result.Result {
+	if len(args) > 0 {
+		d.Cluster = args[0].(string)
+		pods, err := d.FetchPods("status.phase!=Running")
+		if err != nil {
+			utils.DefaultLogger.Infof("集群：%s ,未发现非Running的pod", d.Cluster)
+			return result.NewResultPod(result.Base{Cluster: d.Cluster, Items: nil}, nil, "PodNeedDelete", "info", 1, nil)
+		}
+		return result.NewResultPod(result.Base{Cluster: d.Cluster, Items: pods}, nil, "PodNeedDelete", "critical", 1, nil)
 	}
-	switch len(report) {
-
-	case 0:
-		severity = "info"
-	case 1:
-		severity = "warn"
-	default:
-		severity = "critical"
-	}
-	// 返回异常核心报告
-	return result2.NewResultPod(result2.Base{
-		Cluster: d.Cluster,
-		Items:   report,
-	}, nil, "PodAbnormalRestarts", severity, len(report), report)
+	return result.NewResultPod(result.Base{Cluster: d.Cluster, Items: nil}, nil, "PodNeedDelete", "info", 0, nil)
 }
 
-func (d *AbnormalPod) CheckPodTerminating(args ...interface{}) result2.Result {
+func (d *AbnormalPod) CheckPodTerminating(args ...interface{}) result.Result {
 	if len(args) > 0 {
 		if pod, ok := args[0].(*corev1.Pod); ok {
-			return d.getPodTerminating(d.Cluster, pod)
+			if d.GetPodTerminating(pod) {
+				return result.NewResultPod(result.Base{
+					Cluster: d.Cluster,
+					Items:   []AbnormalPod{newAbnormalPod(d.Cluster, pod.Namespace, pod.Name, corev1.ContainerStatus{}, "Terminating", "Pod is terminating")},
+				}, nil, "PodTerminating", "critical", 0, nil)
+			}
 		}
 	}
-	return result2.NewResultPod(result2.Base{Cluster: d.Cluster, Items: nil}, nil, "PodTerminating", "info", 0, nil)
+	return result.NewResultPod(result.Base{Cluster: d.Cluster, Items: nil}, nil, "PodTerminating", "info", 0, nil)
 }
 
 // newAbnormalPod 创建异常 Pod 记录
