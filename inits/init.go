@@ -8,6 +8,7 @@ import (
 	"bigagent/internal/strategy"
 	utils "bigagent/internal/utils"
 	"bigagent/internal/utils/crontab"
+	"context"
 	"log"
 	"net/http"
 	"os"
@@ -146,8 +147,10 @@ func AgentRegister() {
 }
 
 // Crontab 执行定时任务
-func Crontab() {
+func Crontab(ctx context.Context) {
 	crontab.ScrapeCrontab()
+	// 集中到定时任务内执行 KubePolling
+	crontab.StartKubePolling(ctx)
 }
 
 // ListerChannel 监听channel

@@ -13,6 +13,16 @@ import (
 	"time"
 )
 
+const (
+	MOD_NODE_DOWN        = "node_down"
+	MOD_NODE_DOWN_REASON = "node_down_guard"
+	POWER_ACTION_OFF     = "POWER_OFF"
+	POWER_ACTION_ON      = "POWER_ON"
+	PLUGIN_NTP           = "ntp_time"
+	PLUGIN_NTP_REASON    = "ntp_time"
+	MOD_VOLUME_REASON    = "vm_diff_csi"
+)
+
 // AbnormalNodeDecision Pod 异常裁决器
 type AbnormalNodeDecision struct {
 	K         func() *kubernetes.DefaultK8sOperator
@@ -47,6 +57,139 @@ func (d *AbnormalNodeDecision) JudgeWith(
 }
 
 // ========================== 各类恢复逻辑 ==========================
+
+func (d *AbnormalNodeDecision) recoveryNtpNodeToCordon(res result.Result) error {
+	node2Ip, err := d.result.GetNode2Ip()
+	if err != nil {
+		return err
+	}
+	var index = 0
+	num := len(node2Ip)
+	for node, ip := range node2Ip {
+		klog.Infof("[RunNtpCheckOnCluster.QueryRes.print][clusterName:%v][%d/%d][nodeName:%v]",
+			d.Cluster,
+			index+1,
+			num,
+			node,
+		)
+		toDayStr := time.Now().Format("2006-01-02")
+		// 判断是否在db中
+		nodeDb := model.NodeMaintenance{
+			Name:        node,
+			Ip:          ip,
+			ClusterName: d.Cluster,
+			ModuleName:  PLUGIN_NTP,
+			Reason:      PLUGIN_NTP,
+			FirstDate:   toDayStr,
+			RecoveryQl:  global.V.GetString("plugin_ntp.recovery_ql"),
+		}
+		ok, _ := nodeDb.CheckExist()
+		if ok {
+			klog.Infof("PluginNtpDealOneNode.Already.Deal[cluster:%v][node:%v]", d.Cluster, node)
+			return nil
+		}
+
+		// 判断每日限流
+		todayMNodes, err := model.GetDailyNodeMaintenances(toDayStr, PLUGIN_NTP, d.Cluster)
+		if err != nil {
+			return fmt.Errorf("PluginNtpDealOneNode.getGetDailyNodeMaintenances.err:%v", err)
+		}
+
+		// 如果限流被拦截 那也不能做
+		if len(todayMNodes) > global.V.GetInt("plugin_ntp.cordon_daily_limit") {
+			msg := fmt.Sprintf("[日期:%v][集群:%v]\n][模块:%v 达到每日限流停止操作:%v][节点:%v]",
+
+				toDayStr,
+				d.Cluster,
+				PLUGIN_NTP,
+				global.V.GetInt("plugin_ntp.cordon_daily_limit"),
+				node,
+			)
+
+			klog.Infof(msg)
+			//util.DingDingMsgDirectSend(gr.Cg.PluginNtpC.ImDingDingC, msg)
+			return nil
+		}
+
+		// 先cordon它
+		err = d.CordonNode(node, d.Cluster, PLUGIN_NTP)
+		cordonRes := "成功"
+		if err != nil {
+			cordonRes = fmt.Sprintf("失败：%v", err)
+		}
+		msg := fmt.Sprintf("[集群:%v]\n[ntp插件cordon节点：%v结果：%v ]\n[今日操作数:%v]",
+			d.Cluster,
+			node,
+			cordonRes,
+			len(todayMNodes)+1,
+		)
+		klog.Infof(msg)
+		// 先通知一下
+		//util.DingDingMsgDirectSend(gr.Cg.PluginNtpC.ImDingDingC, msg)
+		_, err = nodeDb.AddOrGetOne()
+		if err != nil {
+			klog.Errorf("PluginNtpDealOneNode.addToDb.err[node:%v][err:%v]", nodeDb, err)
+
+		}
+		klog.Infof("PluginNtpDealOneNode.addToDb.success[node:%v][err:%v]", nodeDb.Name, err)
+	}
+	return nil
+}
+
+func (d *AbnormalNodeDecision) recoveryDownNodeToCordon(res result.Result) error {
+	item, err := res.GetItem()
+	if err != nil {
+		return err
+	}
+	realDownNodeWithIps := item.(map[string]string)
+	realDownNodesMsg := fmt.Sprintf("[%s]\n[集群:%v][宕机总数:%v]\n",
+		global.V.GetString("node_down.im_ding_ding.title"),
+
+		d.Cluster, len(realDownNodeWithIps))
+	newFound := 0
+	for nodeName, nodeIp := range realDownNodeWithIps {
+
+		toDayStr := time.Now().Format("2006-01-02")
+		// cordon node
+
+		err := d.CordonNode(nodeName, d.Cluster, MOD_NODE_DOWN)
+		if err != nil {
+			klog.Errorf("CordonNode.err[cluster:%v][node:%v][err:%v]", d.Cluster, nodeName, err)
+			//continue
+		}
+
+		//  查询节点ip和sn号
+
+		// 更新到维修db中
+		nodeInDb := &model.NodeMaintenance{
+			Name:        nodeName,
+			ClusterName: d.Cluster,
+			ModuleName:  MOD_NODE_DOWN,
+			Ip:          nodeIp,
+		}
+		exist, _ := nodeInDb.CheckExist()
+		if exist {
+			continue
+		}
+		newFound++
+		realDownNodesMsg += fmt.Sprintf("[node:%v][ip:%v][sn:]\n", nodeName, nodeIp)
+		nodeInDb.Reason = MOD_NODE_DOWN_REASON
+		nodeInDb.FirstDate = toDayStr
+		_, err = nodeInDb.AddOne()
+
+		if err != nil {
+			klog.Errorf("NodeDownCheckOneCluster.abnormal.cordonNode.AddOrGetOne.err[cluster:%v][node:%v][err:%v]", d.Cluster, nodeName, err)
+
+		}
+		klog.Infof("NodeDownCheckOneCluster.abnormal.cordonNode.AddOrGetOne.success[cluster:%v][node:%v]", d.Cluster, nodeName)
+
+	}
+	if newFound > 0 {
+		klog.Infof("NodeDownCheckOneCluster.get.realDownNodes.print[realDownNodesMsg:%v][cluster:%v][num:%v][detail:%v]", realDownNodesMsg, d.Cluster, len(realDownNodeWithIps), realDownNodeWithIps)
+		//util.DingDingMsgDirectSend(gr.Cg.NodeDownC.ImDingDingC, realDownNodesMsg
+	}
+	return nil
+}
 
 func (d *AbnormalNodeDecision) recoveryCordonToUnCordon(res result.Result) error {
 	item, err := res.GetItem()
@@ -173,5 +316,12 @@ func (d *AbnormalNodeDecision) JudgeDeadNode() func() {
 
 func (d *AbnormalNodeDecision) JudgeCordonToUnCordon() func() {
 	return d.JudgeWith(d.recoveryCordonToUnCordon)
+}
 
+func (d *AbnormalNodeDecision) JudgeDownNodeToCordon() func() {
+	return d.JudgeWith(d.recoveryDownNodeToCordon)
+}
+
+func (d *AbnormalNodeDecision) JudgeNtpNodeToCordon() func() {
+	return d.JudgeWith(d.recoveryNtpNodeToCordon)
 }

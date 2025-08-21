@@ -13,6 +13,12 @@ import (
 	"k8s.io/klog/v2"
 )
 
+const (
+	PLUGIN_NTP        = "ntp_time"
+	PLUGIN_NTP_REASON = "ntp_time"
+	MOD_VOLUME_REASON = "vm_diff_csi"
+)
+
 type AbnormalNode struct {
 	K         func() *kubernetes.DefaultK8sOperator `json:"-"`
 	Ctx       context.Context                       `json:"-"`
@@ -26,19 +32,107 @@ type AbnormalNode struct {
 func NewAbnormalNode(ctx context.Context, k func() *kubernetes.DefaultK8sOperator, cluster string, p *prom.PromClient) *AbnormalNode {
 	return &AbnormalNode{K: k, Ctx: ctx, Cluster: cluster, PromC: p}
 }
+
+func (n *AbnormalNode) CheckNtpNode(args ...interface{}) result.Result {
+	// 先进行ntp query check_ql
+	ql := global.V.GetString("plugin_ntp.check_ql")
+	vecs, err := n.PromC.InstantQuery(ql)
+	if err != nil {
+		klog.Errorf("RunNtpCheckOnCluster.PromInstantQuery.err[clusterName:%v][ql:%v][err:%v]", n.Cluster, n.Cluster, err)
+		return result.NewResults(result.Base{Cluster: n.Cluster, Items: nil}, nil, "CheckNtpNode", "info", 0, nil)
+	}
+
+	// vecs 代表这个集群中 有多少个 异常的ntp 节点
+	//num := len(vecs)
+	var node2Ip map[string]string
+	for _, vec := range vecs {
+		vec := vec
+		labelMap := vec.Metric
+		nodeName := string(labelMap["node"])
+		ip := string(labelMap["intance"])
+		if nodeName == "" {
+			continue
+		}
+		node2Ip[nodeName] = ip
+	}
+	if len(node2Ip) == 0 {
+		return result.NewResults(result.Base{Cluster: n.Cluster, Items: nil}, nil, "CheckNtpNode", "info", 0, nil)
+	}
+	return result.NewResults(result.Base{Cluster: n.Cluster, Items: nil, Node2Ip: node2Ip}, nil, "CheckNtpNode", "critical", 1, nil)
+}
+
+func (n *AbnormalNode) CheckDownNode(args ...interface{}) result.Result {
+	nodeDownCheckResMap := map[string]int{}
+	thresholdNum := len(global.V.GetStringSlice("node_down.check_qls"))
+	// 节点宕机比较严重：多条件的check
+	// 单1条件 up 的问题：组件down了，但节点没down
+	// 我们这里选的规则 一般都是 节点必备组件 1个的daemonset
+	//     - avg_over_time(up{job="kube-proxy"}[1d])==0
+	//    - avg_over_time(kube_node_status_condition{condition="Ready",status="unknown"}[1d])==1
+	//    - avg_over_time(up{job="node-exporter"}[1d])==0
+	for _, ql := range global.V.GetStringSlice("node_down.check_qls") {
+		ql := ql
+		res, err := n.PromC.InstantQuery(ql)
+		if err != nil {
+			klog.Errorf("NodeDownCheckOneCluster.PromInstantQuery.err[cluster:%v][err:%v]", n.Cluster, err)
+			continue
+		}
+		for _, v := range res {
+			v := v
+			//klog.Infof("NodeDownCheckOneCluster.QueryMetricInstantFloat.print[cluster:%v][metrics:%v]", clusterName, v.Metric)
+
+			nodeName := string(v.Metric["node"])
+			if nodeName == "" {
+				klog.Errorf("NodeDownCheckOneCluster.QueryMetricInstantFloat.nodeName.empty[cluster:%v][v.Metric:%v]", n.Cluster, v.Metric)
+				continue
+			}
+			nodeDownCheckResMap[nodeName]++
+
+		}
+	}
+
+	realDownNodeWithIps := map[string]string{}
+
+	// check res
+	for node, num := range nodeDownCheckResMap {
+
+		if num < thresholdNum {
+			klog.Infof("NodeDownCheckOneCluster.node.not.reach.threshold.[cluster:%v][node:%v][thresholdNum:%v][num:%v]", n.Cluster, node, thresholdNum, num)
+			continue
+		}
+		// 到这里说明 配置3条check_ql 都已触发 说明这个节点是真的down了
+		// 但是后面比如 要做重启等操作 需要ip
+		nodeNameToIpQl := fmt.Sprintf(global.V.GetString("node_down.node_name_to_ip_ql"), node)
+		res, err := n.PromC.InstantQuery(nodeNameToIpQl)
+		if err != nil {
+			klog.Errorf("NodeDownCheckOneCluster.gr.Cg.NodeDownC.NodeNameToIpQl.err[cluster:%v][nodeNameToIpQl:%v][err:%v]", n.Cluster, nodeNameToIpQl, err)
+			continue
+		}
+		ipStr := ""
+		for _, v := range res {
+
+			v := v
+			ipStr = string(v.Metric["instance"])
+		}
+		realDownNodeWithIps[node] = ipStr
+	}
+	if len(realDownNodeWithIps) == 0 {
+		return result.NewResults(result.Base{Cluster: n.Cluster, Items: nil}, nil, "CheckDownNode", "info", 0, nil)
+	}
+	return result.NewResults(result.Base{Cluster: n.Cluster, Items: realDownNodeWithIps}, nil, "CheckDownNode", "critical", 1, nil)
+}
+
 func (n *AbnormalNode) CheckCoNodeToUnCordon(args ...interface{}) result.Result {
 	// 数据从db 中 node维护记录
 
 	toCheckNodes, err := model.GetToRecoveryNodeMaintenances(global.V.GetInt("recovery_conf.check_day_num"))
 	if err != nil {
 		klog.Errorf("RunRecoveryCheckManager.GetToRecoveryNodeMaintenances.err:%v", err)
-		return result.NewResults(result.Base{Cluster: n.Cluster, Items: nil}, nil, "CoNodeToUnCordon", "info ", 0, err)
-	}
-	if len(toCheckNodes) == 0 {
-		klog.Infof("RunRecoveryCheckManager.GetToRecoveryNodeMaintenances.zero")
 		return result.NewResults(result.Base{Cluster: n.Cluster, Items: nil}, nil, "CoNodeToUnCordon", "info", 0, err)
 	}
-	klog.Infof("RunRecoveryCheckManager.GetToRecoveryNodeMaintenances.num:%v", len(toCheckNodes))
+	if len(toCheckNodes) == 0 {
+		return result.NewResults(result.Base{Cluster: n.Cluster, Items: nil}, nil, "CoNodeToUnCordon", "info", 0, err)
+	}
 
 	// 遍历节点记录 判断它是否已经符合自愈的条件了
 	// 查询ql做到，每隔模块的ql 是不是不一样，
@@ -125,7 +219,7 @@ func (n *AbnormalNode) CheckNodeByProm(args ...interface{}) result.Result {
 	// vecs 代表这个集群中 有多少个 异常的ntp 节点
 	num := len(promeResults)
 	if num == 0 {
-		//utils.DefaultLogger.Infof("集群：%s ,未发现异常的节点", n.Cluster)
+		utils.DefaultLogger.WithField("cluster", n.Cluster).WithField("Prometheus查询结果数量", "promResultNum").Info(global.V.GetString("check_ql_map."+checkleixing) + ",z结果为空")
 		return result.NewResults(result.Base{Cluster: n.Cluster, Items: nil}, nil, checkleixing, "info", 0, nil)
 	}
 	for index, vec := range promeResults {

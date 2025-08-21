@@ -41,8 +41,6 @@ func (pc *PromClient) InstantQuery(ql string) (model.Vector, error) {
 	ctx, cancel := context.WithTimeout(context.Background(), pc.timeout)
 	defer cancel()
 
-	log.Printf("[PromQL] running query: %s", ql)
-
 	// 执行查询
 	result, warnings, err := pc.v1api.Query(ctx, ql, time.Now())
 	if err != nil {
@@ -53,15 +51,15 @@ func (pc *PromClient) InstantQuery(ql string) (model.Vector, error) {
 	}
 
 	// 打印返回值类型和内容
-	log.Printf("[PromQL] raw result type: %T", result)
-	log.Printf("[PromQL] raw result: %#v", result)
+	//log.Printf("[PromQL] raw result type: %T", result)
+	//log.Printf("[PromQL] raw result: %#v", result)
 
 	// 根据类型断言
 	switch val := result.(type) {
 	case model.Vector:
-		if len(val) == 0 {
-			log.Println("[PromQL] query result is empty (vector len=0)")
-		}
+		//if len(val) == 0 {
+		//	log.Println("[PromQL] query result is empty (vector len=0)")
+		//}
 		return val, nil
 	case *model.Scalar:
 		log.Printf("[PromQL] got scalar value: %v at %v", val.Value, val.Timestamp)
