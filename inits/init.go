@@ -2,6 +2,7 @@ package inits
 
 import (
 	"bigagent/internal/config/global"
+	prom "bigagent/internal/prometheus"
 	"bigagent/internal/register"
 	"bigagent/internal/scrape/machine"
 	"bigagent/internal/scrape/osquery"
@@ -17,6 +18,9 @@ import (
 	"runtime"
 	"strings"
 	"time"
+
+	"github.com/prometheus/client_golang/prometheus"
+	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
 
 var (
@@ -150,7 +154,9 @@ func AgentRegister() {
 func Crontab(ctx context.Context) {
 	crontab.ScrapeCrontab()
 	// 集中到定时任务内执行 KubePolling
-	crontab.StartKubePolling(ctx)
+	if global.V.GetBool("guarder") {
+		crontab.StartKubePolling(ctx)
+	}
 }
 
 // ListerChannel 监听channel
@@ -293,6 +299,11 @@ func Hander(port string) {
 	StandRouterGroupApp.StandRouter()
 	StandRouterGroupApp2.StandRouter()
 	SysRouterGroupApp.SysRouter()
+
+	// metrics 路由
+	reg := prometheus.NewRegistry()
+	reg.MustRegister(&prom.Metric{})
+	http.Handle("/metrics", promhttp.HandlerFor(reg, promhttp.HandlerOpts{}))
 	err := http.ListenAndServe(port, nil)
 	if err != nil {
 		log.Fatal("ListenAndServe: ", err)

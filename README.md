@@ -39,7 +39,8 @@ chmod 755 bigagent
 配置文件修改
 
 ```yaml
-# bigagent的系统基础配置
+# 是否开启守卫模式
+guarder: false
 system:
   # http暴露套接字
   addr: 0.0.0.0:8010
@@ -56,6 +57,9 @@ system:
   serct: "123456"
   # 是否开启api服务，0为不开启，1为开启
   api : 0
+  # osqueryd的套接字文件路径
+  #  empath: "/var/osquery/osquery.em"
+  empath: "\\\\.\\\\pipe\\\\osquery.em"
 
 # 全局类型设置
 global:
@@ -71,6 +75,136 @@ veops:
   key:  "1afef87ae36a4942a14b16a82033fbcb"
   secret: "mQ3l7GTIB0@Ua4Rpqzx?!HfiWcusorD#"
   ciType: "guochu_auto_machine_v2"
+
+
+# 多个k8s集群的kubeconfig路径map  ：key是集群名字，value 文件路径
+k8s_configs:
+  cpu-compute-01: kubeconfig1.yaml
+  gpu-compute-01:
+
+
+k8s_compute_prom_addr_map:
+  cpu-compute-01: http://192.168.210.108:9090
+  gpu-compute-01: http://192.168.210.108:9090
+
+mysql_info:
+  name: deploy # 跟真实的库没关系，只是我们代码中标识：区别多个库
+  addr: "root:123456@tcp(127.0.0.1:3306)/bigagent?charset=utf8&parseTime=True"
+  max: 128 # 最大连接数
+  idel: 16 # 空闲连接
+  debug: false # 是不是要打印sql。对于拼接sql很重要
+
+im_ding_ding:
+  bot_api_addr: https://oapi.dingtalk.com/robot/send?access_token=
+  title: "[bigagent守卫通知]"
+  atMobiles:
+    - 15810947075
+
+plugin_ntp:
+  enable: true
+  check_interval_seconds: 60   # 多久触发检查
+  query_prom_time_out_seconds: 5 # 查询prometheus 超时
+  cordon_daily_limit: 1      # 每日cordon 保护措施节点数量
+  check_ql: |-
+    avg by (node)(avg_over_time(node_ntp_offset_seconds[24h])) > -1
+  # 需要写成针对单一节点的
+  recovery_ql: |-
+    node_ntp_stratum{node="%s"}==3
+  enabled_clusters: # 在哪些集群上开启这个模块
+    cpu-compute-01: yes
+  im_ding_ding:
+    bot_api_addr: https://oapi.dingtalk.com/robot/send?access_token=
+    title: "[bigagent守卫通知| ntp模块]"
+    atMobiles:
+      - 15810947075
+
+recovery_conf:
+  enable: true
+  check_interval_seconds: 60   # 多久触发检查
+  query_prom_time_out_seconds: 5 # 查询prometheus 超时
+  check_day_num: 5
+  im_ding_ding:
+    bot_api_addr: https://oapi.dingtalk.com/robot/send?access_token=
+    title: "[bigagent守卫通知| node自愈模块]"
+    atMobiles:
+      - 15810947075
+
+
+common_module:
+  enable: true
+  check_interval_seconds: 60   # 多久触发检查
+  query_prom_time_out_seconds: 5 # 查询prometheus 超时
+
+
+cordon_daily_limit_map: # 每日cordon 保护措施节点数量
+  file_system_read_only: 1
+  arp_too_many: 1
+
+
+
+check_ql_map:
+  file_system_read_only: node_filesystem_readonly{mountpoint="/"}==1
+  arp_too_many: node_arp_entries{device="ens33"} >2
+#  查询 node_arp_entries{device="ens33"} > 2
+#
+#  Prometheus 会扫描所有符合标签 device="ens33" 的时间序列。
+#
+#  对每个时间序列，它会判断当前值是否 大于 2。
+#
+#  如果满足条件，则 这个时间序列会被返回，值保持原来的数值。
+#
+#  如果不满足条件，则 时间序列不会被返回（不会显示 0 或 false）。
+
+recovery_ql_map:
+  file_system_read_only: |-
+    node_filesystem_readonly{mountpoint="/",node="%s"}>0
+  arp_too_many: |-
+    node_arp_entries{device="ens33",node="%s"} >2
+
+  enabled_clusters: # 在哪些集群上开启这个模块
+    cpu-compute-01: yes
+    #gpu-compute-01: yes
+  im_ding_ding:
+    bot_api_addr: https://oapi.dingtalk.com/robot/send?access_token=75f08bf6f2fa40d45bc987608fa3ffa860bc9d8e2cd2b6099a5cc644ba0b3c50
+    title: "[k8s-cluster-guard集群守卫工具通知| 通用模块]"
+    atMobiles:
+      - 15810947075
+
+
+abnormal_pod_clean:
+  enable: true
+  check_interval_seconds: 60
+  double_check_sec_seconds: 5
+  label_selector: "app.kubernetes.io/name=juicefs-mount"
+  field_selector: "status.phase!=Running"
+  enabled_clusters:
+    cpu-compute-01: yes
+  im_ding_ding:
+    bot_api_addr: https://oapi.dingtalk.com/robot/send?access_token=75f08bf6f2fa40d45bc987608fa3ffa860bc9d8e2cd2b6099a5cc644ba0b3c50
+    title: "[bigagent守卫通知| 异常pod清理模块]"
+    atMobiles:
+      - 15810947075
+
+
+node_down:
+  enable: true
+  check_interval_seconds: 150
+  query_prom_time_out_seconds: 20
+  enabled_clusters:
+    cpu-compute-01: yes
+  node_name_to_ip_ql: |-
+    node_os_info{node="%s"}
+  check_qls:
+    - avg_over_time(up{job="kubernetes-nodes-cadvisor"}[1d])==0
+    - avg_over_time(kube_node_status_condition{condition="Ready",status="unknown"}[1d])==1
+    - avg_over_time(up{job="kubernetes-nodes-kubelet"}[1d])==0
+  im_ding_ding:
+    bot_api_addr: https://oapi.dingtalk.com/robot/send?access_token=75f08bf6f2fa40d45bc987608fa3ffa860bc9d8e2cd2b6099a5cc644ba0b3c50
+    title: "[bigagent守卫通知| 节点宕机模块]"
+    atMobiles:
+      - 15810947075
+
+
 
 #如下配置为自动生成，请勿修改!!！
 
@@ -95,6 +229,7 @@ grpc_cmdb3_stand3_token:
 action_detail: '33'
 collection_frequency: "10s"
 
+
 ```
 
 ## Run
@@ -107,251 +242,6 @@ collection_frequency: "10s"
 前台运行方式：
 ./bigagent 
 ./bigagent -s start -c /path/config.yml
-```
-
-# server端
-> 部署bigagent-server端
->
-> 地址：[https://gitee.com/yl166490/bigagent-server.git](https://gitee.com/yl166490/bigagent-server.git)
->
-
-## Build
-```shell
-git clone https://gitee.com/yl166490/bigagent-server.git
-cd bigagent-server
-mkdir conf
-mv bigagent-server/conf/config.yml ./
-```
-
-```shell
-go mod tidy
-go env -w GOOS=linux
-go build -o "bigagent-server" cmd/server/main.go
-chmod 755 bigagent-server
-```
-
-配置文件修改
-
-```yaml
-system:
-  # http端口
-  addr: ":8080"
-  # grpc服务端端口
-  grpc: "0.0.0.0:8765"
-  # 日志文件
-  logfile: "log.txt"
-  # 认证密钥， 前端、agent端、server端、配置文件都需要一致
-  serct: 123456
-  # grpc客户端端地址
-  client_port: "0.0.0.0:5678"
-  # agent端口
-  agent_port: ":8010"
-  # 查询agent离线时间间隔
-  times: "10s"
-  # 判断agent离线超时时间
-  agent_outtime: 20
-  # mysql数据库
-  database:
-    mysqlhost: "localhost"
-    mysqlport: "3306"
-    mysqluser: "root"
-    mysqlpassword: "123456"
-    mysqldatabasename: "bigagent"
-  # redis数据库
-  redisaddr: "localhost:6379"
-  redispassword: "166490"
-  redisdb: 0
-```
-
-## Run
-```shell
-nohup ./bigagent-server > /dev/null 2>&1  &
-```
-
-## Docker
-> 完成源码编译后
->
-
-Dockerfile
-
-```yaml
-# 使用官方的 Golang 镜像作为基础镜像
-FROM golang:1.23
-
-  # 设置工作目录
-WORKDIR /app
-
-  # 设置 GOPROXY 为国内的代理，加速依赖下载
-RUN go env -w GOPROXY=https://goproxy.cn,direct
-
-  # 复制 go.mod 和 go.sum 文件
-COPY go.mod go.sum ./
-
-  # 下载依赖
-RUN go mod download
-
-  # 复制整个项目代码
-COPY cmd /app/cmd
-COPY docs /app/docs
-COPY inits /app/inits
-COPY internel /app/internel
-COPY config.yml /app/config.yml
-
-  # 构建 Go 应用程序
-RUN go build -o bigagnt-server cmd/server/main.go
-
-  # 安装必要的工具和依赖
-RUN apt-get update && apt-get install -y ca-certificates tzdata
-
-  # 设置时区
-ENV TZ=Asia/Shanghai
-EXPOSE 8080
-  # 设置容器启动时执行的命令
-CMD ["./bigagnt-server"]
-```
-
-```shell
-docker build  -t bigagent-server .
-```
-
-```yaml
-docker run -d \
---name bigagentserver \
--p 8080:8080 \
--p 5678:5678 \
--p 8765:8765 \
--v conf:/app/conf/ \
-bigagent-server
-```
-
-# web端
-> bigagent-server的前端部署
->
-> 地址：[https://gitee.com/yl166490/bigagent-server.git](https://gitee.com/yl166490/bigagent-server.git)
->
-
-## Build
-修改前端配置文件
-
-```shell
-git clone https://gitee.com/yl166490/bigagent-server.git
-cd bigagent-server/web/
-vim .env.pro
-```
-
-```shell
-# 环境
-VITE_NODE_ENV=production
-
-# 接口前缀，后端server端接口地址
-VITE_API_BASE_PATH='http://192.168.0.83:8080'
-
-# nginx的路径
-VITE_BASE_PATH=/agent/
-
-#TOKEN 前端、agent端、server端、配置文件都需要一致
-VITE_TOKEN=123456
-
-# 是否删除debugger
-VITE_DROP_DEBUGGER=true
-
-# 是否删除console.log
-VITE_DROP_CONSOLE=true
-
-# 是否sourcemap
-VITE_SOURCEMAP=false
-
-# 输出路径
-VITE_OUT_DIR=dist-pro
-
-# 标题
-VITE_APP_TITLE=BGG
-
-# 是否包分析
-VITE_USE_BUNDLE_ANALYZER=true
-
-# 是否全量引入element-plus样式
-VITE_USE_ALL_ELEMENT_PLUS_STYLE=true
-
-# 是否开启mock
-VITE_USE_MOCK=false
-
-# 是否切割css
-VITE_USE_CSS_SPLIT=true
-
-# 是否使用在线图标
-VITE_USE_ONLINE_ICON=true
-```
-
-编译生成dist-pro文件
-
-```shell
-npm config set registry https://registry.npmmirror.com
-npm install pnpm -g
-pnpm i
-npm run build:pro
-cd dist-pro
-```
-
-## Apply
-```shell
-vim bigagent.conf
-```
-
-```nginx
-server {
-  listen 3000;
-  server_name localhost;
-  location /agent/ {
-    alias /usr/share/nginx/html/web/;
-    index index.html;
-    try_files $uri $uri/ /index.html;
-  }
-}
-```
-
-## Docker
-> 在完成源码配置与编译后进行
->
-
-Dockerfile
-
-```dockerfile
-# 基础镜像
-FROM nginx:latest
-# 镜像维护
-LABEL maintainer=yeling
-# 将 dist 文件夹拷贝到 Nginx 的静态资源目录
-COPY dist-pro/. /usr/share/nginx/html/web/
-# 将前端 Nginx 配置覆盖基础镜像的配置文件（最好在启动容器的时候挂载到宿主机由运维维护）
-COPY bigagent.conf /etc/nginx/conf.d/bigagent.conf
-```
-
-执行镜像构建与容器运行（默认上述）
-
-```shell
-docker  build -t bigagent-server-web .
-docker run -d --name bigagent-web -p 3000:3000 bigagent-server-web
-```
-
-访问
-
-```http
-http://localhost:3000/agent/
-user：admin
-password：admin
-```
-
-
-
-# Docker-compose
-> 快速体验模式，一键部署server前后端以及依赖组件
->
-> [@李泽建](undefined/lizejian)
->
-
-```nginx
-...待补充
 ```
 
 # Contributing

@@ -1,4 +1,5 @@
-# bigagent的系统基础配置
+# 是否开启守卫模式
+guarder: false
 system:
   # http暴露套接字
   addr: 0.0.0.0:8010
@@ -16,7 +17,7 @@ system:
   # 是否开启api服务，0为不开启，1为开启
   api : 0
   # osqueryd的套接字文件路径
-#  empath: "/var/osquery/osquery.em"
+  #  empath: "/var/osquery/osquery.em"
   empath: "\\\\.\\\\pipe\\\\osquery.em"
 
 # 全局类型设置
@@ -53,8 +54,8 @@ mysql_info:
   debug: false # 是不是要打印sql。对于拼接sql很重要
 
 im_ding_ding:
-  bot_api_addr: https://oapi.dingtalk.com/robot/send?access_token=75f08bf6f2fa40d45bc987608fa3ffa860bc9d8e2cd2b6099a5cc644ba0b3c5
-  title: k8s-cluster-guard集群守卫工具通知
+  bot_api_addr: https://oapi.dingtalk.com/robot/send?access_token=
+  title: "[bigagent守卫通知]"
   atMobiles:
     - 15810947075
 
@@ -70,10 +71,9 @@ plugin_ntp:
     node_ntp_stratum{node="%s"}==3
   enabled_clusters: # 在哪些集群上开启这个模块
     cpu-compute-01: yes
-    gpu-compute-01: yes
   im_ding_ding:
-    bot_api_addr: https://oapi.dingtalk.com/robot/send?access_token=75f08bf6f2fa40d45bc987608fa3ffa860bc9d8e2cd2b6099a5cc644ba0b3c50
-    title: "[k8s-cluster-guard集群守卫工具通知| ntp模块]"
+    bot_api_addr: https://oapi.dingtalk.com/robot/send?access_token=
+    title: "[bigagent守卫通知| ntp模块]"
     atMobiles:
       - 15810947075
 
@@ -83,8 +83,8 @@ recovery_conf:
   query_prom_time_out_seconds: 5 # 查询prometheus 超时
   check_day_num: 5
   im_ding_ding:
-    bot_api_addr: https://oapi.dingtalk.com/robot/send?access_token=75f08bf6f2fa40d45bc987608fa3ffa860bc9d8e2cd2b6099a5cc644ba0b3c50
-    title: "[k8s-cluster-guard集群守卫工具通知| 自愈模块]"
+    bot_api_addr: https://oapi.dingtalk.com/robot/send?access_token=
+    title: "[bigagent守卫通知| node自愈模块]"
     atMobiles:
       - 15810947075
 
@@ -140,7 +140,7 @@ abnormal_pod_clean:
     cpu-compute-01: yes
   im_ding_ding:
     bot_api_addr: https://oapi.dingtalk.com/robot/send?access_token=75f08bf6f2fa40d45bc987608fa3ffa860bc9d8e2cd2b6099a5cc644ba0b3c50
-    title: "[k8s-cluster-guard集群守卫工具通知| 异常pod清理模块]"
+    title: "[bigagent守卫通知| 异常pod清理模块]"
     atMobiles:
       - 15810947075
 
@@ -159,7 +159,7 @@ node_down:
     - avg_over_time(up{job="kubernetes-nodes-kubelet"}[1d])==0
   im_ding_ding:
     bot_api_addr: https://oapi.dingtalk.com/robot/send?access_token=75f08bf6f2fa40d45bc987608fa3ffa860bc9d8e2cd2b6099a5cc644ba0b3c50
-    title: "[k8s-cluster-guard集群守卫工具通知| 节点宕机模块]"
+    title: "[bigagent守卫通知| 节点宕机模块]"
     atMobiles:
       - 15810947075
 
