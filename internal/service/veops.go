@@ -307,8 +307,6 @@ func PostCMDBci(params map[string]string) (*response.ResultResponse, error) {
 	if err != nil {
 		return nil, err
 	}
-
-	utils.DefaultLogger.Info("新增数据返回结果为：", jsonData)
 	return jsonData, nil
 }
 

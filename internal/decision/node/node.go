@@ -48,7 +48,32 @@ func (d *AbnormalNodeDecision) JudgeWith(
 
 // ========================== 各类恢复逻辑 ==========================
 
-// recoveryNeedDelete 处理需要强制删除的 Pod
+func (d *AbnormalNodeDecision) recoveryCordonToUnCordon(res result.Result) error {
+	item, err := res.GetItem()
+	if err != nil {
+		return err
+	}
+	nodes, ok := item.([]model.NodeMaintenance)
+	if !ok {
+		return nil
+	}
+	wp := workerpool.New(20)
+	for _, node := range nodes {
+		node := node
+		wp.Submit(func() {
+			err = d.UnCordonNode(node.Name, d.Cluster, node.ModuleName)
+			if err != nil {
+				klog.Errorf("recoveryCordonToUnCordon.UnCordonNode.err[clusterName:%v][nodeName:%v][err:%v]", d.Cluster, node.Name, err)
+				return
+			}
+			klog.Infof("recoveryCordonToUnCordon.UnCordonNode.success[clusterName:%v][nodeName:%v]", d.Cluster, node.Name)
+		})
+	}
+	wp.StopWait()
+	return nil
+}
+
+// recoveryNeedDelete
 func (d *AbnormalNodeDecision) recoveryDeadNode(res result.Result) error {
 	recovery_ql_map := make(map[string]string)
 	cordon_daily_limit_map := make(map[string]int)
@@ -62,27 +87,27 @@ func (d *AbnormalNodeDecision) recoveryDeadNode(res result.Result) error {
 	if err != nil {
 		return err
 	}
-	for nodeName, _ := range n2Ip {
+	for nodeName, ip := range n2Ip {
 		wp.Submit(func() {
 			toDayStr := time.Now().Format("2006-01-02")
 			// 需要根据模块名拿到配置 好的 对的recoveryQl
 			checkName, _ := d.result.GetCheckName()
-			//recoveryQl := recovery_ql_map[checkName]
-			// 判断是否在db中
-			//nodeDb := model.NodeMaintenance{
-			//	Name:        nodeName,
-			//	Ip:          ip,
-			//	ClusterName: clusterName,
-			//	ModuleName:  moduleName,
-			//	Reason:      moduleName,
-			//	FirstDate:   toDayStr,
-			//	RecoveryQl:  recoveryQl,
-			//}
-			//ok, _ := nodeDb.CheckExist()
-			//if ok {
-			//	klog.Infof("CommonModuleDealOneNode.Already.Deal[cluster:%v][node:%v][moduleName:%v]", clusterName, nodeName, moduleName)
-			//	return
-			//}
+			recoveryQl := recovery_ql_map[checkName]
+			// 幂等查询是否已经处理过了，在数据库已记录
+			nodeDb := model.NodeMaintenance{
+				Name:        nodeName,
+				Ip:          ip,
+				ClusterName: d.Cluster,
+				ModuleName:  checkName,
+				Reason:      checkName,
+				FirstDate:   toDayStr,
+				RecoveryQl:  recoveryQl,
+			}
+			ok, _ := nodeDb.CheckExist()
+			if ok {
+				klog.Infof("CommonModuleDealOneNode.Already.Deal[cluster:%v][node:%v][moduleName:%v]", d.Cluster, nodeName, checkName)
+				return
+			}
 
 			// 判断每日限流
 			// 首先拿到这个 模块的限流数字
@@ -127,12 +152,12 @@ func (d *AbnormalNodeDecision) recoveryDeadNode(res result.Result) error {
 			// 先通知一下
 			//util.DingDingMsgDirectSend(gr.Cg.ModuleCommonC.ImDingDingC, msg)
 
-			//_, err = nodeDb.AddOrGetOne()
-			//if err != nil {
-			//	klog.Errorf("CommonModuleDealOneNode.addToDb.err[moduleName:%v][node:%v][err:%v]", checkName, nodeDb, err)
-			//
-			//}
-			//klog.Infof("CommonModuleDealOneNode.addToDb.success[moduleName:%v][node:%v][err:%v]", moduleName, nodeDb.Name, err)
+			_, err = nodeDb.AddOrGetOne()
+			if err != nil {
+				klog.Errorf("CommonModuleDealOneNode.addToDb.err[moduleName:%v][node:%v][err:%v]", checkName, nodeDb, err)
+
+			}
+			klog.Infof("CommonModuleDealOneNode.addToDb.success[moduleName:%v][node:%v][err:%v]", checkName, nodeDb.Name, err)
 		})
 	}
 	wp.StopWait()
@@ -144,4 +169,9 @@ func (d *AbnormalNodeDecision) recoveryDeadNode(res result.Result) error {
 // JudgeNeedDelete Pod 强制删除处理
 func (d *AbnormalNodeDecision) JudgeDeadNode() func() {
 	return d.JudgeWith(d.recoveryDeadNode)
+}
+
+func (d *AbnormalNodeDecision) JudgeCordonToUnCordon() func() {
+	return d.JudgeWith(d.recoveryCordonToUnCordon)
+
 }

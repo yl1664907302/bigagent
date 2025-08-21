@@ -47,7 +47,7 @@ k8s_compute_prom_addr_map:
 
 mysql_info:
   name: deploy # 跟真实的库没关系，只是我们代码中标识：区别多个库
-  addr: "root:1234@tcp(192.168.0.100:3306)/k8s_cluster_guard?charset=utf8&parseTime=True"
+  addr: "root:123456@tcp(127.0.0.1:3306)/bigagent?charset=utf8&parseTime=True"
   max: 128 # 最大连接数
   idel: 16 # 空闲连接
   debug: false # 是不是要打印sql。对于拼接sql很重要
@@ -95,9 +95,9 @@ common_module:
   query_prom_time_out_seconds: 5 # 查询prometheus 超时
 
 
-  cordon_daily_limit_map: # 每日cordon 保护措施节点数量
-    file_system_read_only: 1
-    arp_too_many: 1
+cordon_daily_limit_map: # 每日cordon 保护措施节点数量
+  file_system_read_only: 1
+  arp_too_many: 1
 
 
 
@@ -114,11 +114,11 @@ check_ql_map:
 #
 #  如果不满足条件，则 时间序列不会被返回（不会显示 0 或 false）。
 
-  recovery_ql_map:
-    file_system_read_only: |-
-      node_filesystem_readonly{mountpoint="/",node="%s"}>0
-    arp_too_many: |-
-      node_arp_entries{device="ens33",node="%s"} >2
+recovery_ql_map:
+  file_system_read_only: |-
+    node_filesystem_readonly{mountpoint="/",node="%s"}>0
+  arp_too_many: |-
+    node_arp_entries{device="ens33",node="%s"} >2
 
   enabled_clusters: # 在哪些集群上开启这个模块
     cpu-compute-01: yes

@@ -7,6 +7,7 @@ toolchain go1.24.4
 require (
 	github.com/elastic/go-sysinfo v1.15.0
 	github.com/gammazero/workerpool v1.1.3
+	github.com/go-sql-driver/mysql v1.7.0
 	github.com/leemcloughlin/gofarmhash v0.0.0-20160919192320-0a055c5b87a8
 	github.com/osquery/osquery-go v0.0.0-20250131154556-629f995b6947
 	github.com/prometheus/client_golang v1.23.0
