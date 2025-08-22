@@ -19,10 +19,12 @@ USE  bigagent;
 source  bigagent.sql
 ```
 
-# agent端
-> agent使用教程，请先部署并运行agent端 \
-> 地址：https://gitee.com/yl166490/bigagentt
->
+
+
+
+## 功能总览
+
+![功能总览](docs/image.png)
 
 ## Build
 ```shell
