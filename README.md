@@ -24,7 +24,7 @@ source  bigagent.sql
 
 ## 功能总览
 
-![功能总览](docs/image.png)
+![功能总览](docs/Untitled diagram _ Mermaid Chart-2025-08-22-071628.png)
 
 ## Build
 ```shell
@@ -167,8 +167,8 @@ recovery_ql_map:
     cpu-compute-01: yes
     #gpu-compute-01: yes
   im_ding_ding:
-    bot_api_addr: https://oapi.dingtalk.com/robot/send?access_token=75f08bf6f2fa40d45bc987608fa3ffa860bc9d8e2cd2b6099a5cc644ba0b3c50
-    title: "[k8s-cluster-guard集群守卫工具通知| 通用模块]"
+    bot_api_addr: https://oapi.dingtalk.com/robot/send?access_token=
+    title: "[bigagent守卫通知| 通用模块]"
     atMobiles:
       - 15810947075
 
@@ -182,7 +182,7 @@ abnormal_pod_clean:
   enabled_clusters:
     cpu-compute-01: yes
   im_ding_ding:
-    bot_api_addr: https://oapi.dingtalk.com/robot/send?access_token=75f08bf6f2fa40d45bc987608fa3ffa860bc9d8e2cd2b6099a5cc644ba0b3c50
+    bot_api_addr: https://oapi.dingtalk.com/robot/send?access_token=
     title: "[bigagent守卫通知| 异常pod清理模块]"
     atMobiles:
       - 15810947075
@@ -201,7 +201,7 @@ node_down:
     - avg_over_time(kube_node_status_condition{condition="Ready",status="unknown"}[1d])==1
     - avg_over_time(up{job="kubernetes-nodes-kubelet"}[1d])==0
   im_ding_ding:
-    bot_api_addr: https://oapi.dingtalk.com/robot/send?access_token=75f08bf6f2fa40d45bc987608fa3ffa860bc9d8e2cd2b6099a5cc644ba0b3c50
+    bot_api_addr: https://oapi.dingtalk.com/robot/send?access_token=
     title: "[bigagent守卫通知| 节点宕机模块]"
     atMobiles:
       - 15810947075
