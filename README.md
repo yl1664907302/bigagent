@@ -24,7 +24,7 @@ source  bigagent.sql
 
 ## 功能总览
 
-![功能总览](docs/Untitled diagram _ Mermaid Chart-2025-08-22-071628.png)
+![功能总览](docs/1.png)
 
 ## Build
 ```shell
