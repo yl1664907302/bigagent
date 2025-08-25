@@ -1,5 +1,5 @@
 # 是否开启守卫模式
-guarder: false
+guarder: true
 system:
   # http暴露套接字
   addr: 0.0.0.0:8010

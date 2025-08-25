@@ -2,6 +2,7 @@ package check
 
 import (
 	"bigagent/internal/config/global"
+	decision "bigagent/internal/decision/node"
 	"bigagent/internal/kubernetes"
 	model "bigagent/internal/model/k8s"
 	prom "bigagent/internal/prometheus"
@@ -33,13 +34,19 @@ func NewAbnormalNode(ctx context.Context, k func() *kubernetes.DefaultK8sOperato
 	return &AbnormalNode{K: k, Ctx: ctx, Cluster: cluster, PromC: p}
 }
 
-func (n *AbnormalNode) CheckNtpNode(args ...interface{}) result.Result {
+func (n *AbnormalNode) CheckNtpNode(args ...interface{}) *decision.AbnormalNodeDecision {
 	// 先进行ntp query check_ql
 	ql := global.V.GetString("plugin_ntp.check_ql")
 	vecs, err := n.PromC.InstantQuery(ql)
 	if err != nil {
 		klog.Errorf("RunNtpCheckOnCluster.PromInstantQuery.err[clusterName:%v][ql:%v][err:%v]", n.Cluster, n.Cluster, err)
-		return result.NewResults(result.Base{Cluster: n.Cluster, Items: nil}, nil, "CheckNtpNode", "info", 0, nil)
+		return decision.NewAbnormalNodeDecision(
+			&result.Results{
+				Base:      result.Base{Cluster: n.Cluster, Items: nil},
+				Count:     0,
+				Severity:  "info",
+				CheckName: "CheckNtpNode",
+			})
 	}
 
 	// vecs 代表这个集群中 有多少个 异常的ntp 节点
@@ -56,12 +63,24 @@ func (n *AbnormalNode) CheckNtpNode(args ...interface{}) result.Result {
 		node2Ip[nodeName] = ip
 	}
 	if len(node2Ip) == 0 {
-		return result.NewResults(result.Base{Cluster: n.Cluster, Items: nil}, nil, "CheckNtpNode", "info", 0, nil)
+		return decision.NewAbnormalNodeDecision(
+			&result.Results{
+				Base:      result.Base{Cluster: n.Cluster, Items: nil},
+				Count:     0,
+				Severity:  "info",
+				CheckName: "CheckNtpNode",
+			})
 	}
-	return result.NewResults(result.Base{Cluster: n.Cluster, Items: nil, Node2Ip: node2Ip}, nil, "CheckNtpNode", "critical", 1, nil)
+	return decision.NewAbnormalNodeDecision(
+		&result.Results{
+			Base:      result.Base{Cluster: n.Cluster, Items: nil},
+			Count:     1,
+			Severity:  "critical",
+			CheckName: "CheckNtpNode",
+		})
 }
 
-func (n *AbnormalNode) CheckDownNode(args ...interface{}) result.Result {
+func (n *AbnormalNode) CheckDownNode(args ...interface{}) *decision.AbnormalNodeDecision {
 	nodeDownCheckResMap := map[string]int{}
 	thresholdNum := len(global.V.GetStringSlice("node_down.check_qls"))
 	// 节点宕机比较严重：多条件的check
@@ -117,21 +136,45 @@ func (n *AbnormalNode) CheckDownNode(args ...interface{}) result.Result {
 		realDownNodeWithIps[node] = ipStr
 	}
 	if len(realDownNodeWithIps) == 0 {
-		return result.NewResults(result.Base{Cluster: n.Cluster, Items: nil}, nil, "CheckDownNode", "info", 0, nil)
+		return decision.NewAbnormalNodeDecision(
+			&result.Results{
+				Base:      result.Base{Cluster: n.Cluster, Items: nil},
+				Count:     0,
+				Severity:  "info",
+				CheckName: "CheckDownNode",
+			})
 	}
-	return result.NewResults(result.Base{Cluster: n.Cluster, Items: realDownNodeWithIps}, nil, "CheckDownNode", "critical", 1, nil)
+	return decision.NewAbnormalNodeDecision(
+		&result.Results{
+			Base:      result.Base{Cluster: n.Cluster, Items: nil},
+			Count:     1,
+			Severity:  "critical",
+			CheckName: "CheckDownNode",
+		})
 }
 
-func (n *AbnormalNode) CheckCoNodeToUnCordon(args ...interface{}) result.Result {
+func (n *AbnormalNode) CheckCoNodeToUnCordon(args ...interface{}) *decision.AbnormalNodeDecision {
 	// 数据从db 中 node维护记录
 
 	toCheckNodes, err := model.GetToRecoveryNodeMaintenances(global.V.GetInt("recovery_conf.check_day_num"))
 	if err != nil {
 		klog.Errorf("RunRecoveryCheckManager.GetToRecoveryNodeMaintenances.err:%v", err)
-		return result.NewResults(result.Base{Cluster: n.Cluster, Items: nil}, nil, "CoNodeToUnCordon", "info", 0, err)
+		return decision.NewAbnormalNodeDecision(
+			&result.Results{
+				Base:      result.Base{Cluster: n.Cluster, Items: nil},
+				Count:     0,
+				Severity:  "info",
+				CheckName: "CoNodeToUnCordon",
+			})
 	}
 	if len(toCheckNodes) == 0 {
-		return result.NewResults(result.Base{Cluster: n.Cluster, Items: nil}, nil, "CoNodeToUnCordon", "info", 0, err)
+		return decision.NewAbnormalNodeDecision(
+			&result.Results{
+				Base:      result.Base{Cluster: n.Cluster, Items: nil},
+				Count:     0,
+				Severity:  "info",
+				CheckName: "CoNodeToUnCordon",
+			})
 	}
 
 	// 遍历节点记录 判断它是否已经符合自愈的条件了
@@ -187,12 +230,24 @@ func (n *AbnormalNode) CheckCoNodeToUnCordon(args ...interface{}) result.Result 
 	}
 	wp.StopWait()
 	if len(toCheckNodeList) == 0 {
-		return result.NewResults(result.Base{Cluster: n.Cluster, Items: nil}, nil, "CoNodeToUnCordon", "info", 1, nil)
+		return decision.NewAbnormalNodeDecision(
+			&result.Results{
+				Base:      result.Base{Cluster: n.Cluster, Items: nil},
+				Count:     0,
+				Severity:  "info",
+				CheckName: "CoNodeToUnCordon",
+			})
 	}
-	return result.NewResults(result.Base{Cluster: n.Cluster, Items: toCheckNodeList}, nil, "CoNodeToUnCordon", "critical", 1, nil)
+	return decision.NewAbnormalNodeDecision(
+		&result.Results{
+			Base:      result.Base{Cluster: n.Cluster, Items: nil},
+			Count:     1,
+			Severity:  "critical",
+			CheckName: "CoNodeToUnCordon",
+		})
 }
 
-func (n *AbnormalNode) CheckNodeByProm(args ...interface{}) result.Result {
+func (n *AbnormalNode) CheckNodeByProm(args ...interface{}) *decision.AbnormalNodeDecision {
 	var checkleixing string
 	if args != nil {
 		checkleixing = args[0].(string)
@@ -213,14 +268,26 @@ func (n *AbnormalNode) CheckNodeByProm(args ...interface{}) result.Result {
 	promeResults, err := n.PromC.InstantQuery(global.V.GetString("check_ql_map." + checkleixing))
 	if err != nil {
 		utils.DefaultLogger.Errorf("check_ql_map:%v", err)
-		return result.NewResults(result.Base{Cluster: n.Cluster, Items: nil}, nil, checkleixing, "info", 0, nil)
+		return decision.NewAbnormalNodeDecision(
+			&result.Results{
+				Base:      result.Base{Cluster: n.Cluster, Items: nil},
+				Count:     0,
+				Severity:  "info",
+				CheckName: checkleixing,
+			})
 	}
 
 	// vecs 代表这个集群中 有多少个 异常的ntp 节点
 	num := len(promeResults)
 	if num == 0 {
 		utils.DefaultLogger.WithField("cluster", n.Cluster).WithField("Prometheus查询结果数量", "promResultNum").Info(global.V.GetString("check_ql_map."+checkleixing) + ",z结果为空")
-		return result.NewResults(result.Base{Cluster: n.Cluster, Items: nil}, nil, checkleixing, "info", 0, nil)
+		return decision.NewAbnormalNodeDecision(
+			&result.Results{
+				Base:      result.Base{Cluster: n.Cluster, Items: nil},
+				Count:     0,
+				Severity:  "info",
+				CheckName: checkleixing,
+			})
 	}
 	for index, vec := range promeResults {
 		vec := vec
@@ -247,5 +314,11 @@ func (n *AbnormalNode) CheckNodeByProm(args ...interface{}) result.Result {
 		//gr.CommonModuleDealOneNode(moduleName, clusterName, nodeName, ip)
 	}
 	results.Severity = "critical"
-	return &results
+	return decision.NewAbnormalNodeDecision(
+		&result.Results{
+			Base:      result.Base{Cluster: n.Cluster, Items: nil},
+			Count:     1,
+			Severity:  "critical",
+			CheckName: checkleixing,
+		})
 }
